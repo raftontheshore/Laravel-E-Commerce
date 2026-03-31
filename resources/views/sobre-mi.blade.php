@@ -34,7 +34,7 @@ line-height: 1.6;
 <div class="container">
     <h1>Sobre mi</h1>
     <p><b>Nombre:</b> q paja wacho</p>
-    <p><b>Edad:</b> 52 dias</p>
+    <p><b>Edad:</b> 52 y 20 segundos dias</p>
     <img src="https://images.squarespace-cdn.com/content/v1/58a13eba20099eb147e68d26/f5c88eae-b8c0-4eb5-9190-03c4ee6a11c2/zeiram-face.png" alt="Zeiram face">
 </div>
 </center>
