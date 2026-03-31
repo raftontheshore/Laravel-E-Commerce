@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Your content goes here -->
-    <script src="script.js"></script>
+    <form action="{{ url('/extios') }}" method="POST"></form>
 </body>
 </html>
