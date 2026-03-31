@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Sobre mi</title>
-
+{{-- 
 <style>
 body {
 font-family: Arial;
@@ -25,6 +25,8 @@ p {
 line-height: 1.6;
 }
 </style>
+ --}}
+<link rel="stylesheet" href="/css/estilos.css">
 
 </head>
 
