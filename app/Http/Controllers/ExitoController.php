@@ -8,6 +8,6 @@ class ExitoController extends Controller
 {
    public function procesar(Request $request)
     {
-    return view('exitos');
+    return view('exito');
     }
 }
