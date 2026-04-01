@@ -30,7 +30,7 @@
                     <p><b>Hobbies:</b> Programar y deportes</p>
 
                     <a href="#" class="btn btn-primary mt-3">Descargar CV</a>
-                    <a href="#" class="btn btn-secondary mt-3">Contactar</a>
+                    <a href="{{ url('/contacto') }}" class="btn btn-secondary mt-3">Contactar</a>
                 </div>
             </div>
         </div>
