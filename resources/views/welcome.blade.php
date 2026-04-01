@@ -49,8 +49,11 @@ line-height: 1.6;
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {{-- UTF-8 Para los acentos y caracteres especiales --}}
     <meta charset="UTF-8">
+    {{-- Para que se vea bien en celulares (NOSE SI ES NECESARIO) --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- El diseño y los estilos --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Retro</title>
 </head>
