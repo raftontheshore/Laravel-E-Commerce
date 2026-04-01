@@ -15,6 +15,7 @@
             <input type="text" name="nombre" class="form-control" required>
         </div>
         
+        <!-- Fuerza a pedir un email si o si -->
         <div class="mb-3">
             <label class="form-label">Correo electrónico</label>
             <input type="email" name="email" class="form-control" required>
