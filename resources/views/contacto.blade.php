@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="{{ url('/extios') }}" method="POST"></form>
+    <form action="{{ url('/exitos') }}" method="POST">
+    
+    </form>
 </body>
 </html>

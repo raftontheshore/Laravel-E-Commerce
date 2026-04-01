@@ -38,8 +38,11 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h2>Formulario de contacto</h2>
-                <form action="{{ url('/contacto') }}" method="POST">
-                    <div class="mb-3">
+                
+                <form action="{{ url('/contacto') }}" method="POST"> {{-- aca agregue action --}}
+                   @csrf
+                    
+                   <div class="mb-3">
                         <label class="form-label">Nombre</label>
                         <input type="text" class="form-control" placeholder="Ingrese su nombre">
                     </div>
