@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Sobre mi</title>
-{{-- 
-<style>
-body {
-font-family: Arial;
-background-color: #f4f4f4;
-margin: 40px;
-}
-
-.container {
-background: white;
-padding: 20px;
-border-radius: 10px;
-max-width: 600px;
-}
-
-h1 {
-color: #333;
-}
-
-p {
-line-height: 1.6;
-}
-</style>
- --}}
-<link rel="stylesheet" href="/css/estilos.css">
-
-</head>
-
-<body>
-
-<center>
-<div class="container">
-<nav class="navbar">
-    <a href="/">Inicio</a>
-    <a href="/sobre-mi">Sobre mí</a>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        
+        <a class="navbar-brand" href="#">NombreEmpresa</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Principal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pagina 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pagina 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pagina 3</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link" href="#">Pagina 4</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sobre Nosotros</a>
+            </li>
+          </ul>
+          
+          <form class="d-flex me-3">
+            <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+          
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item me-2">
+              <a class="btn btn-outline-light" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Sign Up</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
     </nav>
-</center>
-
-
-
-</body>
+  </body>
 </html>
