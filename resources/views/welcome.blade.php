@@ -97,13 +97,17 @@ line-height: 1.6;
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li> --}}
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           {{--   <button class="btn btn-outline-success" type="submit">Search</button>--}}
-        </form>
+        {{-- aca esta los botones de log in sign in  y esta adentro para que no se deforme cuando cambia de tamaño--}}
+        <div class="d-flex align-items-center ms-auto">
+            <form class="d-flex me-2" role="search">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+                 <a href="#" class="btn btn-sm btn-outline-primary me-2">Log in</a>
+                 <a href="#" class="btn btn-sm btn-primary">Sign in</a>
+        </div>
         {{-- aca esta los botones de log in sign in  --}}
-            <a href="#" class="btn btn-sm btn-outline-primary me-2">Log in</a>
-            <a href="#" class="btn btn-sm btn-primary">Sign in</a>
+
         </div>
     </div>
     </nav>
