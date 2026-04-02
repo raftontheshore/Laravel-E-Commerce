@@ -22,7 +22,7 @@
     <body class="bg-dark text-white">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             {{-- aca agregamo el nombre y la imagen de la nav bar --}}
             <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
     
