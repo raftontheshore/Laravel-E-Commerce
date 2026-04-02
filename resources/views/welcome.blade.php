@@ -63,11 +63,12 @@ line-height: 1.6;
 </head>
 
     <body class="bg-dark text-white">
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #404449;">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('images/favicon-32x32.png') }}" alt="logo" height="30">
-            Catagumbas
+            {{-- aca agregamo el nombre y la imagen de la nav bar --}}
+            <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
+    
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
