@@ -1,51 +1,4 @@
-{{--<!DOCTYPE html>
-<html>
-<head>
-<title>Sobre mi</title>
- 
-<style>
-body {
-font-family: Arial;
-background-color: #f4f4f4;
-margin: 40px;
-}
 
-.container {
-background: white;
-padding: 20px;
-border-radius: 10px;
-max-width: 600px;
-}
-
-h1 {
-color: #333;
-}
-
-p {
-line-height: 1.6;
-}
-</style>
-
-<link rel="stylesheet" href="/css/estilos.css">
-
-</head>
-
-<body>
-
-<center>
-<div class="container">
-<nav class="navbar">
-    <a href="/">Inicio</a>
-    <a href="/sobre-mi">Sobre mí</a>
-    </nav>
-</center>
-
-
-
-</body>
-</html>--}}
-
-{{--aca esta lo que se agrego --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,7 +12,10 @@ line-height: 1.6;
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
     <title>CATACUMBAS</title>
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
     <body class="bg-dark text-white">
