@@ -56,7 +56,7 @@ line-height: 1.6;
     {{-- El diseño y los estilos --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link rel="icon" type="image/jpeg" href="{{ asset('images/skull2.jpg') }}">
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
     <title>CATACUMBAS</title>
 
     
@@ -65,7 +65,11 @@ line-height: 1.6;
     <body class="bg-dark text-white">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #404449;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('images/favicon-32x32.png') }}" alt="logo" height="30">
+            Catagumbas
+        </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
