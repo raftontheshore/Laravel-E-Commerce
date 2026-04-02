@@ -99,8 +99,11 @@ line-height: 1.6;
         </ul>
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+           {{--   <button class="btn btn-outline-success" type="submit">Search</button>--}}
         </form>
+        {{-- aca esta los botones de log in sign in  --}}
+            <a href="#" class="btn btn-sm btn-outline-primary me-2">Log in</a>
+            <a href="#" class="btn btn-sm btn-primary">Sign in</a>
         </div>
     </div>
     </nav>
