@@ -8,14 +8,20 @@ Route::get('/', function () {
 });
 
 Route::get('/sobre-mi', function () {
-return view('sobre-mi');
+    return view('sobre-mi');
 });
 
+// Retorna la vista de contacto
 Route::get('/contacto', function () {
-return view('contacto');
+    return view('contacto');
 });
+
 Route::post('/contacto', [ExitoController::class, 'procesar']);
 
 Route::get('/footer', function () {
 return view('footer');
 });
+
+// Procesa el formulario
+Route::post('/contacto', [exitoController::class, 'procesar']);
+
