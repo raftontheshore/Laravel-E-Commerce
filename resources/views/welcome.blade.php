@@ -12,6 +12,7 @@
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
     <title>CATACUMBAS</title>
 
+    {{-- con esto cambiamos la fuente de nuestra pag --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -58,9 +59,9 @@
             <form class="d-flex me-2" role="search">
                     <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
             </form>
-
-                 <a href="#" class="btn btn-sm btn-outline-primary me-2">Log in</a>
-                 <a href="#" class="btn btn-sm btn-primary">Sign in</a>
+                {{-- el btn dark es el que cambia el color del log in --}}
+                 <a href="#" class="btn btn-sm btn btn-dark me-2">Log in</a>
+                 <a href="#" class="btn btn-sm btn btn-secondary">Sign in</a>
         </div>
         {{-- aca esta los botones de log in sign in  --}}
 
