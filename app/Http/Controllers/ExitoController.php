@@ -8,6 +8,7 @@ class exitoController extends Controller
 {
     public function procesar(Request $request)
     {
+        return view('exito');
         // Capturamos los datos enviados desde el formulario
         $nombre = $request->input('nombre');
         $email = $request->input('email');

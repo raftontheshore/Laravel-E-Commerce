@@ -4,6 +4,7 @@
      <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 </head>
 <body>
+    <form action="{{ url('/contacto') }}" method="POST">
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <div class="container mt-4">
     <h2>Formulario de Contacto</h2>
