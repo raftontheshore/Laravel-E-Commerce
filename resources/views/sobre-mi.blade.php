@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Sobre mi</title>
+        <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
         <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     </head>
 
