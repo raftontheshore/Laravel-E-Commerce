@@ -15,3 +15,7 @@ Route::get('/contacto', function () {
 return view('contacto');
 });
 Route::post('/contacto', [ExitoController::class, 'procesar']);
+
+Route::get('/footer', function () {
+return view('footer');
+});
