@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Juegos - Catacumbas</title>
+  <title>Consolas - Catacumbas</title>
   <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,7 +13,7 @@
   <div class="container-xl py-4 py-md-5 flex-grow-1">
     <div class="row">
         <div class="col-12 col-lg-3 d-none d-lg-block">
-            <x-sidebar-juegos />
+            <x-sidebar-consolas />
         </div>
 
         <div class="col-12 col-lg-9">
@@ -28,6 +28,5 @@
     </div>
   </div>
   <x-footer />
-
 </body>
 </html>
