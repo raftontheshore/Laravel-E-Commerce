@@ -8,62 +8,41 @@ h1{
    font-family: 'Oswald', sans-serif;
   }
 
-  body{
-    height: 100%;
+  /* Contenedor principal para posicionar la lupa */
+.search-container {
+    position: relative;
+    width: 150px; /* Ajustá el ancho que quieras */
+}
+
+.search-input-custom {
     width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #536DFE !important;
+    padding: 8px 15px 8px 35px;
+    /* Un gris oscuro con un toque de transparencia queda genial */
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #e0e0e0;             /* Texto gris casi blanco */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde muy sutil */
+    border-radius: 1px;        /* Redondeo suave, no tan circular */
+    font-family: 'Oswald', sans-serif;
+    outline: none;
+    transition: 0.3s;
 }
 
-.search{
-    margin-bottom: auto;
-    margin-top: 200px;
-    height: 70px;
-    background-color: #fff;
-    padding: 10px;
+/* Cuando el usuario hace clic para escribir */
+.search-input-custom:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
 }
 
-.search-input{
+/* El icono de la lupa (Posicionado adentro) */
 
-    color: white;
-    border:0;
-    outline: 0;
-    background: none;
-    width: 0;
-    margin-top:5px;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
 
-}
-
-.search .search-input{
-    padding: 0 10px;
-    width: 550px;
-    caret-color: #536bf6;
-    font-size: 21px;
-    font-weight: 300;
-    color: black;
-    transition: width 0.4s linear;
-}
-
-.search:hover>.search-icon{
-    background:#1A237E;
-    color:#fff;
-}
-.search-icon{
-
-        height: 50px;
-    width: 50px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: #536bf6;
-
-}
-a:link{
-    text-decoration: none;
+.search-icon-inside {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888; /* Un gris como el de la captura */
+    font-size: 1.1rem; /* Ajustá el tamaño si la ves muy chica */
+    pointer-events: none;
 }
