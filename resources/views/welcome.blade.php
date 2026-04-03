@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Tienda</a>
+                        <a class="nav-link active" aria-current="page" href="/tienda">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/explorar">Explorar</a>
@@ -162,5 +162,8 @@
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     
+
+    {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
+    <x-footer />
 </body>
 </html>
