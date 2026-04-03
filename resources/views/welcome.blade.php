@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Store</a>
+                        <a class="nav-link active" aria-current="page" href="#">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/explorar">Explorar</a>
@@ -111,7 +111,7 @@
                         <p class="fs-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
                         
                         {{-- Agregamos un botón para poder ver la oferta --}}
-                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #ff00d0; border: none;">Ver Oferta</a>
+                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #fbf7fb; border: none;">Ver Oferta</a>
                     </div>
                 </div>
 
@@ -149,12 +149,14 @@
     </div>
 
     {{-- Flex es para decirle que se comporte de manera flexible --}}
-    <div class="container mt-4" style="background-color: #404449; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px;">
-        <div>
-            <h1>Look! Search Action!</h1>
-            <p>retro action game deals</p>
+    <div class="container mt-4" style="background-color: #151515; display: flex; justify-content: space-between; align-items: center; padding: 50px 40px;border-radius: 12px;">
+        <div style="max-wifth: 55%;">
+            <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">Sinfonía de la Noche</h1>
+            <p class="fs-5 text-light mb-4">Adentrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.</p>
+            {{-- El botón --}}
+            <a href="#" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-2" style="barkground-color: #ff8c00; border: none; border-radius: 4px;">Ver Oferta</a>
         </div>   
-        <img src="{{ asset('images/castel.jpg') }}" style="width: 450px; height: auto;">
+        <img src="{{ asset('images/castel.jpg') }}" style="width: 450px; height: auto; border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);">
     </div>
 
     {{-- Scripts de JS --}}
