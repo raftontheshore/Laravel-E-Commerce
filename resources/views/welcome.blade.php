@@ -59,8 +59,8 @@
             <form class="d-flex me-2" role="search">
                     <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
             </form>
-                {{-- el btn dark es el que cambia el color del log in --}}
-                 <a href="#" class="btn btn-sm btn btn-dark me-2">Log in</a>
+                {{-- el btn secondary es el que cambia el color del sign in y el nav es para que no tenga el recuadro el log --}}
+                 <a href="#" class="nav-link text-secondary me-3">Log in</a>
                  <a href="#" class="btn btn-sm btn btn-secondary">Sign in</a>
         </div>
         {{-- aca esta los botones de log in sign in  --}}
