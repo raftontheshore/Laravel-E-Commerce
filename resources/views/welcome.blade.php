@@ -1,16 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     {{-- UTF-8 Para los acentos y caracteres especiales --}}
     <meta charset="UTF-8">
+    
     {{-- Para que se vea bien en celulares (NOSE SI ES NECESARIO) --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     {{-- El diseño y los estilos --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
     <title>CATACUMBAS</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     {{-- con esto cambiamos la fuente de nuestra pag --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,59 +21,68 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
-    <body class="bg-dark text-white">
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            {{-- aca agregamo el nombre y la imagen de la nav bar --}}
-            <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
+<body class="bg-dark text-white">
     
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Store</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Explorar</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                About
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand" href="/">
+                {{-- aca agregamo el nombre y la imagen de la nav bar --}}
+                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">The Origin</a></li>
-                <li><a class="dropdown-item" href="#">Support</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            {{--</li>
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li> --}}
-        </ul>
-        {{-- aca esta los botones de log in sign in  y esta adentro para que no se deforme cuando cambia de tamaño--}}
-        <div class="d-flex align-items-center ms-auto">
-            <form class="d-flex me-2" role="search">
-                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
-                {{-- el btn dark es el que cambia el color del log in --}}
-                 <a href="#" class="btn btn-sm btn btn-dark me-2">Log in</a>
-                 <a href="#" class="btn btn-sm btn btn-secondary">Sign in</a>
-        </div>
-        {{-- aca esta los botones de log in sign in  --}}
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Explorar</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">The Origin</a></li>
+                            <li><a class="dropdown-item" href="#">Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    {{-- 
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li> 
+                    --}}
+                </ul>
+                
+                {{-- aca esta los botones de log in sign in  y esta adentro para que no se deforme cuando cambia de tamaño --}}
+                <div class="d-flex align-items-center ms-auto">
+                    
+                    <div class="search-container me-3">
+                        <i class="bi bi-search search-icon-inside"></i>
+                        <input type="text" class="search-input-custom" placeholder="Search..." name="query">
+                    </div>
+
+                    <a href="#" class="nav-link text-secondary me-3">Log in</a>
+                    <a href="#" class="btn btn-sm btn-secondary">Sign in</a>
+                    
+                </div>
+                {{-- aca esta los botones de log in sign in --}}
+
+            </div>
         </div>
-    </div>
     </nav>
 
     {{-- Imagen de Alucard 
     <img src="{{ asset('images/castel.jpg') }}" class="float-end" style="position: absolute; right: 0; top: 0; z-index: -1; filter: blur(1px); max-width: 600px; opacity: 0.6;">
     --}}
+    
     {{-- Limpiamos el float para que el carrusel no se suba a la imagen --}}
     <div class="clearfix"></div>
 
@@ -130,17 +141,18 @@
 
         </div>
     </div>
-{{-- Flex es para decirle que se comporte de manera flexible --}}
-    <div class="container"style="background-color: #404449;display: flex; justify-content: space-between; align-items: flex-start; padding: 20px;">
+
+    {{-- Flex es para decirle que se comporte de manera flexible --}}
+    <div class="container mt-4" style="background-color: #404449; display: flex; justify-content: space-between; align-items: flex-start; padding: 20px;">
         <div>
             <h1>Look! Search Action!</h1>
-            <p>retro action game deals </p>
-         </div>   
+            <p>retro action game deals</p>
+        </div>   
         <img src="{{ asset('images/castel.jpg') }}" style="width: 450px; height: auto;">
     </div>
 
-
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    
 </body>
 </html>
