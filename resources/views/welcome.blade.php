@@ -9,8 +9,8 @@
     
     {{-- El diseño y los estilos --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
-    <title>CATACUMBAS</title>
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <title>Catacumbas</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
