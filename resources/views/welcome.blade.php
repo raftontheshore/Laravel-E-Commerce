@@ -111,16 +111,16 @@
                         <p class="fs-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
                         
                         {{-- Agregamos un botón para poder ver la oferta --}}
-                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #fbf7fb; border: none;">Ver Oferta</a>
+                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #ffd70f; border: none;">Ver Oferta</a>
                     </div>
                 </div>
 
                 {{-- Slide 2 --}}
-                <div class="carousel-item">
-                    <img src="{{ asset('images/banner2.jpg') }}" class="d-block w-100" alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100" alt="Slide 2">
+                    <div class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
+                        <h5 class="display-3 fw-bold title-hero" style="color: #cc0000;">YA DISPONIBLE</h5>
+                        <p class="fs-4 text-hero" style="color: #461313">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato fisico</p>
                     </div>
                 </div>
 
@@ -160,13 +160,13 @@
     </div>
 
     <br/>
-
+    {{-- ACA MODIFICAMOS EL CARRUSEL DE DESTACADOS-----  --}}
     <div class="container mt-5 bm-5">
         <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
 
         
-        <div class="row flex-nowrap overflow-x-auto pb-3" style="scrollbar-width: thin;">
-
+        <div class="row flex-nowrap overflow-x-auto pb-3" id="carrusel-oscuro" style="scrollbar-width: thin;">
+            {{-- aca llama a carta producto --}}
             @foreach($productos_destacados as $producto)
             <div class="col-10 col-md-3 col-lg-3 mb-3">
                 <x-carta-producto :producto="$producto" />
@@ -174,6 +174,8 @@
             @endforeach 
         </div>
     </div>
+
+
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     

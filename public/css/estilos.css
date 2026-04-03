@@ -60,3 +60,27 @@ h1{
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
     font-weight: 500;
 }
+
+/*aca modificamos el carrucel de destacados*/
+/*hacemos transparente el fondo*/
+#carrusel-oscuro .card,
+#carrusel-oscuro .card .bg-white{
+    background-color: #2a2a2a !important;
+}
+
+/*borramos la lineas grises de los brodes*/
+#carrusel-oscuro .card .border-bottom{
+    border-bottom: none !important;
+}
+
+/*cambiamos las letras de negro a blanco*/
+#carrusel-oscuro .card .text-dark{
+    color: #ffffff !important;
+}
+
+/*ocuresemos la etiqueta blanca de nuevo o usado*/
+#carrusel-oscuro .card .bg-light{
+    background-color: #2a2a2a !important;
+    border-color: #444 !important;
+    color: #ccc !important;
+}
