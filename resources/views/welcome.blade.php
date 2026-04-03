@@ -102,10 +102,16 @@
                 
                 {{-- Slide 1 --}}
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/PokemonClassic.jpg') }}" class="d-block w-100" alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                    <img src="{{ asset('images/PokemonClassic.jpg') }}" class="d-block w-100" alt="Pokemon Classics" style="object-fit: cover; height: 500px;">
+                    
+                    {{-- Cambiamos la posición y alineación del caption --}}
+                    <div class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
+                        
+                        <h5 class="display-3 fw-bold title-hero">Regresa a Kanto</h5>
+                        <p class="fs-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
+                        
+                        {{-- Agregamos un botón opcional para que parezca más una oferta --}}
+                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #ff00d0; border: none;">Ver Oferta</a>
                     </div>
                 </div>
 

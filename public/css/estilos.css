@@ -46,3 +46,17 @@ h1{
     font-size: 1.1rem; /* Ajustá el tamaño si la ves muy chica */
     pointer-events: none;
 }
+
+/*Estilo para el carusel de las ofertas */
+.title-hero {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase; /* Todo en mayúsculas */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); /* Sombra fuerte */
+    letter-spacing: 2px; /* Separa un poquito las letras */
+}
+
+/* Sombra para el texto de abajo */
+.text-hero {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    font-weight: 500;
+}
