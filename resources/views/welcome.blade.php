@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
-<body class="bg-dark text-white">
+<body class="bg-dark text-white" style="background: linear-gradient(to right, rgb(23, 6, 41), rgb(35, 6, 47))">
     
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
         <div class="container-fluid">
@@ -121,6 +121,8 @@
                     <div class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
                         <h5 class="display-3 fw-bold title-hero" style="color: #cc0000;">YA DISPONIBLE</h5>
                         <p class="fs-4 text-hero" style="color: #461313">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato fisico</p>
+                    
+                         <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #c60000; border: none;">Comprar Ahora</a>
                     </div>
                 </div>
 

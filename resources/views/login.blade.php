@@ -21,7 +21,7 @@
         <div class="container-fluid">
             
             <a class="navbar-brand" href="/">
-                {{-- aca agregamo el nombre y la imagen de la nav bar --}}
+                {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
                 <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
             </a>
 
@@ -37,22 +37,22 @@
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card bg-dark text-white" data-bs-theme="dark" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
 
                             <div class="mb-md-5 mt-md-4 pb-5">
 
                             <h2 class="fw-bold mb-2 text-uppercase">Inicia sesión</h2>
-                            <p class="text-white-50 mb-5">Porfavor ingrese su Usuario y Contraseña!</p>
+                            <p class="text-white-50 mb-5">Porfavor ingrese su Correo y Contraseña!</p>
 
-                            <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX">Email</label>
+                            <div class="form-floating mb-4 text-start">
+                                <input type="emal" class="form-control bg-dark text-white border-secondary" id="typeEmailX" placeholder="email">
+                                <label for="typeEmailX" class="text-white-50">Email</label>
                             </div>
 
-                            <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX">Password</label>
+                            <div class="form-floating mb-4 text-start">
+                                <input type="password" class="form-control bg-dark text-white border-secondary" id="typePasswordX" placeholder="Password">
+                                <label for="typePasswordX" class="text-white-50">Password</label>
                             </div>
 
                             <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">¿Olvidaste tu Contraseña?</a></p>

@@ -17,11 +17,11 @@ h1{
 .search-input-custom {
     width: 100%;
     padding: 8px 15px 8px 35px;
-    /* Un gris oscuro con un toque de transparencia queda genial */
+    /* Un gris oscuro con un toque de transparencia */
     background-color: rgba(255, 255, 255, 0.1); 
     color: #e0e0e0;             /* Texto gris casi blanco */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde muy sutil */
-    border-radius: 1px;        /* Redondeo suave, no tan circular */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde */
+    border-radius: 1px;        /* Redondeo  */
     font-family: 'Oswald', sans-serif;
     outline: none;
     transition: 0.3s;
@@ -91,8 +91,8 @@ h1{
 background: #28064d;
 
 /* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgb(5, 16, 35));
+background: -webkit-linear-gradient(to right, rgb(36, 5, 68), rgb(12, 38, 82));
 
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(106, 17, 203, 1), rgb(5, 17, 37))
+background: linear-gradient(to right, rgb(23, 6, 41), rgb(35, 6, 47))
 }
