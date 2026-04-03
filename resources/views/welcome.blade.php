@@ -159,6 +159,11 @@
         <img src="{{ asset('images/castel.jpg') }}" style="width: 450px; height: auto; border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);">
     </div>
 
+    <br/>
+    <hr/>
+    <h1>DESTACADOS</h1>
+
+
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     
