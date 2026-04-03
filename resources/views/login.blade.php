@@ -13,8 +13,26 @@
         <title>Catacumbas</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     </head>
     <body>
+
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand" href="/">
+                {{-- aca agregamo el nombre y la imagen de la nav bar --}}
+                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            
+        </div>
+    </nav>
+
             <section class="vh-100 gradient-custom">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -24,8 +42,8 @@
 
                             <div class="mb-md-5 mt-md-4 pb-5">
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">Inicia sesión</h2>
+                            <p class="text-white-50 mb-5">Porfavor ingrese su Usuario y Contraseña!</p>
 
                             <div data-mdb-input-init class="form-outline form-white mb-4">
                                 <input type="email" id="typeEmailX" class="form-control form-control-lg" />
@@ -37,7 +55,7 @@
                                 <label class="form-label" for="typePasswordX">Password</label>
                             </div>
 
-                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">¿Olvidaste tu Contraseña?</a></p>
 
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
@@ -50,7 +68,7 @@
                             </div>
 
                             <div>
-                            <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                            <p class="mb-0">¿No Tienes una cuenta? <a href="#!" class="text-white-50 fw-bold">Registrarse</a>
                             </p>
                             </div>
 

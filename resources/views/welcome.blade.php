@@ -69,7 +69,7 @@
                         <input type="text" class="search-input-custom" placeholder="Search..." name="query">
                     </div>
 
-                    <a href="#" class="nav-link text-secondary me-3">Log in</a>
+                    <a href="/login" class="nav-link text-secondary me-3">Log in</a>
                     <a href="#" class="btn btn-sm btn-secondary">Sign in</a>
                     
                 </div>
