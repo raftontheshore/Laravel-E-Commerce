@@ -18,7 +18,7 @@
             </span>
         </div>
         
-        <p class="card-title text-muted fw-light text-truncate mb-1" style="font-size: 0.9rem;">
+        <p class="card-title text-dark fw-bold text-truncate mb-1" style="font-size: 1rem;">
             {{ $producto->titulo }}
         </p>
 
@@ -42,22 +42,13 @@
             @endif
         </div>
 
-        <div class="text-dark small mb-2">
+        <div class="text-dark small mb-4">
             6 cuotas de $ {{ number_format($producto->precio / 6, 0, ',', '.') }}
         </div>
-
-        <div class="d-flex flex-column mt-auto">
-            <span class="text-success small" style="font-weight: 600;">
-                Envío gratis
-            </span>
-            
-            @if($producto->es_internacional)
-                <span class="text-muted small fst-italic d-flex align-items-center gap-1 mt-1" style="font-size: 0.75rem;">
-                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Internacional
-                </span>
-            @endif
-        </div>
+        
+        <button class="btn w-100 mt-auto rounded-pill text-white fw-bold py-2" style="background-color: #ff007f;">
+            Añadir al carrito
+        </button>
 
     </div>
 </div>
