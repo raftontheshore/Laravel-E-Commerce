@@ -34,11 +34,15 @@ Route::get('/consolas', function () {
     return view('consolas');
 });
 
-// Database
-Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
-    
-    $todos_los_productos = [
-        
+
+Route::get('/explorar', function () {
+    return view('explorar');
+});
+
+// --- BASE DE DATOS TEMPORAL ---
+// Creamos una función que devuelve el arreglo para poder usarlo en varias rutas
+function obtenerProductos() {
+    return [
         // --- JUEGOS ---
         (object) [
             'categoria' => 'Juego',
@@ -52,7 +56,7 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
         ],
         (object) [
             'categoria' => 'Juego',
-            'titulo' => 'Shin Megami Tensei Persona 3 PS2',
+            'titulo' => 'Shin Megami Tensei Persona 3',
             'precio_original' => 60000,
             'precio' => 48000,
             'porcentaje_descuento' => 20,
@@ -72,7 +76,7 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
         ],
         (object) [
             'categoria' => 'Juego',
-            'titulo' => 'Silent Hill 2 PS2 Original',
+            'titulo' => 'Silent Hill 2',
             'precio_original' => 85000,
             'precio' => 85000,
             'porcentaje_descuento' => 0,
@@ -94,7 +98,7 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
         // --- CONSOLAS ---
         (object) [
             'categoria' => 'Consola',
-            'titulo' => 'PlayStation 2 Slim Chipeada',
+            'titulo' => 'PlayStation 2 Slim (Chipeada)',
             'precio_original' => 250000,
             'precio' => 210000,
             'porcentaje_descuento' => 16,
@@ -114,7 +118,7 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
         ],
         (object) [
             'categoria' => 'Consola',
-            'titulo' => 'Sega Genesis Model',
+            'titulo' => 'Sega Genesis',
             'precio_original' => 180000,
             'precio' => 135000,
             'porcentaje_descuento' => 25,
@@ -141,10 +145,36 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
             'imagen_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Xbox-Classic-Console-2Controllers.png/1920px-Xbox-Classic-Console-2Controllers.png',
             'consola' => 'Microsoft',
             'estado' => 'Usado',
+        ],
+
+        // --- COMBOS ---
+        (object) [
+            'categoria' => 'Combo',
+            'titulo' => 'PS2 Slim + Silent Hill 2',
+            'precio_original' => 335000,
+            'precio' => 290000,
+            'porcentaje_descuento' => 0,
+            'imagen_url' => asset('images/combo1.png'),
+            'consola' => 'Sony',
+            'estado' => 'Usado',
+        ],
+        (object) [
+            'categoria' => 'Combo',
+            'titulo' => '2 Gameboy + Trilogía De Pokémon',
+            'precio_original' => 220000,
+            'precio' => 195000,
+            'porcentaje_descuento' => 0,
+            'imagen_url' => asset('images/combo2.png'),
+            'consola' => 'Sega',
+            'estado' => 'Usado',
         ]
     ];
+}
 
-    $coleccion = collect($todos_los_productos);
+// --- RUTA: TIENDA PRINCIPAL ---
+Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
+    
+    $coleccion = collect(obtenerProductos());
 
     if ($categoria === 'todos') {
         $productos = $coleccion;
@@ -155,4 +185,28 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
     }
 
     return view('tienda', compact('productos', 'categoria'));
+});
+
+// --- RUTA: EXPLORAR (Dashboard Oscuro) ---
+Route::get('/explorar', function () {
+    
+    $coleccion = collect(obtenerProductos());
+
+    // 1. Nuevos Productos: Filtramos los que tengan estado "Nuevo" (Juegos o Consolas)
+    $nuevos_productos = $coleccion->filter(function ($item) {
+        return strtolower($item->estado) === 'nuevo';
+    });
+
+    // 2. Ofertas de Juegos: Filtramos solo Juegos que tengan descuento
+    $ofertas_juegos = $coleccion->filter(function ($item) {
+        return strtolower($item->categoria) === 'juego' && $item->porcentaje_descuento > 0;
+    });
+
+    // 3. Combos: Filtramos todo lo que sea categoría Combo
+    $combos = $coleccion->filter(function ($item) {
+        return strtolower($item->categoria) === 'combo';
+    });
+
+    // Enviamos las tres listas a la vista explorar
+    return view('explorar', compact('nuevos_productos', 'ofertas_juegos', 'combos'));
 });
