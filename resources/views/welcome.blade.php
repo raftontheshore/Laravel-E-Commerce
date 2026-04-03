@@ -160,10 +160,20 @@
     </div>
 
     <br/>
-    <hr/>
-    <h1>DESTACADOS</h1>
 
+    <div class="container mt-5 bm-5">
+        <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
 
+        
+        <div class="row flex-nowrap overflow-x-auto pb-3" style="scrollbar-width: thin;">
+
+            @foreach($productos_destacados as $producto)
+            <div class="col-10 col-md-3 col-lg-3 mb-3">
+                <x-carta-producto :producto="$producto" />
+            </div>  
+            @endforeach 
+        </div>
+    </div>
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     

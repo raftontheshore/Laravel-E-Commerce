@@ -4,9 +4,14 @@ use App\Http\Controllers\ExitoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $coleccion = collect(obtenerProductos());
 
+    // Agarramos los primeros 4 que existan en el array, sin filtrar por categoría
+    //aca el coleccion tengo que  modificar lo que quiero que aparezca 
+    $productos_destacados = $coleccion->take(4);
+
+    return view('welcome', compact('productos_destacados'));
+});
 Route::get('/sobre-mi', function () {
     return view('sobre-mi');
 });
