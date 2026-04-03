@@ -1,19 +1,9 @@
 h1{
-    color: blue;
+    color: rgb(249, 249, 249);
 }
 
-.navbar {
-    background-color: #333;
-    padding: 10px;
-} 
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: bold;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-} 
+        /* Si querés que los botones y el menú también cambien (a veces Bootstrap se resiste) */
+.navbar, .btn, .form-control {
+   font-family: 'Oswald', sans-serif;
+  }

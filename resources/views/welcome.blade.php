@@ -1,51 +1,4 @@
-{{--<!DOCTYPE html>
-<html>
-<head>
-<title>Sobre mi</title>
- 
-<style>
-body {
-font-family: Arial;
-background-color: #f4f4f4;
-margin: 40px;
-}
 
-.container {
-background: white;
-padding: 20px;
-border-radius: 10px;
-max-width: 600px;
-}
-
-h1 {
-color: #333;
-}
-
-p {
-line-height: 1.6;
-}
-</style>
-
-<link rel="stylesheet" href="/css/estilos.css">
-
-</head>
-
-<body>
-
-<center>
-<div class="container">
-<nav class="navbar">
-    <a href="/">Inicio</a>
-    <a href="/sobre-mi">Sobre mí</a>
-    </nav>
-</center>
-
-
-
-</body>
-</html>--}}
-
-{{--aca esta lo que se agrego --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,13 +12,17 @@ line-height: 1.6;
     <link rel="icon" type="image/jpeg" href="{{ asset('images/favicon-16x16.png') }}">
     <title>CATACUMBAS</title>
 
-    
+    {{-- con esto cambiamos la fuente de nuestra pag --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
     <body class="bg-dark text-white">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             {{-- aca agregamo el nombre y la imagen de la nav bar --}}
             <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
     
@@ -97,13 +54,17 @@ line-height: 1.6;
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li> --}}
         </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           {{--   <button class="btn btn-outline-success" type="submit">Search</button>--}}
-        </form>
+        {{-- aca esta los botones de log in sign in  y esta adentro para que no se deforme cuando cambia de tamaño--}}
+        <div class="d-flex align-items-center ms-auto">
+            <form class="d-flex me-2" role="search">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+                {{-- el btn dark es el que cambia el color del log in --}}
+                 <a href="#" class="btn btn-sm btn btn-dark me-2">Log in</a>
+                 <a href="#" class="btn btn-sm btn btn-secondary">Sign in</a>
+        </div>
         {{-- aca esta los botones de log in sign in  --}}
-            <a href="#" class="btn btn-sm btn-outline-primary me-2">Log in</a>
-            <a href="#" class="btn btn-sm btn-primary">Sign in</a>
+
         </div>
     </div>
     </nav>
