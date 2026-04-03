@@ -1,50 +1,113 @@
-<aside class="pe-lg-4">
-    <div class="small text-muted mb-2" style="font-size: 0.85rem;">
-        Catálogo > Consolas Retro
+<aside class="pe-lg-4 bg-white p-4 rounded-4 shadow-sm" style="font-family: system-ui, -apple-system, sans-serif;">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h6 class="fw-bold mb-0 text-dark" style="font-size: 0.85rem; letter-spacing: 0.5px;">FILTRAR</h6>
+        <i class="fas fa-times text-muted" style="cursor: pointer;"></i>
     </div>
 
-    <h1 class="h3 fw-semibold text-dark mb-0">Consolas</h1>
-    <div class="small text-muted mb-3">42 resultados</div>
-
-    <div class="d-flex flex-wrap gap-2 mb-4">
-        <span class="badge bg-white text-dark border p-2 d-flex align-items-center fw-normal shadow-sm rounded-1">
-            Retro 
-            <i class="fas fa-times ms-2 text-muted" style="cursor: pointer;"></i>
-        </span>
-    </div>
-
-    <div class="card border-0 shadow-sm mb-4 rounded-3">
-        <div class="card-body p-3">
-            <div class="form-check form-switch d-flex justify-content-between align-items-center ps-0 mb-3">
-                <label class="form-check-label fw-medium" for="switchEnvioConsolas">Envío gratis</label>
-                <input class="form-check-input ms-0" type="checkbox" role="switch" id="switchEnvioConsolas">
-            </div>
-            <div class="form-check form-switch d-flex justify-content-between align-items-start ps-0 mb-0">
-                <div>
-                    <label class="form-check-label fw-medium d-block" for="switchCuotasConsolas">Mejor precio en cuotas</label>
-                    <small class="text-muted" style="font-size: 0.75rem;">Al mismo precio o con bajo interés</small>
-                </div>
-                <input class="form-check-input ms-0 mt-1" type="checkbox" role="switch" id="switchCuotasConsolas">
-            </div>
+    <div class="mb-4">
+        <div class="input-group border rounded-3 overflow-hidden">
+            <span class="input-group-text bg-white border-0 text-muted ps-3">
+                <i class="fas fa-search"></i>
+            </span>
+            <input type="text" class="form-control border-0 shadow-none ps-2" placeholder="Buscar consola..." style="font-size: 0.9rem;">
         </div>
     </div>
 
     <div class="mb-4">
-        <h6 class="fw-semibold mb-3">Marca</h6>
-        <ul class="list-unstyled small text-muted" style="line-height: 1.8;">
-            <li><a href="#" class="text-decoration-none text-muted">Sony</a></li>
-            <li><a href="#" class="text-decoration-none text-muted">Nintendo</a></li>
-            <li><a href="#" class="text-decoration-none text-muted">Sega</a></li>
-            <li><a href="#" class="text-decoration-none text-muted">Microsoft</a></li>
-        </ul>
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">ÚLTIMAS BÚSQUEDAS</h6>
+        
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="text-muted small d-flex align-items-center gap-2">
+                <i class="far fa-clock"></i> PS2 Slim Chipeada
+            </div>
+            <i class="fas fa-times text-muted small" style="cursor: pointer;"></i>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="text-muted small d-flex align-items-center gap-2">
+                <i class="far fa-clock"></i> Sega Genesis
+            </div>
+            <i class="fas fa-times text-muted small" style="cursor: pointer;"></i>
+        </div>
     </div>
 
     <div class="mb-4">
-        <h6 class="fw-semibold mb-3">Condición</h6>
-        <ul class="list-unstyled small text-muted" style="line-height: 1.8;">
-            <li><a href="#" class="text-decoration-none text-muted">Nuevo</a></li>
-            <li><a href="#" class="text-decoration-none text-muted">Usado</a></li>
-            <li><a href="#" class="text-decoration-none text-muted">Reacondicionado</a></li>
-        </ul>
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">CATEGORÍA</h6>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn text-white rounded-pill px-3 py-1 border-0" style="background-color: #6c5ce7; font-size: 0.85rem;">
+                Consolas
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Accesorios
+            </button>
+        </div>
     </div>
+
+    <div class="mb-4">
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">MARCA</h6>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Sony
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Nintendo
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Sega
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Microsoft
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">CONDICIÓN</h6>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Nuevo
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Usado
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-pill px-3 py-1" style="font-size: 0.85rem;">
+                Reacondicionado
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">ORDENAR POR</h6>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn text-white rounded-3 px-3 py-1" style="background-color: #6c5ce7; font-size: 0.85rem;">
+                Popularidad
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-3 px-3 py-1" style="font-size: 0.85rem;">
+                Más nuevo
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-3 px-3 py-1" style="font-size: 0.85rem;">
+                Más viejo
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-3 px-3 py-1" style="font-size: 0.85rem;">
+                Mayor precio
+            </button>
+            <button class="btn btn-outline-secondary text-dark border rounded-3 px-3 py-1" style="font-size: 0.85rem;">
+                Menor precio
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <h6 class="fw-bold mb-3 text-dark" style="font-size: 0.8rem; letter-spacing: 0.5px;">RANGO DE PRECIO</h6>
+        <div class="row g-2">
+            <div class="col-6">
+                <input type="number" class="form-control rounded-3 border text-center text-muted shadow-none" placeholder="Min Precio" style="font-size: 0.85rem; padding-top: 0.6rem; padding-bottom: 0.6rem;">
+            </div>
+            <div class="col-6">
+                <input type="number" class="form-control rounded-3 border text-center text-muted shadow-none" placeholder="Max Precio" style="font-size: 0.85rem; padding-top: 0.6rem; padding-bottom: 0.6rem;">
+            </div>
+        </div>
+    </div>
+
 </aside>
