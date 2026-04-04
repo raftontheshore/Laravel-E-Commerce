@@ -216,7 +216,7 @@
     </style>
 </head>
 <body>
-    <x-navbar />
+    <x-navbar-simplificada/>
 
     <div class="login-wrapper">
         <div class="login-card">
