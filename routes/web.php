@@ -4,13 +4,19 @@ use App\Http\Controllers\ExitoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    // 1. Traemos toda la lista de productos
     $coleccion = collect(obtenerProductos());
 
-    // Agarramos los primeros 4 que existan en el array, sin filtrar por categoría
-    //aca el coleccion tengo que  modificar lo que quiero que aparezca 
+    // 2. ESTOS SON los DESTACADOS 
     $productos_destacados = $coleccion->take(4);
 
-    return view('welcome', compact('productos_destacados'));
+    // 3. ESTAS las consolas (Buscamos solo las de categoría "Consola")
+    $consolas = $coleccion->filter(function ($item) {
+        return strtolower($item->categoria) === 'consola';
+    });
+
+    // 4. Mandamos LAS DOS COSAS juntas a la vista 'welcome'
+    return view('welcome', compact('productos_destacados', 'consolas'));
 });
 Route::get('/sobre-mi', function () {
     return view('sobre-mi');

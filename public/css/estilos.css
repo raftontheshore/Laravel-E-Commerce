@@ -89,6 +89,32 @@ h1 {
     color: #ccc !important;
 }
 
+/* --------------------------------------------------- */
+/* BARRA DE SCROLL PERSONALIZADA PARA LOS CARRUSELES   */
+/* --------------------------------------------------- */
+
+/* 1. Grosor de la barra */
+.carrusel-tema-oscuro::-webkit-scrollbar {
+    height: 8px; /* Barra horizontal finita y elegante */
+}
+
+/* 2. El "caminito" por donde se mueve la barra (Fondo) */
+.carrusel-tema-oscuro::-webkit-scrollbar-track {
+    background: #161616; 
+    border-radius: 10px;
+}
+
+/* 3. La barrita que el usuario arrastra */
+.carrusel-tema-oscuro::-webkit-scrollbar-thumb {
+    background: #c64133; /* El rojo/naranja Catacumbas */
+    border-radius: 10px;
+}
+
+/* 4. Cuando el usuario le pasa el mouse por encima a la barrita */
+.carrusel-tema-oscuro::-webkit-scrollbar-thumb:hover {
+    background: #a33529; /* Un tono apenas más oscuro */
+}
+
 /* ****LOGIN*** */
 .gradient-custom {
 /* fallback for old browsers */

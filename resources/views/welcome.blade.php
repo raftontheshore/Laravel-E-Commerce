@@ -124,10 +124,70 @@
     </div>
 
 
+    {{-- CARRUCEL DE CONSOLAS  --}}
+    <div class="container mt-5 bm-5">
+        <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
+
+        
+        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro" style="scrollbar-width: thin; scrollbar-color: #c64133 #161616;">
+            {{-- aca llama a carta consola --}}
+            @foreach($consolas as $consola)
+            <div class="col-10 col-md-3 col-lg-3 mb-3">
+               {{-- 2. Acá llamamos a los  componente y le pasamos los datos de la consola --}}
+                <x-carta-producto :producto="$consola" />
+            </div>  
+            @endforeach 
+        </div>
+    </div>
+
+
     {{-- Scripts de JS --}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     
+    {{-- SCRIPT PARA QUE LOS CARRUSELES SE MUEVAN SOLOS (EFECTO VA Y VIENE) --}}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const carruseles = document.querySelectorAll('.carrusel-tema-oscuro');
 
+                carruseles.forEach(carrusel => {
+                    let intervalo;
+                    const velocidad = 1; // Píxeles por paso
+                    const tiempo = 30;   // Milisegundos entre paso
+                    let direccion = 1;   // 1 va a la derecha, -1 va a la izquierda
+
+                    function iniciarScroll() {
+                        intervalo = setInterval(() => {
+                            
+                            // Si choca contra el final derecho, cambia la dirección a la izquierda (-1)
+                            if (carrusel.scrollLeft + carrusel.clientWidth >= carrusel.scrollWidth - 1) {
+                                direccion = -1;
+                            } 
+                            // Si choca contra el principio izquierdo, cambia la dirección a la derecha (1)
+                            else if (carrusel.scrollLeft <= 0) {
+                                direccion = 1;
+                            }
+
+                            // Movemos el carrusel multiplicando por la dirección
+                            carrusel.scrollLeft += (velocidad * direccion);
+
+                        }, tiempo);
+                    }
+
+                    function detenerScroll() {
+                        clearInterval(intervalo);
+                    }
+
+                    // Iniciamos el movimiento
+                    iniciarScroll();
+
+                    // Pausamos al pasar el mouse o tocar la pantalla
+                    carrusel.addEventListener('mouseenter', detenerScroll);
+                    carrusel.addEventListener('mouseleave', iniciarScroll);
+                    carrusel.addEventListener('touchstart', detenerScroll);
+                    carrusel.addEventListener('touchend', iniciarScroll);
+                });
+            });
+        </script>
     {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
     <x-footer />
 </body>
