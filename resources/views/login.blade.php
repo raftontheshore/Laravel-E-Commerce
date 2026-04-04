@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
-<<<<<<< HEAD
     <style>
         @font-face {
             font-family: 'SystemFont';
@@ -33,30 +32,6 @@
             justify-content: center;
             padding: 40px 16px;
         }
-=======
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-        {{-- iconos de google y eso --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
-    <body class="text-white fondo-catacumbas">
-
-         <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
-            <div class="container-fluid">
-                
-                <a class="navbar-brand" href="/">
-                    {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
-                    <img src="{{ asset('images/favicon.png') }}" alt="logo" height="42" class="me-2">
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                
-            </div>
-        </nav>
->>>>>>> a489ee816a48e97d1a125b525365e51223fa2136
 
         /* ── Card ─────────────────────────────────────────────── */
         .login-card {
@@ -176,7 +151,6 @@
         }
         .btn-login-submit:hover { background: #e74c3c; }
 
-<<<<<<< HEAD
         /* ── Social login ─────────────────────────────────────── */
         .social-divider {
             display: flex;
@@ -223,9 +197,6 @@
             color: #ddd;
             border-color: #444;
         }
-=======
-                           <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-catacumbas btn-lg px-5" type="submit">Login</button>
->>>>>>> a489ee816a48e97d1a125b525365e51223fa2136
 
         /* ── Register link ────────────────────────────────────── */
         .login-register {
@@ -250,19 +221,12 @@
     <div class="login-wrapper">
         <div class="login-card">
 
-<<<<<<< HEAD
             {{-- Brand --}}
             <div class="login-brand">
                 <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas">
                 <span class="login-brand-name">Catacumbas</span>
                 <p class="login-brand-sub">Ingresá tu cuenta para continuar</p>
             </div>
-=======
-                            <div>
-                            <p class="mb-0">¿No Tienes una cuenta? <a href="/signup" class="text-white-50 fw-bold">Registrarse</a>
-                            </p>
-                            </div>
->>>>>>> a489ee816a48e97d1a125b525365e51223fa2136
 
             <hr class="login-divider">
 
@@ -281,17 +245,6 @@
                         <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
                     @enderror
                 </div>
-<<<<<<< HEAD
-=======
-                </section>
-            
-            {{-- Scripts de JS --}}
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-        {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
-          <x-footer />
-    </body>
->>>>>>> a489ee816a48e97d1a125b525365e51223fa2136
 
                 <div class="login-field">
                     <label for="password">Contraseña</label>
