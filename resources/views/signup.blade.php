@@ -34,7 +34,7 @@
                         <label>NOMBRE</label>
                         <div class="input-wrap">
                             <i class="bi bi-person"></i>
-                            <input type="text" id="regName" placeholder="Tu nombre completo">
+                            <input type="text" id="regName" placeholder="Tu nombre completo" required>
                         </div>
                     </div>
         
@@ -42,7 +42,7 @@
                         <label>EMAIL</label>
                         <div class="input-wrap">
                             <i class="bi bi-envelope"></i>
-                            <input type="email" id="regEmail" placeholder="tucorreo@ejemplo.com">
+                            <input type="email" id="regEmail" placeholder="tucorreo@ejemplo.com" required>
                         </div>
                     </div>
         
@@ -50,7 +50,7 @@
                         <label>CONTRASEÑA</label>
                         <div class="input-wrap">
                             <i class="bi bi-lock"></i>
-                            <input type="password" id="regPassword" placeholder="••••••••">
+                            <input type="password" id="regPassword" placeholder="••••••••" required>
                         </div>
                     </div>
         
@@ -58,7 +58,7 @@
                         <label>REPETIR CONTRASEÑA</label>
                         <div class="input-wrap" id="wrapConfirm">
                             <i class="bi bi-shield-lock"></i>
-                            <input type="password" id="regPasswordConfirm" placeholder="••••••••">
+                            <input type="password" id="regPasswordConfirm" placeholder="••••••••" required>
                         </div>
                         <small id="passwordError" style="color: #c0392b; display: none; font-size: 11px; margin-top: 5px; font_weight: bold;">
                             Las contraseñas no coinciden
@@ -66,7 +66,7 @@
                     </div>
         
                     <div class="d-flex align-items-center mb-4 mt-3" style="gap: 10px;">
-                        <input class="form-check-input bg-dark border-secondary mt-0" type="checkbox" id="terminos" style="cursor: pointer;">
+                        <input class="form-check-input bg-dark border-secondary mt-0" type="checkbox" id="terminos" style="cursor: pointer;" required>
                         <label for="terminos" style="color: #666; font-size: 12px; margin-bottom: 0; cursor: pointer;">
                             Acepto los <a href="#!" style="color: #c0392b; text-decoration: none; font-weight: 600;">Términos y Condiciones</a>
                         </label>
