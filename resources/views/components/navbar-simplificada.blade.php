@@ -46,8 +46,8 @@
 <body>
 
 <nav class="catacumbas-nav-auth">
-    <a href="/tienda" class="back-link">
-        <i class="bi bi-arrow-left"></i> Volver a la tienda
+    <a href="/" class="back-link">
+        <i class="bi bi-arrow-left"></i> Volver al inicio
     </a>
 </nav>
 
