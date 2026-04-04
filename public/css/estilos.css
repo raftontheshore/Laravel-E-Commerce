@@ -1,7 +1,11 @@
-h1{
+h1 {
     color: rgb(249, 249, 249);
-}
+} 
 
+.fondo-catacumbas {
+    /* #000000 es el negro absoluto. Si te parece muy fuerte, probá con #0a0a0a */
+    background-color: #000000 !important;
+}
 
         /* Si querés que los botones y el menú también cambien (a veces Bootstrap se resiste) */
 .navbar, .btn, .form-control {
@@ -88,11 +92,124 @@ h1{
 /* ****LOGIN*** */
 .gradient-custom {
 /* fallback for old browsers */
-background: #28064d;
+background: #000000;
 
 /* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgb(36, 5, 68), rgb(12, 38, 82));
+background: -webkit-linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
 
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgb(23, 6, 41), rgb(35, 6, 47))
+background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 }
+
+
+/* NAVBAR */
+.catacumbas-nav {
+            background-color: #0d0d0d;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        /* Nav links: hover & active get a crimson underline */
+        .catacumbas-nav .nav-link {
+            position: relative;
+            color: #b0b0b0 !important;
+            transition: color 0.15s;
+        }
+        .catacumbas-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -2px;
+            height: 2px;
+            background: #c0392b;
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+        .catacumbas-nav .nav-link:hover,
+        .catacumbas-nav .nav-link.active {
+            color: #ffffff !important;
+        }
+        .catacumbas-nav .nav-link:hover::after,
+        .catacumbas-nav .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Search bar */
+        .catacumbas-nav .search-wrapper {
+            display: flex;
+            align-items: center;
+            background: #1c1c1c;
+            border: 1px solid #2e2e2e;
+            border-radius: 6px;
+            padding: 0 10px;
+            gap: 8px;
+            transition: border-color 0.15s;
+        }
+        .catacumbas-nav .search-wrapper:focus-within {
+            border-color: #555;
+        }
+        .catacumbas-nav .search-wrapper i {
+            color: #555;
+            font-size: 13px;
+        }
+        .catacumbas-nav .search-wrapper input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ccc;
+            font-size: 13px;
+            padding: 6px 0;
+            width: 180px;
+        }
+        .catacumbas-nav .search-wrapper input::placeholder {
+            color: #555;
+        }
+
+        /* Log in button */
+        .catacumbas-nav .btn-login {
+            color: #aaa;
+            font-size: 13px;
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid #333;
+            border-radius: 20px;
+            transition: color 0.15s, border-color 0.15s;
+            white-space: nowrap;
+        }
+        .catacumbas-nav .btn-login:hover {
+            color: #fff;
+            border-color: #555;
+        }
+
+        /* Sign in button */
+        .catacumbas-nav .btn-signup {
+            background-color: #c0392b;
+            border: none;
+            color: #fff;
+            font-size: 13px;
+            padding: 7px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: background-color 0.15s;
+        }
+        .catacumbas-nav .btn-signup:hover {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        /* Dropdown */
+        .catacumbas-nav .dropdown-menu {
+            background-color: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-top: 6px;
+        }
+        .catacumbas-nav .dropdown-item {
+            color: #aaa;
+            font-size: 13px;
+            padding: 8px 16px;
+            transition: background 0.1s, color 0.1s;
+        }
+        .catacumbas-nav .dropdown-item:hover {
+            background-color: #1e1e1e;
+            color: #fff;
+        }

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
-<body class="bg-dark text-white" style="background: linear-gradient(to right, rgb(23, 6, 41), rgb(35, 6, 47))">
+<body class="text-white fondo-catacumbas">
     
     <x-navbar />
 
@@ -97,7 +97,7 @@
     </div>
 
     {{-- Flex es para decirle que se comporte de manera flexible --}}
-    <div class="container mt-4" style="background-color: #151515; display: flex; justify-content: space-between; align-items: center; padding: 50px 40px;border-radius: 12px;">
+    <div class="container mt-4" style="background-color: #232323; display: flex; justify-content: space-between; align-items: center; padding: 50px 40px;border-radius: 12px;">
         <div style="max-wifth: 55%;">
             <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">Sinfonía de la Noche</h1>
             <p class="fs-5 text-light mb-4">Adentrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.</p>

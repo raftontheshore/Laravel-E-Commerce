@@ -17,14 +17,14 @@
         {{-- iconos de google y eso --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
-    <body>
+    <body >
 
-            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
+         <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
         <div class="container-fluid">
             
             <a class="navbar-brand" href="/">
                 {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
-                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
+                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="42" class="me-2">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

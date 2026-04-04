@@ -48,6 +48,10 @@ Route::get('/login', function (){
     return view('login');
 });
 
+Route::get('/signup', function () {
+    return view('');
+});
+
 Route::get('/nosotros', function (){
     return view('nosotros');
 });
