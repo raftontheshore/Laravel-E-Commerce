@@ -23,61 +23,7 @@
 
 <body class="bg-dark text-white" style="background: linear-gradient(to right, rgb(23, 6, 41), rgb(35, 6, 47))">
     
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-        <div class="container-fluid">
-            
-            <a class="navbar-brand" href="/">
-                {{-- aca agregamo el nombre y la imagen de la nav bar --}}
-                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="30">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/tienda">Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/explorar">Explorar</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            About
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">The Origin</a></li>
-                            <li><a class="dropdown-item" href="#">Support</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    {{-- 
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li> 
-                    --}}
-                </ul>
-                
-                {{-- aca esta los botones de log in sign in  y esta adentro para que no se deforme cuando cambia de tamaño --}}
-                <div class="d-flex align-items-center ms-auto">
-                    
-                    <div class="search-container me-3">
-                        <i class="bi bi-search search-icon-inside"></i>
-                        <input type="text" class="search-input-custom" placeholder="Search..." name="query">
-                    </div>
-
-                    <a href="/login" class="nav-link text-secondary me-3">Log in</a>
-                    <a href="#" class="btn btn-sm btn-secondary">Sign in</a>
-                    
-                </div>
-                {{-- aca esta los botones de log in sign in --}}
-
-            </div>
-        </div>
-    </nav>
+    <x-navbar />
 
     {{-- Imagen de Alucard 
     <img src="{{ asset('images/castel.jpg') }}" class="float-end" style="position: absolute; right: 0; top: 0; z-index: -1; filter: blur(1px); max-width: 600px; opacity: 0.6;">

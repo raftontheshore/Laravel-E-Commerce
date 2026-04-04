@@ -48,6 +48,10 @@ Route::get('/login', function (){
     return view('login');
 });
 
+Route::get('/nosotros', function (){
+    return view('nosotros');
+});
+
 // --- BASE DE DATOS TEMPORAL ---
 // Creamos una función que devuelve el arreglo para poder usarlo en varias rutas
 function obtenerProductos() {
