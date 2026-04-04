@@ -126,8 +126,18 @@
 
     {{-- CARRUCEL DE CONSOLAS  --}}
     <div class="container mt-5 bm-5">
-        <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
-
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            
+            {{-- El título queda a la izquierda (le cambiamos mb-4 por m-0 para que no empuje el div) --}}
+            <h3 class="text-white fw-bold m-0" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
+            
+            {{-- El link se va automáticamente a la derecha --}}
+            <a href="/tienda" class="text-decoration-none" style="color: #c64133; font-weight: 600; font-size: 1.1rem; transition: 0.3s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#c64133'">
+                Ver más <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            
+        </div>
+        
         
         <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro" style="scrollbar-width: thin; scrollbar-color: #c64133 #161616;">
             {{-- aca llama a carta consola --}}
