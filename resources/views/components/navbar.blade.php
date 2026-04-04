@@ -174,13 +174,7 @@
                     <input type="search" placeholder="Buscar" aria-label="Search">
                 </div>
                 <a href="/login" class="btn-login">Log in</a>
-<<<<<<< HEAD
-                <a href="#" class="btn btn-signup">Sign up</a>
-=======
-
                 <a href="/signup" class="btn btn-signup">Sign up</a>
-
->>>>>>> a489ee816a48e97d1a125b525365e51223fa2136
             </div>
         </div>
     </div>
