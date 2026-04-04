@@ -49,7 +49,7 @@ Route::get('/login', function (){
 });
 
 Route::get('/signup', function () {
-    return view('');
+    return view('signup');
 });
 
 Route::get('/nosotros', function (){

@@ -101,6 +101,56 @@ background: -webkit-linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
 background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 }
 
+.form-control:focus {
+    border-color: #c0392b !important;
+    box-shadow: 0 0 0 0.25rem rgba(186, 81, 20, 0.25) !important;
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.form-floating > .form-control:focus ~ label {
+    color: #c0392b !important;
+}
+
+/*BOTON LOGIN*/
+/* Estado normal (Transparente con borde y letra naranja) */
+.btn-outline-catacumbas {
+    color: #828282 !important;
+    border-color: #828282 !important;
+    background-color: transparent !important;
+    transition: 0.3s;
+}
+
+/* Estado cuando pasas el mouse por encima (Se rellena de naranja) */
+.btn-outline-catacumbas:hover {
+    background-color: #c64133 !important;
+    color: #ffffff !important;
+}
+
+/*--- SIGNUP -----*/
+
+.gradient-custom-3 {
+/* fallback for old browsers */
+background: #84fab0;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+.gradient-custom-4 {
+/* fallback for old browsers */
+background: #84fab0;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+
+
 
 /* NAVBAR */
 .catacumbas-nav {
