@@ -20,20 +20,20 @@
     <body class="text-white fondo-catacumbas">
 
          <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
-        <div class="container-fluid">
-            
-            <a class="navbar-brand" href="/">
-                {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
-                <img src="{{ asset('images/favicon.png') }}" alt="logo" height="42" class="me-2">
-            </a>
+            <div class="container-fluid">
+                
+                <a class="navbar-brand" href="/">
+                    {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
+                    <img src="{{ asset('images/favicon.png') }}" alt="logo" height="42" class="me-2">
+                </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            
-        </div>
-    </nav>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                
+            </div>
+        </nav>
 
             <section class="vh-100 gradient-custom">
                 <div class="container py-5 h-100">
@@ -70,7 +70,7 @@
                             </div>
 
                             <div>
-                            <p class="mb-0">¿No Tienes una cuenta? <a href="#!" class="text-white-50 fw-bold">Registrarse</a>
+                            <p class="mb-0">¿No Tienes una cuenta? <a href="/signup" class="text-white-50 fw-bold">Registrarse</a>
                             </p>
                             </div>
 
