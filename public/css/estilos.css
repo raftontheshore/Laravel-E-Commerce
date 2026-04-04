@@ -129,27 +129,208 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 
 /*--- SIGNUP -----*/
 
-.gradient-custom-3 {
-/* fallback for old browsers */
-background: #000000;
+ @font-face {
+            font-family: 'SystemFont';
+            /* Usamos ../ para salir de la carpeta CSS y buscar en fonts */
+            src: url('../fonts/system-font-from-windows-3-1.otf') format('opentype');
+            font-display: swap;
+        }
+        html, body {
+            background-color: #111 !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+        /* ── Page layout ──────────────────────────────────────── */
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
-}
+        /* ── Card ─────────────────────────────────────────────── */
+        .login-card {
+            background: #161616;
+            border: 1px solid #262626;
+            border-radius: 14px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 420px;
+        }
 
-.gradient-custom-4 {
-/* fallback for old browsers */
-background: #84fab0;
+        /* ── Brand header ─────────────────────────────────────── */
+        .login-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .login-brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        .login-brand-name {
+            font-family: 'SystemFont', monospace;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c0392b;
+            line-height: 1;
+        }
+        .login-brand-sub {
+            font-size: 12px;
+            color: #444;
+            margin-top: 20px;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+        /* ── Divider ──────────────────────────────────────────── */
+        .login-divider {
+            border: none;
+            border-top: 1px solid #222;
+            margin: 0 0 28px;
+        }
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
-}
+        /* ── Inputs ───────────────────────────────────────────── */
+        .login-field {
+            margin-bottom: 14px;
+        }
+        .login-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 6px;
+        }
+        .login-field .input-wrap {
+            display: flex;
+            align-items: center;
+            background: #1c1c1c;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 0 12px;
+            gap: 10px;
+            transition: border-color 0.15s;
+        }
+        .login-field .input-wrap:focus-within {
+            border-color: #c0392b;
+        }
+        .login-field .input-wrap i {
+            color: #444;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .login-field .input-wrap input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ddd;
+            font-size: 14px;
+            padding: 12px 0;
+            width: 100%;
+        }
+        .login-field .input-wrap input::placeholder { color: #3a3a3a; }
+
+        /* ── Forgot password ──────────────────────────────────── */
+        .login-forgot {
+            text-align: right;
+            margin-bottom: 24px;
+        }
+        .login-forgot a {
+            font-size: 12px;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .login-forgot a:hover { color: #aaa; }
+
+        /* ── Submit button ────────────────────────────────────── */
+        .btn-login-submit {
+            width: 100%;
+            background: #c0392b;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+        .btn-login-submit:hover { background: #e74c3c; }
+
+        /* ── Social login ─────────────────────────────────────── */
+        .social-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .social-divider::before,
+        .social-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #222;
+        }
+        .social-divider span {
+            font-size: 11px;
+            color: #3a3a3a;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+        .social-btns {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .btn-social {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #888;
+            font-size: 13px;
+            padding: 10px;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            cursor: pointer;
+        }
+        .btn-social:hover {
+            background: #222;
+            color: #ddd;
+            border-color: #444;
+        }
+
+        /* ── Register link ────────────────────────────────────── */
+        .login-register {
+            text-align: center;
+            font-size: 13px;
+            color: #444;
+            border-top: 1px solid #1e1e1e;
+            padding-top: 20px;
+        }
+        .login-register a {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.15s;
+        }
+        .login-register a:hover { color: #e74c3c; }
 
 
 

@@ -1,100 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        {{-- UTF-8 Para los acentos y caracteres especiales --}}
         <meta charset="UTF-8">
-        
-        {{-- Para que se vea bien en celulares (NOSE SI ES NECESARIO) --}}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        {{-- El diseño y los estilos --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
-        <title>Catacumbas</title>
+        <title>Catacumbas - Registro</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-        {{-- iconos de google y eso --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
      </head>
      
-     <body class="text-white fondo-catacumbas">
-        {{-- NaveBar --}}
+     <body class="fondo-catacumbas">
+        
         <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
             <div class="container-fluid">
-                
                 <a class="navbar-brand" href="/">
-                    {{-- aca agregamo el nombre y la imag>en de la nav bar --}}
                     <img src="{{ asset('images/favicon.png') }}" alt="logo" height="42" class="me-2">
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                
             </div>
         </nav>
 
-        <section class="vh-100 bg-image"
-            style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-                <div class="container h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center mb-5">Creá tu cuenta</h2>
-
-                        <form>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Example1cg">Nombre</label>
-                            </div>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Example3cg">Tu Email</label>
-                            </div>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Example4cg">Contraseña</label>
-                            </div>
-
-                            <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Example4cdg">Repetir Contraseña</label>
-                            </div>
-
-                            <div class="form-check d-flex justify-content-center mb-5">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                            <label class="form-check-label" for="form2Example3g">
-                                Acepto los <a href="#!" class="text-body"><u>Términos y Condiciones</u></a>
-                            </label>
-                            </div>
-
-                            <div class="d-flex justify-content-center">
-                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-catacumbas btn-lg px-5" type="submit">Registrarse</button>
-                            </div>
-
-                            <p class="text-center text-muted mt-5 mb-0">¿Ya posees una cuenta? <a href="/login" class="fw-bold text-body"><u>Login here</u></a></p>
-
-                        </form>
-
+        <main class="login-wrapper">
+            <div class="login-card">
+                
+                <div class="login-brand">
+                    <img src="{{ asset('images/favicon.png') }}" alt="Logo Catacumbas">
+                    <div class="login-brand-name">CATACUMBAS</div>
+                    <div class="login-brand-sub">Creá tu cuenta para unirte</div>
+                </div>
+                
+                <hr class="login-divider">
+        
+                <form>
+                    <div class="login-field">
+                        <label>NOMBRE</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-person"></i>
+                            <input type="text" id="regName" placeholder="Tu nombre completo">
                         </div>
                     </div>
+        
+                    <div class="login-field">
+                        <label>EMAIL</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="tucorreo@ejemplo.com">
+                        </div>
                     </div>
-                </div>
-                </div>
+        
+                    <div class="login-field">
+                        <label>CONTRASEÑA</label>
+                        <div class="input-wrap">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" id="regPassword" placeholder="••••••••">
+                        </div>
+                    </div>
+        
+                    <div class="login-field">
+                        <label>REPETIR CONTRASEÑA</label>
+                        <div class="input-wrap" id="wrapConfirm">
+                            <i class="bi bi-shield-lock"></i>
+                            <input type="password" id="regPasswordConfirm" placeholder="••••••••">
+                        </div>
+                        <small id="passwordError" style="color: #c0392b; display: none; font-size: 11px; margin-top: 5px; font_weight: bold;">
+                            Las contraseñas no coinciden
+                        </small>
+                    </div>
+        
+                    <div class="d-flex align-items-center mb-4 mt-3" style="gap: 10px;">
+                        <input class="form-check-input bg-dark border-secondary mt-0" type="checkbox" id="terminos" style="cursor: pointer;">
+                        <label for="terminos" style="color: #666; font-size: 12px; margin-bottom: 0; cursor: pointer;">
+                            Acepto los <a href="#!" style="color: #c0392b; text-decoration: none; font-weight: 600;">Términos y Condiciones</a>
+                        </label>
+                    </div>
+        
+                    <button type="submit" class="btn-login-submit">Registrarse</button>
+        
+                    <div class="login-register">
+                        ¿Ya tenés una cuenta? <a href="/login">Iniciar Sesión</a>
+                    </div>
+                </form>
             </div>
-            </section>
+        </main>
 
-             {{-- Scripts de JS --}}
-             <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-            {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
-          <x-footer />
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        
+        {{-- SCRIPT PARA VALIDAR CONTRASEÑAS --}}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const pass = document.getElementById('regPassword');
+                const confirmPass = document.getElementById('regPasswordConfirm');
+                const errorMsg = document.getElementById('passwordError');
+                const wrapConfirm = document.getElementById('wrapConfirm');
+                const form = document.querySelector('form'); // Selecciona tu formulario
+
+                // Función que revisa si son iguales
+                function validarContrasenas() {
+                    // Solo validar si ya escribieron algo en el segundo campo
+                    if (confirmPass.value.length > 0) {
+                        if (pass.value !== confirmPass.value) {
+                            errorMsg.style.display = 'block'; // Muestra el texto rojo
+                            wrapConfirm.style.borderColor = '#c0392b'; // Pinta el borde de rojo
+                        } else {
+                            errorMsg.style.display = 'none'; // Oculta el texto
+                            wrapConfirm.style.borderColor = '#2e2e2e'; // Vuelve al color gris
+                        }
+                    } else {
+                        errorMsg.style.display = 'none';
+                        wrapConfirm.style.borderColor = '#2e2e2e';
+                    }
+                }
+
+                // Ejecutar la función cada vez que el usuario teclea algo
+                pass.addEventListener('input', validarContrasenas);
+                confirmPass.addEventListener('input', validarContrasenas);
+
+                // Evitar que el formulario se envíe si las contraseñas están mal
+                form.addEventListener('submit', function(evento) {
+                    if (pass.value !== confirmPass.value) {
+                        evento.preventDefault(); // Frena el envío
+                        errorMsg.style.display = 'block';
+                        wrapConfirm.style.borderColor = '#c0392b';
+                    }
+                });
+            });
+        </script>
+      
+      
+        <x-footer />
     </body>
-
 </html>
