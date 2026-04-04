@@ -59,7 +59,7 @@
 
                             <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">¿Olvidaste tu Contraseña?</a></p>
 
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                           <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-catacumbas btn-lg px-5" type="submit">Login</button>
 
                             <div class="d-flex justify-content-center text-center mt-4 pt-1">
                                 <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>

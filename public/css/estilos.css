@@ -101,7 +101,31 @@ background: -webkit-linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
 background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 }
 
+.form-control:focus {
+    border-color: #c0392b !important;
+    box-shadow: 0 0 0 0.25rem rgba(186, 81, 20, 0.25) !important;
+    background-color: #212529 !important;
+    color: white !important;
+}
 
+.form-floating > .form-control:focus ~ label {
+    color: #c0392b !important;
+}
+
+/*BOTON LOGIN*/
+/* Estado normal (Transparente con borde y letra naranja) */
+.btn-outline-catacumbas {
+    color: #828282 !important;
+    border-color: #828282 !important;
+    background-color: transparent !important;
+    transition: 0.3s;
+}
+
+/* Estado cuando pasas el mouse por encima (Se rellena de naranja) */
+.btn-outline-catacumbas:hover {
+    background-color: #c64133 !important;
+    color: #ffffff !important;
+}
 /* NAVBAR */
 .catacumbas-nav {
             background-color: #0d0d0d;
