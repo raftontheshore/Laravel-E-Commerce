@@ -278,7 +278,7 @@
 
             {{-- Register --}}
             <div class="login-register">
-                ¿No tenés cuenta? <a href="/register">Registrarse</a>
+                ¿No tenés cuenta? <a href="/signup">Registrarse</a>
             </div>
 
         </div>
