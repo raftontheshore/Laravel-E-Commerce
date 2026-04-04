@@ -17,7 +17,7 @@
         {{-- iconos de google y eso --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
-    <body >
+    <body class="text-white fondo-catacumbas">
 
          <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
         <div class="container-fluid">
@@ -83,6 +83,9 @@
             
             {{-- Scripts de JS --}}
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+        {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
+          <x-footer />
     </body>
 
 </html>

@@ -164,7 +164,7 @@
 
                 <a href="/login" class="btn-login">Log in</a>
 
-                <a href="#" class="btn btn-signup">Sign up</a>
+                <a href="/signup" class="btn btn-signup">Sign up</a>
 
             </div>
         </div>
