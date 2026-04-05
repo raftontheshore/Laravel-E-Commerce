@@ -132,14 +132,15 @@
             <h3 class="text-white fw-bold m-0" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
             
             {{-- El link se va automáticamente a la derecha --}}
-            <a href="/tienda" class="text-decoration-none" style="color: #c64133; font-weight: 600; font-size: 1.1rem; transition: 0.3s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#c64133'">
-                Ver más <i class="bi bi-arrow-right ms-1"></i>
+            <a href="/tienda/consola" class="text-decoration-none d-flex align-items-center" style="color: #aaa; font-size: 0.95rem; transition: 0.3s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#aaa'">
+                Ver más <i class="bi bi-arrow-right ms-2"></i>
             </a>
+            
             
         </div>
         
         
-        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro" style="scrollbar-width: thin; scrollbar-color: #c64133 #161616;">
+        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro">
             {{-- aca llama a carta consola --}}
             @foreach($consolas as $consola)
             <div class="col-10 col-md-3 col-lg-3 mb-3">
