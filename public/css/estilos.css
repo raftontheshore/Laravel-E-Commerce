@@ -65,6 +65,13 @@ h1 {
     font-weight: 500;
 }
 
+/* Fija el tamaño de las imágenes del carrusel principal */
+.carousel-item img {
+    height: 450px !important; /* Ajustá este número (ej: 400px o 500px) a tu gusto */
+    object-fit: cover !important;
+    width: 100% !important;
+}
+
 /*aca modificamos el carrucel de destacados*/
 /*hacemos transparente el fondo*/
 #carrusel-oscuro .card,

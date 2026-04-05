@@ -74,10 +74,10 @@
 
                 {{-- Slide 3 --}}
                 <div class="carousel-item">
-                    <img src="{{ asset('images/banner3.jpg') }}" class="d-block w-100" alt="Slide 3">
+                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100" alt="Slide 3">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                        <h5>LA REINA DE LA CASA</h5>
+                        <p>Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio. Aprovechá nuestra oferta especial.</p>
                     </div>
                 </div>
 
