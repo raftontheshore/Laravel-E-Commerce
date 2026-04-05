@@ -67,7 +67,7 @@ h1 {
 
 /* Fija el tamaño de las imágenes del carrusel principal */
 .carousel-item img {
-    height: 450px !important; /* Ajustá este número (ej: 400px o 500px) a tu gusto */
+    height: 450px !important; /* Ajustá este número (ej: 400px o 500px) */
     object-fit: cover !important;
     width: 100% !important;
 }

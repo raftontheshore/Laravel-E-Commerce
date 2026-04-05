@@ -73,11 +73,12 @@
                 </div>
 
                 {{-- Slide 3 --}}
-                <div class="carousel-item">
+                <div class="carousel-item active">
                     <img src="{{ asset('images/ps2.png') }}" class="d-block w-100" alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>LA REINA DE LA CASA</h5>
-                        <p>Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio. Aprovechá nuestra oferta especial.</p>
+                    <div  class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
+                        <h5 class="display-3 fw-bold title-hero" style="color:rgb(255, 255, 255)0;">LA REINA DE LA CASA</h5>
+                        <p class="fs-4 text-hero" style="color: #fefefe">Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio. Aprovechá nuestra oferta especial.</p>
+                        <a href="#" class="btn btn-lg mt-3 fw-bold text-white" style="background-color: #0078d4; border: none;">Comprar Ahora</a>
                     </div>
                 </div>
 
