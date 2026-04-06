@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sobre mi</title>
+        <title>Sobre Catacumbas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -42,26 +42,26 @@
                 {{-- mt-5 (margin-top nivel 5 --}}
                      <h2 class="font-weight-bold mb-4 mt-5" style="text-align: center;">¿Como Trabajamos?</h2>
 
-                     <div class="row mt-5">
+                     <div class="row mt-5 justify-content-center">
                         <div class="col-md-3 col-6 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-people fs-1 text-primary mb-2"></i>
-                                <h2 class="fw-bold">500+</h2>
-                                <p>Clients</p>
+                                <h2 class="fw-bold">REVIVIMOS CLASICOS</h2>
+                                <p></p>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
-                                <h2 class="fw-bold">1000+</h2>
-                                <p>Projects</p>
+                                <h2 class="fw-bold">COMPRA Y CANJE</h2>
+                                <p></p>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
-                                <h2 class="fw-bold">50+</h2>
-                                <p >Awards</p>
+                                <h2 class="fw-bold">COMBOS LISTOS PARA VICIAR</h2>
+                                <p ></p>
                             </div>
                         </div>
                         
