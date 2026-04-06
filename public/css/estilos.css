@@ -487,7 +487,7 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 
 /* Estilo general para la sección About Us */
 .about-us {
-    background-color: #1a1e24; /* El color oscuro casi negro de Humble Bundle */
+    background-color: #000000; /* El color oscuro casi negro de Humble Bundle */
     color: #ffffff; /* Texto en blanco */
     font-family: 'Montserrat', sans-serif; /* Acá aplicamos la fuente nueva */
 }
@@ -506,4 +506,32 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
     font-size: 1.1rem; /* Tamaño un poco más grande para leer bien */
     line-height: 1.8; /* Espacio entre renglones para que respire el texto */
     color: #e0e0e0; /* Un blanco un poquito apagado para que no canse la vista */
+}
+
+
+/* Estilo para la nueva sección de abajo */
+.como-trabajamos {
+    background-color: #000000; /* Un tono apenas más oscuro que el About Us para que haya contraste */
+    color: #ffffff;
+}
+
+/* El contenedor del separador geométrico */
+.separador-geometrico {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background-color: #000000; /* Tiene que ser el mismo color que tu About Us */
+}
+
+/* El tamaño de la forma */
+.separador-geometrico svg {
+    display: block;
+    width: 100%;
+    height: 60px; /* Qué tan alto querés el corte */
+}
+
+/* Pintamos el corte con el color de la sección de abajo */
+.separador-geometrico .shape-fill {
+    fill: #121418; 
 }

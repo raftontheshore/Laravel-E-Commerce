@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="{{ asset('css/estilos.css?v=3') }}">
     </head>
 
-    <body>
+    <body class="bg-black text-white">
          <x-navbar />
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -39,8 +39,38 @@
                     <div class="col-md-6">
                         <img src="images/Armed_Skeleton.png" alt="About Us" class="img-fluid rounded shadow">
                     </div>
+                <br />
                 </div>
-                
+                {{-- mt-5 (margin-top nivel 5 --}}
+                     <h2 class="font-weight-bold mb-4 mt-5" style="text-align: center;">¿Como Trabajamos?</h2>
+
+                     <div class="row mt-5">
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="text-center">
+                                <i class="bi bi-people fs-1 text-primary mb-2"></i>
+                                <h2 class="fw-bold">500+</h2>
+                                <p>Clients</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="text-center">
+                                <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
+                                <h2 class="fw-bold">1000+</h2>
+                                <p>Projects</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-4">
+                            <div class="text-center">
+                                <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
+                                <h2 class="fw-bold">50+</h2>
+                                <p >Awards</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                <div>
+
+                </div>
 
 
 
