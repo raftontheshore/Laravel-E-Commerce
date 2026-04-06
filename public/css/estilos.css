@@ -473,65 +473,72 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 
 /*SOBRE NOSOTROS*/
 
-/*FUENTE*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Press+Start+2P&display=swap');
-/* El título principal con estilo PIXEL ART */
-.about-us h2 {
-    font-family: 'SystemFont', monospace !important; /* Llama a tu archivo .otf */
-    font-size: 2.5rem; /* <--- ACÁ AUMENTAMOS EL TAMAÑO del titulo que es catacumba*/
-    color: #c64133; /* El rojo Catacumbas */
-    line-height: 1.5; 
-    margin-bottom: 40px !important;
-    text-transform: uppercase;
-}
 
 /* Estilo general para la sección About Us */
 .about-us {
-    background-color: #000000; /* El color oscuro casi negro de Humble Bundle */
-    color: #ffffff; /* Texto en blanco */
-    font-family: 'Montserrat', sans-serif; /* Acá aplicamos la fuente nueva */
+    background-color: #000000 !important; 
+    color: #ffffff; 
+    font-family: 'Montserrat', sans-serif; 
 }
 
-/* El título principal (Qué es Catacumba) */
+/* El título principal con estilo PIXEL ART */
 .about-us h2 {
-    font-weight: 800; /* Bien gordita para el título */
-    text-transform: uppercase; /* Todo en mayúsculas como en la foto */
-    letter-spacing: 1px; /* Separamos un poquitito las letras */
-    margin-bottom: 20px;
+    font-family: 'SystemFont', monospace !important; 
+    font-size: 2.5rem !important; 
+    color: #c64133 !important; 
+    line-height: 1.5; 
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
 /* El texto del párrafo */
 .about-us p {
-    font-weight: 400; /* Grosor normal */
-    font-size: 1.1rem; /* Tamaño un poco más grande para leer bien */
-    line-height: 1.8; /* Espacio entre renglones para que respire el texto */
-    color: #e0e0e0; /* Un blanco un poquito apagado para que no canse la vista */
+    font-weight: 400; 
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+    color: #e0e0e0; 
 }
 
+/* ----------------------------------- */
+/* ESTILOS DEL ACORDEÓN MODO OSCURO    */
+/* ----------------------------------- */
 
-/* Estilo para la nueva sección de abajo */
-.como-trabajamos {
-    background-color: #000000; /* Un tono apenas más oscuro que el About Us para que haya contraste */
-    color: #ffffff;
-}
-
-/* El contenedor del separador geométrico */
-.separador-geometrico {
-    position: relative;
-    width: 100%;
+.accordion-item {
+    background-color: #121418 !important; 
+    border: 1px solid #2a2a2a !important; 
+    margin-bottom: 10px; 
+    border-radius: 8px !important; 
     overflow: hidden;
-    line-height: 0;
-    background-color: #000000; /* Tiene que ser el mismo color que tu About Us */
 }
 
-/* El tamaño de la forma */
-.separador-geometrico svg {
-    display: block;
-    width: 100%;
-    height: 60px; /* Qué tan alto querés el corte */
+.accordion-button {
+    background-color: #121418 !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: none !important; 
 }
 
-/* Pintamos el corte con el color de la sección de abajo */
-.separador-geometrico .shape-fill {
-    fill: #121418; 
+.accordion-button:hover {
+    background-color: #1a1e24 !important;
+    color: #ffffff !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #1a1e24 !important; 
+    color: #c64133 !important; 
+    box-shadow: none !important;
+}
+
+.accordion-body {
+    background-color: #121418 !important;
+    color: #e0e0e0 !important;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.8;
+}
+
+.accordion-button::after {
+    filter: invert(1) !important;
 }
