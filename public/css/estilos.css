@@ -478,10 +478,10 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 /* El título principal con estilo PIXEL ART */
 .about-us h2 {
     font-family: 'SystemFont', monospace !important; /* Llama a tu archivo .otf */
-    font-size: 1.5rem; /* Ajustá este número si la ves muy grande o muy chica */
+    font-size: 2.5rem; /* <--- ACÁ AUMENTAMOS EL TAMAÑO del titulo que es catacumba*/
     color: #c64133; /* El rojo Catacumbas */
     line-height: 1.5; 
-    margin-bottom: 30px;
+    margin-bottom: 40px !important;
     text-transform: uppercase;
 }
 

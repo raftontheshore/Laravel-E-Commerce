@@ -24,8 +24,9 @@
     
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-        <section class="about-us py-5">
+        {{-- pt es Padding Top --}}
+        {{-- pb es padding bottom --}}
+        <section class="about-us pt-0 pb-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
