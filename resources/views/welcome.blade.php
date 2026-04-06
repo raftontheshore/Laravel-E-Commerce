@@ -48,7 +48,7 @@
                 
                 {{-- Slide 1 --}}
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/PokemonClassic.jpg') }}" class="d-block w-100" alt="Pokemon Classics" style="object-fit: cover; height: 500px;">
+                    <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}" class="d-block w-100" alt="Pokemon Classics" style="object-fit: cover; height: 500px;">
                     
                     {{-- Cambiamos la posición y alineación del caption top: 25%; bottom: auto;: Saca el texto de abajo y lo empuja hacia arriba.--}}
                     <div class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
@@ -68,7 +68,7 @@
                         <h5 class="display-3 fw-bold title-hero" style="color: #cc0000;">YA DISPONIBLE</h5>
                         <p class="fs-4 text-hero" style="color: #461313">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato fisico</p>
                     
-                         <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #c60000; border: none;">Comprar Ahora</a>
+                          <a href="#" class="btn btn-lg mt-3 fw-bold text-white" style="background-color: #c60000; border: none;">Comprar Ahora</a>
                     </div>
                 </div>
 
