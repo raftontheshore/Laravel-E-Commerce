@@ -47,21 +47,21 @@
                             <div class="text-center">
                                 <i class="bi bi-people fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">REVIVIMOS CLASICOS</h2>
-                                <p></p>
+                                <p>Cada consola y cartucho que entra a Catacumbas pasa por un riguroso proceso de limpieza y mantenimiento. Nos aseguramos de que todo funcione a la perfección, ofreciendo garantía real para que tu única preocupación sea jugar.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">COMPRA Y CANJE</h2>
-                                <p></p>
+                                <p>¿Tenés alguna consola vieja juntando polvo? En nuestra tienda tomamos tus equipos retro (funcionen o no) como parte de pago, o los compramos directo. Renová tu colección entregando esas reliquias que ya no usás.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-6 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">COMBOS LISTOS PARA VICIAR</h2>
-                                <p ></p>
+                                <p >Olvidate de buscar cables por un lado y juegos por el otro. Armamos paquetes completos a medida con consolas, accesorios y los mejores títulos para que viajes directo a tu infancia apenas conectes el equipo.</p>
                             </div>
                         </div>
                         
