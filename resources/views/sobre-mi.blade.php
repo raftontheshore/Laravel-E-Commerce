@@ -7,17 +7,10 @@
     </head>
 
     <body>
+        
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Mi Sitio</a>
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/">Inicio</a>
-                    <a class="nav-link active" href="/sobre-mi">Sobre mí</a>
-                </div>
-            </div>
-        </nav>
+       
 
         <div class="container mt-4">
             <div class="card">
