@@ -13,12 +13,12 @@
     
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-        
+
         <section class="about-us py-5 bg-light">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h2 class="font-weight-bold mb-4">About Our Company</h2>
+                        <h2 class="font-weight-bold mb-4">Que es Catacumba</h2>
                         <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
                         <div class="row">
                             <div class="col-md-6">
