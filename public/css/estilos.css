@@ -469,3 +469,41 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
             background-color: #1e1e1e;
             color: #fff;
         }
+
+
+/*SOBRE NOSOTROS*/
+
+/*FUENTE*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Press+Start+2P&display=swap');
+/* El título principal con estilo PIXEL ART */
+.about-us h2 {
+    font-family: 'SystemFont', monospace !important; /* Llama a tu archivo .otf */
+    font-size: 1.5rem; /* Ajustá este número si la ves muy grande o muy chica */
+    color: #c64133; /* El rojo Catacumbas */
+    line-height: 1.5; 
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Estilo general para la sección About Us */
+.about-us {
+    background-color: #1a1e24; /* El color oscuro casi negro de Humble Bundle */
+    color: #ffffff; /* Texto en blanco */
+    font-family: 'Montserrat', sans-serif; /* Acá aplicamos la fuente nueva */
+}
+
+/* El título principal (Qué es Catacumba) */
+.about-us h2 {
+    font-weight: 800; /* Bien gordita para el título */
+    text-transform: uppercase; /* Todo en mayúsculas como en la foto */
+    letter-spacing: 1px; /* Separamos un poquitito las letras */
+    margin-bottom: 20px;
+}
+
+/* El texto del párrafo */
+.about-us p {
+    font-weight: 400; /* Grosor normal */
+    font-size: 1.1rem; /* Tamaño un poco más grande para leer bien */
+    line-height: 1.8; /* Espacio entre renglones para que respire el texto */
+    color: #e0e0e0; /* Un blanco un poquito apagado para que no canse la vista */
+}

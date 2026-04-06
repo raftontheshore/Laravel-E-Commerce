@@ -2,8 +2,19 @@
 <html>
     <head>
         <title>Sobre mi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
-        <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+        <title>Catacumbas - Registro</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/estilos.css?v=3') }}">
     </head>
 
     <body>
@@ -14,64 +25,53 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
-        <section class="about-us py-5 bg-light">
+        <section class="about-us py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h2 class="font-weight-bold mb-4">Que es Catacumba</h2>
-                        <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam.</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5 class="text-primary">Our Mission</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check-circle me-2 text-primary"></i>Innovative Solutions</li>
-                                    <li><i class="bi bi-check-circle me-2 text-primary"></i>Customer Satisfaction</li>
-                                    <li><i class="bi bi-check-circle me-2 text-primary"></i>Sustainable Practices</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h5 class="text-primary">Our Vision</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-bullseye me-2 text-primary"></i>Global Reach</li>
-                                    <li><i class="bi bi-bullseye me-2 text-primary"></i>Industry Leadership</li>
-                                    <li><i class="bi bi-bullseye me-2 text-primary"></i>Continuous Growth</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-primary mt-4">Learn More</a>
+                        <h2 class="font-weight-bold mb-4">¿Que es Catacumbas?</h2>
+                        <p class="mb-4">
+                            En Catacumbas nos dedicamos a la venta de juegos, consolas y software relacionado con el mundo retro. Nuestra misión es acercarle contenido increíble a nuestros clientes, siempre con excelentes ofertas. Lanzamos esta iniciativa en 2021 con apenas un par de consolas y juegos en el catálogo, pero gracias a ustedes hemos crecido humildemente hasta convertirnos en una tienda repleta de joyas clásicas y combos armados a medida.
+                        </p>
+
                     </div>
                     <div class="col-md-6">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxjb21wYW55fGVufDB8MHx8fDE3MjEyMTE5MDZ8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="About Us" class="img-fluid rounded shadow">
+                        <img src="images/Armed_Skeleton.png" alt="About Us" class="img-fluid rounded shadow">
                     </div>
                 </div>
                 
+
+
+
+
+                {{-- ESTO VA A SER DE CUANTOS CLIENTES TENEMOS Y ESO --}}
                 <div class="row mt-5">
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-people fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">500+</h2>
-                            <p class="text-muted">Clients</p>
+                            <p>Clients</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">1000+</h2>
-                            <p class="text-muted">Projects</p>
+                            <p>Projects</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">50+</h2>
-                            <p class="text-muted">Awards</p>
+                            <p >Awards</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-globe fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">20+</h2>
-                            <p class="text-muted">Countries</p>
+                            <p >Countries</p>
                         </div>
                     </div>
                 </div>
