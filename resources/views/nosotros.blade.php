@@ -27,15 +27,15 @@
         <section class="about-us pt-0 pb-5">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 ps-md-4">
                         <h2 class="font-weight-bold mb-4">¿Que es Catacumbas?</h2>
                         <p class="mb-4">
                             En Catacumbas nos dedicamos a la venta de juegos, consolas y software relacionado con el mundo retro. Nuestra misión es acercarle contenido increíble a nuestros clientes, siempre con excelentes ofertas. Lanzamos esta iniciativa en 2021 con apenas un par de consolas y juegos en el catálogo, pero gracias a ustedes hemos crecido humildemente hasta convertirnos en una tienda repleta de joyas clásicas y combos armados a medida.
                         </p>
 
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/Armed_Skeleton.png" alt="About Us" class="img-fluid rounded shadow">
+                    <div class="col-md-6 ps-md-4">
+                        <img src="images/Armed_Skeleton.png" alt="About Us" class="img-fluid rounded shadow" style="max-height: 500px; width: auto; image-rendering: pixelated;">
                     </div>
                 <br />
                 </div>
@@ -107,7 +107,7 @@
 
                 {{-- ACORDEADO  --}}
 
-                <div class="accordion" id="acordeonCatacumbas">
+                <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
