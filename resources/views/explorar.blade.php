@@ -243,7 +243,7 @@
         {{-- ── Ofertas Juegos ──────────────────────────────────── --}}
         <div class="mt-5 pt-2">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="section-title">Ofertas Juegos</h3>
+                <h3>Ofertas Juegos</h3>
                 <div class="d-flex gap-2">
                     <button class="slider-btn" onclick="deslizar('slider-ofertas', -300)" aria-label="Anterior">
                         <i class="fas fa-chevron-left"></i>
@@ -266,7 +266,7 @@
         {{-- ── Combos ──────────────────────────────────────────── --}}
         <div class="mt-5 pt-2">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="section-title">Combos</h3>
+                <h3>Combos</h3>
                 <div class="d-flex gap-2">
                     <button class="slider-btn" onclick="deslizar('slider-combos', -300)" aria-label="Anterior">
                         <i class="fas fa-chevron-left"></i>

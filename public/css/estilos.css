@@ -1,6 +1,12 @@
-h1 {
-    color: rgb(249, 249, 249);
-} 
+/* Colores De La Página */
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: 'SystemFont', monospace !important;
+    color: #c64133 !important;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
 
 .fondo-catacumbas {
     /* #000000 es el negro absoluto. Si te parece muy fuerte, probá con #0a0a0a */
@@ -530,21 +536,23 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 
 .accordion-button {
     background-color: #121418 !important;
-    color: #ffffff !important;
+    color: #b0b0b0 !important;   /* was #ffffff — too harsh */
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
-    box-shadow: none !important; 
+    box-shadow: none !important;
 }
+
 
 .accordion-button:hover {
     background-color: #1a1e24 !important;
     color: #ffffff !important;
 }
 
+
 .accordion-button:not(.collapsed) {
-    background-color: #1a1e24 !important; 
-    color: #c64133 !important; 
+    background-color: #1a1e24 !important;
+    color: #c64133 !important;
     box-shadow: none !important;
 }
 
@@ -553,6 +561,7 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
     color: #e0e0e0 !important;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.8;
+    padding-top: 0 !important;   /* removes the gap visible in the screenshot */
 }
 
 .accordion-button::after {
