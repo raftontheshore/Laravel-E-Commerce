@@ -1,6 +1,12 @@
-h1 {
-    color: rgb(249, 249, 249);
-} 
+/* Colores De La Página */
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: 'SystemFont', monospace !important;
+    color: #c64133 !important;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
 
 .fondo-catacumbas {
     /* #000000 es el negro absoluto. Si te parece muy fuerte, probá con #0a0a0a */
