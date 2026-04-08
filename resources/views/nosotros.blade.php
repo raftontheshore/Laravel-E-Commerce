@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-4 col-12 mb-4">
                             <div class="text-center">
-                                <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
+                                <img src="{{ asset('images/budget-Original.png') }}" alt="Icono" class="mb-3" style="width: 64px; height: 64px; image-rendering: pixelated;">
                                 <h2 class="fw-bold">COMPRA Y CANJE</h2>
                                 <p>¿Tenés alguna consola vieja juntando polvo? En nuestra tienda tomamos tus equipos retro (funcionen o no) como parte de pago, o los compramos directo. Renová tu colección entregando esas reliquias que ya no usás.</p>
                             </div>
