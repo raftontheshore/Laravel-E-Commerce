@@ -167,10 +167,10 @@
                             {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
                             <div class="text-start">
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Enzo se unió al equipo de DKOldies en 2022, aportando una perspectiva fresca y una pasión de toda la vida por los juegos con los que creció, como Mario Kart en la Wii y Nintendogs.
+                                    Enzo llegó a Catacumbas con una energía inagotable y un amor incondicional por los arcades y las tardes de multijugador local. Es el tipo de gamer que te puede hablar horas sobre por qué los juegos de antes tenían una magia especial.
                                 </p>
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Enzo aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
+                                    Su entusiasmo contagia a cualquiera. Está acá porque cree firmemente que cada joya retro tiene un dueño ideal esperando encontrarla. Lo vas a ver siempre recomendando títulos y asegurándose de que te lleves la mejor experiencia posible a casa.
                                 </p>
                             </div>
 
