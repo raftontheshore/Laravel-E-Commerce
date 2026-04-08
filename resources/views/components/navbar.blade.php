@@ -220,13 +220,16 @@
                     <a class="nav-link fs-6 {{ request()->is('explorar*') ? 'active' : '' }}" href="/explorar">Explorar</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link fs-6 {{ request()->is('nosotros*') ? 'active' : '' }}" href="/nosotros">Nosotros</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link fs-6 dropdown-toggle {{ request()->is('ayuda*') ? 'active' : '' }}"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Soporte
                     </a>
                     <ul class="dropdown-menu border-0 shadow-lg">
-                        <li><a class="dropdown-item" href="/nosotros">Nosotros</a></li>
                         <li><a class="dropdown-item" href="/contacto">Contacto</a></li>
                         <li><a class="dropdown-item" href="/faq">FAQ</a></li>
                     </ul>
