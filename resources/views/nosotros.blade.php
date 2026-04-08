@@ -108,7 +108,75 @@
                     </div>
                 </div>
 
-                
+
+                {{-- PARTE DE LA PAGINA DONDE ESTA LAS IMAGENES Y INFO DEL STAFF --}}
+                <h2 class="font-weight-bold mb-4 mt-5" style="text-align: center;">Equipo detras de Catacumbas</h2>
+
+                <div class="container mt-5 mb-5">
+                    <div class="row justify-content-center">
+                        
+                        {{-- Usamos col-lg-5 para limitar el ancho y que el texto no se estire por toda la pantalla, igual que en tu foto de referencia --}}
+                        <div class="col-12 col-md-8 col-lg-5">
+                            
+                            {{-- Centramos solamente la foto y el título --}}
+                            <div class="text-center">
+                                
+                                {{--
+                                    rounded-circle: la hace redonda.
+                                    object-fit: cover: evita que la foto se deforme si no es cuadrada originalmente.
+                                    shadow-lg: le da profundidad. --}}
+                                <img src="{{ asset('images/tu-foto.jpg') }}" alt="Waldemar" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #0078d4;">
+                                
+                                {{-- El Nombre --}}
+                                <h2 class="display-5 fw-bold mb-4" style="color: #0078d4; font-family: 'Oswald', sans-serif;">Waldemar</h2>
+                            </div>
+
+                            {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
+                            <div class="text-start">
+                                <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
+                                    Waldemar ha estado detrás de Catacumbas desde el día uno. Es la cara que la mayoría de la gente reconoce y el corazón detrás del mostrador. Si has visto nuestros combos listos para viciar, hay muchas chances de que hayas visto a Enzo preparando pedidos, testeando consolas o rescatando tu juego favorito de la infancia.
+                                </p>
+                                <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
+                                    Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Enzo aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-5 mb-5">
+                    <div class="row justify-content-center">
+                        
+                        {{-- Usamos col-lg-5 para limitar el ancho y que el texto no se estire por toda la pantalla, igual que en tu foto de referencia --}}
+                        <div class="col-12 col-md-8 col-lg-5">
+                            
+                            {{-- Centramos solamente la foto y el título --}}
+                            <div class="text-center">
+                                
+                                {{--
+                                    rounded-circle: la hace redonda.
+                                    object-fit: cover: evita que la foto se deforme si no es cuadrada originalmente.
+                                    shadow-lg: le da profundidad. --}}
+                                <img src="{{ asset('images/tu-foto.jpg') }}" alt="Waldemar" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #0078d4;">
+                                
+                                {{-- El Nombre --}}
+                                <h2 class="display-5 fw-bold mb-4" style="color: #0078d4; font-family: 'Oswald', sans-serif;">Enzo</h2>
+                            </div>
+
+                            {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
+                            <div class="text-start">
+                                <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
+                                    Enzo se unió al equipo de DKOldies en 2024, aportando una perspectiva fresca y una pasión de toda la vida por los juegos con los que creció, como Mario Kart en la Wii y Nintendogs.
+                                </p>
+                                <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
+                                    Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Enzo aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             
         </section>
