@@ -137,7 +137,7 @@
                                     Waldemar ha estado detrás de Catacumbas desde el día uno. Es la cara que la mayoría de la gente reconoce y el corazón detrás del mostrador. Si has visto nuestros combos listos para viciar, hay muchas chances de que hayas visto a Enzo preparando pedidos, testeando consolas o rescatando tu juego favorito de la infancia.
                                 </p>
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Enzo aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
+                                    Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Waldemar aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
                                 </p>
                             </div>
 
@@ -167,7 +167,7 @@
                             {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
                             <div class="text-start">
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Enzo se unió al equipo de DKOldies en 2024, aportando una perspectiva fresca y una pasión de toda la vida por los juegos con los que creció, como Mario Kart en la Wii y Nintendogs.
+                                    Enzo se unió al equipo de DKOldies en 2022, aportando una perspectiva fresca y una pasión de toda la vida por los juegos con los que creció, como Mario Kart en la Wii y Nintendogs.
                                 </p>
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
                                     Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Enzo aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
