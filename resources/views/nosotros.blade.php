@@ -74,6 +74,9 @@
 
 
                 {{-- ESTO VA A SER DE CUANTOS CLIENTES TENEMOS Y ESO --}}
+
+                <h2 class="font-weight-bold mb-4 mt-5" style="text-align: center;">LO QUE NOS DEFINE</h2>
+
                 <div class="row mt-5">
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
