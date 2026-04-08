@@ -46,7 +46,7 @@
                         <div class="col-md-4 col-12 mb-4">
                             <div class="text-center">
                                 <img src="{{ asset('images/game-cartridge-Original.png') }}" alt="Icono" class="mb-4" style="width: 128px; height: 128px; image-rendering: pixelated;">
-                                <h2 class="fw-bold">REVIVIMOS CLASICOS</h2>
+                                <h2 class="fw-bold mb-3" style="font-size: 2rem; letter-spacing: 1px;">REVIVIMOS CLASICOS</h2>
                                 <p>Cada consola y cartucho que entra a Catacumbas pasa por un riguroso proceso de limpieza y mantenimiento. Nos aseguramos de que todo funcione a la perfección, ofreciendo garantía real para que tu única preocupación sea jugar.</p>
                             </div>
                         </div>
@@ -80,29 +80,29 @@
                 <div class="row mt-5">
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
-                            <i class="bi bi-people fs-1 text-primary mb-2"></i>
+                            <img src="{{ asset('images/campfire-ring-Original.png') }}" alt="Icono" class="mb-4" style="width: 128px; height: 128px; image-rendering: pixelated;">
                             <h2 class="fw-bold">COMUNIDAD</h2>
                             <p>Más que clientes, sumamos jugadores. Creamos un refugio donde la nostalgia y la pasión absoluta por el gaming clásico nos unen</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
-                            <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
+                            <img src="{{ asset('images/briefcase-Original.png') }}" alt="Icono" class="mb-4" style="width: 128px; height: 128px; image-rendering: pixelated;">
                             <h2 class="fw-bold">TRAYECTORIA</h2>
                             <p>Desde 2021 rescatando joyas del olvido. Arrancamos con un par de consolas y hoy somos el punto de encuentro del retro gaming</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
-                            <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
+                            <img src="{{ asset('images/red-heart-Original.png') }}" alt="Icono" class="mb-4" style="width: 128px; height: 128px; image-rendering: pixelated;">
                             <h2 class="fw-bold">VALORES</h2>
                             <p >Transparencia, calidad y respeto por el hardware. Cada equipo recibe un mantenimiento obsesivo para ofrecerte una garantía real.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
-                            <i class="bi bi-globe fs-1 text-primary mb-2"></i>
-                            <h2 class="fw-bold">VISIÓN</h2>
+                            <img src="{{ asset('images/earth-pixel-2-Original.png') }}" alt="Icono" class="mb-4" style="width: 128px; height: 128px; image-rendering: pixelated;">
+                            <h2 class="fw-bold">VISION</h2>
                             <p >Mantener vivo el legado. Queremos que viajar a tu infancia sea tan simple y mágico como enchufar la consola y apretar 'Start'.</p>
                         </div>
                     </div>
