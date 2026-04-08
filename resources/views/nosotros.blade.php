@@ -43,21 +43,21 @@
                      <h2 class="font-weight-bold mb-4 mt-5" style="text-align: center;">¿Como Trabajamos?</h2>
 
                      <div class="row mt-5 justify-content-center">
-                        <div class="col-md-3 col-6 mb-4">
+                        <div class="col-md-4 col-12 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-people fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">REVIVIMOS CLASICOS</h2>
                                 <p>Cada consola y cartucho que entra a Catacumbas pasa por un riguroso proceso de limpieza y mantenimiento. Nos aseguramos de que todo funcione a la perfección, ofreciendo garantía real para que tu única preocupación sea jugar.</p>
                             </div>
                         </div>
-                        <div class="col-md-3 col-6 mb-4">
+                        <div class="col-md-4 col-12 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">COMPRA Y CANJE</h2>
                                 <p>¿Tenés alguna consola vieja juntando polvo? En nuestra tienda tomamos tus equipos retro (funcionen o no) como parte de pago, o los compramos directo. Renová tu colección entregando esas reliquias que ya no usás.</p>
                             </div>
                         </div>
-                        <div class="col-md-3 col-6 mb-4">
+                        <div class="col-md-4 col-12 mb-4">
                             <div class="text-center">
                                 <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
                                 <h2 class="fw-bold">COMBOS LISTOS PARA VICIAR</h2>
@@ -82,28 +82,28 @@
                         <div class="text-center">
                             <i class="bi bi-people fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">COMUNIDAD</h2>
-                            <p>Clients</p>
+                            <p>Más que clientes, sumamos jugadores. Creamos un refugio donde la nostalgia y la pasión absoluta por el gaming clásico nos unen</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">TRAYECTORIA</h2>
-                            <p>Projects</p>
+                            <p>Desde 2021 rescatando joyas del olvido. Arrancamos con un par de consolas y hoy somos el punto de encuentro del retro gaming</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">VALORES</h2>
-                            <p >Awards</p>
+                            <p >Transparencia, calidad y respeto por el hardware. Cada equipo recibe un mantenimiento obsesivo para ofrecerte una garantía real.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-globe fs-1 text-primary mb-2"></i>
                             <h2 class="fw-bold">VISIÓN</h2>
-                            <p >Countries</p>
+                            <p >Mantener vivo el legado. Queremos que viajar a tu infancia sea tan simple y mágico como enchufar la consola y apretar 'Start'.</p>
                         </div>
                     </div>
                 </div>
