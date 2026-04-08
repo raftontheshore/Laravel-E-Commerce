@@ -62,8 +62,8 @@
                 </div>
 
                 {{-- Slide 2 --}}
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-item">
+                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100" alt="Slide 2" style="object-fit: cover; height: 500px;">
                     <div class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
                         <h5 class="display-3 fw-bold title-hero" style="color: #cc0000;">YA DISPONIBLE</h5>
                         <p class="fs-4 text-hero" style="color: #461313">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato fisico</p>
@@ -73,8 +73,8 @@
                 </div>
 
                 {{-- Slide 3 --}}
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-item">
+                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100" alt="Slide 3" style="object-fit: cover; height: 500px;">
                     <div  class="carousel-caption d-none d-md-block text-start" style="top: 25%; bottom: auto; left: 8%; right: auto; max-width: 50%;">
                         <h5 class="display-3 fw-bold title-hero" style="color:rgb(255, 255, 255)0;">LA REINA DE LA CASA</h5>
                         <p class="fs-4 text-hero" style="color: #fefefe">Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio. Aprovechá nuestra oferta especial.</p>
