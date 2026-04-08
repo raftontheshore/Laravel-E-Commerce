@@ -78,28 +78,28 @@
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-people fs-1 text-primary mb-2"></i>
-                            <h2 class="fw-bold">500+</h2>
+                            <h2 class="fw-bold">COMUNIDAD</h2>
                             <p>Clients</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-briefcase fs-1 text-primary mb-2"></i>
-                            <h2 class="fw-bold">1000+</h2>
+                            <h2 class="fw-bold">TRAYECTORIA</h2>
                             <p>Projects</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-trophy fs-1 text-primary mb-2"></i>
-                            <h2 class="fw-bold">50+</h2>
+                            <h2 class="fw-bold">VALORES</h2>
                             <p >Awards</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4">
                         <div class="text-center">
                             <i class="bi bi-globe fs-1 text-primary mb-2"></i>
-                            <h2 class="fw-bold">20+</h2>
+                            <h2 class="fw-bold">VISIÓN</h2>
                             <p >Countries</p>
                         </div>
                     </div>
