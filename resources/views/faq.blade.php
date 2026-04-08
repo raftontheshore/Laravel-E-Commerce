@@ -17,59 +17,56 @@
     </head>
 
     <body class="bg-black text-white">
-         <x-navbar />
+    <x-navbar />
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-                {{-- ACORDEADO  --}}
-     <section>
-                <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                                1. ¿Hacen envíos a todo el país?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
-                            <div class="accordion-body">
-                                Sí, preparamos y despachamos paquetes todos los días. Hacemos envíos desde Corrientes a cualquier punto de Argentina a través de correo certificado para que tu consola llegue impecable.
+    <section class="py-5"> <div class="container"> 
+            <div class="row justify-content-center"> <div class="col-12 col-md-8 col-lg-6"> <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                                    1. ¿Hacen envíos a todo el país?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                    Sí, preparamos y despachamos paquetes todos los días. Hacemos envíos desde Corrientes a cualquier punto de Argentina a través de correo certificado para que tu consola llegue impecable.
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                                2. ¿Los juegos y consolas usadas tienen garantía?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
-                            <div class="accordion-body">
-                                ¡Por supuesto! Todo nuestro hardware pasa por un riguroso proceso de limpieza y mantenimiento. Ofrecemos 3 meses de garantía en consolas reacondicionadas y chipeadas.
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                    2. ¿Los juegos y consolas usadas tienen garantía?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                    ¡Por supuesto! Todo nuestro hardware pasa por un riguroso proceso de limpieza y mantenimiento. Ofrecemos 3 meses de garantía en consolas reacondicionadas y chipeadas.
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                                3. ¿Compran consolas o juegos retro usados?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
-                            <div class="accordion-body">
-                                Sí, tomamos tus consolas viejas (funcionen o no) como parte de pago o las compramos directamente para nuestro taller de restauración.
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                    3. ¿Compran consolas o juegos retro usados?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                    Sí, tomamos tus consolas viejas (funcionen o no) como parte de pago o las compramos directamente para nuestro taller de restauración.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> 
+                </div> 
             </div>
+         </div>
+         </section>
 
-
-            
-        </section>
-        
     <x-footer />
- 
-    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
