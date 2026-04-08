@@ -19,7 +19,8 @@
     <body class="bg-black text-white">
     <x-navbar />
 
-    <section class="py-5"> <div class="container"> 
+    <section class="py-5"> 
+        <div class="container" style="width: 100%"> 
             <div class="row justify-content-center"> <div class="col-12 col-md-8 col-lg-6"> <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
