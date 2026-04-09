@@ -62,6 +62,15 @@ Route::get('/nosotros', function (){
     return view('nosotros');
 });
 
+Route::get('/terminos', function (){
+    return view('terminos');
+});
+
+Route::get('/privacidad', function (){
+    return view('privacidad');
+});
+
+
 Route::get('/faq', function (){
     return view('faq');
 });

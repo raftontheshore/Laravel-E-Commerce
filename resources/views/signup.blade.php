@@ -68,7 +68,7 @@
                     <div class="d-flex align-items-center mb-4 mt-3" style="gap: 10px;">
                         <input class="form-check-input bg-dark border-secondary mt-0" type="checkbox" id="terminos" style="cursor: pointer;" required>
                         <label for="terminos" style="color: #666; font-size: 12px; margin-bottom: 0; cursor: pointer;">
-                            Acepto los <a href="#!" style="color: #c0392b; text-decoration: none; font-weight: 600;">Términos y Condiciones</a>
+                            Acepto los <a href="/terminos" style="color: #c0392b; text-decoration: none; font-weight: 600;">Términos y Condiciones</a>
                         </label>
                     </div>
         
