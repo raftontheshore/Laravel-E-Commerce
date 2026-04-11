@@ -126,10 +126,10 @@
 
 <footer class="cat-footer">
     <div class="container py-5">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-between">
 
             {{-- Brand --}}
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer-brand">
                     <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas logo">
                     <span class="footer-brand-name">Catacumbas</span>
