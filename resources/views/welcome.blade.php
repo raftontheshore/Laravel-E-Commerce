@@ -49,7 +49,7 @@
                 
                 {{-- Slide 1 --}}
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}" class="d-block w-100" alt="Pokemon Classics" style="object-fit: cover; height: 500px;">
+                    <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}" class="d-block w-100 carrusel-img" alt="Pokemon Classics">
                     
                     {{-- ACÁ ESTÁ EL CAMBIO: top: 50% y transform: translateY(-50%) --}}
                     <div class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
@@ -61,7 +61,7 @@
 
                 {{-- Slide 2 --}}
                 <div class="carousel-item">
-                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100" alt="Slide 2" style="object-fit: cover; height: 500px;">
+                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100 carrusel-img" alt="Slide 2">
                     
                     {{-- ACÁ ESTÁ EL CAMBIO --}}
                     <div class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
@@ -73,7 +73,7 @@
 
                 {{-- Slide 3 --}}
                 <div class="carousel-item">
-                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100" alt="Slide 3" style="object-fit: cover; height: 500px;">
+                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100 carrusel-img" alt="Slide 3">
                     
                     {{-- ACÁ ESTÁ EL CAMBIO y el color arreglado --}}
                     <div  class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
@@ -99,14 +99,24 @@
     </div>
 
     {{-- Flex es para decirle que se comporte de manera flexible --}}
-    <div class="container mt-4" style="background-color: #232323; display: flex; justify-content: space-between; align-items: center; padding: 50px 40px;border-radius: 12px;">
-        <div style="max-wifth: 55%;">
-            <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">Sinfonía de la Noche</h1>
+    <div class="container mt-4" style="background-color: #232323; padding: 40px; border-radius: 12px;">
+    <div class="row align-items-center">
+        
+        {{-- Columna del texto (Ocupa 12 columnas en celular, 7 en PC) --}}
+        {{-- Le agregué las clases mb-4 mb-lg-0 a la columna del texto. --}}
+        <div class="col-12 col-lg-7 mb-4 mb-lg-0">
+            <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">SINFONIA DE LA NOCHE</h1>
             <p class="fs-5 text-light mb-4">Adentrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.</p>
-            {{-- El botón --}}
-            <a href="#" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-2" style="barkground-color: #ff8c00; border: none; border-radius: 4px;">Ver Oferta</a>
-        </div>   
-        <img src="{{ asset('images/castel.jpg') }}" style="width: 450px; height: auto; border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);">
+            <a href="#" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-2" style="background-color: #ffb300; border: none; border-radius: 4px;">Ver Oferta</a>
+        </div> 
+        
+        {{-- Columna de la imagen (Ocupa 12 columnas en celular, 5 en PC) --}}
+        <div class="col-12 col-lg-5 text-center">
+            {{-- La clase 'img-fluid' es la que hace que la imagen se achique sola --}}
+            <img src="{{ asset('images/castel.jpg') }}" class="img-fluid" style="border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);" alt="Castlevania Symphony of the Night">
+        </div>
+
+    </div>
     </div>
 
     <br/>
@@ -154,8 +164,8 @@
     </div>
 
 
-    {{-- Scripts de JS --}}
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- Scripts de JS  ya esta en la nav bar el link de bootstrap --}}
+   {{--  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
     
     {{-- SCRIPT PARA QUE LOS CARRUSELES SE MUEVAN SOLOS (EFECTO VA Y VIENE) --}}
         <script>

@@ -77,7 +77,18 @@ h1, h2, h3 {
     object-fit: cover !important;
     width: 100% !important;
 }
+/* Altura del carrusel por defecto (para celulares) */
+.carrusel-img {
+    object-fit: cover !important;
+    height: 250px !important;
+}
 
+/* Altura del carrusel para pantallas medianas o grandes (PC) */
+@media (min-width: 768px) {
+    .carrusel-img {
+        height: 500px !important;
+    }
+}
 /*aca modificamos el carrucel de destacados*/
 /*hacemos transparente el fondo*/
 #carrusel-oscuro .card,
