@@ -19,15 +19,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+
+    
+    <style>
+
+        /*responsive */
+        /* Altura del carrusel por defecto (celulares) */
+        .carrusel-img {
+            width: 100%;
+            height: 250px !important;
+            object-fit: cover !important;
+        }
+        /* Fondo transparente para textos del carrusel en celular */
+        .caja-texto-movil {
+            background: transparent;
+            padding: 15px;/* Altura forzada para que no ocupe toda la pantalla en celulares */
+            border-radius: 10px;/* Evita que la imagen se deforme al achicarse */
+        }
+        /* Freno para el póster vertical de Castlevania en celulares */
+        .img-castlevania {
+            width: 100%;
+            max-width: 260px;/* Freno de crecimiento en móviles */
+        }
+
+        /* Cambios cuando la pantalla es grande (PC) */
+        @media (min-width: 768px) {
+            .carrusel-img {
+                height: 500px !important;/* Recupera su altura panorámica */
+            }
+            .caja-texto-movil {
+                background: transparent;
+                padding: 0;
+            }
+            .img-castlevania {
+                max-width: 450px;/* Tamaño original del póster en PC */
+            }
+        }
+    </style>
 </head>
 
 <body class="text-white fondo-catacumbas">
     
     <x-navbar />
-
-    {{-- Imagen de Alucard 
-    <img src="{{ asset('images/castel.jpg') }}" class="float-end" style="position: absolute; right: 0; top: 0; z-index: -1; filter: blur(1px); max-width: 600px; opacity: 0.6;">
-    --}}
     
     {{-- Limpiamos el float para que el carrusel no se suba a la imagen --}}
     <div class="clearfix"></div>
@@ -44,18 +77,17 @@
             </div>
 
             {{-- Contenido del Carrusel --}}
-            {{-- transform: translateY(-50%)):  le cambiamos el centro  y se soluciono el descentrado--}}
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="border-radius: 12px; overflow: hidden;">
                 
                 {{-- Slide 1 --}}
                 <div class="carousel-item active">
                     <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}" class="d-block w-100 carrusel-img" alt="Pokemon Classics">
                     
-                    {{-- ACÁ ESTÁ EL CAMBIO: top: 50% y transform: translateY(-50%) --}}
-                    <div class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
-                        <h5 class="display-3 fw-bold title-hero">Regresa a Kanto</h5>
-                        <p class="fs-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
-                        <a href="#" class="btn btn-warning btn-lg mt-3 fw-bold" style="background-color: #ffd70f; border: none;">Ver Oferta</a>
+                    {{-- Le sacamos el d-none y agregamos caja-texto-movil --}}
+                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
+                        <h5 class="display-5 fw-bold title-hero">Regresa a Kanto</h5>
+                        <p class="fs-6 fs-md-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
+                        <a href="#" class="btn btn-warning mt-2 fw-bold" style="background-color: #ffd70f; border: none;">Ver Oferta</a>
                     </div>
                 </div>
 
@@ -63,11 +95,10 @@
                 <div class="carousel-item">
                     <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100 carrusel-img" alt="Slide 2">
                     
-                    {{-- ACÁ ESTÁ EL CAMBIO --}}
-                    <div class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
-                        <h5 class="display-3 fw-bold title-hero" style="color: #cc0000;">YA DISPONIBLE</h5>
-                        <p class="fs-4 text-hero" style="color: #461313">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato fisico</p>
-                        <a href="#" class="btn btn-lg mt-3 fw-bold text-white" style="background-color: #c60000; border: none;">Comprar Ahora</a>
+                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
+                        <h5 class="display-5 fw-bold title-hero" style="color: #ff4444;">YA DISPONIBLE</h5>
+                        <p class="fs-6 fs-md-4 text-hero text-light">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato físico.</p>
+                        <a href="#" class="btn btn-danger mt-2 fw-bold text-white" style="background-color: #c60000; border: none;">Comprar Ahora</a>
                     </div>
                 </div>
 
@@ -75,11 +106,10 @@
                 <div class="carousel-item">
                     <img src="{{ asset('images/ps2.png') }}" class="d-block w-100 carrusel-img" alt="Slide 3">
                     
-                    {{-- ACÁ ESTÁ EL CAMBIO y el color arreglado --}}
-                    <div  class="carousel-caption d-none d-md-block text-start" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: auto; max-width: 50%;">
-                        <h5 class="display-3 fw-bold title-hero" style="color: #ffffff;">LA REINA DE LA CASA</h5>
-                        <p class="fs-4 text-hero" style="color: #fefefe">Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio. Aprovechá nuestra oferta especial.</p>
-                        <a href="#" class="btn btn-lg mt-3 fw-bold text-white" style="background-color: #0078d4; border: none;">Comprar Ahora</a>
+                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
+                        <h5 class="display-5 fw-bold title-hero" style="color: #ffffff;">LA REINA DE LA CASA</h5>
+                        <p class="fs-6 fs-md-4 text-hero" style="color: #fefefe">Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio.</p>
+                        <a href="#" class="btn mt-2 fw-bold text-white" style="background-color: #0078d4; border: none;">Comprar Ahora</a>
                     </div>
                 </div>
 
@@ -98,22 +128,20 @@
         </div>
     </div>
 
-    {{-- Flex es para decirle que se comporte de manera flexible --}}
+    {{-- Banner de Castlevania --}}
     <div class="container mt-4" style="background-color: #232323; padding: 40px; border-radius: 12px;">
     <div class="row align-items-center">
         
-        {{-- Columna del texto (Ocupa 12 columnas en celular, 7 en PC) --}}
-        {{-- Le agregué las clases mb-4 mb-lg-0 a la columna del texto. --}}
+        {{-- Columna del texto --}}
         <div class="col-12 col-lg-7 mb-4 mb-lg-0">
             <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">SINFONIA DE LA NOCHE</h1>
             <p class="fs-5 text-light mb-4">Adentrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.</p>
             <a href="#" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-2" style="background-color: #ffb300; border: none; border-radius: 4px;">Ver Oferta</a>
         </div> 
         
-        {{-- Columna de la imagen (Ocupa 12 columnas en celular, 5 en PC) --}}
-        <div class="col-12 col-lg-5 text-center">
-            {{-- La clase 'img-fluid' es la que hace que la imagen se achique sola --}}
-            <img src="{{ asset('images/castel.jpg') }}" class="img-fluid" style="border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);" alt="Castlevania Symphony of the Night">
+        {{-- Columna de la imagen: Le agregamos mt-4 para celular y la clase img-castlevania --}}
+        <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
+            <img src="{{ asset('images/castel.jpg') }}" class="img-fluid img-castlevania mx-auto" style="border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);" alt="Castlevania Symphony of the Night">
         </div>
 
     </div>
@@ -124,7 +152,6 @@
     <div class="container mt-5 bm-5">
         <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
 
-        
         <div class="row flex-nowrap overflow-x-auto pb-3" id="carrusel-oscuro" style="scrollbar-width: thin;">
             {{-- aca llama a carta producto --}}
             @foreach($productos_destacados as $producto)
@@ -135,38 +162,27 @@
         </div>
     </div>
 
-
     {{-- CARRUCEL DE CONSOLAS  --}}
     <div class="container mt-5 bm-5">
         <div class="d-flex justify-content-between align-items-end mb-4">
             
-            {{-- El título queda a la izquierda (le cambiamos mb-4 por m-0 para que no empuje el div) --}}
             <h3 class="text-white fw-bold m-0" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
             
-            {{-- El link se va automáticamente a la derecha --}}
             <a href="/tienda/consola" class="text-decoration-none d-flex align-items-center" style="color: #aaa; font-size: 0.95rem; transition: 0.3s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#aaa'">
                 Ver más <i class="bi bi-arrow-right ms-2"></i>
             </a>
             
-            
         </div>
         
-        
         <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro">
-            {{-- aca llama a carta consola --}}
             @foreach($consolas as $consola)
             <div class="col-10 col-md-3 col-lg-3 mb-3">
-               {{-- 2. Acá llamamos a los  componente y le pasamos los datos de la consola --}}
                 <x-carta-producto :producto="$consola" />
             </div>  
             @endforeach 
         </div>
     </div>
 
-
-    {{-- Scripts de JS  ya esta en la nav bar el link de bootstrap --}}
-   {{--  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
-    
     {{-- SCRIPT PARA QUE LOS CARRUSELES SE MUEVAN SOLOS (EFECTO VA Y VIENE) --}}
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -211,7 +227,7 @@
                 });
             });
         </script>
-    {{-- el footer es la sección que se encuentra en la parte más baja de una página web, --}}
+    
     <x-footer />
 </body>
 </html>
