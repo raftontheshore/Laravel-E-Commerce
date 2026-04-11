@@ -90,16 +90,40 @@
                                     <ol class="ps-4 mb-4" style="line-height: 1.8;">
 
                                         <li class="mb-2">
-                                            <strong>La dirección de correo electrónico se escribió incorrectamente:</strong>Si escribiste mal tu mail al hacer el pedido,<a href="/contacto" class="text-danger text-decoration-none fw-bold">contactanos</a> y lo arreglaremos de inmediado. 
+                                            <strong>La dirección de correo electrónico se escribió incorrectamente:</strong>Si escribiste mal tu mail al hacer el pedido,contactanos y lo arreglaremos de inmediado. 
                                         </li>
 
                                         <li class="mb-2">
-                                            <strong>El pago no se acredito:</strong>
+                                            <strong>El pago no se acredito:</strong> Es posible que el pago no haya impactado en nuestro sistema. Volvé a verificar los movimientos de tu tarjeta o Mercado Pago para estar seguro.
                                         </li>
-                                    
+                                        
+                                        <li class="mb-2">
+                                            <strong>Retraso con el procesador de pago:</strong> Si ves un cargo "pendiente" o en "preautorización", esto indica que tu banco está retrasando el procesamiento del pedido.
+                    
+                                        </li>
+
+                                        <li clase="mb-2">
+                                            <strong>Rebote de correo:</strong> Tu proveedor de correo electrónico (ej. Hotmail) podría estar enviando nuestros correos a la carpeta de Spam o rebotándolos.
+                                        </li>
+
+                                        <p>Si no podés encontrar tu compra después de revisar todas las opciones anteriores, <a href="/contacto" target="_blank" class="text-danger text-decoration-none ">contactanos</a> y un miembro del equipo de Catacumbas estará encantado de atender tu caso.</p>
                                     </ol>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                    6. ¿Qué debo hacer si mi cuenta fue pirateada o tiene cargos fraudulentos?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                   <p class="mb-3">¡No te preocupes, a cualquiera le puede pasar! Si creés que tu cuenta fue comprometida o usada sin tu permiso, contactate con el soporte de Catacumbas indicando el número de orden de las compras no reconocidas y qué artículos fueron.</p>
+                                    
+                                   <p class="mb-3">Por otro lado, si detectás cargos fraudulentos en tu método de pago, te recomendamos confirmar primero que no haya sido un amigo o familiar. Si no es el caso, comunicate inmediatamente con tu banco y con nuestro equipo. ¡Recordá que vamos a necesitar el comprobante o la información de pago para poder ubicar y cancelar la transacción!</p>
+                                </div>
                         </div>
                     </div> 
                 </div> 
