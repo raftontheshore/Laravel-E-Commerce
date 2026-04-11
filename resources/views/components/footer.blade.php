@@ -126,9 +126,11 @@
 
 <footer class="cat-footer">
     <div class="container py-5">
+        {{-- Le agregamos justify-content-between para que en PC se separen elegante --}}
         <div class="row g-4 justify-content-between">
 
             {{-- Brand --}}
+            {{-- CAMBIO: col-md-4 para iPad (ocupa la mitad), col-lg-3 para PC (ocupa un cuarto) --}}
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer-brand">
                     <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas logo">

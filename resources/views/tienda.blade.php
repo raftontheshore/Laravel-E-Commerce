@@ -16,7 +16,11 @@
         <div class="row g-4">
 
             {{-- Sidebar --}}
-            <div class="col-12 col-lg-3 d-none d-lg-block">
+            {{-- Le sacamos el d-none para que siempre esté visible. 
+                 En celulares ocupará el 100% (col-12), en PC ocupará el 25% (col-lg-3)
+                 
+                 d-none: Ocultá este elemento por defecto (en celulares y tablets). --}}
+            <div class="col-12 col-lg-3 mb-4 mb-lg-0">
                 <x-sidebar :categoria="$categoria" />
             </div>
 
