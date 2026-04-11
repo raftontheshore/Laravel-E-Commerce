@@ -21,9 +21,9 @@
 
     <section class="py-5"> 
         <div class="container" style="width: 100%"> 
-            <div class="row justify-content-center"> <div class="col-12 col-md-8 col-lg-6"> <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
+            <div class="row justify-content-center"> <div class="col-12 col-md-10 col-lg-8"> <div class="accordion" id="acordeonCatacumbas" style="--bs-accordion-btn-padding-y: 0.75rem;">
                      <h2 class="font-weight-bold mb-4">DESPEJA TUS DUDAS</h2>
-                    <div class="accordion-item">
+                <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
                                     1. ¿Hacen envíos a todo el país?
@@ -125,6 +125,48 @@
                                    <p class="mb-3">Por otro lado, si detectás cargos fraudulentos en tu método de pago, te recomendamos confirmar primero que no haya sido un amigo o familiar. Si no es el caso, comunicate inmediatamente con tu banco y con nuestro equipo. ¡Recordá que vamos a necesitar el comprobante o la información de pago para poder ubicar y cancelar la transacción!</p>
                                 </div>
                         </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                                    7. ¿Puedo conectar estas consolas clásicas a mi Smart TV actual?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                   ¡Sí, totalmente! Las consolas retro usan los clásicos cables de audio y video (rojo, blanco y amarillo). Si tu tele moderna no tiene esas entradas, vas a necesitar un pequeño adaptador de 'AV a HDMI'. Consultanos al momento de tu compra y te asesoramos para que viajes a tu infancia sin problemas de conexión.
+                                </div>
+                           </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                                    8 ¿Puedo obtener un reembolso por mi compra?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
+                                <div class="accordion-body">
+                                     <p class="mb-3">Hay varias razones posibles por las que un cliente de Catacumbas puede no haber recibido una compra: </p>
+                                    {{-- ol crea la lista numerada. ps-4 le da un poco de sangría a la izquierda --}}
+                                    <div class="accordion-body">
+                                        <p class="mb-3">Nuestro equipo estará encantado de evaluar tu solicitud de cambio o reembolso por una compra reciente.</p>
+
+                                        <p class="mb-3">Dado que trabajamos con hardware retro de colección, las devoluciones se evalúan caso por caso comprobando el estado físico en el que regresa el equipo. Podés ver todos los detalles en nuestro <a href="/terminos" class="text-danger text-decoration-none">Termino de servicio</a>.</p>
+
+                                        <p class="mb-3">Al contactarnos, <strong>asegurate de incluir tu número de pedido</strong> y el comprobante de pago (de Mercado Pago o transferencia). Esto nos ayuda a rastrear tu compra al instante.</p>
+
+                                        <p class="mb-3">Las consolas armadas a pedido o chipeadas a medida tienen políticas de reembolso diferentes a las compras de juegos sueltos o accesorios de la tienda. Revisá los términos de servicio para más información.</p>
+
+                                        <p class="mb-3"><strong>Importante:</strong> Si te equivocaste de consola, juego o cable al comprar, ¡mandanos un WhatsApp urgente! Si nos avisás a tiempo, podemos corregir la orden antes de que armemos el paquete y lo despachemos.</p>
+
+                                        <p><strong>NOTA:</strong> Recordá que todos nuestros equipos tienen 3 meses de garantía por fallas técnicas. Si buscás un reembolso por arrepentimiento, contactanos lo antes posible (dentro de los 10 días de haber recibido el paquete) para iniciar el trámite.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div> 
                 </div> 
             </div>
