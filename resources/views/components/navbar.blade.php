@@ -149,14 +149,14 @@
 
         /* ── Navbar Drop Down ─────────────────────────────── */
         .catacumbas-nav .dropdown-menu {
-    background-color: #1a1c20;
-    border: 1px solid #2a2a2a;
-    border-radius: 4px;
-    margin-top: 16px; /* antes era 8px, subilo hasta que quede bien */
-    padding: 8px 0;
-    min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
+            background-color: #1a1c20;
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            margin-top: 16px;
+            padding: 8px 0;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
         .catacumbas-nav .dropdown-item {
             color: #b0b0b0;
             font-size: 13px;
@@ -174,10 +174,10 @@
         }
 
         @media (min-width: 992px) {
-    .catacumbas-nav .dropdown:hover > .dropdown-menu {
-        display: block;
-        margin-top: 16px !important; /* mismo valor */
-    }
+            .catacumbas-nav .dropdown:hover > .dropdown-menu {
+                display: block;
+                margin-top: 16px !important;
+            }
             .catacumbas-nav .dropdown-menu::before {
                 content: '';
                 position: absolute;
@@ -190,6 +190,24 @@
 
         .catacumbas-nav .dropdown:hover .nav-link {
             color: #ffffff !important;
+        }
+
+        /* ── Mobile responsive fixes ─────────────────────── */
+        @media (max-width: 991px) {
+            .catacumbas-nav .search-wrapper {
+                width: 100%;
+            }
+            .catacumbas-nav .search-wrapper input {
+                width: 100%;
+            }
+            .catacumbas-nav .btn-login {
+                flex: 1;
+                text-align: center;
+            }
+            .catacumbas-nav .btn-signup {
+                flex: 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -237,13 +255,16 @@
 
             </ul>
 
-            <div class="d-flex align-items-center ms-auto gap-3">
+            <!-- ✅ Responsive search + auth block -->
+            <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center ms-auto gap-2 mt-3 mt-lg-0">
                 <div class="search-wrapper">
                     <i class="bi bi-search"></i>
                     <input type="search" placeholder="Buscar" aria-label="Search">
                 </div>
-                <a href="/login" class="btn-login">Log in</a>
-                <a href="/signup" class="btn btn-signup">Sign up</a>
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="/login" class="btn-login">Log in</a>
+                    <a href="/signup" class="btn btn-signup">Sign up</a>
+                </div>
             </div>
         </div>
     </div>
