@@ -70,6 +70,10 @@ Route::get('/privacidad', function (){
     return view('privacidad');
 });
 
+Route::get('/construccion', function (){
+    return view('construccion');
+});
+
 
 Route::get('/faq', function (){
     return view('faq');

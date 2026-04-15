@@ -259,7 +259,7 @@
                 </div>
 
                 <div class="login-forgot">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="/construccion">¿Olvidaste tu contraseña?</a>
                 </div>
 
                 <button type="submit" class="btn-login-submit">Iniciar Sesión</button>
