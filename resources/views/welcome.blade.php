@@ -102,7 +102,7 @@
                 Adéntrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.
             </p>
             
-            <a href="#" class="btn btn-lg fw-bold px-5 py-3 text-dark shadow-lg" 
+            <a href="/construccion" class="btn btn-lg fw-bold px-5 py-3 text-dark shadow-lg" 
                style="background-color: #ffb300; border: none; border-radius: 8px; transition: transform 0.2s;">
                 Ver Oferta
             </a>

@@ -47,7 +47,7 @@
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
                     ">Consolas, juegos físicos, joyas retro y accesorios. Comprá, vendé y canjeá.</p>
-                    <a href="#" class="btn mt-3 fw-bold text-white" style="
+                    <a href="/construccion" class="btn mt-3 fw-bold text-white" style="
                         background-color: #c60000;
                         border: none;
                         padding: 0.6rem 1.8rem;
@@ -91,7 +91,7 @@
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
                     ">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
-                    <a href="#" class="btn mt-3 fw-bold" style="
+                    <a href="/construccion" class="btn mt-3 fw-bold" style="
                         background-color: #ffd70f;
                         color: #1a1a1a;
                         border: none;
@@ -136,7 +136,7 @@
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
                     ">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato físico.</p>
-                    <a href="#" class="btn mt-3 fw-bold text-white" style="
+                    <a href="/construccion" class="btn mt-3 fw-bold text-white" style="
                         background-color: #c60000;
                         border: none;
                         padding: 0.6rem 1.8rem;
