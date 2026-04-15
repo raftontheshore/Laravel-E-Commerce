@@ -112,7 +112,7 @@
         <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
             <img src="{{ asset('images/castel.jpg') }}" 
                  class="img-fluid rounded-3 shadow-lg mx-auto d-block" 
-                 style="max-height: 450px; transform: rotate(2deg);" 
+                 style="max-height: 450px; transform: rotate(0deg);" 
                  alt="Castlevania Symphony of the Night Art">
         </div>
 
