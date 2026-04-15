@@ -47,7 +47,7 @@
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
                     ">Consolas, juegos físicos, joyas retro y accesorios. Comprá, vendé y canjeá.</p>
-                    <a href="/construccion" class="btn mt-3 fw-bold text-white" style="
+                    <a href="/tienda" class="btn mt-3 fw-bold text-white" style="
                         background-color: #c60000;
                         border: none;
                         padding: 0.6rem 1.8rem;
