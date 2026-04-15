@@ -22,12 +22,14 @@
         text-transform: uppercase;
         color: #fff;
     }
+
     .cat-sidebar .sidebar-header i {
         color: #555;
         cursor: pointer;
         font-size: 13px;
         transition: color 0.15s;
     }
+
     .cat-sidebar .sidebar-header i:hover { color: #ccc; }
 
     .cat-sidebar .sidebar-search {
@@ -138,7 +140,7 @@
     {{-- Header --}}
     <div class="sidebar-header">
         <span>Filtrar</span>
-        <i class="fas fa-times"></i>
+        <!-- <i class="fas fa-times"></i> -->
     </div>
 
     {{-- Search --}}
@@ -166,6 +168,7 @@
         </div>
     </div>
 
+    <!--
     {{-- Marca (consolas) --}}
     @if(strtolower($categoria) == 'consola' || strtolower($categoria) == 'todos')
     <div class="filter-section">
@@ -224,5 +227,5 @@
             <input type="number" class="price-input" placeholder="Máx">
         </div>
     </div>
-
+    -->
 </aside>
