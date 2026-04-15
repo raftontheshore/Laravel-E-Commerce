@@ -27,13 +27,15 @@
             box-shadow: 0 0 10px rgba(192, 42, 42, 0.5);
         }
 
-        /* ── REGLA MÁGICA: Ocultar en PC ── */
-        /* Si la pantalla mide 769px o más, lo bloqueamos */
-        @media (min-width: 769px) {
-            #btn-back-to-top {
-                display: none !important;
-            }
-        }
+/* Restringido hacia arriba para pc y otros dispositivos */
+@media (min-width: 768px) and (max-width: 1199px) {
+    #btn-back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 25px;
+        right: 25px;
+    }
+}
 
         html, body {
             width: 100%;
