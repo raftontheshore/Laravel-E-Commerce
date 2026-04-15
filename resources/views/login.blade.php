@@ -231,16 +231,19 @@
             <hr class="login-divider">
 
             {{-- Form --}}
-            <form action="/login" method="POST">
+            <form id="loginForm" action="/login" method="POST">
                 @csrf
 
                 <div class="login-field">
                     <label for="email">Email</label>
-                    <div class="input-wrap">
+                    <div class="input-wrap" id="wrapEmail">
                         <i class="bi bi-envelope"></i>
                         <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com"
-                               value="{{ old('email') }}" autocomplete="email">
+                               value="{{ old('email') }}" autocomplete="email" required>
                     </div>
+                    <small id="emailError" style="color: #c0392b; display: none; font-size: 11px; margin-top: 5px; font-weight: bold;">
+                        Por favor, ingresá tu correo.
+                    </small>
                     @error('email')
                         <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
                     @enderror
@@ -248,11 +251,14 @@
 
                 <div class="login-field">
                     <label for="password">Contraseña</label>
-                    <div class="input-wrap">
+                    <div class="input-wrap" id="wrapPassword">
                         <i class="bi bi-lock"></i>
                         <input type="password" id="password" name="password" placeholder="••••••••"
-                               autocomplete="current-password">
+                               autocomplete="current-password" required>
                     </div>
+                    <small id="passwordError" style="color: #c0392b; display: none; font-size: 11px; margin-top: 5px; font-weight: bold;">
+                        Por favor, ingresá tu contraseña.
+                    </small>
                     @error('password')
                         <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
                     @enderror
@@ -262,21 +268,11 @@
                     <a href="/construccion">¿Olvidaste tu contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn-login-submit">Iniciar Sesión</button>
-            </form>
+                {{-- botón de iniciar sesión pero para cuando tengamos base de datos 
+                <button type="submit" class="btn-login-submit">Iniciar Sesión</button>--}}
 
-            <!-- 
-            {{-- Social --}}
-            <div class="social-divider"><span>o continuá con</span></div>
-            <div class="social-btns">
-                <a href="#" class="btn-social">
-                    <i class="fab fa-google"></i> Google
-                </a>
-                <a href="#" class="btn-social">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </a>
-            </div>
-            -->
+                <a href="/" id="btnSimularLogin" class="btn-login-submit text-center text-decoration-none d-block">Iniciar Sesión</a>
+            </form>
 
             {{-- Register --}}
             <div class="login-register">
@@ -287,5 +283,46 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.getElementById('btnSimularLogin').addEventListener('click', function(event) {
+            // Prevenimos que el enlace cambie de página inmediatamente
+            event.preventDefault();
+
+            // Obtenemos los valores de los inputs
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+
+            let isValid = true;
+
+            // Validación simple de Email
+            if (emailInput.value.trim() === '') {
+                emailError.style.display = 'block';
+                document.getElementById('wrapEmail').style.borderColor = '#c0392b';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+                document.getElementById('wrapEmail').style.borderColor = '#2e2e2e'; // Volver al color original
+            }
+
+            // Validación simple de Contraseña
+            if (passwordInput.value.trim() === '') {
+                passwordError.style.display = 'block';
+                document.getElementById('wrapPassword').style.borderColor = '#c0392b';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+                document.getElementById('wrapPassword').style.borderColor = '#2e2e2e'; // Volver al color original
+            }
+
+            // Si ambos campos tienen texto, redirigimos manualmente
+            if (isValid) {
+                // event.target.href saca la ruta "/" directamente de la etiqueta <a>
+                window.location.href = event.target.href; 
+            }
+        });
+    </script>
 </body>
 </html>
