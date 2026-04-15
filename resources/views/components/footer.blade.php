@@ -169,17 +169,14 @@
             <div class="col-12 col-md-3">
                 <h6>Redes Sociales</h6>
                 <div class="d-flex gap-2">
-                    <a href="#" class="social-link" aria-label="Facebook">
+                    <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
+                    <a href="https://x.com/home" class="social-link" aria-label="X">
+                        <i class="bi bi-twitter-x"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="Instagram">
+                    <a href="https://www.instagram.com/" class="social-link" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
             </div>
