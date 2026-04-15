@@ -95,6 +95,10 @@
 
     <x-navbar />
 
+    <audio id="musicaFondo" loop>
+        <source src="{{ asset('images/andre.mp3') }}" type="audio/mpeg">
+    </audio>
+
     <section class="coming-soon flex-grow-1 d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -129,7 +133,25 @@
         </div>
     </section>
 
-    <x-footer />
+    <x-footer /> <!-- Componente Blade de Laravel (footer) -->
+
+    <script>
+        // Esperamos a que la página cargue
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('musicaFondo');
+            audio.volume = 0.3; // Volumen al 30% para que sea ambiente y no aturda
+
+            // Detectamos CUALQUIER clic en toda la pantalla
+            document.body.addEventListener('click', function() {
+                if (audio.paused) {
+                    // El navegador permite esto porque es respuesta a una acción humana
+                    audio.play().catch(function(error) {
+                        console.log("El navegador bloqueó el audio:", error);
+                    });
+                }
+            }, { once: true }); // Importante: solo se ejecuta en el PRIMER clic
+        });
+    </script>
     
 </body>
 </html>
