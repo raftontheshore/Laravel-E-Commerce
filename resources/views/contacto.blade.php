@@ -306,12 +306,12 @@
 
                 {{-- Social links footer --}}
                 <div style="padding: 16px 20px; border-top: 1px solid #1e1e1e; display: flex; gap: 10px; justify-content: center;">
-                    <a href="#" target="_blank" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;text-decoration:none;padding:7px 12px;background:#1a1a1a;border:1px solid #222;border-radius:6px;transition:color 0.15s,border-color 0.15s;"
+                    <a href="https://www.instagram.com/" target="_blank" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;text-decoration:none;padding:7px 12px;background:#1a1a1a;border:1px solid #222;border-radius:6px;transition:color 0.15s,border-color 0.15s;"
                        onmouseover="this.style.color='#c0392b';this.style.borderColor='#c0392b'"
                        onmouseout="this.style.color='#555';this.style.borderColor='#222'">
                         <i class="bi bi-instagram"></i> @catacumbas
                     </a>
-                    <a href="#" target="_blank" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;text-decoration:none;padding:7px 12px;background:#1a1a1a;border:1px solid #222;border-radius:6px;transition:color 0.15s,border-color 0.15s;"
+                    <a href="https://www.facebook.com/" target="_blank" style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;text-decoration:none;padding:7px 12px;background:#1a1a1a;border:1px solid #222;border-radius:6px;transition:color 0.15s,border-color 0.15s;"
                        onmouseover="this.style.color='#c0392b';this.style.borderColor='#c0392b'"
                        onmouseout="this.style.color='#555';this.style.borderColor='#222'">
                         <i class="bi bi-facebook"></i> Catacumbas

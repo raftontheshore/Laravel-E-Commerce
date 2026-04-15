@@ -71,8 +71,10 @@
                             Acepto los <a href="/terminos" style="color: #c0392b; text-decoration: none; font-weight: 600;">Términos y Condiciones</a>
                         </label>
                     </div>
-        
-                    <button type="submit" class="btn-login-submit">Registrarse</button>
+                    {{-- boton para cuando tengamos base de datos  
+                    <button type="submit" class="btn-login-submit">Registrarse</button>--}}
+
+                     <a href="/" id="btnSimularLogin" class="btn-login-submit text-center text-decoration-none d-block">Registrarse</a>
         
                     <div class="login-register">
                         ¿Ya tenés una cuenta? <a href="/login">Iniciar Sesión</a>
