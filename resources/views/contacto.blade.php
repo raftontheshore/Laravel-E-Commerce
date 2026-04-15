@@ -392,7 +392,6 @@
                         </div>
 
                         <button type="submit" class="btn-contact-submit">
-                            <i class="bi bi-send">
                             <i class="bi bi-send"></i> Enviar mensaje
                         </button>
 
