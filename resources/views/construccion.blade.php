@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Próximamente - Catacumbas</title>
+    <title>En Construcción - Catacumbas</title>
     
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -15,45 +15,19 @@
     <style>
         /* Fondo oscuro para toda la página */
         body, html {
-            background-color: #0a0a0a !important; /* Casi negro */
+            background-color: #0a0a0a !important;
             color: #e0e0e0;
         }
 
         .coming-soon {
-            /* Un degradado radial sutil para dar profundidad en el centro */
             background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
         }
 
-        /* Estilo pixelado para el título y contador */
+        /* Estilo pixelado */
         .fuente-retro {
             font-family: 'Press Start 2P', cursive;
-            color: #c02a2a; /* Rojo oscuro tipo sangre */
-            text-shadow: 3px 3px 0px #000000; /* Sombra para darle volumen */
-        }
-
-        /* Ajustes del contador */
-        .countdown h2 {
-            position: relative;
-            font-size: 2.5rem; /* Ajuste de tamaño para la fuente pixelada */
-        }
-
-        .countdown h2::after {
-            content: ':';
-            position: absolute;
-            right: -25px;
-            top: 50%;
-            transform: translateY(-50%);
             color: #c02a2a;
-        }
-
-        .countdown div:last-child h2::after {
-            display: none;
-        }
-
-        .countdown p {
-            color: #888; /* Gris medio para las etiquetas (Days, Hours) */
-            font-weight: bold;
-            margin-top: 10px;
+            text-shadow: 3px 3px 0px #000000;
         }
 
         /* Botón personalizado rojo */
@@ -80,13 +54,11 @@
             font-size: 14px !important;
         }
 
-        /* El color exacto del texto "Ingresá tu email" (placeholder) */
         .input-oscuro::placeholder {
-            color: #3a3a3a !important; 
+            color: #555555 !important; /* Un poco más claro para que se lea mejor */
             opacity: 1;
         }
 
-        /* Cuando hacés clic para escribir (le mantenemos tu borde rojo) */
         .input-oscuro:focus {
             box-shadow: none !important;
             border-color: #c0392b !important;
@@ -103,36 +75,55 @@
         .social-icons a:hover {
             color: #c02a2a !important;
         }
+
+        /* ── Tamaño gigante para PC (Ajustado para 2 columnas) ── */
+        .titulo-gigante {
+            font-size: 3.5rem !important; /* Lo bajamos un poquito para que entre bien al lado del GIF */
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        /* ── Tamaño ajustado para Celulares ── */
+        @media (max-width: 768px) {
+            .titulo-gigante {
+                font-size: 2.5rem !important;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <x-navbar />
 
-    <section class="coming-soon vh-100 d-flex align-items-center">
+    <section class="coming-soon flex-grow-1 d-flex align-items-center">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row align-items-center justify-content-center">
                 
-                <div class="col-md-8 text-center">
+                {{-- COLUMNA IZQUIERDA: EL HERRERO --}}
+                <div class="col-12 col-md-5 text-center mb-5 mb-md-0">
+                    <img src="{{ asset('images/andre3.gif') }}" alt="Herrero de Píxeles" class="img-fluid" style="max-width: 400px; image-rendering: pixelated;">
+                </div>
+
+                {{-- COLUMNA DERECHA: TEXTOS Y FORMULARIO --}}
+                <div class="col-12 col-md-7 text-center text-md-start">
                     
-                    <h1 class="fuente-retro mb-4 mt-4">COMING SOON</h1>
-                    <p class="lead mb-5" style="color: #aaa;">Estamos preparando el terreno. Falta poco.</p>
+                    <h1 class="fuente-retro titulo-gigante mb-4">¡ EN CONSTRUCCION !</h1>
+                    <p class="lead mb-4" style="color: #aaa;">Esta sección se encuentra actualmente en desarrollo. Por favor, volvé a visitarnos muy pronto</p>
                     
-                    
-                    
-                    <form class="d-flex justify-content-center mt-4 w-100">
+                    {{-- Formulario Descomentado 
+                    <form class="d-flex justify-content-center justify-content-md-start mt-4 mb-4 w-100">
                         <div class="input-group shadow-lg" style="max-width: 450px;">
                             <input type="email" class="form-control input-oscuro" placeholder="Ingresá tu email" aria-label="Email">
-                            <button class="btn btn-catacumbas px-4" type="button" id="button-addon2" >Avisame</button>
+                            <button class="btn btn-catacumbas px-4" type="button" id="button-addon2">Avisame</button>
                         </div>
                     </form>
                     
-                    <div class="social-icons mt-5">
-                        <a href="#" class="mx-2"><i class="bi bi-facebook fs-4"></i></a>
-                        <a href="#" class="mx-2"><i class="bi bi-twitter-x fs-4"></i></a>
-                        <a href="#" class="mx-2"><i class="bi bi-instagram fs-4"></i></a>
+                    <div class="social-icons mt-4">
+                        <a href="https://www.facebook.com/" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="https://x.com/home" class="me-3"><i class="bi bi-twitter-x fs-4"></i></a>
+                        <a href="https://www.instagram.com/" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
                     </div>
-
+                    --}}
                 </div>
             </div>
         </div>
