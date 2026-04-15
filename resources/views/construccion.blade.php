@@ -95,7 +95,7 @@
 
     <x-navbar />
 
-    <audio id="musicaFondo" loop>
+    <audio id="musicaFondo" autoplay loop>
         <source src="{{ asset('images/andre.mp3') }}" type="audio/mpeg">
     </audio>
 
@@ -114,42 +114,40 @@
                     <h1 class="fuente-retro titulo-gigante mb-4">¡ EN CONSTRUCCION !</h1>
                     <p class="lead mb-4" style="color: #aaa;">Esta sección se encuentra actualmente en desarrollo. Por favor, volvé a visitarnos muy pronto</p>
                     
-                    {{-- Formulario Descomentado 
-                    <form class="d-flex justify-content-center justify-content-md-start mt-4 mb-4 w-100">
-                        <div class="input-group shadow-lg" style="max-width: 450px;">
-                            <input type="email" class="form-control input-oscuro" placeholder="Ingresá tu email" aria-label="Email">
-                            <button class="btn btn-catacumbas px-4" type="button" id="button-addon2">Avisame</button>
-                        </div>
-                    </form>
-                    
-                    <div class="social-icons mt-4">
-                        <a href="https://www.facebook.com/" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
-                        <a href="https://x.com/home" class="me-3"><i class="bi bi-twitter-x fs-4"></i></a>
-                        <a href="https://www.instagram.com/" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
-                    </div>
-                    --}}
                 </div>
             </div>
         </div>
     </section>
     <x-volverArriba />
-    <x-footer /> <!-- Componente Blade de Laravel (footer) -->
+
+    <x-footer />
 
     <script>
-        // Esperamos a que la página cargue
         document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById('musicaFondo');
-            audio.volume = 0.3; // Volumen al 30% para que sea ambiente y no aturda
+            audio.volume = 0.3; // Volumen al 30%
 
-            // Detectamos CUALQUIER clic en toda la pantalla
-            document.body.addEventListener('click', function() {
-                if (audio.paused) {
-                    // El navegador permite esto porque es respuesta a una acción humana
-                    audio.play().catch(function(error) {
-                        console.log("El navegador bloqueó el audio:", error);
-                    });
-                }
-            }, { once: true }); // Importante: solo se ejecuta en el PRIMER clic
+            // Intentamos reproducir el audio mediante JavaScript
+            let playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // ¡El autoplay funcionó! (El navegador lo permitió)
+                    console.log("Autoplay iniciado correctamente.");
+                }).catch(error => {
+                    // El navegador bloqueó el autoplay. Activamos el plan de respaldo.
+                    console.log("El navegador bloqueó el autoplay. Esperando interacción del usuario.");
+                    
+                    // Solo si falló el autoplay, escuchamos el primer clic en la pantalla
+                    document.body.addEventListener('click', function() {
+                        if (audio.paused) {
+                            audio.play().catch(function(err) {
+                                console.log("Aún bloqueado:", err);
+                            });
+                        }
+                    }, { once: true });
+                });
+            }
         });
     </script>
     

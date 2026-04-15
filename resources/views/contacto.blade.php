@@ -392,6 +392,10 @@
                         </div>
 
                         <button type="submit" class="btn-contact-submit">
+<<<<<<< HEAD
+                            <i class="bi bi-send">
+</body>                                
+=======
                             <i class="bi bi-send"></i> Enviar mensaje
                         </button>
 
@@ -407,3 +411,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+>>>>>>> 154d9f71c8469c2c9dcb3d75affa35efe35cf310

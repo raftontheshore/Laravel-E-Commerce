@@ -1,23 +1,18 @@
-<a href="#" class="text-decoration-none d-block h-100">
+<a href="/construccion" class="text-decoration-none d-block h-100">
 <div class="cat-product-card h-100">
-
     {{-- Image area --}}
     <div class="cat-card-img">
         <img src="{{ $producto->imagen_url }}" alt="{{ $producto->titulo }}">
     </div>
-
     {{-- Body --}}
     <div class="cat-card-body">
-
         {{-- Badges --}}
         <div class="d-flex gap-2 mb-2">
             <span class="cat-badge cat-badge-brand">{{ $producto->consola }}</span>
             <span class="cat-badge cat-badge-state">{{ $producto->estado }}</span>
         </div>
-
         {{-- Title --}}
         <p class="cat-card-title text-truncate mb-1">{{ $producto->titulo }}</p>
-
         {{-- Original price --}}
         <div style="height: 18px; margin-bottom: 4px;">
             @if($producto->porcentaje_descuento > 0)
@@ -26,7 +21,6 @@
                 </span>
             @endif
         </div>
-
         {{-- Price + discount --}}
         <div class="d-flex align-items-baseline gap-2 mb-1">
             <span class="cat-price">$ {{ number_format($producto->precio, 0, ',', '.') }}</span>
@@ -34,14 +28,12 @@
                 <span class="cat-discount">{{ $producto->porcentaje_descuento }}% OFF</span>
             @endif
         </div>
-
         {{-- Installments --}}
         <div class="cat-installments mb-4">
             6 cuotas de $ {{ number_format($producto->precio / 6, 0, ',', '.') }}
         </div>
-
         {{-- CTA --}}
-        <button class="cat-btn-cart mt-auto">
+        <button type="button" class="cat-btn-cart mt-auto">
             <i class="fas fa-shopping-cart" style="font-size: 12px;"></i>
             Añadir al carrito
         </button>
@@ -64,7 +56,6 @@
         border-color: #3a3a3a;
         transform: translateY(-2px);
     }
-
     .cat-card-img {
         background: #1a1a1a;
         border-bottom: 1px solid #222;
@@ -79,14 +70,12 @@
         max-width: 100%;
         object-fit: contain;
     }
-
     .cat-card-body {
         padding: 14px;
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-
     /* Badges */
     .cat-badge {
         font-size: 11px;
@@ -104,7 +93,6 @@
         color: #888;
         border: 1px solid #333;
     }
-
     /* Title */
     .cat-card-title {
         font-size: 15px;
@@ -112,7 +100,6 @@
         color: #e8e8e8;
         margin: 0;
     }
-
     /* Pricing */
     .cat-price-original {
         font-size: 12px;
@@ -134,7 +121,6 @@
         font-size: 12px;
         color: #555;
     }
-
     /* Button */
     .cat-btn-cart {
         display: flex;
