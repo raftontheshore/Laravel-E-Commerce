@@ -578,3 +578,5 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 .accordion-button::after {
     filter: invert(1) !important;
 }
+
+

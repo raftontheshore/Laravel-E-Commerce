@@ -63,90 +63,61 @@
     <x-navbar />
 
     <x-marquee />
+
+    <x-carrusel/>
     
-    {{-- Limpiamos el float para que el carrusel no se suba a la imagen --}}
-    <div class="clearfix"></div>
 
-    {{-- Carrusel envuelto en un container para mejor diseño --}}
-    <div class="container mt-5">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            
-            {{-- Indicadores (Puntitos de abajo) --}}
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+    {{-- Banner de Castlevania Mejoado --}}
+<div class="container mt-4 p-5 rounded-4 position-relative overflow-hidden" 
+     style="background: radial-gradient(circle, #2a2a2a, #1a1a1a); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    
+    {{-- Efecto de niebla/textura de fondo --}}
+    <div class="position-absolute top-0 start-0 w-100 h-100" 
+         style="background-image: url('{{ asset('images/brick_texture.png') }}'); opacity: 0.1; background-size: cover;"></div>
 
-            {{-- Contenido del Carrusel --}}
-            <div class="carousel-inner" style="border-radius: 12px; overflow: hidden;">
-                
-                {{-- Slide 1 --}}
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}" class="d-block w-100 carrusel-img" alt="Pokemon Classics">
-                    
-                    {{-- Le sacamos el d-none y agregamos caja-texto-movil --}}
-                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
-                        <h5 class="display-5 fw-bold title-hero">Regresa a Kanto</h5>
-                        <p class="fs-6 fs-md-4 text-hero">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
-                        <a href="#" class="btn btn-warning mt-2 fw-bold" style="background-color: #ffd70f; border: none;">Ver Oferta</a>
-                    </div>
-                </div>
-
-                {{-- Slide 2 --}}
-                <div class="carousel-item">
-                    <img src="{{ asset('images/mgs.jpg') }}" class="d-block w-100 carrusel-img" alt="Slide 2">
-                    
-                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
-                        <h5 class="display-5 fw-bold title-hero" style="color: #ff4444;">YA DISPONIBLE</h5>
-                        <p class="fs-6 fs-md-4 text-hero text-light">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato físico.</p>
-                        <a href="#" class="btn btn-danger mt-2 fw-bold text-white" style="background-color: #c60000; border: none;">Comprar Ahora</a>
-                    </div>
-                </div>
-
-                {{-- Slide 3 --}}
-                <div class="carousel-item">
-                    <img src="{{ asset('images/ps2.png') }}" class="d-block w-100 carrusel-img" alt="Slide 3">
-                    
-                    <div class="carousel-caption text-start caja-texto-movil" style="top: 50%; transform: translateY(-50%); bottom: auto; left: 8%; right: 8%; max-width: 100%;">
-                        <h5 class="display-5 fw-bold title-hero" style="color: #ffffff;">LA REINA DE LA CASA</h5>
-                        <p class="fs-6 fs-md-4 text-hero" style="color: #fefefe">Vuelve la PlayStation 2 Slim. Chipeada y lista para que revivas tus mejores tardes de vicio.</p>
-                        <a href="#" class="btn mt-2 fw-bold text-white" style="background-color: #0078d4; border: none;">Comprar Ahora</a>
-                    </div>
-                </div>
-
-            </div>
-
-            {{-- Botones de Navegación (Flechitas) --}}
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-
-        </div>
-    </div>
-
-    {{-- Banner de Castlevania --}}
-    <div class="container mt-4" style="background-color: #232323; padding: 40px; border-radius: 12px;">
-    <div class="row align-items-center">
+    <div class="row align-items-center position-relative z-1">
         
         {{-- Columna del texto --}}
         <div class="col-12 col-lg-7 mb-4 mb-lg-0">
-            <h1 class="display-4 fw-bold text-white mb-3" style="line-height: 1.1;">SINFONIA DE LA NOCHE</h1>
-            <p class="fs-5 text-light mb-4">Adentrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.</p>
-            <a href="#" class="btn btn-warning btn-lg fw-bold text-dark px-5 py-2" style="background-color: #ffb300; border: none; border-radius: 4px;">Ver Oferta</a>
+            
+            {{-- Sección de Tags/Etiquetas --}}
+            <div class="d-flex gap-2 mb-3">
+                <span class="badge text-uppercase fw-bold px-3 py-2" 
+                      style="background-color: #c02a2a; color: white; border-radius: 6px; font-size: 0.9rem;">
+                    OFERTA
+                </span>
+                <span class="badge text-uppercase fw-bold px-3 py-2" 
+                      style="background-color: #004d99; color: white; border-radius: 6px; font-size: 0.9rem;">
+                    PS1
+                </span>
+            </div>
+
+            {{-- Título Principal con tipografía pixelada --}}
+            <h1 class="text-white mb-3" 
+                style="font-family: 'Press Start 2P', cursive; line-height: 1.2; font-size: 3rem; text-shadow: 2px 2px 0 #000;">
+                SINFONIA DE LA NOCHE
+            </h1>
+            
+            <p class="fs-5 text-light mb-4" style="max-width: 600px;">
+                Adéntrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.
+            </p>
+            
+            <a href="#" class="btn btn-lg fw-bold px-5 py-3 text-dark shadow-lg" 
+               style="background-color: #ffb300; border: none; border-radius: 8px; transition: transform 0.2s;">
+                Ver Oferta
+            </a>
         </div> 
         
-        {{-- Columna de la imagen: Le agregamos mt-4 para celular y la clase img-castlevania --}}
+        {{-- Columna de la imagen --}}
         <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
-            <img src="{{ asset('images/castel.jpg') }}" class="img-fluid img-castlevania mx-auto" style="border-radius: 8px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5);" alt="Castlevania Symphony of the Night">
+            <img src="{{ asset('images/castel.jpg') }}" 
+                 class="img-fluid rounded-3 shadow-lg mx-auto d-block" 
+                 style="max-height: 450px; transform: rotate(2deg);" 
+                 alt="Castlevania Symphony of the Night Art">
         </div>
 
     </div>
+</div>
     </div>
 
     <br/>
