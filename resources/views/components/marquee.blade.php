@@ -1,3 +1,8 @@
+<script type="module">
+    import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill";
+    polyfillCountryFlagEmojis();
+</script>
+
 <style>
     .marquee-strip {
         background: #c0392b;
@@ -36,7 +41,8 @@
         letter-spacing: 1.4px;
         text-transform: uppercase;
         color: #fff;
-        font-family: monospace;
+        /* FIX: Agregamos Twemoji Country Flags ANTES de tu fuente habitual para que reemplace las letras por el emoji */
+        font-family: "Twemoji Country Flags", monospace;
     }
 
     .marquee-dot {
