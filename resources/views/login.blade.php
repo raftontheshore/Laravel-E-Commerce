@@ -265,6 +265,7 @@
                 <button type="submit" class="btn-login-submit">Iniciar Sesión</button>
             </form>
 
+            <!-- 
             {{-- Social --}}
             <div class="social-divider"><span>o continuá con</span></div>
             <div class="social-btns">
@@ -275,6 +276,7 @@
                     <i class="fab fa-facebook-f"></i> Facebook
                 </a>
             </div>
+            -->
 
             {{-- Register --}}
             <div class="login-register">

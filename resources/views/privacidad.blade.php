@@ -216,7 +216,7 @@
     </style>
 </head>
 <body>
-    <x-navbar-simplificada/>
+    <x-navbar/>
 
     <div class="privacy-wrapper">
         <div class="privacy-card">
@@ -399,7 +399,7 @@
                 <h2>Contacto</h2>
                 <p>Si tenés alguna pregunta sobre esta Política de Privacidad, podés contactarnos:</p>
                 <ul>
-                    <li>Por correo electrónico: <a href="/cdn-cgi/l/email-protection#bbd2d5ddd4fbd8dacfdad8ced6d9dac895d8d4d6" style="color:#c0392b; text-decoration:none;"><span class="__cf_email__" data-cfemail="aac3c4ccc5eac9cbdecbc9dfc7c8cbd984c9c5c7">[email&#160;protected]</span></a></li>
+                    <li>Por correo electrónico: <a href="mailto:privacidad@catacumbas.com" style="color:#c0392b; text-decoration:none;">privacidad@catacumbas.com</a></li>
                 </ul>
             </div>
 
@@ -408,4 +408,11 @@
                 Este documento tiene carácter meramente informativo y no constituye asesoramiento legal. Se recomienda consultar con un profesional del derecho para adaptar esta política a la normativa específica de tu jurisdicción y actividad.
             </div>
 
-        </div
+        </div> {{-- /.privacy-card --}}
+    </div> {{-- /.privacy-wrapper --}}
+
+    <x-footer/>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

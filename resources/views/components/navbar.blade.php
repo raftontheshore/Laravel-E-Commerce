@@ -32,19 +32,15 @@
             align-items: center;
         }
         .catacumbas-nav .brand-name {
-            font-family: 'SystemFont', monospace;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #c0392b;
-            line-height: 1;
-            margin-top: 4px;
-            text-align: center;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-        }
+    font-family: 'SystemFont', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c0392b;
+    line-height: 1;
+    margin-top: 4px;
+    text-align: center;
+}
         .catacumbas-nav .navbar-brand:hover .brand-name {
             max-height: 20px;
             opacity: 1;
@@ -231,39 +227,37 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3" style="gap: 4px;">
 
                 <li class="nav-item">
-                    <a class="nav-link fs-6 {{ request()->is('tienda*') ? 'active' : '' }}" href="/tienda">Tienda</a>
+                    <a class="nav-link fs-6 {{ request()->is('/*') ? 'active' : '' }}" href="/">Principal</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fs-6 {{ request()->is('explorar*') ? 'active' : '' }}" href="/explorar">Explorar</a>
+                    <a class="nav-link fs-6 {{ request()->is('tienda*') ? 'active' : '' }}" href="/tienda">Catálogo</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fs-6 {{ request()->is('nosotros*') ? 'active' : '' }}" href="/nosotros">Nosotros</a>
+                    <a class="nav-link fs-6 {{ request()->is('nosotros*') ? 'active' : '' }}" href="/nosotros">Quiénes Somos</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link fs-6 dropdown-toggle {{ request()->is('ayuda*') ? 'active' : '' }}"
-                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Soporte
-                    </a>
-                    <ul class="dropdown-menu border-0 shadow-lg">
-                        <li><a class="dropdown-item" href="/contacto">Contacto</a></li>
-                        <li><a class="dropdown-item" href="/faq">FAQ</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link fs-6 {{ request()->is('faq*') ? 'active' : '' }}" href="/faq">Comercialización</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link fs-6 {{ request()->is('contacto*') ? 'active' : '' }}" href="/contacto">Contacto</a>
+                </li>
             </ul>
 
             <!-- ✅ Responsive search + auth block -->
             <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center ms-auto gap-2 mt-3 mt-lg-0">
+                <!--
                 <div class="search-wrapper">
                     <i class="bi bi-search"></i>
                     <input type="search" placeholder="Buscar" aria-label="Search">
                 </div>
+                -->
                 <div class="d-flex gap-2 justify-content-center">
-                    <a href="/login" class="btn-login">Log in</a>
-                    <a href="/signup" class="btn btn-signup">Sign up</a>
+                    <a href="/login" class="btn-login">Ingresar</a>
+                    <a href="/signup" class="btn btn-signup">Registrarse</a>
                 </div>
             </div>
         </div>

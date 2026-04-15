@@ -61,6 +61,8 @@
 <body class="text-white fondo-catacumbas">
     
     <x-navbar />
+
+    <x-marquee />
     
     {{-- Limpiamos el float para que el carrusel no se suba a la imagen --}}
     <div class="clearfix"></div>

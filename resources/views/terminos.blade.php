@@ -152,7 +152,7 @@
     </style>
 </head>
 <body>
-    <x-navbar-simplificada/>
+    <x-navbar/>
 
     <div class="terms-wrapper">
         <div class="terms-card">
@@ -237,6 +237,9 @@
 
         </div>
     </div>
+
+     <x-footer/>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
