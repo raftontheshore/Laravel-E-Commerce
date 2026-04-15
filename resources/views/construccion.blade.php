@@ -132,7 +132,7 @@
             </div>
         </div>
     </section>
-
+    <x-volverArriba />
     <x-footer /> <!-- Componente Blade de Laravel (footer) -->
 
     <script>
