@@ -137,17 +137,20 @@
 
 <aside class="cat-sidebar">
 
+    <!--
     {{-- Header --}}
     <div class="sidebar-header">
         <span>Filtrar</span>
-        <!-- <i class="fas fa-times"></i> -->
+        <i class="fas fa-times"></i> 
     </div>
-
+    
+   
     {{-- Search --}}
     <div class="sidebar-search">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Buscar...">
     </div>
+    -->
 
     {{-- Categoría --}}
     <div class="filter-section">
