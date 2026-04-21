@@ -19,9 +19,6 @@
             color: #e0e0e0;
         }
 
-        .coming-soon {
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
-        }
 
         /* Estilo pixelado */
         .fuente-retro {
