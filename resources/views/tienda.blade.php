@@ -11,7 +11,8 @@
 </head>
 <body class="d-flex flex-column min-vh-100" style="background-color: #111;">
     <x-navbar />
-
+    {{--  py-4 Padding vertical (top y bottom) nivel 4 (~1.5rem) 
+        - py-md-5 Sobreescribe py-4 en pantallas medianas o mayores (md = 768px+), aumentando el padding vertical a nivel 5 (~3rem).--}}
     <div class="container-xl py-4 py-md-5 flex-grow-1">
         <div class="row g-4">
 
@@ -24,11 +25,16 @@
                 <x-sidebar :categoria="$categoria" />
             </div>
 
-            {{-- Product grid --}}
+            {{-- Product grid 
+            col-12 col-lg-9 → columna principal (el 1/4 restante es el sidebar de filtros)
+            --}}
             <div class="col-12 col-lg-9">
                 <div class="row g-4">
+                    {{-- @forelse → si $productos tiene datos renderiza cards, si está vacío muestra el ícono fantasma + mensaje --}}
                     @forelse($productos as $producto)
+                        {{-- col-12 col-md-6 col-xl-4 → 1 card en móvil, 2 en tablet, 3 en desktop --}}
                         <div class="col-12 col-md-6 col-xl-4">
+                            {{-- <x-carta-producto> → componente Blade reutilizable que recibe cada $producto --}}
                             <x-carta-producto :producto="$producto" />
                         </div>
                     @empty
