@@ -4,22 +4,32 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Catacumbas - Comercialización</title>
+
+  {{-- Bootstrap 5.3.2, Bootstrap Icons, Font Awesome --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <style>
+    /* ── Variables CSS globales ───────────────────────────────
+           Centralizan los colores del proyecto para reutilización.
+           Cambiar --rojo aquí actualiza todos los elementos que lo usan */
     :root {
-      --rojo: #dc2626;
-      --rojo-hover: #b91c1c;
+      --rojo: #dc2626;/* Rojo principal de Catacumbas  */
+      --rojo-hover: #b91c1c;/* Rojo más oscuro para hover    */
     }
 
+    /* ── Base ────────────────────────────────────────────────
+           Fondo negro puro, texto blanco, tipografía Segoe UI     */
     body {
       background-color: #000;
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
     }
 
-    /* ── Navbar ── */
+    /* ── Navbar ──────────────────────────────────────────────
+           Fondo casi negro (#0a0a0a), borde inferior sutil.
+           Links en gris translúcido → rojo al hover/active.
+           Usa var(--rojo) para consistencia con el resto de la página */
     .navbar {
       background-color: #0a0a0a;
       border-bottom: 1px solid #1f1f1f;
@@ -42,7 +52,10 @@
       color: var(--rojo);
     }
 
-    /* ── Hero ── */
+    /* ── Hero / Encabezado de sección ────────────────────────
+           Bloque centrado con título grande y subtítulo gris.
+           - padding generoso arriba (4.5rem) para separar del navbar
+           - border-bottom sutil divide hero de las cards           */
     .section-hero {
       padding: 4.5rem 1rem 2.5rem;
       text-align: center;
@@ -62,7 +75,14 @@
       line-height: 1.6;
     }
 
-    /* ── Cards ── */
+    /* ── Info Cards ──────────────────────────────────────────
+           Tarjetas de 3 columnas que resumen los servicios clave.
+
+           .icon-wrap: círculo 54x54px, fondo rojo muy oscuro (#1a0505),
+           borde rojo oscuro (#3a0808) → el ícono rojo resalta sobre él.
+
+           Hover: borde cambia a var(--rojo) + sube 3px (translateY)
+           → efecto de elevación sin sombra                         */
     .info-card {
       background-color: #111;
       border: 1px solid #222;
@@ -104,7 +124,8 @@
       margin: 0;
     }
 
-    /* ── FAQ title ── */
+    /* ── Título FAQ ──────────────────────────────────────────
+           Borde izquierdo rojo de 4px → acento visual de sección        */
     .faq-title {
       font-size: 1.5rem;
       font-weight: 800;
@@ -114,7 +135,12 @@
       color: #fff;
     }
 
-    /* ── Accordion ── */
+    
+     /* ── Acordeón Bootstrap (personalizado) ──────────────────
+           Sobreescribe estilos default de Bootstrap para adaptarlo
+           al tema oscuro del sitio.    */
+
+    /*.accordion-item: fondo #111, borde #222, border-radius 8px*/
     .accordion-item {
       background-color: #111;
       border: 1px solid #222;
@@ -122,6 +148,7 @@
       margin-bottom: 0.5rem;
       overflow: hidden;
     }
+    /*.accordion-button: fondo #111, texto blanco, sin sombra*/
     .accordion-button {
       background-color: #111;
       color: #fff;
@@ -130,17 +157,25 @@
       border-radius: 8px !important;
       box-shadow: none !important;
     }
+    /*Estado abierto (.not(.collapsed)):
+           - Fondo cambia a rojo muy oscuro (#1a0505)
+           - Texto cambia a var(--rojo)*/
     .accordion-button:not(.collapsed) {
       background-color: #1a0505;
       color: var(--rojo);
       box-shadow: none !important;
     }
+    /*::after (flecha del acordeón):
+           - filter: invert(1) → flecha blanca sobre fondo oscuro
+           - Estado abierto: filtro CSS convierte la flecha a rojo*/
     .accordion-button::after {
       filter: invert(1);
     }
     .accordion-button:not(.collapsed)::after {
       filter: invert(0) sepia(1) saturate(5) hue-rotate(330deg);
     }
+    /*.accordion-body: fondo levemente más oscuro (#0d0d0d),
+           texto gris (#9ca3af), links en rojo      */
     .accordion-body {
       background-color: #0d0d0d;
       color: #9ca3af;
@@ -165,16 +200,21 @@
     <x-navbar />
 
 
-  <!-- Hero -->
+ {{-- ── HERO ──────────────────────────────────────
+         Título de la página + descripción breve                   --}}
   <section class="section-hero">
     <h1>Comercialización</h1>
     <p>Conocé nuestras formas de compra, envíos y medios de pago disponibles.</p>
   </section>
 
-  <!-- Info Cards -->
+  {{-- ──  INFO CARDS ────────────────────────────────
+         3 columnas iguales (col-md-4) con los servicios clave.
+         g-4: gap entre cards                                      --}}
   <section class="container py-5">
     <div class="row g-4">
 
+      {{-- Envíos
+           Ícono: fa-truck (camión de reparto)   --}}
       <div class="col-md-4">
         <div class="info-card">
           <div class="icon-wrap">
@@ -185,6 +225,8 @@
         </div>
       </div>
 
+      {{-- CARD 2: Formas de Pago
+                 Ícono: fa-credit-card --}}
       <div class="col-md-4">
         <div class="info-card">
           <div class="icon-wrap">
@@ -194,7 +236,8 @@
           <p>Aceptamos tarjetas de débito y crédito vía Mercado Pago. Pagando por transferencia bancaria o efectivo obtenés un <strong style="color:#fff">10% de descuento</strong>.</p>
         </div>
       </div>
-
+      {{-- CARD 3: Garantía y Cambios
+                 Ícono: fa-rotate (flechas circulares) --}}
       <div class="col-md-4">
         <div class="info-card">
           <div class="icon-wrap">
@@ -208,7 +251,15 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  {{-- ── FAQ EN ACORDEÓN ──────────────────────────
+         id="acordeonCatacumbas": Bootstrap lo usa para que solo un item esté abierto a la vez (data-bs-parent)
+         
+         Cada item tiene:
+         - accordion-button collapsed → cerrado por defecto
+         - data-bs-toggle="collapse" → activa/desactiva el panel
+         - data-bs-target="#faqN" → referencia al panel por ID
+         - data-bs-parent → colapsa los demás al abrir uno        --}}
+
   <section class="container pb-5">
     <h2 class="faq-title mb-2">DESPEJA TUS DUDAS</h2>
     <p class="text-secondary mb-4" style="font-size:.875rem;">Encontrá las respuestas a las consultas más frecuentes a continuación.</p>
@@ -334,5 +385,7 @@
   </section>
   <x-volverArriba />
   <x-footer />
+
+  {{-- Bootstrap JS necesario para que funcione el acordeón ya esta incluido en los componentes por  eso no lo ponemos devuelta por genera un error--}}
 </body>
 </html>
