@@ -1,3 +1,11 @@
+{{-- ============================================================
+    PÁGINA: Contacto
+    Layout de dos columnas:
+    - Izquierda: información de contacto + redes sociales
+    - Derecha: formulario de contacto con validación Laravel
+    Conectada a un controlador que procesa el POST y redirige
+    a la página de confirmación (/contacto-enviado).
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -484,7 +492,7 @@
                                           placeholder="Escribí tu consulta acá..." required>{{ old('mensaje') }}</textarea>
                             </div>
                         </div>
-                        
+
                         {{-- Botón de envío real (POST al controlador) --}}
                         <button type="submit" class="btn-contact-submit">
                             <i class="bi bi-send"></i> Enviar mensaje

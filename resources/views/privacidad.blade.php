@@ -1,3 +1,10 @@
+{{-- ============================================================
+    PÁGINA: Política de Privacidad
+    Vista estática informativa sobre el tratamiento de datos.
+    Estructura muy similar a Términos y Condiciones pero con
+    componentes visuales extra: cookie-block y retention-block.
+    No requiere datos del controlador.
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,3 +1,12 @@
+{{-- ============================================================
+    PÁGINA: Home / Inicio
+    Página principal del sitio. Combina múltiples secciones:
+    1. Navbar + Marquee + Carrusel (componentes)
+    2. Banner destacado de Castlevania (hero promocional)
+    3. Carrusel de productos destacados (auto-scroll)
+    4. Carrusel de consolas (auto-scroll)
+    Requiere del controlador: $productos_destacados y $consolas
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,20 +32,29 @@
     
     <style>
 
-        /*responsive */
-        /* Altura del carrusel por defecto (celulares) */
+        /* ── Imagen del carrusel hero ────────────────────────────
+           Altura responsive:
+           - Móvil: 250px → compacto para no ocupar toda la pantalla
+           - Desktop (≥768px): 500px → panorámico y llamativo
+           object-fit: cover → recorta la imagen para llenar el espacio
+           sin deformarla                                              */
         .carrusel-img {
             width: 100%;
             height: 250px !important;
             object-fit: cover !important;
         }
-        /* Fondo transparente para textos del carrusel en celular */
+        /* ── Caja de texto sobre el carrusel en móvil ────────────
+           Fondo transparente para no tapar la imagen.
+           border-radius para suavizar si en algún momento se agrega fondo */
         .caja-texto-movil {
             background: transparent;
             padding: 15px;/* Altura forzada para que no ocupe toda la pantalla en celulares */
             border-radius: 10px;/* Evita que la imagen se deforme al achicarse */
         }
-        /* Freno para el póster vertical de Castlevania en celulares */
+
+        /* ── Póster de Castlevania en móvil ──────────────────────
+           max-width: 260px → frena el crecimiento del póster
+           para que no ocupe todo el ancho en pantallas pequeñas    */
         .img-castlevania {
             width: 100%;
             max-width: 260px;/* Freno de crecimiento en móviles */
@@ -62,14 +80,18 @@
     {{-- 
         COMPONENTES
     --}}
-    <x-navbar />
+    <x-navbar />{{-- Barra de navegación principal --}}
 
-    <x-marquee />
+    <x-marquee />{{-- Banda de texto desplazándose (avisos/ofertas) --}}
 
-    <x-carrusel/>
+    <x-carrusel/>{{-- Slider/banner principal de imágenes destacadas --}}
     
 
-    {{-- Banner de Castlevania Mejoado --}}
+   {{-- ══════════════════════════════════════════════════════════
+        SECCIÓN: Banner promocional de Castlevania
+        Hero de dos columnas: texto/badges/CTA (izquierda) + imagen (derecha)
+        Fondo: degradado radial oscuro + textura de ladrillos con opacidad
+    ══════════════════════════════════════════════════════════ --}}
 <div class="container mt-4 p-5 rounded-4 position-relative overflow-hidden" 
      style="background: radial-gradient(circle, #2a2a2a, #1a1a1a); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     
@@ -77,9 +99,12 @@
     <div class="position-absolute top-0 start-0 w-100 h-100" 
          style="background-image: url('{{ asset('images/brick_texture.png') }}'); opacity: 0.1; background-size: cover;"></div>
 
+    {{-- position-relative z-1 → eleva el contenido sobre la textura --}}
     <div class="row align-items-center position-relative z-1">
         
-        {{-- Columna del texto --}}
+        {{-- COLUMNA IZQUIERDA: badges + título + descripción + CTA
+            col-lg-7: ocupa 7/12 en desktop (mayor que la imagen)
+            mb-4 mb-lg-0: margen inferior en móvil, eliminado en desktop --}}
         <div class="col-12 col-lg-7 mb-4 mb-lg-0">
             
             {{-- Sección de Tags/Etiquetas --}}
@@ -162,7 +187,11 @@
     </div>
 
     <br/>
-    {{-- ACA MODIFICAMOS EL CARRUSEL DE DESTACADOS-----  --}}
+    {{-- ══════════════════════════════════════════════════════════
+        SECCIÓN: Carrusel de Productos Destacados
+        Fila horizontal con scroll automático (ida y vuelta).
+        $productos_destacados: colección pasada desde el controlador.
+    ══════════════════════════════════════════════════════════ --}}
     <div class="container mt-5 bm-5">
         {{-- 
         TÍTULO
@@ -187,6 +216,8 @@
             LOOP: itera sobre $productos_destacados
              --}}
             @foreach($productos_destacados as $producto)
+            {{-- col-10: 1 card visible en móvil + borde de la siguiente
+                col-md-3 col-lg-3: 4 cards visibles en tablet/desktop    --}}
             <div class="col-10 col-md-3 col-lg-3 mb-3">
                 {{-- 
                     Componente reutilizable de tarjeta de producto.
@@ -199,11 +230,13 @@
         </div>
     </div>
 
-    {{-- 
-    SECCIÓN: Carrusel de Consolas
-    Muestra una fila horizontal desplazable de productos tipo "consola".
-    Usa Bootstrap 5 + íconos de Bootstrap Icons + componente Blade personalizado.
---}}
+    {{-- ══════════════════════════════════════════════════════════
+        SECCIÓN: Carrusel de Consolas
+        Igual al de destacados pero filtra por $consolas
+        e incluye link "Ver más" → /tienda/consola
+        La clase carrusel-tema-oscuro es la que selecciona el JS
+        para aplicar el scroll automático.
+    ══════════════════════════════════════════════════════════ --}}
 
 <div class="container mt-5 bm-5">
     {{-- 

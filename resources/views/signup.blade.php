@@ -1,3 +1,9 @@
+{{-- ============================================================
+    PÁGINA: Registro de Usuario
+    Formulario para crear una nueva cuenta en Catacumbas.
+    Incluye validación de contraseñas en tiempo real (JS vanilla).
+    ⚠ Aún sin conexión a base de datos — el botón simula el registro.
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
     <head>

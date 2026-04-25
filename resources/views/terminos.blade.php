@@ -1,3 +1,8 @@
+{{-- ============================================================
+    PÁGINA: Términos y Condiciones
+    Vista estática que muestra los términos legales de uso del sitio.
+    No requiere datos del controlador (sin variables Blade).
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>

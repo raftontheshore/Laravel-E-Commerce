@@ -1,3 +1,10 @@
+{{-- ============================================================
+    PÁGINA: Iniciar Sesión
+    Formulario de autenticación de usuarios.
+    Incluye validación de campos vacíos en JS vanilla.
+    ⚠ Sin conexión a BD aún — el botón simula el login
+      con validación básica antes de redirigir al home.
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>

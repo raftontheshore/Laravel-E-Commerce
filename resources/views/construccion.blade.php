@@ -1,3 +1,11 @@
+{{-- ============================================================
+    PÁGINA: En Construcción
+    Pantalla placeholder para secciones del sitio aún no listas.
+    Incluye música de fondo con manejo del autoplay del navegador.
+    Layout de dos columnas: GIF animado + texto informativo.
+    No requiere datos del controlador.
+============================================================ --}}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,3 +1,10 @@
+{{-- ============================================================
+    PÁGINA: Confirmación de mensaje enviado
+    Pantalla de éxito que se muestra después de que el usuario
+    envía correctamente el formulario de contacto.
+    No requiere datos del controlador ni navbar/footer
+    (página de transición minimalista).
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>

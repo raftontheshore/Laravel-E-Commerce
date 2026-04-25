@@ -1,3 +1,10 @@
+{{-- ============================================================
+    PÁGINA: Comercialización
+    Página informativa estática con dos bloques principales:
+    1. Cards resumen (envíos, pagos, garantía)
+    2. FAQ en acordeón (preguntas frecuentes)
+    No requiere datos del controlador.
+============================================================ --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
