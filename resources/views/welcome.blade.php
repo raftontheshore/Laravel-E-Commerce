@@ -135,24 +135,76 @@
         </div>
     </div>
 
-    {{-- CARRUCEL DE CONSOLAS  --}}
-    <div class="container mt-5 bm-5">
-        <div class="d-flex justify-content-between align-items-end mb-4">
-            
-            <h3 class="text-white fw-bold m-0" style="font-family: 'Oswald', sans-serif;">Consolas</h3>
-            
-            <a href="/tienda/consola" class="text-decoration-none d-flex align-items-center" style="color: #aaa; font-size: 0.95rem; transition: 0.3s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#aaa'">
-                Ver más <i class="bi bi-arrow-right ms-2"></i>
-            </a>
-            
-        </div>
-        
-        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro">
+    {{-- 
+    SECCIÓN: Carrusel de Consolas
+    Muestra una fila horizontal desplazable de productos tipo "consola".
+    Usa Bootstrap 5 + íconos de Bootstrap Icons + componente Blade personalizado.
+--}}
+
+<div class="container mt-5 bm-5">
+    {{-- 
+        ENCABEZADO DE SECCIÓN
+        - justify-content-between: separa el título (izquierda) y el link (derecha)
+        - align-items-end: alinea ambos elementos al fondo
+        - mb-4: margen inferior antes del carrusel
+    --}}
+    <div class="d-flex justify-content-between align-items-end mb-4">
+
+        {{-- TÍTULO de la sección, estilo Oswald, sin margen --}}
+        <h3 class="text-white fw-bold m-0" style="font-family: 'Oswald', sans-serif;">
+            Consolas
+        </h3>
+
+        {{-- 
+            LINK "Ver más"
+            - Redirige a /tienda/consola
+            - Cambia de color gris (#aaa) a blanco al hacer hover (via onmouseover/onmouseout)
+            - Muestra una flecha a la derecha usando Bootstrap Icons (bi-arrow-right)
+        --}}
+        <a href="/tienda/consola" 
+           class="text-decoration-none d-flex align-items-center" 
+           style="color: #aaa; font-size: 0.95rem; transition: 0.3s;"
+           onmouseover="this.style.color='#ffffff'" 
+           onmouseout="this.style.color='#aaa'">
+            Ver más <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+
+    </div>
+
+    {{-- 
+        CARRUSEL HORIZONTAL
+        - flex-nowrap: evita que las cards salten a una nueva línea
+        - overflow-x-auto: habilita el scroll horizontal cuando hay muchos productos
+        - pb-3: padding inferior para que no se corte la sombra/scroll
+        - carrusel-tema-oscuro: clase CSS 
+    --}}
+    <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro">
+
+            {{-- 
+                LOOP BLADE: itera sobre la colección $consolas
+                pasada desde el controlador a la vista.
+                Por cada consola renderiza una card de producto.
+
+                Anchos responsive de cada columna:
+                - col-10: en móvil ocupa el 83% del ancho (se ve 1 card y un poco de la siguiente)
+                - col-md-3: en tablet/desktop ocupa 25% (4 cards visibles por fila)
+                - col-lg-3: igual en pantallas grandes
+                - mb-3: margen inferior entre filas si llegaran a saltar
+            --}}
             @foreach($consolas as $consola)
-            <div class="col-10 col-md-3 col-lg-3 mb-3">
-                <x-carta-producto :producto="$consola" />
-            </div>  
-            @endforeach 
+                <div class="col-10 col-md-3 col-lg-3 mb-3">
+
+                    {{-- 
+                        COMPONENTE BLADE: <x-carta-producto>
+                        Componente reutilizable que recibe un producto y renderiza
+                        su card (imagen, nombre, precio, etc.)
+                        :producto="$consola" → pasa el objeto consola como prop
+                    --}}
+                    <x-carta-producto :producto="$consola" />
+
+                </div>
+            @endforeach
+
         </div>
     </div>
 
