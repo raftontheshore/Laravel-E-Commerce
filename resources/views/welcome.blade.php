@@ -143,7 +143,14 @@
         - mt-4:      margen superior en móvil (separa del texto al apilarse)
         - mt-lg-0:   elimina ese margen en desktop (ya están lado a lado)--}}
         <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
-            {{-- - asset('images/castel.jpg'): genera la URL al archivo ubicado en /public/images/castel.jpg --}}
+            {{-- - asset('images/castel.jpg'): genera la URL al archivo ubicado en /public/images/castel.jpg
+             Clases Bootstrap:
+            - img-fluid:   la imagen escala con su contenedor, nunca se desborda
+            - rounded-3:   bordes redondeados nivel 3 (~0.5rem)
+            - shadow-lg:   sombra grande para efecto de profundidad/elevación
+            - mx-auto:     centra horizontalmente (margen auto izquierda y derecha)
+            - d-block:     necesario para que mx-auto funcione (img es inline por defecto)
+            --}}
             <img src="{{ asset('images/castel.jpg') }}" 
                  class="img-fluid rounded-3 shadow-lg mx-auto d-block" 
                  style="max-height: 450px; transform: rotate(0deg);" 
@@ -157,12 +164,35 @@
     <br/>
     {{-- ACA MODIFICAMOS EL CARRUSEL DE DESTACADOS-----  --}}
     <div class="container mt-5 bm-5">
+        {{-- 
+        TÍTULO
+            - text-white / fw-bold: blanco y negrita
+            - mb-4: separa el título del carrusel
+            - font-family Oswald: tipografía condensada
+            --}}
         <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
 
+        {{-- 
+        CARRUSEL HORIZONTAL
+        - flex-nowrap: los items no saltan de línea, permanecen en fila
+        - overflow-x-auto: habilita scroll horizontal cuando hay muchos productos
+        - pb-3: padding inferior para que la scrollbar no tape las cards
+        - id="carrusel-oscuro": identificador para aplicar estilos CSS
+          personalizados (ej: scrollbar con tema oscuro)
+        - scrollbar-width: thin → scrollbar más delgada (Firefox)
+          en Chrome se estiliza vía CSS ::-webkit-scrollbar
+     --}}
         <div class="row flex-nowrap overflow-x-auto pb-3" id="carrusel-oscuro" style="scrollbar-width: thin;">
-            {{-- aca llama a carta producto --}}
+            {{-- aca llama a carta producto
+            LOOP: itera sobre $productos_destacados
+             --}}
             @foreach($productos_destacados as $producto)
             <div class="col-10 col-md-3 col-lg-3 mb-3">
+                {{-- 
+                    Componente reutilizable de tarjeta de producto.
+                    Recibe el objeto $producto y renderiza imagen, nombre, precio, badges, etc.
+                    Archivo: resources/views/components/carta-producto.blade.php
+                --}}
                 <x-carta-producto :producto="$producto" />
             </div>  
             @endforeach 
@@ -245,6 +275,8 @@
     {{-- SCRIPT PARA QUE LOS CARRUSELES SE MUEVAN SOLOS (EFECTO VA Y VIENE) --}}
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                //Selecciona TODOS los elementos del DOM que tengan la clase CSS 'carrusel-tema-oscuro'
+                // y los almacena en la variable 'carruseles'.
                 const carruseles = document.querySelectorAll('.carrusel-tema-oscuro');
 
                 carruseles.forEach(carrusel => {
