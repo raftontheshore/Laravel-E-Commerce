@@ -1,4 +1,25 @@
+{{--
+    ============================================================
+    COMPONENTE: Sidebar de Filtros (cat-sidebar)
+    ------------------------------------------------------------
+    Panel lateral del catálogo de productos. Permite filtrar
+    por categoría, marca, condición, orden y rango de precio.
+    Recibe: $categoria (string con la categoría activa actual)
+
+    Secciones actualmente desactivadas (comentadas en HTML):
+      - Header con botón de cerrar
+      - Buscador de texto
+      - Filtro por marca / consola (condicional por $categoria)
+      - Filtro por condición
+      - Ordenar por
+      - Rango de precio
+    ============================================================
+--}}
+
 <style>
+    /* --- Contenedor principal del sidebar ---
+       Fondo levemente más claro que el negro base para diferenciarse
+       del fondo de página, con borde y esquinas redondeadas. */
     .cat-sidebar {
         background: #181818;
         border: 1px solid #303030;
@@ -7,6 +28,9 @@
         font-family: var(--font-sans, system-ui, sans-serif);
     }
 
+    /* --- Encabezado del sidebar ---
+       Título a la izquierda y un ícono de cerrar (×) a la derecha.
+       border-bottom separa visualmente el header del contenido. */
     .cat-sidebar .sidebar-header {
         display: flex;
         align-items: center;
@@ -22,16 +46,18 @@
         text-transform: uppercase;
         color: #fff;
     }
-
+    /* Ícono de cerrar: aclara en hover como feedback visual */
     .cat-sidebar .sidebar-header i {
         color: #555;
         cursor: pointer;
         font-size: 13px;
         transition: color 0.15s;
     }
-
     .cat-sidebar .sidebar-header i:hover { color: #ccc; }
 
+    /* --- Buscador interno del sidebar ---
+       :focus-within ilumina el borde cuando el input está enfocado,
+       sin necesidad de JS. */
     .cat-sidebar .sidebar-search {
         display: flex;
         align-items: center;
@@ -56,7 +82,9 @@
     }
     .cat-sidebar .sidebar-search input::placeholder { color: #555; }
 
-    /* Section label — brighter, more visible */
+    /* --- Etiqueta de sección (ej: "Categoría", "Marca") ---
+       El ::after dibuja una línea horizontal que se estira para
+       ocupar el espacio restante, como un separador integrado. */
     .cat-sidebar .filter-label {
         font-size: 10px;
         font-weight: 700;
@@ -75,9 +103,12 @@
         background: #2a2a2a;
     }
 
+    /* Espaciado uniforme entre secciones de filtro */
     .cat-sidebar .filter-section { margin-bottom: 22px; }
 
-    /* Pills — inactive: more contrast */
+    /* --- Pills de filtro (inactivas) ---
+       Estilo discreto con fondo oscuro. white-space: nowrap evita
+       que el texto se parta en dos líneas. */
     .cat-sidebar .filter-pill {
         display: inline-block;
         font-size: 12px;
@@ -96,8 +127,9 @@
         color: #fff;
         border-color: #555;
     }
-
-    /* Pills — active */
+    /* --- Pills de filtro (activas) ---
+       Rojo de marca tanto en fondo como en borde para resaltar
+       la selección actual. */
     .cat-sidebar .filter-pill.active {
         background: #c0392b;
         border-color: #c0392b;
@@ -109,7 +141,9 @@
         border-color: #e74c3c;
     }
 
-    /* Price inputs */
+    /* --- Inputs de rango de precio ---
+       -moz-appearance y -webkit-appearance eliminan las flechas
+       nativas de los inputs numéricos en Firefox y Chrome/Safari. */
     .cat-sidebar .price-input {
         background: #222;
         border: 1px solid #333;
@@ -128,6 +162,7 @@
     .cat-sidebar .price-input:focus { border-color: #666; }
     .cat-sidebar .price-input::placeholder { color: #444; }
 
+    /* Guión separador entre los inputs de precio mínimo y máximo */
     .cat-sidebar .price-sep {
         color: #444;
         font-size: 13px;
@@ -137,22 +172,21 @@
 
 <aside class="cat-sidebar">
 
+    {{-- ── Buscador de texto (actualmente desactivado) ──────────────
+    --}}
     <!--
-    {{-- Header --}}
     <div class="sidebar-header">
         <span>Filtrar</span>
-        <i class="fas fa-times"></i> 
+        <i class="fas fa-times"></i>
     </div>
-    
-   
-    {{-- Search --}}
     <div class="sidebar-search">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Buscar...">
     </div>
     -->
 
-    {{-- Categoría --}}
+    {{-- Filtro por categoría. Marca como 'active' la pill que coincide
+         con $categoria; 'consola' y 'todos' comparten el mismo estado activo. --}}
     <div class="filter-section">
         <div class="filter-label">Categoría</div>
         <div class="d-flex flex-wrap gap-2">
@@ -171,8 +205,11 @@
         </div>
     </div>
 
+    {{-- ── Filtros adicionales (actualmente desactivados) ───────────
+         Incluyen: Marca/Consola (condicional por $categoria),
+         Condición, Ordenar por, y Rango de precio.
+    --}}
     <!--
-    {{-- Marca (consolas) --}}
     @if(strtolower($categoria) == 'consola' || strtolower($categoria) == 'todos')
     <div class="filter-section">
         <div class="filter-label">Marca</div>
@@ -185,7 +222,6 @@
     </div>
     @endif
 
-    {{-- Consola (juegos) --}}
     @if(strtolower($categoria) == 'juego')
     <div class="filter-section">
         <div class="filter-label">Consola</div>
@@ -199,7 +235,6 @@
     </div>
     @endif
 
-    {{-- Condición --}}
     <div class="filter-section">
         <div class="filter-label">Condición</div>
         <div class="d-flex flex-wrap gap-2">
@@ -209,7 +244,6 @@
         </div>
     </div>
 
-    {{-- Ordenar por --}}
     <div class="filter-section">
         <div class="filter-label">Ordenar por</div>
         <div class="d-flex flex-wrap gap-2">
@@ -221,7 +255,6 @@
         </div>
     </div>
 
-    {{-- Rango de precio --}}
     <div class="filter-section mb-0">
         <div class="filter-label">Rango de precio</div>
         <div class="d-flex align-items-center gap-2">
@@ -231,4 +264,5 @@
         </div>
     </div>
     -->
+
 </aside>

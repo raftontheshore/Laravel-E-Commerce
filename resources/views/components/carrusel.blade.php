@@ -1,7 +1,30 @@
+{{--
+    ============================================================
+    COMPONENTE: Carrusel principal (carouselPrincipal)
+    ------------------------------------------------------------
+    Hero banner de la página de inicio. Muestra 3 slides
+    promocionales con imagen de fondo, overlay degradado y
+    una caja de texto con título, descripción y CTA.
+
+    Cada slide tiene su propia paleta de color:
+      - Slide 1 (El Paraíso del Vicio): rojo  #c60000
+      - Slide 2 (Regresa a Kanto):      amarillo #ffd70f
+      - Slide 3 (Metal Gear Solid):     rojo claro #ff4444
+
+    Estructura de cada slide:
+      <img>              → imagen de fondo
+      <div> overlay      → degradado oscuro izq→der
+      <div> caption      → caja de texto con título, párrafo y botón
+    ============================================================
+--}}
+
 <div class="clearfix"></div>
 <div class="container mt-5">
     <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
-        {{-- ── Indicadores (puntitos) ───────────────────────────────── --}}
+
+        {{-- Indicadores (puntitos de posición).
+             data-bs-slide-to conecta cada botón con su slide por índice.
+             El primero arranca con class="active" y aria-current="true". --}}
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselPrincipal"
                     data-bs-slide-to="0" class="active"
@@ -11,15 +34,22 @@
             <button type="button" data-bs-target="#carouselPrincipal"
                     data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        {{-- ── Slides ──────────────────────────────────────────────── --}}
+
+        {{-- Contenedor de slides. border-radius + overflow: hidden
+             redondea las esquinas sin necesidad de aplicarlo a cada imagen. --}}
         <div class="carousel-inner" style="border-radius: 12px; overflow: hidden;">
-            {{-- SLIDE 1 – El Paraíso del Vicio --}}
+
+            {{-- ── SLIDE 1: El Paraíso del Vicio ── --}}
             <div class="carousel-item active" style="position: relative;">
+
                 <img src="{{ asset('images/principal.png') }}"
                      class="d-block w-100 carrusel-img"
                      alt="El Paraíso del Vicio"
                      style="object-fit: cover; min-height: 400px;">
-                {{-- Overlay degradado izq → der más suave --}}
+
+                {{-- Overlay: degradado de izquierda a derecha que oscurece
+                     el lado donde está la caja de texto y se desvanece
+                     hacia la derecha para no tapar la imagen. --}}
                 <div style="
                     position: absolute; inset: 0;
                     background: linear-gradient(
@@ -29,6 +59,10 @@
                         rgba(0,0,0,0) 100%
                     );
                 "></div>
+
+                {{-- Caja de texto: centrada verticalmente con top+transform.
+                     backdrop-filter: blur() da efecto de vidrio esmerilado.
+                     border-left en el color del slide identifica visualmente cada promo. --}}
                 <div class="carousel-caption text-start caja-texto-movil" style="
                     top: 50%; transform: translateY(-50%);
                     bottom: auto; left: 8%; right: auto;
@@ -57,13 +91,16 @@
                     ">Explorar Catálogo</a>
                 </div>
             </div>
-            {{-- SLIDE 2 – Regresa a Kanto --}}
+
+            {{-- ── SLIDE 2: Regresa a Kanto ── --}}
             <div class="carousel-item" style="position: relative;">
+
                 <img src="{{ asset('images/PokemonClassic_Copia2.jpg') }}"
                      class="d-block w-100 carrusel-img"
                      alt="Regresa a Kanto"
                      style="object-fit: cover; min-height: 400px;">
-                {{-- Overlay degradado izq → der más suave --}}
+
+                {{-- Mismo overlay que slide 1; la paleta cambia solo en la caja --}}
                 <div style="
                     position: absolute; inset: 0;
                     background: linear-gradient(
@@ -73,6 +110,10 @@
                         rgba(0,0,0,0) 100%
                     );
                 "></div>
+
+                {{-- Caja con acento amarillo Pokémon.
+                     El botón usa texto oscuro (#1a1a1a) porque
+                     el fondo amarillo no da suficiente contraste con blanco. --}}
                 <div class="carousel-caption text-start caja-texto-movil" style="
                     top: 50%; transform: translateY(-50%);
                     bottom: auto; left: 8%; right: auto;
@@ -102,13 +143,15 @@
                     ">Ver Oferta</a>
                 </div>
             </div>
-            {{-- SLIDE 3 – Metal Gear Solid --}}
+
+            {{-- ── SLIDE 3: Metal Gear Solid ── --}}
             <div class="carousel-item" style="position: relative;">
+
                 <img src="{{ asset('images/mgs.jpg') }}"
                      class="d-block w-100 carrusel-img"
                      alt="Metal Gear Solid disponible"
                      style="object-fit: cover; min-height: 400px;">
-                {{-- Overlay degradado izq → der más suave --}}
+
                 <div style="
                     position: absolute; inset: 0;
                     background: linear-gradient(
@@ -118,6 +161,10 @@
                         rgba(0,0,0,0) 100%
                     );
                 "></div>
+
+                {{-- Caja con acento rojo claro (#ff4444), ligeramente más
+                     brillante que el rojo de marca para contrastar con la
+                     imagen oscura de MGS. --}}
                 <div class="carousel-caption text-start caja-texto-movil" style="
                     top: 50%; transform: translateY(-50%);
                     bottom: auto; left: 8%; right: auto;
@@ -146,17 +193,21 @@
                     ">Comprar Ahora</a>
                 </div>
             </div>
+
         </div>{{-- /carousel-inner --}}
-        {{-- ── Flechas de navegación ajustadas a los bordes ─────────── --}}
+
+        {{-- Flechas de navegación manual. width: 5% las achica para que
+             no tapen la caja de texto ni compitan con el contenido visual. --}}
         <button class="carousel-control-prev" type="button"
                 data-bs-target="#carouselPrincipal" data-bs-slide="prev" style="width: 5%;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+            <span class="visually-hidden">Anterior</span>{{-- Solo visible para lectores de pantalla --}}
         </button>
         <button class="carousel-control-next" type="button"
                 data-bs-target="#carouselPrincipal" data-bs-slide="next" style="width: 5%;">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
         </button>
+
     </div>{{-- /carousel --}}
 </div>{{-- /container --}}

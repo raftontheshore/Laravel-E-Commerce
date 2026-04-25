@@ -1,3 +1,18 @@
+{{--
+    ============================================================
+    COMPONENTE: Footer (cat-footer)
+    ------------------------------------------------------------
+    Pie de página global del sitio. Incluye:
+      - Identidad de marca (logo + nombre + tagline)
+      - Descripción breve de la tienda
+      - Información de contacto
+      - Links a redes sociales
+      - Barra inferior con copyright y links legales
+    ============================================================
+--}}
+
+{{-- Esta parte la dejamos por lo iconos de redes sociales --}}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,12 +26,9 @@
 </head>
 
 <style>
-    @font-face {
-        font-family: 'SystemFont';
-        src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
-        font-display: swap;
-    }
-
+    /* --- Contenedor principal del footer ---
+       Fondo casi negro con borde superior.
+       margin-top: 4rem garantiza respiración visual con la página. */
     .cat-footer {
         background-color: #0d0d0d;
         border-top: 1px solid #2a2a2a;
@@ -26,7 +38,10 @@
         margin-top: 4rem;
     }
 
-    /* Brand */
+    /* --- Bloque de marca ---
+       Logo + nombre en la misma línea con gap. El tagline va
+       debajo con un padding-left que lo alinea visualmente
+       con el texto del nombre (42px = ancho del logo + gap). */
     .cat-footer .footer-brand {
         display: flex;
         align-items: center;
@@ -38,6 +53,7 @@
         height: 32px;
         object-fit: contain;
     }
+    /* Nombre en fuente retro personalizada, todo en mayúsculas y rojo de marca */
     .cat-footer .footer-brand-name {
         font-family: 'SystemFont', monospace;
         font-size: 18px;
@@ -46,15 +62,19 @@
         color: #c0392b;
         line-height: 1;
     }
+    /* Subtítulo muy discreto, alineado debajo del nombre (no del logo) */
     .cat-footer .footer-tagline {
         font-size: 10px;
         color: #333;
         text-transform: uppercase;
         letter-spacing: 1.8px;
         margin-top: 2px;
-        padding-left: 42px;
+        padding-left: 42px; /* 32px logo + 10px gap */
     }
 
+    /* --- Títulos de sección ---
+       Pequeños, en mayúsculas y blancos para contrastar con
+       el texto de contenido que es gris oscuro (#555). */
     .cat-footer h6 {
         color: #fff;
         font-size: 11px;
@@ -70,6 +90,9 @@
         font-size: 13px;
     }
 
+    /* --- Ítems de contacto ---
+       Flex para alinear el ícono con el texto. flex-shrink: 0
+       evita que el ícono se comprima si el texto es largo. */
     .cat-footer .contact-item {
         display: flex;
         align-items: flex-start;
@@ -77,6 +100,8 @@
         margin-bottom: 7px;
         color: #555;
     }
+    /* Íconos de contacto en rojo de marca, con margin-top para
+       alinearlos con la primera línea del texto */
     .cat-footer .contact-item i {
         color: #c0392b;
         font-size: 12px;
@@ -84,6 +109,9 @@
         flex-shrink: 0;
     }
 
+    /* --- Botones de redes sociales ---
+       Cuadrados redondeados con fondo oscuro. En hover se pintan
+       del rojo de marca (fondo + borde + ícono). */
     .cat-footer .social-link {
         display: inline-flex;
         align-items: center;
@@ -104,6 +132,10 @@
         color: #fff;
     }
 
+    /* --- Barra inferior (copyright + links legales) ---
+       flex con justify-content-between para separar el copyright
+       a la izquierda y los links a la derecha. flex-wrap permite
+       que en móvil se apilen verticalmente. */
     .cat-footer .footer-bottom {
         border-top: 1px solid #1a1a1a;
         padding-top: 18px;
@@ -126,11 +158,14 @@
 
 <footer class="cat-footer">
     <div class="container py-5">
-        {{-- Le agregamos justify-content-between para que en PC se separen elegante --}}
+
+        {{-- Grilla de 4 columnas. justify-content-between distribuye
+             el espacio sobrante entre columnas en pantallas grandes. --}}
         <div class="row g-4 justify-content-between">
 
-            {{-- Brand --}}
-            {{-- CAMBIO: col-md-4 para iPad (ocupa la mitad), col-lg-3 para PC (ocupa un cuarto) --}}
+            {{-- COLUMNA 1: Identidad de marca
+                 col-md-4: ocupa la mitad en tablet (iPad)
+                 col-lg-3: ocupa un cuarto en desktop --}}
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer-brand">
                     <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas logo">
@@ -139,7 +174,7 @@
                 <div class="footer-tagline">Retro gaming store</div>
             </div>
 
-            {{-- About --}}
+            {{-- COLUMNA 2: Descripción de la tienda --}}
             <div class="col-12 col-md-3">
                 <h6>Sobre Nosotros</h6>
                 <p>
@@ -148,7 +183,8 @@
                 </p>
             </div>
 
-            {{-- Contact --}}
+            {{-- COLUMNA 3: Información de contacto
+                 Cada ítem usa .contact-item para alinear ícono + texto --}}
             <div class="col-12 col-md-3">
                 <h6>Contactanos</h6>
                 <div class="contact-item">
@@ -165,7 +201,9 @@
                 </div>
             </div>
 
-            {{-- Social --}}
+            {{-- COLUMNA 4: Links a redes sociales
+                 target="_blank" abre en pestaña nueva.
+                 aria-label es importante para accesibilidad (lectores de pantalla). --}}
             <div class="col-12 col-md-3">
                 <h6>Redes Sociales</h6>
                 <div class="d-flex gap-2">
@@ -183,7 +221,8 @@
 
         </div>
 
-        {{-- Bottom bar --}}
+        {{-- Barra inferior: copyright dinámico con date('Y') para no
+             tener que actualizarlo manualmente cada año + links legales --}}
         <div class="footer-bottom">
             <span>&copy; {{ date('Y') }} Catacumbas. Todos los derechos reservados.</span>
             <div class="d-flex gap-3">
@@ -191,5 +230,6 @@
                 <a href="/terminos">Términos De Servicio</a>
             </div>
         </div>
+
     </div>
 </footer>
