@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- Bootstrap 5.3.2 desde CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {{-- Favicon del sitio, generado con asset() para URL absoluta --}}
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
     <title>Términos y Condiciones - Catacumbas</title>
+
+    {{-- Bootstrap Icons (íconos SVG via CDN) --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ 
+    {{-- Hoja de estilos global del proyecto --}}
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
     <style>
+        /* ── Fuente personalizada pixel art ──────────────────────
+           Carga la fuente 'SystemFont' desde /public/fonts/
+           font-display: swap → muestra texto con fuente del sistema
+           mientras carga la custom (mejor rendimiento/UX)        */
         @font-face {
             font-family: 'SystemFont';
             src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
             font-display: swap;
         }
 
+        /* ── Base del documento ───────────────────────────────────
+           - min-height: 100vh → ocupa al menos toda la pantalla
+           - display flex + flex-direction column → layout vertical
+             permite que el contenido principal crezca y el footer
+             quede siempre al fondo (sticky footer pattern)
+           - color: #ccc → texto gris claro por defecto            */
         html, body {
             background-color: #111 !important;
             min-height: 100vh;
@@ -24,7 +41,11 @@
             color: #ccc;
         }
 
-        /* ── Page layout ──────────────────────────────────────── */
+        /* ── Page layout ────────────────────────────────────────
+        - flex: 1 → crece para ocupar todo el espacio disponible
+             entre navbar y footer
+           - align-items / justify-content: center → centra la card horizontal y verticalmente
+           - padding: 48px arriba/abajo, 16px laterales            */
         .terms-wrapper {
             flex: 1;
             display: flex;
@@ -33,7 +54,9 @@
             padding: 48px 16px 64px;
         }
 
-        /* ── Card ─────────────────────────────────────────────── */
+        /* ── Card ─────────────────────────────────────────────── 
+         - Borde sutil (#262626) para delimitar sin ser agresivo
+           - max-width: 760px → ancho de lectura óptimo para texto */
         .terms-card {
             background: #161616;
             border: 1px solid #262626;
@@ -43,7 +66,9 @@
             max-width: 760px;
         }
 
-        /* ── Brand header ─────────────────────────────────────── */
+        /* ── Brand header ─────────────────────────────────────── 
+         Centra logo + nombre + subtítulo verticalmente
+           margin-bottom: 36px separa del divisor*/
         .terms-brand {
             display: flex;
             flex-direction: column;
@@ -72,14 +97,17 @@
             letter-spacing: 0.3px;
         }
 
-        /* ── Divider ──────────────────────────────────────────── */
+        /* ── Divider ──────────────────────────────────────────── 
+        Línea horizontal sutil (#222) entre el header y el contenido*/
         .terms-divider {
             border: none;
             border-top: 1px solid #222;
             margin: 0 0 36px;
         }
 
-        /* ── Page title ───────────────────────────────────────── */
+        /* ── Page title ───────────────────────────────────────── 
+        - terms-title: 22px, gris claro (#eee), semi-bold
+           - terms-date: 12px, gris oscuro (#444) → fecha discreta */
         .terms-title {
             font-size: 22px;
             font-weight: 600;
@@ -93,7 +121,14 @@
             margin-bottom: 36px;
         }
 
-        /* ── Sections ─────────────────────────────────────────── */
+        /* ── Sections ─────────────────────────────────────────── 
+        Cada sección tiene:
+           - margin/padding-bottom: 28px de separación
+           - border-bottom: 1px solid #1e1e1e → divisor entre secciones
+           - :last-of-type → la última sección no tiene borde ni margen
+
+           h2: 13px, uppercase, rojo (#c0392b), letter-spacing 1.2px
+           p / li: 14px, blanco (#fff), line-height 1.8 para legibilidad*/
         .terms-section {
             margin-bottom: 28px;
             padding-bottom: 28px;
@@ -154,23 +189,26 @@
 <body>
     <x-navbar/>
 
+    {{-- Wrapper que centra y contiene la card de términos --}}
     <div class="terms-wrapper">
         <div class="terms-card">
 
-            {{-- Brand --}}
+            {{-- Brand HEADER DE MARCA: logo + nombre + subtítulo --}} 
             <div class="terms-brand">
                 <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas">
                 <span class="terms-brand-name">Catacumbas</span>
                 <p class="terms-brand-sub">Leé con atención antes de usar el sitio</p>
             </div>
 
+            {{-- Línea divisora entre header y contenido --}}
             <hr class="terms-divider">
 
-            {{-- Title --}}
+            {{-- {{-- Título de la página y fecha de última actualización --}}
             <h1 class="terms-title">Terminos y condiciones de uso</h1>
             <p class="terms-date">Última actualización: abril de 2026</p>
 
-            {{-- Sections --}}
+           {{-- ── SECCIONES DE CONTENIDO LEGAL ─────────────────── --}}
+
             <div class="terms-section">
                 <h2>1. Aceptacion de los terminos</h2>
                 <p>Al acceder y utilizar la plataforma de Catacumbas (en adelante, "el Sitio"), usted acepta quedar vinculado por los presentes Términos y Condiciones de Uso. Si no está de acuerdo con alguna parte de estos términos, le rogamos que se abstenga de utilizar el Sitio.</p>
@@ -237,10 +275,11 @@
 
         </div>
     </div>
+    {{-- Botón flotante para volver al inicio de la página --}}
      <x-volverArriba />
      <x-footer/>
 
-
+     {{-- Bootstrap JS (incluye Popper para modales, dropdowns, etc.) --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
