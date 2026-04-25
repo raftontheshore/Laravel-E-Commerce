@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{-- Bootstrap 5.3.2, Bootstrap Icons, estilos globales --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
     <title>Política de Privacidad - Catacumbas</title>
@@ -10,12 +12,17 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
     <style>
+        /* ── Fuente pixel art personalizada ──────────────────────
+           Misma fuente que en Términos y Condiciones
+           font-display: swap → muestra fuente del sistema
+           mientras carga la custom (mejor rendimiento)           */
         @font-face {
             font-family: 'SystemFont';
             src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
             font-display: swap;
         }
-
+        /* ── Base: fondo negro, layout vertical full-height ──────
+           Igual que en terms — sticky footer pattern             */
         html, body {
             background-color: #111 !important;
             min-height: 100vh;
@@ -25,6 +32,8 @@
         }
 
         /* ── Page layout ──────────────────────────────────────── */
+        /* ── Wrapper: centra la card en la página ────────────────
+           flex:1 → ocupa todo el espacio entre navbar y footer   */
         .privacy-wrapper {
             flex: 1;
             display: flex;
@@ -34,6 +43,8 @@
         }
 
         /* ── Card ─────────────────────────────────────────────── */
+        /*Idéntica a .terms-card: fondo #161616, borde #262626
+           max-width: 760px → ancho óptimo de lectura             */
         .privacy-card {
             background: #161616;
             border: 1px solid #262626;
@@ -71,6 +82,9 @@
             text-align: center;
             letter-spacing: 0.3px;
         }
+        /* ── Divisor y títulos ───────────────────────────────────
+           Misma lógica que terms: línea sutil #222,
+           título 22px #eee, fecha 12px #777                      */
 
         /* ── Divider ──────────────────────────────────────────── */
         .privacy-divider {
@@ -94,6 +108,22 @@
         }
 
         /* ── Sections ─────────────────────────────────────────── */
+        /* 
+           Igual que terms-section:
+           - margin/padding-bottom: 28px entre secciones
+           - border-bottom: 1px solid #1e1e1e
+           - :last-of-type sin borde ni margen
+
+           h2: 13px, rojo #c0392b, uppercase (títulos principales)
+
+           h3: 11px, gris #888, uppercase               
+               → SUB-SECCIONES dentro de una sección
+               (novedad respecto a Términos y Condiciones)
+               Ej: "Datos personales" y "Datos de uso"
+               dentro de "Datos que recopilamos"
+
+           p / li: 14px blanco, line-height 1.8              
+           strong: color #e0e0e0 para destacar términos clave     */
         .privacy-section {
             margin-bottom: 28px;
             padding-bottom: 28px;
@@ -152,6 +182,14 @@
         }
 
         /* ── Cookie type table ────────────────────────────────── */
+        /* 
+           Tarjetas informativas para cada tipo de cookie.
+           Fondo #1c1c1c, borde #252525, border-radius: 8px
+           
+           Estructura interna de cada bloque:
+           .cookie-block-title → nombre de la cookie (12px, #ddd, bold)
+           .cookie-block-meta  → tipo + quien la administra (12px, #777)
+           .cookie-block-desc  → descripción funcional (13px, #aaa)    */
         .cookie-block {
             background: #1c1c1c;
             border: 1px solid #252525;
@@ -181,6 +219,11 @@
         }
 
         /* ── Retention table ──────────────────────────────────── */
+        /* 
+           Tarjetas para plazos de retención de datos.
+           Mismo estilo visual que cookie-block pero con:
+           .retention-block-title  → categoría del dato (12px, #ddd)
+           .retention-block-detail → plazo de retención (13px, #aaa)  */
         .retention-block {
             background: #1c1c1c;
             border: 1px solid #252525;
@@ -203,6 +246,9 @@
         }
 
         /* ── Disclaimer footer note ───────────────────────────── */
+        /* 
+           Idéntica a terms-note: caja gris al pie
+           Aclara que el doc es informativo, no asesoramiento legal */
         .privacy-note {
             background: #1c1c1c;
             border: 1px solid #252525;
@@ -222,6 +268,7 @@
         <div class="privacy-card">
 
             {{-- Brand --}}
+            {{-- HEADER: logo + "CATACUMBAS" + subtítulo --}}
             <div class="privacy-brand">
                 <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas">
                 <span class="privacy-brand-name">Catacumbas</span>
@@ -230,7 +277,7 @@
 
             <hr class="privacy-divider">
 
-            {{-- Title --}}
+            {{-- Título y fecha de última actualización --}}
             <h1 class="privacy-title">Politica de privacidad</h1>
             <p class="privacy-date">Última actualización: 08 de abril de 2026</p>
 
