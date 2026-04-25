@@ -59,7 +59,9 @@
 </head>
 
 <body class="text-white fondo-catacumbas">
-    
+    {{-- 
+        COMPONENTES
+    --}}
     <x-navbar />
 
     <x-marquee />
@@ -81,7 +83,19 @@
         <div class="col-12 col-lg-7 mb-4 mb-lg-0">
             
             {{-- Sección de Tags/Etiquetas --}}
+            {{-- 
+                - d-flex: alinea los badges en fila horizontal   - gap-2: espacio entre cada badge (~0.5rem)
+                 - mb-3: margen inferior para separar de la siguiente sección
+            --}}
             <div class="d-flex gap-2 mb-3">
+                {{-- 
+                    - badge: clase Bootstrap para pastillas de etiqueta
+                    - text-uppercase: texto en mayúsculas
+                    - fw-bold: negrita
+                    - px-3 py-2: padding horizontal y vertical
+                    - background #c02a2a: rojo oscuro (urgencia/oferta)
+                    - border-radius: 6px → bordes levemente redondeados
+                --}}
                 <span class="badge text-uppercase fw-bold px-3 py-2" 
                       style="background-color: #c02a2a; color: white; border-radius: 6px; font-size: 0.9rem;">
                     OFERTA
@@ -92,12 +106,26 @@
                 </span>
             </div>
 
-            {{-- Título Principal con tipografía pixelada --}}
+            {{-- Título Principal con tipografía pixelada
+            - text-white: texto blanco sobre fondo oscuro
+            - mb-3: margen inferior antes de la descripción
+            - font-family 'Press Start 2P': tipografía pixel art (Google Fonts)
+            refuerza la estética retro de Catacumbas
+            - line-height: 1.2 → interlineado compacto (la fuente pixel es grande)
+            - font-size: 3rem → tamaño prominente para héroe
+            - text-shadow: 2px 2px 0 #000 → sombra negra sólida, efecto pixel art clásico --}}
             <h1 class="text-white mb-3" 
                 style="font-family: 'Press Start 2P', cursive; line-height: 1.2; font-size: 3rem; text-shadow: 2px 2px 0 #000;">
                 SINFONIA DE LA NOCHE
             </h1>
             
+            {{-- 
+                - fs-5: tamaño de fuente nivel 5 (~1.25rem), legible sin competir con el h1
+                - text-light: gris claro, menos protagonismo que el título blanco puro
+                - mb-4: margen inferior antes del botón CTA
+                - max-width: 600px → limita el ancho del párrafo para mejor legibilidad
+                (líneas muy largas cansan la vista)
+            --}}
             <p class="fs-5 text-light mb-4" style="max-width: 600px;">
                 Adéntrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.
             </p>
@@ -108,8 +136,14 @@
             </a>
         </div> 
         
-        {{-- Columna de la imagen --}}
+        {{-- Columna de la imagen 
+        - col-12:    ocupa todo el ancho en móvil (apilada bajo el texto)
+        - col-lg-5:  ocupa 5/12 del ancho en pantallas grandes
+        - text-center: centra la imagen horizontalmente
+        - mt-4:      margen superior en móvil (separa del texto al apilarse)
+        - mt-lg-0:   elimina ese margen en desktop (ya están lado a lado)--}}
         <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
+            {{-- - asset('images/castel.jpg'): genera la URL al archivo ubicado en /public/images/castel.jpg --}}
             <img src="{{ asset('images/castel.jpg') }}" 
                  class="img-fluid rounded-3 shadow-lg mx-auto d-block" 
                  style="max-height: 450px; transform: rotate(0deg);" 
