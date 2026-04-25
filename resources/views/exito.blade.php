@@ -10,12 +10,17 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
     <style>
+         /* ── Fuente pixel art personalizada ──────────────────────
+           Usada solo para el nombre de marca "Catacumbas"
+           font-display: swap → evita texto invisible al cargar    */
         @font-face {
             font-family: 'SystemFont';
             src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
             font-display: swap;
         }
-
+        /* ── Base ────────────────────────────────────────────────
+           Fondo negro oscuro, texto blanco, layout vertical
+           full-height para poder centrar la card con flex         */
         html, body {
             background-color: #111 !important;
             min-height: 100vh;
@@ -23,7 +28,11 @@
             flex-direction: column;
             color: #fff;
         }
-
+        /* ── Wrapper ─────────────────────────────────────────────
+           - flex: 1 → ocupa todo el alto disponible
+           - align-items: center → centrado VERTICAL
+           - justify-content: center → centrado HORIZONTAL
+           La card queda perfectamente centrada en pantalla        */
         .success-wrapper {
             flex: 1;
             display: flex;
@@ -31,7 +40,10 @@
             justify-content: center;
             padding: 40px 16px;
         }
-
+        /* ── Card de confirmación ────────────────────────────────
+           - max-width: 480px → más angosta que otras páginas,
+             el contenido es breve y no necesita más espacio
+           - text-align: center → todo el contenido centrado       */
         .success-card {
             background: #161616;
             border: 1px solid #262626;
@@ -42,7 +54,11 @@
             text-align: center;
         }
 
-        /* ── Icon ─────────────────────────────────────────────── */
+        /* ── Ícono de éxito ──────────────────────────────────────
+           Círculo verde oscuro con tilde verde (#4caf50).
+           - #1a2e1a: fondo verde muy oscuro
+           - #2a4a2a: borde verde oscuro
+           - bi-check-lg: ícono de tilde grande de Bootstrap Icons  */
         .success-icon-wrap {
             width: 64px;
             height: 64px;
@@ -59,7 +75,9 @@
             color: #4caf50;
         }
 
-        /* ── Brand name ───────────────────────────────────────── */
+        /* ── Nombre de marca ─────────────────────────────────────
+           "Catacumbas" en SystemFont rojo, pequeño (14px).
+           Actúa como identificador de marca sin ser el foco       */
         .success-brand {
             font-family: 'SystemFont', monospace;
             font-size: 14px;
@@ -76,7 +94,9 @@
             margin: 0 0 24px;
         }
 
-        /* ── Text ─────────────────────────────────────────────── */
+       /* ── Título y cuerpo ─────────────────────────────────────
+           - success-title: 20px, gris claro (#eee), semi-bold
+           - success-body: 14px, blanco, line-height 1.8           */
         .success-title {
             font-size: 20px;
             font-weight: 600;
@@ -91,13 +111,18 @@
             margin: 0 0 32px;
         }
 
-        /* ── Actions ──────────────────────────────────────────── */
+        /* ── Actions ──────────────────────────────────────────── 
+        /* ── Botones de acción ───────────────────────────────────
+           Dos botones ubicados  verticalmente (flex-direction: column)*/
         .success-actions {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
+        /*.btn-home → acción primaria
+           - Fondo rojo #c0392b → hover más claro #e74c3c
+           - Texto blanco, negrita → máxima legibilidad
+           - Redirige al home (/)*/
         .btn-home {
             display: flex;
             align-items: center;
@@ -118,7 +143,11 @@
             background: #e74c3c;
             color: #fff;
         }
-
+        /*.btn-back → acción secundaria
+           - Transparente con borde gris oscuro (#2e2e2e)
+           - Texto gris (#666) → menor jerarquía visual
+           - Hover: borde y texto más claros
+           - Redirige al formulario de contacto (/contacto)*/
         .btn-back {
             display: flex;
             align-items: center;
@@ -143,20 +172,23 @@
     <div class="success-wrapper">
         <div class="success-card">
 
+             {{-- Ícono ✓ verde: señal visual inmediata de éxito --}}
             <div class="success-icon-wrap">
                 <i class="bi bi-check-lg"></i>
             </div>
 
+            {{-- Nombre de marca en fuente pixel art roja --}}
             <p class="success-brand">Catacumbas</p>
 
             <hr class="success-divider">
 
+            {{-- Mensaje de confirmación --}}
             <h1 class="success-title">¡Mensaje recibido!</h1>
             <p class="success-body">
                 Recibimos tu consulta correctamente. Un asesor se comunicará con vos a la brevedad.<br>
                 ¡Muchas gracias por escribirnos!
             </p>
-
+            {{-- Dos opciones de navegación post-confirmación --}}
             <div class="success-actions">
                 <a href="{{ url('/') }}" class="btn-home">
                     <i class="bi bi-house"></i> Volver al inicio
