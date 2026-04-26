@@ -198,6 +198,7 @@
             - text-white / fw-bold: blanco y negrita
             - mb-4: separa el título del carrusel
             - font-family Oswald: tipografía condensada
+            si queremos agrandar usamos font-size: 2.5rem en style
             --}}
         <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
 
