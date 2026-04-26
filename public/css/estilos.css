@@ -233,9 +233,9 @@ background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))
 
         /* ── Divider ──────────────────────────────────────────── */
         .login-divider {
-            border: none;
-            border-top: 1px solid #222;
-            margin: 0 0 28px;
+            border: none;              /* elimina el borde default del hr */
+            border-top: 1px solid #222; /* línea sutil de 1px en gris oscuro */
+            margin: 0 0 28px;          /* sin margen arriba, 28px abajo */
         }
 
         /* ── Inputs ───────────────────────────────────────────── */
