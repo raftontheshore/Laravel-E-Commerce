@@ -331,6 +331,22 @@
             5. ¿Dónde está mi compra?
           </button>
         </h2>
+        {{-- 
+          id="faq5": Identificador único del panel.
+          El botón lo referencia con data-bs-target="#faq5"
+          para saber qué panel abrir/cerrar.
+
+          accordion-collapse: marca este div como panel colapsable
+          dentro del acordeón (estilos y transiciones de Bootstrap).
+
+          collapse: panel CERRADO por defecto.
+          Para que arranque abierto agregar 'show':
+          class="accordion-collapse collapse show"
+
+          data-bs-parent="#acordeonCatacumbas": asegura que solo
+          un panel esté abierto a la vez. Al abrir faq5,
+          Bootstrap cierra automáticamente los demás.
+      --}}
         <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#acordeonCatacumbas">
           <div class="accordion-body">
             <p class="mb-3">Hay varias razones posibles por las que podés no haber recibido tu compra:</p>
