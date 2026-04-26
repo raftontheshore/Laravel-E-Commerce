@@ -1,3 +1,6 @@
+
+{{-- ESTA PAGINA NO SE OCUPA --}}
+
 <!DOCTYPE html>
 <html>
     <head>
