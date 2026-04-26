@@ -61,7 +61,8 @@
 
         /* ── Card ─────────────────────────────────────────────── 
          - Borde sutil (#262626) para delimitar sin ser agresivo
-           - max-width: 760px → ancho de lectura óptimo para texto Si la subís a max-width: 900px; o 1000px;, la caja se va a ensanchar inmediatamente. */
+           - max-width: 760px → ancho de lectura óptimo para texto Si la subís a max-width: 900px; o 1000px;, la caja se va a ensanchar inmediatamente.
+           padding 48px arriba/abajo, 44px a los lados */
         .terms-card {
             background: #161616;
             border: 1px solid #262626;
