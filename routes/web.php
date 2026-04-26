@@ -2,22 +2,35 @@
 
 use App\Http\Controllers\ExitoController;
 use Illuminate\Support\Facades\Route;
-
+// ============================================================
+// RUTA: Página de inicio (/)
+// Carga los productos destacados y consolas para la vista welcome
+// ============================================================
 Route::get('/', function () {
-    // 1. Traemos toda la lista de productos
+    // 1. Llama a obtenerProductos() y lo convierte en una
+    //    colección de Laravel (permite usar métodos como filter, take, etc.)
     $coleccion = collect(obtenerProductos());
 
-    // 2. ESTOS SON los DESTACADOS 
+    // 2. DESTACADOS: toma los primeros 4 productos de la colección
+    //    (sin importar categoría — los primeros 4 del array)
     $productos_destacados = $coleccion->take(4);
 
-    // 3. ESTAS las consolas (Buscamos solo las de categoría "Consola")
+    // 3. CONSOLAS: filtra solo los productos cuya categoría sea "consola"
+    //    strtolower() normaliza a minúsculas para evitar problemas con
+    //    mayúsculas/minúsculas ("Consola" === "consola")
     $consolas = $coleccion->filter(function ($item) {
         return strtolower($item->categoria) === 'consola';
     });
 
-    // 4. Mandamos LAS DOS COSAS juntas a la vista 'welcome'
+    // 4. Envía ambas variables a la vista welcome.blade.php
+    //    compact() crea un array asociativo: ['productos_destacados' => ..., 'consolas' => ...]
     return view('welcome', compact('productos_destacados', 'consolas'));
 });
+
+// ============================================================
+// RUTAS: Páginas estáticas (sin datos del controlador)
+// Cada una simplemente retorna su vista correspondiente
+// ============================================================
 Route::get('/sobre-mi', function () {
     return view('sobre-mi');
 });
@@ -80,18 +93,24 @@ Route::get('/faq', function (){
 });
 // --- BASE DE DATOS TEMPORAL ---
 // Creamos una función que devuelve el arreglo para poder usarlo en varias rutas
+
+// Función global que devuelve un array de objetos simulando
+// registros de una base de datos real.
+// Se usa en varias rutas → por eso es una función separada
+// y no está inline en cada closure.
+// ============================================================
 function obtenerProductos() {
     return [
         // --- JUEGOS ---
         (object) [
             'categoria' => 'Juego',
             'titulo' => 'Silent Hill 3',
-            'precio_original' => 45000,
-            'precio' => 38250,
-            'porcentaje_descuento' => 15,
-            'imagen_url' => 'https://i.3djuegos.com/juegos/5184/silent_hill_3/fotos/ficha/silent_hill_3-1697794.webp', 
-            'consola' => 'PS2',
-            'estado' => 'Usado',
+            'precio_original' => 45000,// Precio antes del descuento
+            'precio' => 38250, // Precio final (con descuento aplicado)
+            'porcentaje_descuento' => 15,// 15% off
+            'imagen_url' => 'https://i.3djuegos.com/juegos/5184/silent_hill_3/fotos/ficha/silent_hill_3-1697794.webp',  // URL externa de la imagen
+            'consola' => 'PS2',// Plataforma compatible
+            'estado' => 'Usado',// Nuevo / Usado / Reacondicionado
         ],
         (object) [
             'categoria' => 'Juego',
@@ -186,7 +205,9 @@ function obtenerProductos() {
             'estado' => 'Usado',
         ],
 
-        // --- COMBOS ---
+        // ── COMBOS ────────────────────────────────────────────
+        // asset() genera la URL absoluta a /public/images/
+        // (imágenes propias en lugar de URLs externas)
         (object) [
             'categoria' => 'Combo',
             'titulo' => 'PS2 Slim + Silent Hill 2',
@@ -210,19 +231,32 @@ function obtenerProductos() {
     ];
 }
 
-// --- RUTA: TIENDA PRINCIPAL ---
+// ============================================================
+// RUTA: Tienda con filtro por categoría (/tienda/{categoria?})
+// El parámetro {categoria?} es OPCIONAL (el ? lo indica)
+// Si no se pasa ninguna → usa 'consola' como valor por defecto
+// Ejemplos:
+//   /tienda          → muestra consolas
+//   /tienda/juego    → muestra juegos
+//   /tienda/combo    → muestra combos
+//   /tienda/todos    → muestra TODO el catálogo
+// ============================================================
 Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
     
     $coleccion = collect(obtenerProductos());
 
     if ($categoria === 'todos') {
+        // Sin filtro: devuelve todos los productos
         $productos = $coleccion;
     } else {
         $productos = $coleccion->filter(function ($item) use ($categoria) {
+            // Filtra por la categoría recibida en la URL
+            // strtolower en ambos lados → comparación case-insensitive
             return strtolower($item->categoria) === strtolower($categoria);
         });
     }
-
+    // Envía los productos filtrados Y la categoría activa a la vista
+    // $categoria se usa en la vista para resaltar el filtro activo
     return view('tienda', compact('productos', 'categoria'));
 });
 
