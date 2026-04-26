@@ -203,8 +203,9 @@
 
             {{-- COLUMNA 4: Links a redes sociales
                  target="_blank" abre en pestaña nueva.
-                 aria-label es importante para accesibilidad (lectores de pantalla). --}}
-            <div class="col-12 col-md-3">
+                 aria-label es importante para accesibilidad (lectores de pantalla).
+                 para mover los iconos usamos justify-content-end --}}
+            <div class="col-12 col-md-3 ">
                 <h6>Redes Sociales</h6>
                 <div class="d-flex gap-2">
                     <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook" target="_blank">
