@@ -154,11 +154,13 @@
             margin: 0 0 12px;
         }
 
+        /*text-align: justify; es para que quede alineado el texto*/
         .terms-section p {
             font-size: 14px;
             color: #FFFFFF;
             line-height: 1.8;
             margin: 0 0 10px;
+            text-align: justify;
         }
         .terms-section p:last-child {
             margin-bottom: 0;

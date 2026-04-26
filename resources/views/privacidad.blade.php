@@ -166,6 +166,7 @@
             color: #FFFFFF;
             line-height: 1.8;
             margin: 0 0 10px;
+            text-align: justify;
         }
         .privacy-section p:last-child {
             margin-bottom: 0;
