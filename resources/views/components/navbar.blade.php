@@ -161,7 +161,8 @@
 
         /* --- Botón Registrarse (relleno, rojo de marca) ---
            CTA principal de autenticación. white-space: nowrap evita
-           que el texto se rompa en dos líneas en viewports intermedios. */
+           que el texto se rompa en dos líneas en viewports intermedios
+           para sacar el fondo pongo transparent;. */
         .catacumbas-nav .btn-signup {
             background-color: #c0392b;
             border: none;
