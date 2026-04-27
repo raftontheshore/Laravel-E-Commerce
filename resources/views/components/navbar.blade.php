@@ -240,7 +240,7 @@
     </style>
 </head>
 <body>
-
+{{-- para alagar la nav bar modifico el padding py-2 --}}
 <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
     <div class="container-fluid px-4">
 
