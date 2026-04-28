@@ -149,16 +149,16 @@
                                     rounded-circle: la hace redonda.
                                     object-fit: cover: evita que la foto se deforme si no es cuadrada originalmente.
                                     shadow-lg: le da profundidad. --}}
-                                <img src="{{ asset('images/tu-foto.jpg') }}" alt="Waldemar" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #0078d4;">
+                                <img src="{{ asset('images/JohnDoe.jpg') }}" alt="Carlos" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #c0392b;">
                                 
                                 {{-- El Nombre --}}
-                                <h2 class="display-5 fw-bold mb-4" style="color: #0078d4; font-family: 'Oswald', sans-serif;">Waldemar</h2>
+                                <h2 class="display-5 fw-bold mb-4" style="color: #c0392b; font-family: 'Oswald', sans-serif;">Carlos</h2>
                             </div>
 
                             {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
                             <div class="text-start">
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Waldemar ha estado detrás de Catacumbas desde el día uno. Es la cara que la mayoría de la gente reconoce y el corazón detrás del mostrador. Si has visto nuestros combos listos para viciar, hay muchas chances de que hayas visto a Enzo preparando pedidos, testeando consolas o rescatando tu juego favorito de la infancia.
+                                    Carlos ha estado detrás de Catacumbas desde el día uno. Es la cara que la mayoría de la gente reconoce y el corazón detrás del mostrador. Si has visto nuestros combos listos para viciar, hay muchas chances de que hayas visto a Abigail preparando pedidos, testeando consolas o rescatando tu juego favorito de la infancia.
                                 </p>
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
                                     Está acá porque ama lo que Catacumbas representa: revivir clásicos, compartir recuerdos y la creencia de que la edad de oro del gaming nunca muere. Waldemar aporta esa pasión a cada consola que repara, y es por eso que la comunidad conecta tanto con el proyecto.
@@ -182,16 +182,16 @@
                                     rounded-circle: la hace redonda.
                                     object-fit: cover: evita que la foto se deforme si no es cuadrada originalmente.
                                     shadow-lg: le da profundidad. --}}
-                                <img src="{{ asset('images/tu-foto.jpg') }}" alt="Waldemar" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #0078d4;">
+                                <img src="{{ asset('images/JaneDoe.jpg') }}" alt="Abigail" class="rounded-circle shadow-lg mb-4" style="width: 220px; height: 220px; object-fit: cover; border: 3px solid #c0392b;">
                                 
                                 {{-- El Nombre --}}
-                                <h2 class="display-5 fw-bold mb-4" style="color: #0078d4; font-family: 'Oswald', sans-serif;">Enzo</h2>
+                                <h2 class="display-5 fw-bold mb-4" style="color: #c0392b; font-family: 'Oswald', sans-serif;">Abigail</h2>
                             </div>
 
                             {{-- El Texto de descripción (Alineado a la izquierda para que sea más fácil de leer, como en tu ejemplo) --}}
                             <div class="text-start">
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
-                                    Enzo llegó a Catacumbas con una energía inagotable y un amor incondicional por los arcades y las tardes de multijugador local. Es el tipo de gamer que te puede hablar horas sobre por qué los juegos de antes tenían una magia especial.
+                                    Abigail llegó a Catacumbas con una energía inagotable y un amor incondicional por los arcades y las tardes de multijugador local. Es el tipo de gamer que te puede hablar horas sobre por qué los juegos de antes tenían una magia especial.
                                 </p>
                                 <p class="fs-5" style="color: #e0e0e0; line-height: 1.6;">
                                     Su entusiasmo contagia a cualquiera. Está acá porque cree firmemente que cada joya retro tiene un dueño ideal esperando encontrarla. Lo vas a ver siempre recomendando títulos y asegurándose de que te lleves la mejor experiencia posible a casa.
