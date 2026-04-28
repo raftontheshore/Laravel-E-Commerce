@@ -265,7 +265,7 @@
             {{-- Links principales. request()->is() marca el link como 'active'
                  si la URL actual coincide con el patrón dado.
                  ⚠️ "Principal" usa '/*' en lugar de '/' — esto lo marca como
-                 activo en TODAS las rutas. Corregir a request()->is('/') --}}
+                 activo en TODAS las rutas. Corregir a request()->is('/') GAP para modificar la separacion--}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3" style="gap: 4px;">
                 <li class="nav-item">
                     <a class="nav-link fs-6 {{ request()->is('/*') ? 'active' : '' }}" href="/">Principal</a>
