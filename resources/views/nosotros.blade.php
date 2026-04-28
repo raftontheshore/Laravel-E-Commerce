@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="{{ asset('css/estilos.css?v=7') }}">
     </head>
 
-    <body class="bg-black text-white">
+    <body class="bg-black text-white" style="text-align: justify;">
          <x-navbar />
 
     
