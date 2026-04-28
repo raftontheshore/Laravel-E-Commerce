@@ -213,7 +213,7 @@
 
             {{-- {{-- Título de la página y fecha de última actualización --}}
             <h1 class="terms-title">Terminos y condiciones de uso</h1>
-            <p class="terms-date">Última actualización: abril de 2026</p>
+            <p class="terms-date">Última actualización: 08 abril de 2026</p>
 
            {{-- ── SECCIONES DE CONTENIDO LEGAL ─────────────────── --}}
 
