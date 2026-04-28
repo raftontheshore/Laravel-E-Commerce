@@ -21,6 +21,7 @@
 
 
 <div class="clearfix"></div>
+{{-- si quiero que el carrusel ocupe todo el ancho entonces container-fluid p-0 --}}
 <div class="container mt-5">
     <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
 
