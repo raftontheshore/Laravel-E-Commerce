@@ -91,7 +91,8 @@
         SECCIÓN: Banner promocional de Castlevania
         Hero de dos columnas: texto/badges/CTA (izquierda) + imagen (derecha)
         Fondo: degradado radial oscuro + textura de ladrillos con opacidad
-    ══════════════════════════════════════════════════════════ --}}
+    ══════════════════════════════════════════════════════════ 
+    ms(maggin star me-0 osea corren todo a la izq y al otro lado me)--}}
 <div class="container mt-4 p-5 rounded-4 position-relative overflow-hidden" 
      style="background: radial-gradient(circle, #2a2a2a, #1a1a1a); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     
