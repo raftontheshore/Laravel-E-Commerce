@@ -218,7 +218,7 @@
              --}}
             @foreach($productos_destacados as $producto)
             {{-- col-10: 1 card visible en móvil + borde de la siguiente
-                col-md-3 col-lg-3: 4 cards visibles en tablet/desktop    --}}
+                col-md-3 col-lg-3: 4 cards visibles en tablet/desktop (col-md-3 col-lg-3 cambio esto si quiero cambiar la cantidad que se muestra)    --}}
             <div class="col-10 col-md-3 col-lg-3 mb-3">
                 {{-- 
                     Componente reutilizable de tarjeta de producto.
