@@ -215,7 +215,7 @@
   </section>
 
   {{-- ──  INFO CARDS ────────────────────────────────
-         3 columnas iguales (col-md-4) con los servicios clave.
+         3 columnas iguales (col-md-4) con los servicios clave.(col-md-6 en cada una para dos col)
          g-4: gap entre cards                                      --}}
   <section class="container py-5">
     <div class="row g-4">
