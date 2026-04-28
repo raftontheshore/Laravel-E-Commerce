@@ -283,7 +283,7 @@
                     <a class="nav-link fs-6 {{ request()->is('contacto*') ? 'active' : '' }}" href="/contacto">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fs-6 {{ request()->is('términos*') ? 'active' : '' }}" href="/terminos">Términos De Servicios</a>
+                    <a class="nav-link fs-6 {{ request()->is('terminos*') ? 'active' : '' }}" href="/terminos">Términos De Servicios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fs-6 {{ request()->is('privacidad*') ? 'active' : '' }}" href="/privacidad">Política De Privacidad</a>
