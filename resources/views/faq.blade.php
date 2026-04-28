@@ -32,33 +32,7 @@
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
     }
-
-    /* ── Navbar ──────────────────────────────────────────────
-           Fondo casi negro (#0a0a0a), borde inferior sutil.
-           Links en gris translúcido → rojo al hover/active.
-           Usa var(--rojo) para consistencia con el resto de la página */
-    .navbar {
-      background-color: #0a0a0a;
-      border-bottom: 1px solid #1f1f1f;
-    }
-    .navbar-brand {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #fff !important;
-    }
-    .navbar .nav-link {
-      color: rgba(255,255,255,.7);
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      transition: color .2s;
-    }
-    .navbar .nav-link:hover,
-    .navbar .nav-link.active {
-      color: var(--rojo);
-    }
-
+    
     /* ── Hero / Encabezado de sección ────────────────────────
            Bloque centrado con título grande y subtítulo gris.
            - padding generoso arriba (4.5rem) para separar del navbar
