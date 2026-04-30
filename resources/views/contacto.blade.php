@@ -452,7 +452,8 @@
                                     <i class="bi bi-person"></i>
                                     <input type="text" id="apellido" name="apellido"
                                            placeholder="Tu apellido"
-                                           value="{{ old('apellido') }}">
+                                           value="{{ old('apellido') }}"
+                                           required>
                                 </div>
                             </div>
                         </div>
