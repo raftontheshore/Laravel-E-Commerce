@@ -66,7 +66,7 @@
             gap: 24px;
             width: 100%;
             max-width: 1000px;
-            align-items: start;
+            align-items: stretch;
         }
 
         @media (max-width: 768px) {
@@ -85,6 +85,8 @@
             border: 1px solid #262626;
             border-radius: 14px;
             overflow: hidden;
+            display: flex; 
+            flex-direction: column; 
         }
 
         /* ── Card header ────────────────────────────────────────
@@ -274,7 +276,7 @@
         }
         .input-wrap textarea {
             padding: 12px 0;
-            min-height: 110px;
+            min-height: 169px;
         }
 
         
@@ -335,6 +337,26 @@
 
                 {{-- Grid 2x2 con los 4 datos de contacto --}}
                 <div class="info-body">
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="bi bi-building"></i></div>
+                        <div class="info-text">
+                            <span class="info-label">Razon Social</span>
+                            <span class="info-value">
+                               <p> Catacumbas S.R.L.</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="bi bi-person-workspace"></i></div>
+                        <div class="info-text">
+                            <span class="info-label">Titular de la Empresa:</span>
+                            <span class="info-value">
+                               <p> Carlos Bilardo</p>
+                            </span>
+                        </div>
+                    </div>
 
                     {{-- Teléfono: link tel: para llamar directo en móvil --}}
                     <div class="info-item">
