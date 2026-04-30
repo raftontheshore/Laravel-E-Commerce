@@ -71,6 +71,10 @@
       padding: 2.2rem 1.5rem;
       text-align: center;
       height: 100%;
+      display: flex;            
+      flex-direction: column;     
+      align-items: center;        
+      justify-content: center;    
       transition: border-color .25s, transform .2s;
     }
     .info-card:hover {
@@ -102,7 +106,16 @@
       font-size: 0.875rem;
       color: #9ca3af;
       line-height: 1.65;
-      margin: 0;
+      /* Distribuye el texto verticalmente */
+      margin-top: auto;
+      margin-bottom: auto;
+      
+      /* Justifica el texto a ambos márgenes */
+      text-align: justify;
+      
+      /* Activa los guiones automáticos para evitar espacios feos */
+      -webkit-hyphens: auto;
+      hyphens: auto;
     }
 
     /* ── Título FAQ ──────────────────────────────────────────
@@ -192,17 +205,17 @@
          3 columnas iguales (col-md-4) con los servicios clave.(col-md-6 en cada una para dos col)
          g-4: gap entre cards                                      --}}
   <section class="container py-5">
-    <div class="row g-4">
+    <div class="row g-4 align-items-stretch">
 
       {{-- Envíos
            Ícono: fa-truck (camión de reparto)   --}}
       <div class="col-md-4">
-        <div class="info-card">
+        <div class="info-card h-100">
           <div class="icon-wrap">
             <i class="fas fa-truck"></i>
           </div>
           <h5>Envíos</h5>
-          <p>Enviamos desde Corrientes a cualquier punto de Argentina todos los días, a través de correo certificado para que tu consola llegue impecable.</p>
+          <p>Enviamos desde Corrientes a todo el país a través de   Correo Argentino, OCA y Andreani. Podés elegir entrega a domicilio o retiro en sucursal. Todos los equipos se despachan con código de seguimiento y embalaje reforzado para que tu consola llegue impecable.</p>
         </div>
       </div>
 
@@ -214,7 +227,7 @@
             <i class="fas fa-credit-card"></i>
           </div>
           <h5>Formas de Pago</h5>
-          <p>Aceptamos tarjetas de débito y crédito vía Mercado Pago. Pagando por transferencia bancaria o efectivo obtenés un <strong style="color:#fff">10% de descuento</strong>.</p>
+          <p>Podés abonar con tarjetas de crédito y débito (Visa, Mastercard) a través de Mercado Pago. Para pagos en efectivo, aceptamos Rapipago y Pago Fácil. Abonando mediante transferencia bancaria o efectivo presencial tenés un <strong style="color:#fff">10% de descuento</strong>.</p>
         </div>
       </div>
       {{-- CARD 3: Garantía y Cambios
