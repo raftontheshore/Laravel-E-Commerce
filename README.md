@@ -3,7 +3,7 @@
 
 Un sistema de comercio electrónico desarrollado en Laravel para la venta de videojuegos clásicos y consolas. Proyecto para la cátedra Taller De Programación I.
 
-![Screenshot del sistema](public/images/screenshot.png)
+![Screenshot del sistema](public/images/screenshot.jpg)
 
 ---
 
