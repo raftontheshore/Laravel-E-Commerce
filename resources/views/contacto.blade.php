@@ -464,18 +464,22 @@
                                 <i class="bi bi-envelope"></i>
                                 <input type="email" id="email" name="email"
                                        placeholder="tucorreo@ejemplo.com"
-                                       value="{{ old('email') }}" required>
+                                       value="{{ old('email') }}"
+                                       required
+                                      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                                      title="Ingresá un correo válido: ejemplo@dominio.com">
                             </div>
                         </div>
 
-                        {{-- CAMPO: Asunto (opcional) --}}
+                        {{-- CAMPO: Asunto --}}
                         <div class="form-field">
                             <label for="asunto">Asunto</label>
                             <div class="input-wrap">
                                 <i class="bi bi-chat-left-text"></i>
                                 <input type="text" id="asunto" name="asunto"
                                        placeholder="¿En qué te podemos ayudar?"
-                                       value="{{ old('asunto') }}">
+                                       value="{{ old('asunto') }}"
+                                       required>
                             </div>
                         </div>
 
