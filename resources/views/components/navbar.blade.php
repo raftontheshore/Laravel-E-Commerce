@@ -304,12 +304,10 @@
                 </div>
                 -->
 
-                {{-- Botones de autenticación: Ingresar (outline) y Registrarse (relleno rojo) --}}
-                <div class="d-flex gap-2 justify-content-center">
-                    <a href="/login" class="btn-login">Ingresar</a>
-                    <a href="/signup" class="btn btn-signup">Registrarse</a>
-                </div>
-            </div>
+            <div class="d-flex gap-2 justify-content-center">
+         <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
+         <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
+        </div>
 
         </div>
     </div>
