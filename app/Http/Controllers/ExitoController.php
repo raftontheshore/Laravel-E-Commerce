@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class exitoController extends Controller
+class ExitoController extends Controller
 {
     public function procesar(Request $request)
 

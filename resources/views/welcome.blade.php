@@ -1,5 +1,5 @@
 {{-- ============================================================
-    PÁGINA: Home / Inicio
+    PÁGINA: Dashboard / Inicio
     Página principal del sitio. Combina múltiples secciones:
     1. Navbar + Marquee + Carrusel (componentes)
     2. Banner destacado de Castlevania (hero promocional)
