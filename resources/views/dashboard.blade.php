@@ -143,89 +143,41 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <hr class="sidebar-divider">
-
-            <div class="sidebar-heading">
-                Interface
-            </div>
+            
+            <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="#">Buttons</a>
-                        <a class="collapse-item" href="#">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="#">Colors</a>
-                        <a class="collapse-item" href="#">Borders</a>
-                        <a class="collapse-item" href="#">Animations</a>
-                        <a class="collapse-item" href="#">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <hr class="sidebar-divider">
-
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">Login</a>
-                        <a class="collapse-item" href="#">Register</a>
-                        <a class="collapse-item" href="#">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="#">404 Page</a>
-                        <a class="collapse-item" href="#">Blank Page</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-box"></i>
+                    <span>Productos</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Usuarios</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <i class="fas fa-fw fa-tags"></i>
+                    <span>Categorías</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Consultas</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Pedidos</span></a>
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
-
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+            
 
         </ul>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -403,55 +355,101 @@
                         </div>
                     </div>
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Últimos Pedidos</h6>
-                            <a href="#" class="btn btn-sm btn-primary">Ver todos</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Pedido</th>
-                                            <th>Cliente</th>
-                                            <th>Total</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach(\App\Models\Orden::with('user')->latest()->take(5)->get() as $orden)
-                                        <tr>
-                                            <td>#{{ $orden->id }}</td>
-                                            <td>{{ $orden->user->nombre ?? 'N/A' }}</td>
-                                            <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
-                                            <td>
-                                                @switch($orden->estado)
-                                                    @case('pendiente')
-                                                        <span class="badge badge-warning">Pendiente</span>
-                                                        @break
-                                                    @case('pagado')
-                                                        <span class="badge badge-success">Pagado</span>
-                                                        @break
-                                                    @case('enviado')
-                                                        <span class="badge badge-info">Enviado</span>
-                                                        @break
-                                                    @case('entregado')
-                                                        <span class="badge badge-primary">Entregado</span>
-                                                        @break
-                                                    @case('cancelado')
-                                                        <span class="badge badge-danger">Cancelado</span>
-                                                        @break
-                                                    @default
-                                                        <span class="badge badge-secondary">{{ $orden->estado }}</span>
-                                                @endswitch
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                    <div class="row">
+
+                            {{-- ÚLTIMOS PEDIDOS (izquierda, ancho completo en mobile, 7/12 en desktop) --}}
+                            <div class="col-lg-7 mb-4">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                        <h6 class="m-0 font-weight-bold text-primary">Últimos Pedidos</h6>
+                                        <a href="#" class="btn btn-sm btn-primary">Ver todos</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Pedido</th>
+                                                        <th>Cliente</th>
+                                                        <th>Total</th>
+                                                        <th>Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach(\App\Models\Orden::with('user')->latest()->take(5)->get() as $orden)
+                                                    <tr>
+                                                        <td>#{{ $orden->id }}</td>
+                                                        <td>{{ $orden->user->nombre ?? 'N/A' }}</td>
+                                                        <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
+                                                        <td>
+                                                            @switch($orden->estado)
+                                                                @case('pendiente')
+                                                                    <span class="badge badge-warning">Pendiente</span>
+                                                                    @break
+                                                                @case('pagado')
+                                                                    <span class="badge badge-success">Pagado</span>
+                                                                    @break
+                                                                @case('enviado')
+                                                                    <span class="badge badge-info">Enviado</span>
+                                                                    @break
+                                                                @case('entregado')
+                                                                    <span class="badge badge-primary">Entregado</span>
+                                                                    @break
+                                                                @case('cancelado')
+                                                                    <span class="badge badge-danger">Cancelado</span>
+                                                                    @break
+                                                                @default
+                                                                    <span class="badge badge-secondary">{{ $orden->estado }}</span>
+                                                            @endswitch
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{-- TOP 5 PRODUCTOS (derecha, 5/12 en desktop) --}}
+                        <div class="col-lg-5 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Top 5 Productos Vendidos</h6>
+                                </div>
+                                <div class="card-body">
+                                    @php
+                                        $topProductos = \App\Models\ItemOrden::select('id_producto', \Illuminate\Support\Facades\DB::raw('SUM(cantidad) as total_vendido'))
+                                            ->groupBy('id_producto')
+                                            ->orderByDesc('total_vendido')
+                                            ->take(5)
+                                            ->with('producto')
+                                            ->get();
+                                    @endphp
+
+                                    @forelse($topProductos as $index => $item)
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="mr-3">
+                                                <span class="badge badge-primary">{{ $index + 1 }}</span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="small font-weight-bold text-gray-800">
+                                                    {{ $item->producto->nombre ?? 'Producto eliminado' }}
+                                                </div>
+                                                <div class="text-xs text-gray-500">Ranking #{{ $index + 1 }}</div>
+                                            </div>
+                                            <div class="ml-auto font-weight-bold text-gray-800">
+                                                {{ $item->total_vendido }} uds.
+                                            </div>
+                                        </div>
+                                        @if(!$loop->last)<hr style="border-color: #2a3a5c;">@endif
+                                    @empty
+                                        <p class="text-center text-gray-500 mb-0">No hay ventas registradas aún.</p>
+                                    @endforelse
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                     <div class="row">
@@ -567,23 +565,6 @@
 
                         <div class="col-lg-6 mb-4">
 
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="{{ asset('adminDashBoard/img/undraw_posting_photo.svg') }}" alt="...">
-                                    </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
-                                </div>
-                            </div>
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
