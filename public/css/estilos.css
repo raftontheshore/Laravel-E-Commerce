@@ -627,3 +627,27 @@ html, body {
     max-width: 100vw;
     overflow-x: hidden; /* Esto es clave: corta lo que sobra a los costados */
 }
+
+/* --- Carga de fuente corregida para CSS --- */
+@font-face {
+    font-family: 'SystemFont';
+    src: url('/fonts/system-font-from-windows-3-1.otf') format('opentype');
+    font-display: swap;
+}
+
+/* --- Estilos para el Logo del Sidebar Catacumbas sin imagen --- */
+.catacumbas-logo-text {
+    font-family: 'SystemFont', monospace !important;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #ffffff; /* Letra blanca para que resalte en el azul */
+    text-align: center;
+    line-height: 1.2;
+}
+
+.catacumbas-logo-sub {
+    font-family: 'SystemFont', monospace !important;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
