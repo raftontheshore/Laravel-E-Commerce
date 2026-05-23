@@ -20,106 +20,137 @@
     
 {{-- FORZAMOS LA FUENTE Y EL ESTILO DIRECTAMENTE AQUÍ --}}
     <style>
-        @font-face {
-            font-family: 'SystemFont';
-            src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
-            font-display: swap;
-        }
+        <style>
+    @font-face {
+        font-family: 'SystemFont';
+        src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
+        font-display: swap;
+    }
 
-        .catacumbas-logo-text {
-            font-family: 'SystemFont', monospace !important;
-            font-size: 20px !important;
-            letter-spacing: 2px !important;
-            color: #ffffff !important;
-            text-align: center !important;
-            line-height: 1.2 !important;
-        }
+    .catacumbas-logo-text {
+        font-family: 'SystemFont', monospace !important;
+        font-size: 20px !important;
+        letter-spacing: 2px !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+    }
 
-        .catacumbas-logo-sub {
-            font-family: 'SystemFont', monospace !important;
-            font-size: 11px !important;
-            letter-spacing: 1px !important;
-            margin-top: 2px !important;
-        }
+    .catacumbas-logo-sub {
+        font-family: 'SystemFont', monospace !important;
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+        margin-top: 2px !important;
+    }
 
-        /* Sidebar oscuro */
+    /* ── FONDO GENERAL ── */
+    body, #content-wrapper, #content {
+        background-color: #1a1a1a !important;
+    }
+
+    /* ── SIDEBAR ── */
     .sidebar-dark.bg-gradient-primary,
     .bg-gradient-primary {
-        background: linear-gradient(180deg, #1a1a2e 10%, #16213e 100%) !important;
+        background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%) !important;
+        border-right: 1px solid #c0392b !important;
     }
 
-    /* Fondo general de la página */
-    body {
-        background-color: #0f0f1a !important;
+    /* ── TOPBAR ── */
+    .topbar.navbar-light.bg-white,
+    nav.navbar {
+        background-color: #111111 !important;
+        border-bottom: 1px solid #c0392b !important;
     }
-
-    /* Cards con fondo oscuro */
-    .card {
-        background-color: #1a1a2e !important;
-        color: #ffffff !important;
-    }
-
-    /* Texto de las cards */
-    .card .text-gray-800 {
-        color: #ffffff !important;
-    }
-
-    /* Topbar oscura */
-    .topbar.navbar-light.bg-white {
-        background-color: #16213e !important;
-    }
-
-    .topbar .text-gray-600 {
+    .topbar .text-gray-600,
+    .navbar-nav .nav-link {
         color: #cccccc !important;
     }
 
-    /* Fondo del contenido */
-    #content-wrapper {
-        background-color: #0f0f1a !important;
+    /* ── CARDS ── */
+    .card {
+        background-color: #222222 !important;
+        border: 1px solid #333333 !important;
+        color: #ffffff !important;
+    }
+    .card-header {
+        background-color: #2a2a2a !important;
+        border-bottom: 1px solid #c0392b !important;
+    }
+    .card .text-gray-800,
+    .card .h5 {
+        color: #ffffff !important;
+    }
+    .card .text-gray-500,
+    .card .text-xs {
+        color: #aaaaaa !important;
     }
 
-    /* Header de cards */
-        .card-header {
-            background-color: #1e2a45 !important;
-            border-bottom: 1px solid #2a3a5c !important;
-            color: #ffffff !important;
-        }
+    /* ── BORDES IZQUIERDOS DE CARDS (acento rojo) ── */
+    .border-left-primary { border-left: 4px solid #c0392b !important; }
+    .border-left-success { border-left: 4px solid #09c762 !important; }
+    .border-left-info    { border-left: 4px solid #c0392b !important; }
+    .border-left-warning { border-left: 4px solid #e67e22 !important; }
 
-        /* Tablas */
-        .table {
-            color: #cccccc !important;
-        }
-        .table thead th {
-            border-bottom: 2px solid #2a3a5c !important;
-            color: #aaaaaa !important;
-        }
-        .table td, .table th {
-            border-top: 1px solid #2a3a5c !important;
-        }
-        .table-bordered {
-            border: 1px solid #2a3a5c !important;
-        }
+    /* ── TABLAS ── */
+    .table {
+        color: #cccccc !important;
+    }
+    .table thead th {
+        border-bottom: 2px solid #c0392b !important;
+        color: #aaaaaa !important;
+    }
+    .table td, .table th {
+        border-top: 1px solid #333333 !important;
+    }
+    .table-bordered {
+        border: 1px solid #333333 !important;
+    }
 
-        /* Footer */
-        .sticky-footer.bg-white {
-            background-color: #16213e !important;
-            color: #aaaaaa !important;
-        }
+    /* ── PROGRESS BARS ── */
+    .progress {
+        background-color: #333333 !important;
+    }
 
-        /* Título Dashboard */
-        .text-gray-800 {
-            color: #ffffff !important;
-        }
+    /* ── FOOTER ── */
+    .sticky-footer {
+        background-color: #111111 !important;
+        border-top: 1px solid #c0392b !important;
+        color: #aaaaaa !important;
+    }
 
-        /* Progress bars fondo */
-        .progress {
-            background-color: #2a3a5c !important;
-        }
+    /* ── TÍTULO DASHBOARD ── */
+    .text-gray-800 {
+        color: #ffffff !important;
+    }
 
-        /* Texto small dentro de cards de colores */
-        .text-black-50 {
-            color: rgba(255,255,255,0.5) !important;
-        }
+    /* ── DROPDOWN MENÚ ── */
+    .dropdown-menu {
+        background-color: #222222 !important;
+        border: 1px solid #333333 !important;
+    }
+    .dropdown-item {
+        color: #cccccc !important;
+    }
+    .dropdown-item:hover {
+        background-color: #c0392b !important;
+        color: #ffffff !important;
+    }
+
+    /* ── BOTONES ── */
+    .btn-primary {
+        background-color: #c0392b !important;
+        border-color: #c0392b !important;
+    }
+    .btn-primary:hover {
+        background-color: #e74c3c !important;
+        border-color: #e74c3c !important;
+    }
+
+    /* ── TEXTO PRIMARIO (títulos de cards) ── */
+    .text-primary {
+        color: #c0392b !important;
+    }
+</style>
     </style>
 </head>
 
