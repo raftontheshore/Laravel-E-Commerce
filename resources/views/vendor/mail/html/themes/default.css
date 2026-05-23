@@ -1,0 +1,74 @@
+body {
+    background-color: #f3f3f3 !important;
+}
+
+.wrapper {
+    background-color: #f3f3f3 !important;
+}
+
+.content-cell {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+}
+
+/* Card central */
+.content {
+    background-color: #161616 !important;
+    border: 1px solid #262626 !important;
+    border-radius: 14px !important;
+}
+
+/* Header */
+.header {
+    background-color: #111111 !important;
+    padding: 24px 0 !important;
+    text-align: center !important;
+}
+
+/* Texto del body */
+.body-inner {
+    background-color: #161616 !important;
+}
+
+p {
+    color: #888888 !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+}
+
+h1, h2, h3 {
+    color: #ffffff !important;
+}
+
+/* Botón */
+.button {
+    border-radius: 8px !important;
+}
+.button-primary, .button-red {
+    background-color: #c0392b !important;
+    border-color: #c0392b !important;
+    color: #ffffff !important;
+}
+.button-primary a, .button-red a {
+    color: #ffffff !important;
+}
+
+/* Footer */
+.footer {
+    color: #333333 !important;
+    font-size: 12px !important;
+    text-align: center !important;
+}
+.footer a {
+    color: #c0392b !important;
+}
+
+/* Línea divisora */
+hr {
+    border-color: #222222 !important;
+}
+
+/* Links */
+a {
+    color: #c0392b !important;
+}

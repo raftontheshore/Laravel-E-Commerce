@@ -1,39 +1,248 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <title>Restablecer Contraseña - Catacumbas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+    <style>
+        @font-face {
+            font-family: 'SystemFont';
+            src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
+            font-display: swap;
+        }
+        html, body {
+            background-color: #111 !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+        .login-card {
+            background: #161616;
+            border: 1px solid #262626;
+            border-radius: 14px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 420px;
+        }
+        .login-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .login-brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        .login-brand-name {
+            font-family: 'SystemFont', monospace;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c0392b;
+            line-height: 1;
+        }
+        .login-brand-sub {
+            font-size: 12px;
+            color: #444;
+            margin-top: 12px;
+            text-align: center;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+        .login-divider {
+            border: none;
+            border-top: 1px solid #222;
+            margin: 0 0 28px;
+        }
+        .login-field {
+            margin-bottom: 16px;
+        }
+        .login-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 6px;
+        }
+        .login-field .input-wrap {
+            display: flex;
+            align-items: center;
+            background: #1c1c1c;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 0 12px;
+            gap: 10px;
+            transition: border-color 0.15s;
+        }
+        .login-field .input-wrap:focus-within { border-color: #c0392b; }
+        .login-field .input-wrap i {
+            color: #444;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .login-field .input-wrap input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ddd;
+            font-size: 14px;
+            padding: 12px 0;
+            width: 100%;
+        }
+        .login-field .input-wrap input::placeholder { color: #3a3a3a; }
+        .btn-login-submit {
+            width: 100%;
+            background: #c0392b;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+        }
+        .btn-login-submit:hover { background: #e74c3c; }
+        .login-register {
+            text-align: center;
+            font-size: 13px;
+            color: #444;
+            border-top: 1px solid #1e1e1e;
+            padding-top: 20px;
+            margin-top: 24px;
+        }
+        .login-register a {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.15s;
+        }
+        .login-register a:hover { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <x-navbar-simplificada/>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <div class="login-wrapper">
+        <div class="login-card">
+
+            <div class="login-brand">
+                <img src="{{ asset('images/favicon.png') }}" alt="Catacumbas">
+                <span class="login-brand-name">Catacumbas</span>
+                <p class="login-brand-sub">Elegí tu nueva contraseña</p>
+            </div>
+
+            <hr class="login-divider">
+
+            <form method="POST" action="{{ route('password.store') }}">
+                @csrf
+
+                {{-- Token oculto obligatorio --}}
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
+                {{-- Email --}}
+                <div class="login-field">
+                    <label for="email">Email</label>
+                    <div class="input-wrap">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" id="email" name="email"
+                               placeholder="tucorreo@ejemplo.com"
+                               value="{{ old('email', $request->email) }}"
+                               required autofocus autocomplete="username">
+                    </div>
+                    @error('email')
+                        <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- Nueva contraseña --}}
+                <div class="login-field">
+                    <label for="password">Nueva Contraseña</label>
+                    <div class="input-wrap">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" id="password" name="password"
+                               placeholder="••••••••"
+                               required autocomplete="new-password">
+                    </div>
+                    @error('password')
+                        <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- Confirmar contraseña --}}
+                <div class="login-field">
+                    <label for="password_confirmation">Confirmar Contraseña</label>
+                    <div class="input-wrap" id="wrapConfirm">
+                        <i class="bi bi-shield-lock"></i>
+                        <input type="password" id="password_confirmation"
+                               name="password_confirmation"
+                               placeholder="••••••••"
+                               required autocomplete="new-password">
+                    </div>
+                    <small id="passwordError" style="color:#c0392b; display:none; font-size:11px; margin-top:5px; font-weight:bold;">
+                        Las contraseñas no coinciden
+                    </small>
+                    @error('password_confirmation')
+                        <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn-login-submit">
+                    Restablecer Contraseña
+                </button>
+            </form>
+
+            <div class="login-register">
+                ¿Recordaste tu contraseña? <a href="{{ route('login') }}">Iniciar Sesión</a>
+            </div>
+
         </div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+    <script>
+        const pass        = document.getElementById('password');
+        const confirmPass = document.getElementById('password_confirmation');
+        const errorMsg    = document.getElementById('passwordError');
+        const wrapConfirm = document.getElementById('wrapConfirm');
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+        function validarContrasenas() {
+            if (confirmPass.value.length > 0) {
+                if (pass.value !== confirmPass.value) {
+                    errorMsg.style.display = 'block';
+                    wrapConfirm.style.borderColor = '#c0392b';
+                } else {
+                    errorMsg.style.display = 'none';
+                    wrapConfirm.style.borderColor = '#2e2e2e';
+                }
+            } else {
+                errorMsg.style.display = 'none';
+                wrapConfirm.style.borderColor = '#2e2e2e';
+            }
+        }
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        pass.addEventListener('input', validarContrasenas);
+        confirmPass.addEventListener('input', validarContrasenas);
+    </script>
+</body>
+</html>
