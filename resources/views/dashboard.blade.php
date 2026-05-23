@@ -41,6 +41,85 @@
             letter-spacing: 1px !important;
             margin-top: 2px !important;
         }
+
+        /* Sidebar oscuro */
+    .sidebar-dark.bg-gradient-primary,
+    .bg-gradient-primary {
+        background: linear-gradient(180deg, #1a1a2e 10%, #16213e 100%) !important;
+    }
+
+    /* Fondo general de la página */
+    body {
+        background-color: #0f0f1a !important;
+    }
+
+    /* Cards con fondo oscuro */
+    .card {
+        background-color: #1a1a2e !important;
+        color: #ffffff !important;
+    }
+
+    /* Texto de las cards */
+    .card .text-gray-800 {
+        color: #ffffff !important;
+    }
+
+    /* Topbar oscura */
+    .topbar.navbar-light.bg-white {
+        background-color: #16213e !important;
+    }
+
+    .topbar .text-gray-600 {
+        color: #cccccc !important;
+    }
+
+    /* Fondo del contenido */
+    #content-wrapper {
+        background-color: #0f0f1a !important;
+    }
+
+    /* Header de cards */
+        .card-header {
+            background-color: #1e2a45 !important;
+            border-bottom: 1px solid #2a3a5c !important;
+            color: #ffffff !important;
+        }
+
+        /* Tablas */
+        .table {
+            color: #cccccc !important;
+        }
+        .table thead th {
+            border-bottom: 2px solid #2a3a5c !important;
+            color: #aaaaaa !important;
+        }
+        .table td, .table th {
+            border-top: 1px solid #2a3a5c !important;
+        }
+        .table-bordered {
+            border: 1px solid #2a3a5c !important;
+        }
+
+        /* Footer */
+        .sticky-footer.bg-white {
+            background-color: #16213e !important;
+            color: #aaaaaa !important;
+        }
+
+        /* Título Dashboard */
+        .text-gray-800 {
+            color: #ffffff !important;
+        }
+
+        /* Progress bars fondo */
+        .progress {
+            background-color: #2a3a5c !important;
+        }
+
+        /* Texto small dentro de cards de colores */
+        .text-black-50 {
+            color: rgba(255,255,255,0.5) !important;
+        }
     </style>
 </head>
 
@@ -249,11 +328,14 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pedidos Pendientes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">24</div>{{-- TENEMOS QUE CONECTAR CON LA DATA BASE --}}
+                                                Pedidos Pendientes
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ \App\Models\Orden::where('estado', 'pendiente')->count() }}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -266,8 +348,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Dinero Recaudado </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>{{-- TENEMOS QUE CONECTAR CON LA DATA BASE --}}
+                                                Dinero Recaudado
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                ${{ number_format(\App\Models\Orden::where('estado', 'pagado')->sum('total'), 0, ',', '.') }}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -303,11 +388,14 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                Pedidos Entregados
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ \App\Models\Orden::where('estado', 'entregado')->count() }}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fas fa-truck fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -316,55 +404,55 @@
                     </div>
 
                     <div class="card shadow mb-4">
-    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <h6 class="m-0 font-weight-bold text-primary">Últimos Pedidos</h6>
-        <a href="#" class="btn btn-sm btn-primary">Ver todos</a>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Cliente</th>
-                        <th>Total</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(\App\Models\Orden::with('user')->latest()->take(5)->get() as $orden)
-                    <tr>
-                        <td>#{{ $orden->id }}</td>
-                        <td>{{ $orden->user->nombre ?? 'N/A' }}</td>
-                        <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
-                        <td>
-                            @switch($orden->estado)
-                                @case('pendiente')
-                                    <span class="badge badge-warning">Pendiente</span>
-                                    @break
-                                @case('pagado')
-                                    <span class="badge badge-success">Pagado</span>
-                                    @break
-                                @case('enviado')
-                                    <span class="badge badge-info">Enviado</span>
-                                    @break
-                                @case('entregado')
-                                    <span class="badge badge-primary">Entregado</span>
-                                    @break
-                                @case('cancelado')
-                                    <span class="badge badge-danger">Cancelado</span>
-                                    @break
-                                @default
-                                    <span class="badge badge-secondary">{{ $orden->estado }}</span>
-                            @endswitch
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Últimos Pedidos</h6>
+                            <a href="#" class="btn btn-sm btn-primary">Ver todos</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Pedido</th>
+                                            <th>Cliente</th>
+                                            <th>Total</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach(\App\Models\Orden::with('user')->latest()->take(5)->get() as $orden)
+                                        <tr>
+                                            <td>#{{ $orden->id }}</td>
+                                            <td>{{ $orden->user->nombre ?? 'N/A' }}</td>
+                                            <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
+                                            <td>
+                                                @switch($orden->estado)
+                                                    @case('pendiente')
+                                                        <span class="badge badge-warning">Pendiente</span>
+                                                        @break
+                                                    @case('pagado')
+                                                        <span class="badge badge-success">Pagado</span>
+                                                        @break
+                                                    @case('enviado')
+                                                        <span class="badge badge-info">Enviado</span>
+                                                        @break
+                                                    @case('entregado')
+                                                        <span class="badge badge-primary">Entregado</span>
+                                                        @break
+                                                    @case('cancelado')
+                                                        <span class="badge badge-danger">Cancelado</span>
+                                                        @break
+                                                    @default
+                                                        <span class="badge badge-secondary">{{ $orden->estado }}</span>
+                                                @endswitch
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
 
