@@ -4,6 +4,8 @@ use App\Http\Controllers\ExitoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
 // ============================================================
 // RUTA: Página de inicio (/)
 // ============================================================
@@ -28,11 +30,27 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // apartado de usuario-dashboard 
+    // Usuarios
     Route::get('/admin/usuarios', [UsuarioController::class, 'index'])->name('admin.usuarios');
     Route::patch('/admin/usuarios/{user}/rol', [UsuarioController::class, 'toggleRol'])->name('admin.usuarios.rol');
     Route::delete('/admin/usuarios/{user}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
+
+    // Productos
+    Route::get('/admin/productos', [ProductoController::class, 'index'])->name('admin.productos.index');
+    Route::get('/admin/productos/crear', [ProductoController::class, 'create'])->name('admin.productos.create');
+    Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
+    Route::get('/admin/productos/{producto}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
+    Route::patch('/admin/productos/{producto}', [ProductoController::class, 'update'])->name('admin.productos.update');
+    Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
+
+    // Categorías
+    Route::get('/admin/categorias', [CategoriaController::class, 'index'])->name('admin.categorias.index');
+    Route::post('/admin/categorias', [CategoriaController::class, 'store'])->name('admin.categorias.store');
+    Route::patch('/admin/categorias/{categoria}', [CategoriaController::class, 'update'])->name('admin.categorias.update');
+    Route::delete('/admin/categorias/{categoria}', [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';
 
@@ -242,3 +260,5 @@ function obtenerProductos() {
         ],
     ];
 }
+
+Route::resource('admin/productos', ProductoController::class)->names('admin.productos');

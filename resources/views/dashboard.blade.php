@@ -178,9 +178,10 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-box"></i>
-                    <span>Productos</span></a>
+                <a class="nav-link" href="{{ route('admin.productos.index') }}">
+                 <i class="fas fa-fw fa-box"></i>
+                  <span>Productos</span>
+                 </a>
             </li>
 
             <li class="nav-item">
@@ -191,7 +192,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.categorias.index') }}">
                     <i class="fas fa-fw fa-tags"></i>
                     <span>Categorías</span></a>
             </li>
