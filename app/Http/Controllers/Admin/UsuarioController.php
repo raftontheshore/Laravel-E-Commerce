@@ -29,7 +29,7 @@ class UsuarioController extends Controller
             })
             ->latest()->get();
 
-        return view('usuario-dashboard', compact('clientes', 'admins', 'buscar'));
+        return view('dashboard-usuarios', compact('clientes', 'admins', 'buscar'));
     }
 
     public function toggleRol(User $user)
