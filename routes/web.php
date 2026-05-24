@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
+
 // ============================================================
 // RUTA: Página de inicio (/)
 // ============================================================
@@ -26,91 +27,58 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Usuarios
+    // ── Usuarios ──────────────────────────────────────────
     Route::get('/admin/usuarios', [UsuarioController::class, 'index'])->name('admin.usuarios');
     Route::patch('/admin/usuarios/{user}/rol', [UsuarioController::class, 'toggleRol'])->name('admin.usuarios.rol');
     Route::delete('/admin/usuarios/{user}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
 
-    // Productos
-    Route::get('/admin/productos', [ProductoController::class, 'index'])->name('admin.productos.index');
-    Route::get('/admin/productos/crear', [ProductoController::class, 'create'])->name('admin.productos.create');
-    Route::post('/admin/productos', [ProductoController::class, 'store'])->name('admin.productos.store');
-    Route::get('/admin/productos/{producto}/editar', [ProductoController::class, 'edit'])->name('admin.productos.edit');
-    Route::patch('/admin/productos/{producto}', [ProductoController::class, 'update'])->name('admin.productos.update');
-    Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
+    // ── Productos ─────────────────────────────────────────
+    // Una sola definición limpia, con la ruta 'crear' explícita
+    // para que no colisione con /{producto} del resource.
+    Route::get('/admin/productos',                    [ProductoController::class, 'index'])->name('admin.productos.index');
+    Route::get('/admin/productos/crear',              [ProductoController::class, 'create'])->name('admin.productos.create');
+    Route::post('/admin/productos',                   [ProductoController::class, 'store'])->name('admin.productos.store');
+    Route::get('/admin/productos/{producto}',         [ProductoController::class, 'show'])->name('admin.productos.show');
+    Route::get('/admin/productos/{producto}/editar',  [ProductoController::class, 'edit'])->name('admin.productos.edit');
+    Route::patch('/admin/productos/{producto}',       [ProductoController::class, 'update'])->name('admin.productos.update');
+    Route::delete('/admin/productos/{producto}',      [ProductoController::class, 'destroy'])->name('admin.productos.destroy');
 
-    // Categorías
-    Route::get('/admin/categorias', [CategoriaController::class, 'index'])->name('admin.categorias.index');
-    Route::post('/admin/categorias', [CategoriaController::class, 'store'])->name('admin.categorias.store');
-    Route::patch('/admin/categorias/{categoria}', [CategoriaController::class, 'update'])->name('admin.categorias.update');
-    Route::delete('/admin/categorias/{categoria}', [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
+    // ── Categorías ────────────────────────────────────────
+    Route::get('/admin/categorias',                   [CategoriaController::class, 'index'])->name('admin.categorias.index');
+    Route::post('/admin/categorias',                  [CategoriaController::class, 'store'])->name('admin.categorias.store');
+    Route::patch('/admin/categorias/{categoria}',     [CategoriaController::class, 'update'])->name('admin.categorias.update');
+    Route::delete('/admin/categorias/{categoria}',    [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
+
 });
-
-
 
 require __DIR__.'/auth.php';
 
 // ============================================================
 // RUTAS: Páginas estáticas
 // ============================================================
-Route::get('/sobre-mi', function () {
-    return view('sobre-mi');
-});
-
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-
+Route::get('/sobre-mi', function () { return view('sobre-mi'); });
+Route::get('/contacto', function () { return view('contacto'); });
 Route::post('/contacto', [ExitoController::class, 'procesar']);
-
-Route::get('/footer', function () {
-    return view('footer');
-});
-
-Route::get('/juegos', function () {
-    return view('juegos');
-});
-
-Route::get('/consolas', function () {
-    return view('consolas');
-});
+Route::get('/footer', function () { return view('footer'); });
+Route::get('/juegos', function () { return view('juegos'); });
+Route::get('/consolas', function () { return view('consolas'); });
+Route::get('/nosotros', function () { return view('nosotros'); });
+Route::get('/terminos', function () { return view('terminos'); });
+Route::get('/privacidad', function () { return view('privacidad'); });
+Route::get('/construccion', function () { return view('construccion'); });
+Route::get('/faq', function () { return view('faq'); });
 
 Route::get('/explorar', function () {
     $coleccion = collect(obtenerProductos());
-    $nuevos_productos = $coleccion->filter(function ($item) {
-        return strtolower($item->estado) === 'nuevo';
-    });
-    $ofertas_juegos = $coleccion->filter(function ($item) {
-        return strtolower($item->categoria) === 'juego' && $item->porcentaje_descuento > 0;
-    });
-    $combos = $coleccion->filter(function ($item) {
-        return strtolower($item->categoria) === 'combo';
-    });
+    $nuevos_productos = $coleccion->filter(fn($item) => strtolower($item->estado) === 'nuevo');
+    $ofertas_juegos   = $coleccion->filter(fn($item) => strtolower($item->categoria) === 'juego' && $item->porcentaje_descuento > 0);
+    $combos           = $coleccion->filter(fn($item) => strtolower($item->categoria) === 'combo');
     return view('explorar', compact('nuevos_productos', 'ofertas_juegos', 'combos'));
-});
-
-Route::get('/nosotros', function () {
-    return view('nosotros');
-});
-
-Route::get('/terminos', function () {
-    return view('terminos');
-});
-
-Route::get('/privacidad', function () {
-    return view('privacidad');
-});
-
-Route::get('/construccion', function () {
-    return view('construccion');
-});
-
-Route::get('/faq', function () {
-    return view('faq');
 });
 
 // ============================================================
@@ -118,13 +86,9 @@ Route::get('/faq', function () {
 // ============================================================
 Route::get('/tienda/{categoria?}', function ($categoria = 'consola') {
     $coleccion = collect(obtenerProductos());
-    if ($categoria === 'todos') {
-        $productos = $coleccion;
-    } else {
-        $productos = $coleccion->filter(function ($item) use ($categoria) {
-            return strtolower($item->categoria) === strtolower($categoria);
-        });
-    }
+    $productos = $categoria === 'todos'
+        ? $coleccion
+        : $coleccion->filter(fn($item) => strtolower($item->categoria) === strtolower($categoria));
     return view('tienda', compact('productos', 'categoria'));
 });
 
@@ -260,5 +224,3 @@ function obtenerProductos() {
         ],
     ];
 }
-
-Route::resource('admin/productos', ProductoController::class)->names('admin.productos');

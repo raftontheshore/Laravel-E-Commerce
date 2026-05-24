@@ -155,66 +155,7 @@
 
 <body id="page-top">
 <div id="wrapper">
-
-    {{-- ══ SIDEBAR ══ --}}
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <a class="sidebar-brand d-flex align-items-center justify-content-center h-auto py-4" href="{{ route('dashboard') }}">
-            <div class="sidebar-brand-text mx-3 catacumbas-logo-text">
-                CATACUMBAS
-                <div class="catacumbas-logo-sub">PANEL DE CONTROL</div>
-            </div>
-        </a>
-
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item active">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-box"></i>
-                <span>Productos</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.usuarios') }}">
-                <i class="fas fa-fw fa-users"></i>
-                <span>Usuarios</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-tags"></i>
-                <span>Categorías</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-comments"></i>
-                <span>Consultas</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-shopping-cart"></i>
-                <span>Pedidos</span>
-            </a>
-        </li>
-
-        <hr class="sidebar-divider d-none d-md-block">
-
-    </ul>
+    <x-admin-sidebar />
 
     {{-- ══ CONTENT WRAPPER ══ --}}
     <div id="content-wrapper" class="d-flex flex-column">

@@ -7,21 +7,165 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-   public function index()
-{
-    $productos = Producto::latest()->paginate(15);
-    $categorias = \App\Models\Categoria::orderBy('nombre')->get(); // ← agregá esta línea
-    return view('dashboard-productos-añadir', compact('productos', 'categorias')); // ← y esta
-}
+    public function index(Request $request)
+    {
+        $query = Producto::with('categoria');
+
+        // ── Búsqueda por texto ──
+        if ($request->filled('q')) {
+            $q = $request->q;
+            $query->where(function ($sub) use ($q) {
+                $sub->where('nombre',  'LIKE', "%{$q}%")
+                    ->orWhere('marca',   'LIKE', "%{$q}%")
+                    ->orWhere('consola', 'LIKE', "%{$q}%");
+            });
+        }
+
+        // ── Filtro categoría ──
+        if ($request->filled('categoria')) {
+            $query->where('id_categoria', $request->categoria);
+        }
+
+        // ── Filtro condición ──
+        if ($request->filled('condicion')) {
+            $query->where('condicion', $request->condicion);
+        }
+
+        // ── Filtro estado activo ──
+        if ($request->filled('activo')) {
+            $query->where('activo', $request->activo);
+        }
+
+        // ── Ordenamiento ──
+        switch ($request->get('orden', 'reciente')) {
+            case 'nombre':
+                $query->orderBy('nombre', 'asc');
+                break;
+            case 'precio_asc':
+                $query->orderBy('precio', 'asc');
+                break;
+            case 'precio_desc':
+                $query->orderBy('precio', 'desc');
+                break;
+            case 'stock':
+                $query->orderBy('stock', 'asc');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $productos = $query->paginate(15)->withQueryString();
+
+        // ── Stats para las cards ──
+        $totalProductos = Producto::count();
+        $totalActivos   = Producto::where('activo', 1)->count();
+        $stockBajo      = Producto::whereColumn('stock', '<=', 'stock_bajo')
+                                   ->where('stock', '>', 0)
+                                   ->count();
+        $sinStock       = Producto::where('stock', 0)->count();
+
+        // ── Categorías para el filtro ──
+        $categorias = \App\Models\Categoria::orderBy('nombre')->get();
+
+        return view('dashboard-productos-ver', compact(
+            'productos',
+            'totalProductos',
+            'totalActivos',
+            'stockBajo',
+            'sinStock',
+            'categorias'
+        ));
+    }
 
     public function create()
     {
         $categorias = \App\Models\Categoria::orderBy('nombre')->get();
-        return view('crear-producto', compact('categorias'));
+        return view('dashboard-productos-añadir', compact('categorias'));
     }
 
     public function store(Request $request)
     {
-        // lo armamos después
+        $validated = $request->validate([
+            'nombre'               => 'required|string|max:150',
+            'descripcion'          => 'nullable|string',
+            'marca'                => 'required|string|max:255',
+            'consola'              => 'required|string|max:255',
+            'id_categoria'         => 'required|exists:categorias,id',
+            'condicion'            => 'required|in:nuevo,usado,reacondicionado',
+            'precio_original'      => 'required|numeric|min:0',
+            'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
+            'precio'               => 'required|numeric|min:0',
+            'stock'                => 'required|integer|min:0',
+            'stock_bajo'           => 'required|integer|min:0',
+            'url_imagen'           => 'nullable|url|max:255',
+            'imagen'               => 'nullable|image|max:2048',
+            'activo'               => 'nullable|boolean',
+        ]);
+
+        // Si subió archivo, lo guardamos y pisamos la URL
+        if ($request->hasFile('imagen')) {
+            $validated['url_imagen'] = $request->file('imagen')->store('productos', 'public');
+        }
+
+        $validated['activo'] = $request->has('activo') ? 1 : 0;
+        $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
+
+        Producto::create($validated);
+
+        return redirect()->route('admin.productos.index')
+                         ->with('success', 'Producto creado correctamente.');
+    }
+
+    public function show(Producto $producto)
+    {
+        $producto->load('categoria');
+        return view('admin.productos.show', compact('producto'));
+    }
+
+    public function edit(Producto $producto)
+    {
+        $categorias = \App\Models\Categoria::orderBy('nombre')->get();
+        return view('admin.productos.edit', compact('producto', 'categorias'));
+    }
+
+    public function update(Request $request, Producto $producto)
+    {
+        $validated = $request->validate([
+            'nombre'               => 'required|string|max:150',
+            'descripcion'          => 'nullable|string',
+            'marca'                => 'required|string|max:255',
+            'consola'              => 'required|string|max:255',
+            'id_categoria'         => 'required|exists:categorias,id',
+            'condicion'            => 'required|in:nuevo,usado,reacondicionado',
+            'precio_original'      => 'required|numeric|min:0',
+            'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
+            'precio'               => 'required|numeric|min:0',
+            'stock'                => 'required|integer|min:0',
+            'stock_bajo'           => 'required|integer|min:0',
+            'url_imagen'           => 'nullable|url|max:255',
+            'imagen'               => 'nullable|image|max:2048',
+            'activo'               => 'nullable|boolean',
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $validated['url_imagen'] = $request->file('imagen')->store('productos', 'public');
+        }
+
+        $validated['activo'] = $request->has('activo') ? 1 : 0;
+        $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
+
+        $producto->update($validated);
+
+        return redirect()->route('admin.productos.index')
+                         ->with('success', 'Producto actualizado correctamente.');
+    }
+
+    public function destroy(Producto $producto)
+    {
+        $producto->delete();
+
+        return redirect()->route('admin.productos.index')
+                         ->with('success', 'Producto eliminado correctamente.');
     }
 }
