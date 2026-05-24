@@ -12,16 +12,24 @@ class UsuarioController extends Controller
         $buscar = $request->get('buscar');
 
         $clientes = User::where('rol', 'CLIENTE')
-            ->when($buscar, fn($q) => $q->where('nombre', 'like', "%$buscar%")
-                                        ->orWhere('email', 'like', "%$buscar%"))
+            ->when($buscar, function($q) use ($buscar) {
+                $q->where(function($sub) use ($buscar) {
+                    $sub->where('nombre', 'like', "%$buscar%")
+                        ->orWhere('email', 'like', "%$buscar%");
+                });
+            })
             ->latest()->get();
 
         $admins = User::where('rol', 'ADMIN')
-            ->when($buscar, fn($q) => $q->where('nombre', 'like', "%$buscar%")
-                                        ->orWhere('email', 'like', "%$buscar%"))
+            ->when($buscar, function($q) use ($buscar) {
+                $q->where(function($sub) use ($buscar) {
+                    $sub->where('nombre', 'like', "%$buscar%")
+                        ->orWhere('email', 'like', "%$buscar%");
+                });
+            })
             ->latest()->get();
 
-        return view('usuario-dashboard', compact('clientes', 'admins', 'buscar'));
+        return view('dashboard-usuarios', compact('clientes', 'admins', 'buscar'));
     }
 
     public function toggleRol(User $user)
@@ -33,7 +41,7 @@ class UsuarioController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete(); // Soft delete → pone fecha en deleted_at
+        $user->delete();
         return back()->with('success', 'Usuario desactivado correctamente.');
     }
 }

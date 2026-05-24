@@ -223,12 +223,19 @@
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nombre }}</span>
                             <img class="img-profile rounded-circle" src="{{ asset('adminDashBoard/img/undraw_profile.svg') }}">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow">
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                            </a>
-                        </div>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                    
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                         </div>
                     </li>
                 </ul>
             </nav>
@@ -249,12 +256,18 @@
                 @endif
 
                 {{-- BUSCADOR --}}
+                {{-- BUSCADOR --}}
                 <form method="GET" action="{{ route('admin.usuarios') }}" class="mb-4">
-                    <div class="input-group" style="max-width: 400px;">
-                        <input type="text" name="buscar" class="form-control" placeholder="Buscar usuario..." value="{{ $buscar ?? '' }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="input-group" style="max-width: 400px; background-color: #222; border: 1px solid #333; border-radius: 7px; overflow: hidden;">
+                        
+                        <div class="input-group-prepend">
+                            <button class="btn border-0" type="submit" style="background: transparent; color: #555; box-shadow: none; padding-left: 15px; padding-right: 10px;">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
+                        
+                        <input type="text" name="buscar" class="form-control border-0" placeholder="Buscar usuario..." value="{{ $buscar ?? '' }}" style="background-color: transparent; color: #ddd; box-shadow: none; outline: none;">
+                        
                     </div>
                 </form>
 
