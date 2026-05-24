@@ -3,7 +3,7 @@
 use App\Http\Controllers\ExitoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\UsuarioController;
 // ============================================================
 // RUTA: Página de inicio (/)
 // ============================================================
@@ -27,6 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // apartado de usuario-dashboard 
+    Route::get('/admin/usuarios', [UsuarioController::class, 'index'])->name('admin.usuarios');
+    Route::patch('/admin/usuarios/{user}/rol', [UsuarioController::class, 'toggleRol'])->name('admin.usuarios.rol');
+    Route::delete('/admin/usuarios/{user}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
 });
 
 require __DIR__.'/auth.php';

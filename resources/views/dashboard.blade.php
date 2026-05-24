@@ -20,7 +20,7 @@
     
 {{-- FORZAMOS LA FUENTE Y EL ESTILO DIRECTAMENTE AQUÍ --}}
     <style>
-        <style>
+        
     @font-face {
         font-family: 'SystemFont';
         src: url('{{ asset('fonts/system-font-from-windows-3-1.otf') }}') format('opentype');
@@ -151,7 +151,7 @@
         color: #c0392b !important;
     }
 </style>
-    </style>
+    
 </head>
 
 <body id="page-top">
@@ -184,9 +184,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('admin.usuarios') }}">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Usuarios</span></a>
+                    <span>Usuarios</span>
+                </a>
             </li>
 
             <li class="nav-item">
