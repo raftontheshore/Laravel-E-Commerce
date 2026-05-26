@@ -1,18 +1,14 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-
 
 class Producto extends Model
 {
     use SoftDeletes;
+
+    protected $table = 'productos';
 
     protected $fillable = [
         'id_categoria',
@@ -27,31 +23,22 @@ class Producto extends Model
         'marca',
         'consola',
         'condicion',
+        'tipo_producto',
         'activo',
     ];
 
     protected $casts = [
-        'precio_original' => 'decimal:2',
-        'precio' => 'decimal:2',
+        'activo'               => 'boolean',
+        'precio_original'      => 'decimal:2',
+        'precio'               => 'decimal:2',
         'porcentaje_descuento' => 'integer',
-        'stock' => 'integer',
-        'stock_bajo' => 'integer',
-        'activo' => 'boolean',
+        'stock'                => 'integer',
+        'stock_bajo'           => 'integer',
     ];
 
-    // Relación con Categoría
-    public function categoria(): BelongsTo
+    // Relación: un producto pertenece a una categoría
+    public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'id_categoria');
-    }
-
-   
-    protected function urlImagen(): Attribute
-    {
-        return Attribute::make(
-        get: fn($value) => $value 
-            ? (Str::startsWith($value, 'http') ? $value : Storage::url($value))
-            : null,
-    );
     }
 }

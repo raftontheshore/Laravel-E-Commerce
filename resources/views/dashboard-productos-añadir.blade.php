@@ -258,8 +258,22 @@
                                         </div>
                                     </div>
 
+                                    {{-- Tipo, Categoría y Condición en la misma fila --}}
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="input-label">Tipo de Producto <span class="text-danger">*</span></label>
+                                                <select name="tipo_producto"
+                                                    class="form-control input-dark @error('tipo_producto') is-invalid @enderror" required>
+                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="videojuego" {{ old('tipo_producto') === 'videojuego' ? 'selected' : '' }}>Videojuego</option>
+                                                    <option value="consola"    {{ old('tipo_producto') === 'consola'    ? 'selected' : '' }}>Consola</option>
+                                                    <option value="periferico" {{ old('tipo_producto') === 'periferico' ? 'selected' : '' }}>Periférico</option>
+                                                </select>
+                                                @error('tipo_producto')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="input-label">Categoría <span class="text-danger">*</span></label>
                                                 <select name="id_categoria"
@@ -274,7 +288,7 @@
                                                 @error('id_categoria')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="input-label">Condición <span class="text-danger">*</span></label>
                                                 <select name="condicion"

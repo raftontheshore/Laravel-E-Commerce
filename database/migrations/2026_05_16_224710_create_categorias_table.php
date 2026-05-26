@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('categorias', function (Blueprint $table) {
         $table->id();
-        $table->string('nombre', 150);
+        $table->string('nombre', 25);
         $table->text('descripcion')->nullable();
         $table->boolean('activo')->default(true);
         $table->timestamps(); // Crea created_at y updated_at, nuevo
