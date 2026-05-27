@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\ExitoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ContactoController;
+
+Route::get('/contacto',  [ContactoController::class, 'index']);
+Route::post('/contacto', [ContactoController::class, 'store']);
+
 
 // ============================================================
 // RUTA: Página de inicio (/)
@@ -62,8 +66,6 @@ require __DIR__.'/auth.php';
 // RUTAS: Páginas estáticas
 // ============================================================
 Route::get('/sobre-mi', function () { return view('sobre-mi'); });
-Route::get('/contacto', function () { return view('contacto'); });
-Route::post('/contacto', [ExitoController::class, 'procesar']);
 Route::get('/footer', function () { return view('footer'); });
 Route::get('/juegos', function () { return view('juegos'); });
 Route::get('/consolas', function () { return view('consolas'); });

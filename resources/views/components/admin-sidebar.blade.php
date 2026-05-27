@@ -154,48 +154,20 @@
         </ul>
     </li>
 
-    {{-- Usuarios --}}
-    <li class="nav-item has-submenu {{ request()->routeIs('admin.usuarios*') ? 'open active' : '' }}">
-        <a class="nav-link" href="#" onclick="toggleSubmenu(this); return false;">
-            <span>
-                <i class="fas fa-fw fa-users"></i>
-                <span>Usuarios</span>
-            </span>
-            <i class="fas fa-chevron-right submenu-arrow"></i>
-        </a>
-        <ul class="submenu">
-            <li>
-                <a href="{{ route('admin.usuarios') }}"
-                   class="{{ request()->routeIs('admin.usuarios') ? 'active' : '' }}">
-                    <i class="fas fa-list"></i> Ver todos
-                </a>
-            </li>
-        </ul>
-    </li>
+   {{-- Usuarios --}}
+<li class="nav-item {{ request()->routeIs('admin.usuarios*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.usuarios') }}">
+        <i class="fas fa-fw fa-users"></i><span>Usuarios</span>
+    </a>
+</li>
 
     {{-- Categorías --}}
-    <li class="nav-item has-submenu {{ request()->routeIs('admin.categorias*') ? 'open active' : '' }}">
-        <a class="nav-link" href="#" onclick="toggleSubmenu(this); return false;">
-            <span>
-                <i class="fas fa-fw fa-tags"></i>
-                <span>Categorías</span>
-            </span>
-            <i class="fas fa-chevron-right submenu-arrow"></i>
-        </a>
-        <ul class="submenu">
-            <li>
-                <a href="{{ route('admin.categorias.index') }}"
-                   class="{{ request()->routeIs('admin.categorias.index') ? 'active' : '' }}">
-                    <i class="fas fa-list"></i> Ver todas
-                </a>
-            </li>
-            <li>
-                <a href="#" class="">
-                    <i class="fas fa-plus"></i> Añadir categoría
-                </a>
-            </li>
-        </ul>
-    </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.categorias.index') }}">
+        <i class="fas fa-fw fa-tags"></i><span>Categorías</span>
+    </a>
+</li>
+
 
     {{-- Consultas --}}
     <li class="nav-item {{ request()->is('admin/consultas*') ? 'active-page' : '' }}">

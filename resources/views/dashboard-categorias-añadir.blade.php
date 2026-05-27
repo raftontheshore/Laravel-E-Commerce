@@ -146,83 +146,10 @@
 
 <body id="page-top">
 <div id="wrapper">
-{{-- ══ SIDEBAR ══ --}}
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center h-auto py-4" href="{{ route('dashboard') }}">
-        <div class="sidebar-brand-text mx-3 catacumbas-logo-text">
-            CATACUMBAS
-            <div class="catacumbas-logo-sub">PANEL DE CONTROL</div>
-        </div>
-    </a>
 
-    <hr class="sidebar-divider my-0">
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>
-        </a>
-    </li>
+<x-admin-sidebar />
 
-    <hr class="sidebar-divider my-0">
-
-    {{-- Productos --}}
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductos"
-            aria-expanded="false" aria-controls="collapseProductos">
-            <i class="fas fa-fw fa-box"></i><span>Productos</span>
-        </a>
-        <div id="collapseProductos" class="collapse" data-parent="#accordionSidebar">
-            <div class="py-2 collapse-inner">
-                <a class="collapse-item" href="{{ route('admin.productos.index') }}">
-                    <i class="fas fa-list fa-sm mr-2"></i>Ver todos
-                </a>
-                <a class="collapse-item" href="{{ route('admin.productos.create') }}">
-                    <i class="fas fa-plus fa-sm mr-2"></i>Agregar
-                </a>
-            </div>
-        </div>
-    </li>
-
-    {{-- Usuarios (solo ver, no tiene sentido "agregar" desde admin) --}}
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.usuarios') }}">
-            <i class="fas fa-fw fa-users"></i><span>Usuarios</span>
-        </a>
-    </li>
-
-    {{-- Categorías --}}
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategoria"
-            aria-expanded="false" aria-controls="collapseCategoria">
-            <i class="fas fa-fw fa-tags"></i><span>Categorías</span>
-        </a>
-        <div id="collapseCategoria" class="collapse" data-parent="#accordionSidebar">
-            <div class="py-2 collapse-inner">
-                <a class="collapse-item" href="{{ route('admin.categorias.index') }}">
-                    <i class="fas fa-list fa-sm mr-2"></i>Ver todas
-                </a>
-                {{-- Abre el modal directamente --}}
-                <a class="collapse-item" href="{{ route('admin.categorias.index') }}#nueva">
-                    <i class="fas fa-plus fa-sm mr-2"></i>Agregar
-                </a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-comments"></i><span>Consultas</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-shopping-cart"></i><span>Pedidos</span>
-        </a>
-    </li>
-
-    <hr class="sidebar-divider d-none d-md-block">
-</ul>
 
     {{-- ══ CONTENT ══ --}}
     <div id="content-wrapper" class="d-flex flex-column">
@@ -395,7 +322,7 @@
                         <label>Nombre <span class="text-danger">*</span></label>
                         <input type="text" name="nombre" value="{{ old('nombre') }}"
                             class="form-control input-dark @error('nombre') is-invalid @enderror"
-                            placeholder="Ej: Acción, RPG, Plataformas..." maxlength="150" required>
+                            placeholder="Ej: Acción, RPG, Plataformas..." maxlength="15" required>
                         @error('nombre')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
@@ -446,7 +373,7 @@
                     <div class="form-group">
                         <label>Nombre <span class="text-danger">*</span></label>
                         <input type="text" name="nombre" id="edit_nombre"
-                            class="form-control input-dark" maxlength="150" required>
+                            class="form-control input-dark" maxlength="15" required>
                     </div>
 
                     <div class="form-group">
@@ -513,7 +440,6 @@
             document.getElementById('edit_descripcion').value = descripcion !== 'null' ? descripcion : '';
             document.getElementById('activo_editar').checked  = activo === '1';
 
-            // Armar la action del form con el ID correcto
             const base = "{{ url('admin/categorias') }}";
             document.getElementById('formEditar').action = base + '/' + id;
         });

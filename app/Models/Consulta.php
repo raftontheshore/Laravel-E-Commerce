@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Consulta extends Model
 {
+    protected $table = 'consultas';
+
     protected $fillable = [
         'id_usuario',
         'asunto',
@@ -14,8 +15,7 @@ class Consulta extends Model
         'estado',
     ];
 
-    // Relación: Una consulta pertenece a un usuario
-    public function usuario(): BelongsTo
+    public function usuario()
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
