@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\CarritoController;
 
 Route::get('/contacto',  [ContactoController::class, 'index']);
 Route::post('/contacto', [ContactoController::class, 'store']);
@@ -57,6 +58,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/categorias',                  [CategoriaController::class, 'store'])->name('admin.categorias.store');
     Route::patch('/admin/categorias/{categoria}',     [CategoriaController::class, 'update'])->name('admin.categorias.update');
     Route::delete('/admin/categorias/{categoria}',    [CategoriaController::class, 'destroy'])->name('admin.categorias.destroy');
+
+    // ── Carrito ─────────────────────────────────────────── 
+    Route::middleware('rol:cliente')->group(function () {
+        Route::get('/carrito', [CarritoController::class, 'index'])->name('cliente.carrito');
+        Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+        Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+        Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
+    });
+
+    // ── Compra confirmada ───────────────────────────────── 
+    Route::get('/compra-confirmada', function () {
+        if (!session('total')) {
+            return redirect()->route('/');
+        }
+        return view('backend.usuarios.compra-confirmada');
+    })->name('compra.confirmada');
 
 });
 

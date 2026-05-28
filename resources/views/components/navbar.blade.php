@@ -268,22 +268,39 @@
             <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center ms-auto gap-2 mt-3 mt-lg-0">
 
                 <div class="d-flex gap-2 justify-content-center">
-                    @auth
-                        {{-- Usuario logueado: muestra nombre y cerrar sesión --}}
-                        <span class="btn-username">
-                            <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->nombre }}
-                        </span>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn-logout">
-                                Cerrar Sesión
-                            </button>
-                        </form>
-                    @else
-                        {{-- Usuario no logueado --}}
-                        <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
-                        <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
-                    @endauth
+
+                        @auth
+                            @if(Auth::user()->rol && str_contains(strtolower(Auth::user()->rol), 'cliente'))
+                                @php
+                                    $cantidadCarrito = \App\Models\Carrito::where('id_usuario', Auth::id())
+                                                        ->sum('cantidad');
+                                @endphp
+
+                                <a href="{{ route('cliente.carrito') }}" class="btn-login position-relative">
+                                    <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
+                                    @if($cantidadCarrito > 0)
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            style="background:#c02a2a; font-size: 0.65rem;">
+                                            {{ $cantidadCarrito }}
+                                        </span>
+                                    @endif
+                                </a>
+                            @endif
+
+                            <span class="btn-username">
+                                <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->nombre }}
+                            </span>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn-logout">
+                                    Cerrar Sesión
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
+                            <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
+                        @endauth
+
                 </div>
 
             </div>
