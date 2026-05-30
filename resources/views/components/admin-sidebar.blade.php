@@ -170,13 +170,13 @@
 
 
     {{-- Consultas --}}
-    <li class="nav-item {{ request()->is('admin/consultas*') ? 'active-page' : '' }}">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ request()->routeIs('dashboard.mensajes') ? 'active-page' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard.mensajes') }}">
             <i class="fas fa-fw fa-comments"></i>
             <span>Consultas</span>
         </a>
     </li>
-
+    
     {{-- Pedidos --}}
     <li class="nav-item has-submenu {{ request()->routeIs('admin.pedidos*', 'admin.ordenes*') ? 'open active' : '' }}">
         <a class="nav-link" href="#" onclick="toggleSubmenu(this); return false;">

@@ -487,15 +487,15 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
                                     <h6 class="m-0 font-weight-bold text-primary">Últimas Consultas</h6>
-                                    <a href="#" class="btn btn-sm btn-primary">Ver todas</a>
+                                    <a href="{{ route('dashboard.mensajes') }}" class="btn btn-sm btn-primary">Ver todas</a>
                                 </div>
                                 <div class="card-body p-0">
-                                    @forelse(\App\Models\Consulta::with('user')->latest()->take(5)->get() as $consulta)
+                                    @forelse(\App\Models\Consulta::with('usuario')->latest()->take(5)->get() as $consulta)
                                         <div class="d-flex align-items-start px-4 py-3" style="border-bottom: 1px solid #2a3a5c;">
                                             <div class="flex-grow-1">
                                                 <div class="d-flex justify-content-between">
                                                     <span class="font-weight-bold small text-gray-800">
-                                                        {{ $consulta->user->nombre ?? 'Usuario eliminado' }}
+                                                        {{ $consulta->usuario->nombre ?? 'Usuario eliminado' }}
                                                     </span>
                                                     <span class="text-xs text-gray-500">
                                                         {{ $consulta->created_at->diffForHumans() }}

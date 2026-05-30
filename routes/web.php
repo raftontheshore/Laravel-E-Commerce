@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\MensajeController;
 
 Route::get('/contacto',  [ContactoController::class, 'index']);
 Route::post('/contacto', [ContactoController::class, 'store']);
@@ -74,6 +75,22 @@ Route::middleware('auth')->group(function () {
         }
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
+
+    // ── Mensajes (consultas + contactos) ─────────────────────
+    Route::get('/dashboard/mensajes', [MensajeController::class, 'index'])
+        ->name('dashboard.mensajes');
+
+    Route::patch('/dashboard/mensajes/consulta/{id}', [MensajeController::class, 'updateConsulta'])
+        ->name('dashboard.mensajes.consulta.update');
+
+    Route::patch('/dashboard/mensajes/contacto/{id}', [MensajeController::class, 'updateContacto'])
+        ->name('dashboard.mensajes.contacto.update');
+
+    Route::delete('/dashboard/mensajes/consulta/{id}', [MensajeController::class, 'destroyConsulta'])
+        ->name('dashboard.mensajes.consulta.destroy');
+
+    Route::delete('/dashboard/mensajes/contacto/{id}', [MensajeController::class, 'destroyContacto'])
+        ->name('dashboard.mensajes.contacto.destroy');
 
 });
 
