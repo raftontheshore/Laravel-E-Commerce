@@ -11,7 +11,6 @@ class ProductoController extends Controller
     {
         $query = Producto::with('categoria');
 
-        // ── Búsqueda por texto ──
         if ($request->filled('q')) {
             $q = $request->q;
             $query->where(function ($sub) use ($q) {
@@ -21,60 +20,36 @@ class ProductoController extends Controller
             });
         }
 
-        // ── Filtro categoría ──
         if ($request->filled('categoria')) {
             $query->where('id_categoria', $request->categoria);
         }
 
-        // ── Filtro condición ──
         if ($request->filled('condicion')) {
             $query->where('condicion', $request->condicion);
         }
 
-        // ── Filtro estado activo ──
         if ($request->filled('activo')) {
             $query->where('activo', $request->activo);
         }
 
-        // ── Ordenamiento ──
         switch ($request->get('orden', 'reciente')) {
-            case 'nombre':
-                $query->orderBy('nombre', 'asc');
-                break;
-            case 'precio_asc':
-                $query->orderBy('precio', 'asc');
-                break;
-            case 'precio_desc':
-                $query->orderBy('precio', 'desc');
-                break;
-            case 'stock':
-                $query->orderBy('stock', 'asc');
-                break;
-            default:
-                $query->latest();
-                break;
+            case 'nombre':     $query->orderBy('nombre', 'asc'); break;
+            case 'precio_asc': $query->orderBy('precio', 'asc'); break;
+            case 'precio_desc':$query->orderBy('precio', 'desc'); break;
+            case 'stock':      $query->orderBy('stock', 'asc'); break;
+            default:           $query->latest(); break;
         }
 
         $productos = $query->paginate(15)->withQueryString();
 
-        // ── Stats para las cards ──
         $totalProductos = Producto::count();
         $totalActivos   = Producto::where('activo', 1)->count();
-        $stockBajo      = Producto::whereColumn('stock', '<=', 'stock_bajo')
-                                   ->where('stock', '>', 0)
-                                   ->count();
+        $stockBajo      = Producto::whereColumn('stock', '<=', 'stock_bajo')->where('stock', '>', 0)->count();
         $sinStock       = Producto::where('stock', 0)->count();
-
-        // ── Categorías para el filtro ──
-        $categorias = \App\Models\Categoria::orderBy('nombre')->get();
+        $categorias     = \App\Models\Categoria::orderBy('nombre')->get();
 
         return view('dashboard-productos-ver', compact(
-            'productos',
-            'totalProductos',
-            'totalActivos',
-            'stockBajo',
-            'sinStock',
-            'categorias'
+            'productos', 'totalProductos', 'totalActivos', 'stockBajo', 'sinStock', 'categorias'
         ));
     }
 
@@ -92,6 +67,7 @@ class ProductoController extends Controller
             'marca'                => 'required|string|max:255',
             'consola'              => 'required|string|max:255',
             'id_categoria'         => 'required|exists:categorias,id',
+            'tipo_producto'        => 'required|in:videojuego,consola,periferico', // ← agregado
             'condicion'            => 'required|in:nuevo,usado,reacondicionado',
             'precio_original'      => 'required|numeric|min:0',
             'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
@@ -103,9 +79,10 @@ class ProductoController extends Controller
             'activo'               => 'nullable|boolean',
         ]);
 
-        // Si subió archivo, lo guardamos y pisamos la URL
+        // ← Imagen subida: guardamos y generamos URL pública correcta
         if ($request->hasFile('imagen')) {
-            $validated['url_imagen'] = $request->file('imagen')->store('productos', 'public');
+            $path = $request->file('imagen')->store('productos', 'public');
+            $validated['url_imagen'] = asset('storage/' . $path);
         }
 
         $validated['activo'] = $request->has('activo') ? 1 : 0;
@@ -119,16 +96,15 @@ class ProductoController extends Controller
 
     public function show(Producto $producto)
     {
-    $producto->load('categoria');
-    return view('dashboard-productos-detalles', compact('producto')); // ← nombre del blade
+        $producto->load('categoria');
+        return view('dashboard-productos-detalles', compact('producto'));
     }
 
     public function showPublico(Producto $producto)
-        {
-    $producto->load('categoria');
-    return view('producto-detalle', compact('producto'));
+    {
+        $producto->load('categoria');
+        return view('producto-detalle', compact('producto'));
     }
-
 
     public function edit(Producto $producto)
     {
@@ -144,6 +120,7 @@ class ProductoController extends Controller
             'marca'                => 'required|string|max:255',
             'consola'              => 'required|string|max:255',
             'id_categoria'         => 'required|exists:categorias,id',
+            'tipo_producto'        => 'required|in:videojuego,consola,periferico', // ← agregado
             'condicion'            => 'required|in:nuevo,usado,reacondicionado',
             'precio_original'      => 'required|numeric|min:0',
             'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
@@ -155,8 +132,10 @@ class ProductoController extends Controller
             'activo'               => 'nullable|boolean',
         ]);
 
+        // ← Igual que en store
         if ($request->hasFile('imagen')) {
-            $validated['url_imagen'] = $request->file('imagen')->store('productos', 'public');
+            $path = $request->file('imagen')->store('productos', 'public');
+            $validated['url_imagen'] = asset('storage/' . $path);
         }
 
         $validated['activo'] = $request->has('activo') ? 1 : 0;

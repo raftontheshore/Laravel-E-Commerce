@@ -131,25 +131,25 @@ Route::get('/explorar', function () {
 // ============================================================
 // RUTA: Tienda con filtro por categoría (/tienda/{categoria?})
 // ============================================================
+Route::get('/tienda', function () {
+    return redirect('/tienda/todos');
+});
+
 Route::get('/tienda/{categoria?}', function ($categoria = 'todos') {
     $query = Producto::where('activo', 1)->with('categoria');
 
-    // Filtro por categoría (tipo_producto)
     if ($categoria && $categoria !== 'todos') {
         $query->where('tipo_producto', $categoria);
     }
 
-    // Filtro por condición
     if (request('condicion')) {
         $query->where('condicion', request('condicion'));
     }
 
-    // Filtro por marca/consola
     if (request('consola')) {
         $query->where('consola', request('consola'));
     }
 
-    // Filtro por precio
     if (request('precio_min')) {
         $query->where('precio', '>=', request('precio_min'));
     }
@@ -157,11 +157,9 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'todos') {
         $query->where('precio', '<=', request('precio_max'));
     }
 
-    // Ordenamiento
     switch (request('orden')) {
         case 'precio_asc':  $query->orderBy('precio', 'asc'); break;
         case 'precio_desc': $query->orderBy('precio', 'desc'); break;
-        case 'nuevo':       $query->latest(); break;
         default:            $query->latest(); break;
     }
 

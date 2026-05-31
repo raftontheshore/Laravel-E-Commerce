@@ -171,21 +171,20 @@
 </style>
 
 <aside class="cat-sidebar">
-
-    {{-- CATEGORÍA --}}
-    <div class="filter-section">
-        <div class="filter-label">Categoría</div>
-        <div class="d-flex flex-wrap gap-2">
-            <a href="{{ url('/tienda/consola') }}"
-               class="filter-pill {{ $categoria == 'consola' ? 'active' : '' }}">Consolas</a>
-            <a href="{{ url('/tienda/videojuego') }}"
-               class="filter-pill {{ $categoria == 'videojuego' ? 'active' : '' }}">Juegos</a>
-            <a href="{{ url('/tienda/periferico') }}"
-               class="filter-pill {{ $categoria == 'periferico' ? 'active' : '' }}">Periféricos</a>
-            <a href="{{ url('/tienda/todos') }}"
-               class="filter-pill {{ $categoria == 'todos' ? 'active' : '' }}">Todos</a>
-        </div>
+{{-- CATEGORÍA --}}
+<div class="filter-section">
+    <div class="filter-label">Categoría</div>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="{{ url('/tienda/todos') }}"
+           class="filter-pill {{ $categoria == 'todos' ? 'active' : '' }}">Todos</a>
+        <a href="{{ url('/tienda/consola') }}"
+           class="filter-pill {{ $categoria == 'consola' ? 'active' : '' }}">Consolas</a>
+        <a href="{{ url('/tienda/videojuego') }}"
+           class="filter-pill {{ $categoria == 'videojuego' ? 'active' : '' }}">Juegos</a>
+        <a href="{{ url('/tienda/periferico') }}"
+           class="filter-pill {{ $categoria == 'periferico' ? 'active' : '' }}">Periféricos</a>
     </div>
+</div>
 
     {{-- CONDICIÓN --}}
     <div class="filter-section">
