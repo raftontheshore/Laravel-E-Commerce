@@ -521,9 +521,9 @@
                                         <td>
                                             <div class="d-flex" style="gap:5px;">
                                                 {{-- Ver --}}
-                                                <a href="{{ route('admin.productos.show', $producto->id) }}"
-                                                   class="btn-accion btn-view" title="Ver detalle">
-                                                    <i class="fas fa-eye"></i>
+                                                <a href="{{ route('admin.productos.show', $producto->id) }}" 
+                                                class="btn btn-info btn-sm" title="Ver detalle">
+                                                <i class="fas fa-eye"></i>
                                                 </a>
                                                 {{-- Editar --}}
                                                 <a href="{{ route('admin.productos.edit', $producto->id) }}"

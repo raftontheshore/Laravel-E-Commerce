@@ -119,9 +119,16 @@ class ProductoController extends Controller
 
     public function show(Producto $producto)
     {
-        $producto->load('categoria');
-        return view('admin.productos.show', compact('producto'));
+    $producto->load('categoria');
+    return view('dashboard-productos-detalles', compact('producto')); // ← nombre del blade
     }
+
+    public function showPublico(Producto $producto)
+        {
+    $producto->load('categoria');
+    return view('producto-detalle', compact('producto'));
+    }
+
 
     public function edit(Producto $producto)
     {

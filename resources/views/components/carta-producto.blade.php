@@ -1,17 +1,4 @@
-{{--
-    ============================================================
-    COMPONENTE: Tarjeta de Producto (cat-product-card)
-    ------------------------------------------------------------
-    Muestra la información de un producto en formato de tarjeta.
-    Se usa dentro de grillas/catálogos de productos.
-    Recibe: $producto
-    ============================================================
---}}
-
 <style>
-    /* --- Contenedor principal de la tarjeta ---
-       Fondo oscuro. flex-direction: column permite
-       que el body se estire y el botón quede siempre al fondo. */
     .cat-product-card {
         background: #161616;
         border: 1px solid #222;
@@ -19,18 +6,16 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        transition: border-color 0.2s, transform 0.2s;
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         cursor: pointer;
+        height: 100%;
     }
-    /* Efecto hover: sube 2px y aclara el borde para dar sensación de elevación */
     .cat-product-card:hover {
-        border-color: #3a3a3a;
+        border-color: #c0392b;
         transform: translateY(-2px);
+        box-shadow: 0 0 0 1px #c0392b, 0 8px 24px rgba(192, 57, 43, 0.2);
     }
 
-    /* --- Área de imagen ---
-       Altura fija de 200px con centrado flex para que cualquier
-       imagen quede centrada sin deformar la tarjeta. */
     .cat-card-img {
         background: #1a1a1a;
         border-bottom: 1px solid #222;
@@ -39,17 +24,26 @@
         align-items: center;
         justify-content: center;
         padding: 16px;
+        overflow: hidden;
+        flex-shrink: 0;
     }
-    /* object-fit: contain preserva el aspecto sin recortar la imagen */
     .cat-card-img img {
         max-height: 100%;
         max-width: 100%;
         object-fit: contain;
     }
 
-    /* --- Cuerpo de la tarjeta ---
-       flex: 1 hace que crezca para ocupar el espacio restante,
-       permitiendo que el botón siempre quede pegado al fondo. */
+    .cat-card-img-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #333;
+    }
+    .cat-card-img-placeholder i { font-size: 40px; }
+    .cat-card-img-placeholder span { font-size: 11px; letter-spacing: .05em; text-transform: uppercase; }
+
     .cat-card-body {
         padding: 14px;
         display: flex;
@@ -57,132 +51,81 @@
         flex: 1;
     }
 
-    /* --- Badges (etiquetas pequeñas) ---
-       Estilo base compartido por todos los badges. */
     .cat-badge {
         font-size: 11px;
-        font-weight: 500;
+        font-weight: 600;
         padding: 3px 8px;
         border-radius: 5px;
         line-height: 1.4;
     }
-    /* Badge de marca/consola: rojo destacado */
-    .cat-badge-brand {
-        background: #c0392b;
-        color: #fff;
-    }
-    /* Badge de estado (nuevo/usado): tono neutro discreto */
-    .cat-badge-state {
-        background: #252525;
-        color: #888;
-        border: 1px solid #333;
-    }
+    .cat-badge-brand { background: #c0392b; color: #fff; }
+    .cat-badge-state { background: #252525; color: #777; border: 1px solid #333; }
 
-    /* --- Título del producto --- */
     .cat-card-title {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
         color: #e8e8e8;
         margin: 0;
+        line-height: 1.3;
     }
 
-    /* --- Precios ---
-       Tres variantes: precio tachado, precio final y porcentaje de descuento. */
-    .cat-price-original {
-        font-size: 12px;
-        color: #444;
-        text-decoration: line-through; /* Indica que fue reemplazado por el precio con descuento */
-    }
-    .cat-price {
-        font-size: 22px;
-        font-weight: 600;
-        color: #fff;
-        line-height: 1;
-    }
-    .cat-discount {
-        font-size: 12px;
-        font-weight: 600;
-        color: #2ecc71; /* Verde para reforzar visualmente el ahorro */
-    }
-
-    /* --- Cuotas --- */
-    .cat-installments {
-        font-size: 12px;
-        color: #555;
-    }
-
-    /* --- Botón agregar al carrito ---
-       mt-auto en el HTML lo empuja al fondo del flex container. */
-    .cat-btn-cart {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 8px;
-        background: #c0392b;
-        color: #fff;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.15s;
-        margin-top: auto;
-    }
-    .cat-btn-cart:hover { background: #e74c3c; }
+    .cat-price-original { font-size: 11px; color: #444; text-decoration: line-through; }
+    .cat-price { font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+    .cat-discount { font-size: 11px; font-weight: 700; color: #09c762; }
+    .cat-installments { font-size: 11px; color: #444; }
 </style>
 
-{{-- El enlace envuelve toda la tarjeta para hacerla completamente clickeable --}}
-<a href="/construccion" class="text-decoration-none d-block h-100">
-<div class="cat-product-card h-100">
+<a href="{{ route('producto.detalle', $producto->id) }}"
+   class="text-decoration-none d-block h-100">
+    <div class="cat-product-card">
 
-    {{-- Área de imagen del producto --}}
-    <div class="cat-card-img">
-        <img src="{{ $producto->imagen_url }}" alt="{{ $producto->titulo }}">
-    </div>
-
-    {{-- Cuerpo: toda la información y el CTA --}}
-    <div class="cat-card-body">
-
-        {{-- Badges: consola (marca) y estado del producto (nuevo/usado) --}}
-        <div class="d-flex gap-2 mb-2">
-            <span class="cat-badge cat-badge-brand">{{ $producto->consola }}</span>
-            <span class="cat-badge cat-badge-state">{{ $producto->estado }}</span>
-        </div>
-
-        {{-- Título truncado con ellipsis si es demasiado largo --}}
-        <p class="cat-card-title text-truncate mb-1">{{ $producto->titulo }}</p>
-
-        {{-- Precio original tachado (solo visible si hay descuento activo).
-             El div con altura fija reserva el espacio siempre para evitar saltos de layout. --}}
-        <div style="height: 18px; margin-bottom: 4px;">
-            @if($producto->porcentaje_descuento > 0)
-                <span class="cat-price-original">
-                    $ {{ number_format($producto->precio_original, 0, ',', '.') }}
-                </span>
+        {{-- ✅ Imagen dentro de su contenedor --}}
+        <div class="cat-card-img">
+            @if($producto->url_imagen)
+                <img src="{{ $producto->url_imagen }}"
+                     alt="{{ $producto->nombre }}"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="cat-card-img-placeholder" style="display:none;">
+                    <i class="bi bi-image"></i>
+                    <span>Sin imagen</span>
+                </div>
+            @else
+                <div class="cat-card-img-placeholder">
+                    <i class="bi bi-image"></i>
+                    <span>Sin imagen</span>
+                </div>
             @endif
         </div>
 
-        {{-- Precio final con descuento en verde al lado (solo si aplica) --}}
-        <div class="d-flex align-items-baseline gap-2 mb-1">
-            <span class="cat-price">$ {{ number_format($producto->precio, 0, ',', '.') }}</span>
-            @if($producto->porcentaje_descuento > 0)
-                <span class="cat-discount">{{ $producto->porcentaje_descuento }}% OFF</span>
-            @endif
+        {{-- Cuerpo --}}
+        <div class="cat-card-body">
+
+            <div class="d-flex gap-1 flex-wrap mb-2">
+                <span class="cat-badge cat-badge-brand">{{ $producto->consola }}</span>
+                <span class="cat-badge cat-badge-state">{{ ucfirst($producto->condicion) }}</span>
+            </div>
+
+            <p class="cat-card-title mb-2">{{ $producto->nombre }}</p>
+
+            <div style="height:16px; margin-bottom:4px;">
+                @if($producto->porcentaje_descuento > 0)
+                    <span class="cat-price-original">
+                        ${{ number_format($producto->precio_original, 0, ',', '.') }}
+                    </span>
+                @endif
+            </div>
+
+            <div class="d-flex align-items-baseline gap-2 mb-1">
+                <span class="cat-price">${{ number_format($producto->precio, 0, ',', '.') }}</span>
+                @if($producto->porcentaje_descuento > 0)
+                    <span class="cat-discount">{{ $producto->porcentaje_descuento }}% OFF</span>
+                @endif
+            </div>
+
+            <div class="cat-installments mt-auto pt-2">
+                6 cuotas de ${{ number_format($producto->precio / 6, 0, ',', '.') }}
+            </div>
+
         </div>
-
-        {{-- Cuotas: precio dividido en 6, calculado en tiempo real --}}
-        <div class="cat-installments mb-4">
-            6 cuotas de $ {{ number_format($producto->precio / 6, 0, ',', '.') }}
-        </div>
-
-        {{-- Botón CTA: mt-auto lo ancla al fondo del flex container --}}
-        <button type="button" class="cat-btn-cart mt-auto">
-            <i class="fas fa-shopping-cart" style="font-size: 12px;"></i>
-            Añadir al carrito
-        </button>
-
     </div>
-</div>
 </a>

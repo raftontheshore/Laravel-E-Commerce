@@ -172,97 +172,89 @@
 
 <aside class="cat-sidebar">
 
-    {{-- ── Buscador de texto (actualmente desactivado) ──────────────
-    --}}
-    <!--
-    <div class="sidebar-header">
-        <span>Filtrar</span>
-        <i class="fas fa-times"></i>
-    </div>
-    <div class="sidebar-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Buscar...">
-    </div>
-    -->
-
-    {{-- Filtro por categoría. Marca como 'active' la pill que coincide
-         con $categoria; 'consola' y 'todos' comparten el mismo estado activo. --}}
+    {{-- CATEGORÍA --}}
     <div class="filter-section">
         <div class="filter-label">Categoría</div>
         <div class="d-flex flex-wrap gap-2">
             <a href="{{ url('/tienda/consola') }}"
-               class="filter-pill {{ (strtolower($categoria) == 'consola' || strtolower($categoria) == 'todos') ? 'active' : '' }}">
-                Consolas
-            </a>
-            <a href="{{ url('/tienda/juego') }}"
-               class="filter-pill {{ strtolower($categoria) == 'juego' ? 'active' : '' }}">
-                Juegos
-            </a>
-            <a href="{{ url('/tienda/accesorio') }}"
-               class="filter-pill {{ strtolower($categoria) == 'accesorio' ? 'active' : '' }}">
-                Accesorios
-            </a>
+               class="filter-pill {{ $categoria == 'consola' ? 'active' : '' }}">Consolas</a>
+            <a href="{{ url('/tienda/videojuego') }}"
+               class="filter-pill {{ $categoria == 'videojuego' ? 'active' : '' }}">Juegos</a>
+            <a href="{{ url('/tienda/periferico') }}"
+               class="filter-pill {{ $categoria == 'periferico' ? 'active' : '' }}">Periféricos</a>
+            <a href="{{ url('/tienda/todos') }}"
+               class="filter-pill {{ $categoria == 'todos' ? 'active' : '' }}">Todos</a>
         </div>
     </div>
 
-    {{-- ── Filtros adicionales (actualmente desactivados) ───────────
-         Incluyen: Marca/Consola (condicional por $categoria),
-         Condición, Ordenar por, y Rango de precio.
-    --}}
-    <!--
-    @if(strtolower($categoria) == 'consola' || strtolower($categoria) == 'todos')
-    <div class="filter-section">
-        <div class="filter-label">Marca</div>
-        <div class="d-flex flex-wrap gap-2">
-            <button class="filter-pill">Sony</button>
-            <button class="filter-pill">Nintendo</button>
-            <button class="filter-pill">Sega</button>
-            <button class="filter-pill">Microsoft</button>
-        </div>
-    </div>
-    @endif
-
-    @if(strtolower($categoria) == 'juego')
-    <div class="filter-section">
-        <div class="filter-label">Consola</div>
-        <div class="d-flex flex-wrap gap-2">
-            <button class="filter-pill">NES</button>
-            <button class="filter-pill">SNES</button>
-            <button class="filter-pill">Sega Genesis</button>
-            <button class="filter-pill">PS1</button>
-            <button class="filter-pill">PS2</button>
-        </div>
-    </div>
-    @endif
-
+    {{-- CONDICIÓN --}}
     <div class="filter-section">
         <div class="filter-label">Condición</div>
         <div class="d-flex flex-wrap gap-2">
-            <button class="filter-pill">Nuevo</button>
-            <button class="filter-pill">Usado</button>
-            <button class="filter-pill">Reacondicionado</button>
+            @foreach(['nuevo' => 'Nuevo', 'usado' => 'Usado', 'reacondicionado' => 'Reacondicionado'] as $val => $label)
+                <a href="{{ request()->fullUrlWithQuery(['condicion' => $val]) }}"
+                   class="filter-pill {{ request('condicion') == $val ? 'active' : '' }}">
+                    {{ $label }}
+                </a>
+            @endforeach
         </div>
     </div>
 
+    {{-- CONSOLA/MARCA --}}
+    <div class="filter-section">
+        <div class="filter-label">Consola</div>
+        <div class="d-flex flex-wrap gap-2">
+            @foreach(['PS1', 'PS2', 'Nintendo 64', 'Sega Genesis', 'Xbox'] as $consola)
+                <a href="{{ request()->fullUrlWithQuery(['consola' => $consola]) }}"
+                   class="filter-pill {{ request('consola') == $consola ? 'active' : '' }}">
+                    {{ $consola }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- ORDENAR --}}
     <div class="filter-section">
         <div class="filter-label">Ordenar por</div>
         <div class="d-flex flex-wrap gap-2">
-            <button class="filter-pill active">Popularidad</button>
-            <button class="filter-pill">Más nuevo</button>
-            <button class="filter-pill">Más viejo</button>
-            <button class="filter-pill">Mayor precio</button>
-            <button class="filter-pill">Menor precio</button>
+            <a href="{{ request()->fullUrlWithQuery(['orden' => 'nuevo']) }}"
+               class="filter-pill {{ request('orden', 'nuevo') == 'nuevo' ? 'active' : '' }}">Más nuevo</a>
+            <a href="{{ request()->fullUrlWithQuery(['orden' => 'precio_asc']) }}"
+               class="filter-pill {{ request('orden') == 'precio_asc' ? 'active' : '' }}">Menor precio</a>
+            <a href="{{ request()->fullUrlWithQuery(['orden' => 'precio_desc']) }}"
+               class="filter-pill {{ request('orden') == 'precio_desc' ? 'active' : '' }}">Mayor precio</a>
         </div>
     </div>
 
+    {{-- PRECIO --}}
     <div class="filter-section mb-0">
         <div class="filter-label">Rango de precio</div>
-        <div class="d-flex align-items-center gap-2">
-            <input type="number" class="price-input" placeholder="Mín">
-            <span class="price-sep">—</span>
-            <input type="number" class="price-input" placeholder="Máx">
-        </div>
+        <form method="GET" action="{{ url('/tienda/' . $categoria) }}">
+            @foreach(request()->except(['precio_min', 'precio_max']) as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}">
+            @endforeach
+            <div class="d-flex align-items-center gap-2">
+                <input type="number" name="precio_min" class="price-input"
+                       placeholder="Mín" value="{{ request('precio_min') }}">
+                <span class="price-sep">—</span>
+                <input type="number" name="precio_max" class="price-input"
+                       placeholder="Máx" value="{{ request('precio_max') }}">
+            </div>
+            <button type="submit" class="filter-pill active w-100 mt-2 text-center border-0">
+                Aplicar
+            </button>
+        </form>
     </div>
-    -->
+
+    {{-- LIMPIAR FILTROS --}}
+    @if(request()->hasAny(['condicion', 'consola', 'orden', 'precio_min', 'precio_max']))
+    <div class="mt-3">
+        <a href="{{ url('/tienda/' . $categoria) }}"
+           class="filter-pill w-100 text-center d-block"
+           style="color:#e74c3c;border-color:#c0392b;">
+            <i class="bi bi-x-circle me-1"></i> Limpiar filtros
+        </a>
+    </div>
+    @endif
 
 </aside>
