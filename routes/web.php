@@ -163,6 +163,6 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'todos') {
         default:            $query->latest(); break;
     }
 
-    $productos = $query->get();
+$productos = $query->paginate(15)->withQueryString();
     return view('tienda', compact('productos', 'categoria'));
 });
