@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
     <style>
-        /* ── BASE ── */
         *, *::before, *::after { box-sizing: border-box; }
         body { background: #0d0d0d; }
 
-        /* ── BREADCRUMB ── */
         .breadcrumb-area {
             font-size: 0.75rem;
             color: #444;
@@ -28,7 +26,6 @@
         .breadcrumb-area a:hover { color: #e74c3c; }
         .breadcrumb-area .sep { margin: 0 8px; color: #333; }
 
-        /* ── CARD WRAPPER ── */
         .detalle-wrapper {
             background: #141414;
             border: 1px solid #1f1f1f;
@@ -37,7 +34,6 @@
             box-shadow: 0 24px 80px rgba(0,0,0,.6);
         }
 
-        /* ── COLUMNA IMAGEN ── */
         .prod-img-col {
             position: relative;
             background: #111;
@@ -48,8 +44,6 @@
             justify-content: center;
             padding: 40px;
         }
-
-        /* Fondo con glow sutil detrás de la imagen */
         .prod-img-col::before {
             content: '';
             position: absolute;
@@ -57,7 +51,6 @@
             background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(192,57,43,.08) 0%, transparent 70%);
             pointer-events: none;
         }
-
         .prod-img-col img {
             position: relative;
             width: 100%;
@@ -72,7 +65,6 @@
             transform: scale(1.03);
             filter: drop-shadow(0 12px 40px rgba(192,57,43,.25));
         }
-
         .prod-img-placeholder {
             font-size: 96px;
             color: #222;
@@ -81,7 +73,6 @@
             justify-content: center;
         }
 
-        /* ── COLUMNA INFO ── */
         .prod-info-col {
             padding: 40px 36px;
             display: flex;
@@ -92,7 +83,6 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ── BADGES ── */
         .badges-row {
             display: flex;
             gap: 8px;
@@ -115,7 +105,6 @@
         .bp-usado    { background: rgba(230,126,34,.12); color: #e67e22; border: 1px solid rgba(230,126,34,.3); }
         .bp-reacondicionado { background: rgba(52,152,219,.12); color: #3498db; border: 1px solid rgba(52,152,219,.3); }
 
-        /* ── TÍTULO ── */
         .prod-titulo {
             font-family: 'Oswald', sans-serif;
             font-size: 2.2rem;
@@ -133,7 +122,6 @@
             font-weight: 500;
         }
 
-        /* ── DIVIDER ── */
         .prod-hr {
             border: none;
             border-top: 1px solid #1e1e1e;
@@ -141,7 +129,6 @@
             width: 100%;
         }
 
-        /* Full-width children inside centered column */
         .info-grid,
         .prod-desc,
         .prod-info-col form,
@@ -149,7 +136,6 @@
             width: 100%;
         }
 
-        /* ── PRECIO ── */
         .precio-original {
             font-size: 0.85rem;
             color: #3a3a3a;
@@ -187,7 +173,6 @@
         }
         .precio-cuotas strong { color: #555; }
 
-        /* ── INFO GRID ── */
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -221,7 +206,6 @@
         .stock-bajo { color: #e67e22 !important; }
         .stock-cero { color: #e74c3c !important; }
 
-        /* ── DESCRIPCIÓN ── */
         .prod-desc {
             font-size: 0.84rem;
             color: #555;
@@ -229,7 +213,6 @@
             white-space: pre-line;
         }
 
-        /* ── CANTIDAD ── */
         .qty-wrap {
             display: flex;
             align-items: center;
@@ -270,7 +253,6 @@
         .qty-input::-webkit-inner-spin-button,
         .qty-input::-webkit-outer-spin-button { -webkit-appearance: none; }
 
-        /* ── BOTÓN AGREGAR ── */
         .btn-agregar {
             background: #c0392b;
             border: none;
@@ -303,7 +285,6 @@
             box-shadow: none;
         }
 
-        /* ── VOLVER ── */
         .btn-volver {
             display: inline-flex;
             align-items: center;
@@ -321,7 +302,71 @@
         }
         .btn-volver:hover { border-color: #444; color: #bbb; }
 
-        /* ── RESPONSIVE ── */
+        /* ── MEDIOS DE PAGO ── */
+        .pagos-box {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 12px;
+            padding: 20px 24px;
+            width: 100%;
+            text-align: center;
+        }
+        .pagos-titulo {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #bbb;
+            margin: 0 0 16px;
+        }
+        .pagos-subtitulo {
+            font-size: 11px;
+            color: #444;
+            margin: 0 0 10px;
+            font-weight: 500;
+        }
+        .pagos-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            align-items: center;
+            justify-content: center;
+        }
+        .pagos-logos img {
+            height: 28px;
+            object-fit: contain;
+        }
+        .pagos-hr {
+            border: none;
+            border-top: 1px solid #1e1e1e;
+            margin: 0 0 14px;
+        }
+        .pagos-nota {
+            font-size: 10px;
+            color: #bbb;
+            margin: 14px 0 0;
+        }
+        .pagos-garantias {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .pagos-garantias div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #bbb;
+        }
+        .pagos-garantias i {
+            color: #c0392b;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 767px) {
             .prod-img-col {
                 border-right: none;
@@ -475,58 +520,63 @@
                                 </button>
                             </div>
                         </form>
-                        {{-- Medios de pago --}}
-                        <div style="background:#111; border:1px solid #1e1e1e; border-radius:12px; padding:20px 24px; width:100%;">
 
-                            <p style="font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#3a3a3a; margin:0 0 16px; text-align:center;">Medios de pago</p>
+                        {{-- Medios de pago --}}
+                        <div class="pagos-box">
+
+                            <p class="pagos-titulo">Medios de pago</p>
 
                             {{-- Crédito --}}
-                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Tarjetas de crédito</p>
-                            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center;">
-                                <img src="https://i.ibb.co/4ZS8JLCn/image.png" height="28" alt="Visa">
-                                <img src="https://i.ibb.co/7NVN4kCX/image.png" height="28" alt="Mastercard">
-                                <img src="https://i.ibb.co/bgg2Scxm/image.png" height="28" alt="Amex">
-                                <img src="https://i.ibb.co/hFGgk1JX/image.png" height="28" alt="Cabal">
-                                <img src="https://i.ibb.co/yxXJk3q/image.png" height="28" alt="Naranja">
+                            <p class="pagos-subtitulo">Tarjetas de crédito</p>
+                            <div class="pagos-logos">
+                                <img src="https://i.ibb.co/4ZS8JLCn/image.png" alt="Visa">
+                                <img src="https://i.ibb.co/7NVN4kCX/image.png" alt="Mastercard">
+                                <img src="https://i.ibb.co/bgg2Scxm/image.png" alt="American Express">
+                                <img src="https://i.ibb.co/hFGgk1JX/image.png" alt="Cabal">
+                                <img src="https://i.ibb.co/yxXJk3q/image.png" alt="Naranja X">
                             </div>
 
-                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:0 0 14px;">
+                            <hr class="pagos-hr">
 
                             {{-- Débito --}}
-                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Tarjetas de débito</p>
-                            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center;">
-                                <img src="https://i.ibb.co/cSSpZfBJ/png-transparent-debit-visa-card-credit-money-pay-payment-pinpoint-payment-icon.png" height="28" alt="Visa Débito">
-                                <img src="https://i.ibb.co/s9F5v8cj/image.png" height="28" alt="Mastercard Débito">
-                                <img src="https://i.ibb.co/pB6b3WC5/image.png" height="28" alt="Cabal Débito">
+                            <p class="pagos-subtitulo">Tarjetas de débito</p>
+                            <div class="pagos-logos">
+                                <img src="https://i.ibb.co/cSSpZfBJ/png-transparent-debit-visa-card-credit-money-pay-payment-pinpoint-payment-icon.png" alt="Visa Débito">
+                                <img src="https://i.ibb.co/s9F5v8cj/image.png" alt="Mastercard Débito">
+                                <img src="https://i.ibb.co/pB6b3WC5/image.png" alt="Cabal Débito">
                             </div>
 
-                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:0 0 14px;">
+                            <hr class="pagos-hr">
 
                             {{-- Efectivo --}}
-                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Efectivo</p>
-                            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
-                                <img src="https://i.ibb.co/99pLf7wS/image.png" height="28" alt="Pago Fácil">
-                                <img src="https://i.ibb.co/zWKGN2ys/image.png" height="28" alt="Rapipago">
+                            <p class="pagos-subtitulo">Efectivo</p>
+                            <div class="pagos-logos">
+                                <img src="https://i.ibb.co/99pLf7wS/image.png" alt="Pago Fácil">
+                                <img src="https://i.ibb.co/zWKGN2ys/image.png" alt="Rapipago">
                             </div>
 
-                            <p style="font-size:10px; color:#2a2a2a; margin:14px 0 0; text-align:center;">Las cuotas pueden variar según la tarjeta y el banco emisor.</p>
-                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:14px 0;">
+                            <p class="pagos-nota">Las cuotas pueden variar según la tarjeta y el banco emisor.</p>
 
-                            <div style="display:flex; flex-direction:column; gap:6px;">
-                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
-                                    <i class="bi bi-check-circle" style="color:#c0392b; font-size:14px;"></i>
+                            <hr class="pagos-hr" style="margin-top:14px;">
+
+                            {{-- Garantías --}}
+                            <div class="pagos-garantias">
+                                <div>
+                                    <i class="bi bi-check-circle"></i>
                                     <span>Envío a todo el país</span>
                                 </div>
-                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
-                                    <i class="bi bi-shield-check" style="color:#c0392b; font-size:14px;"></i>
+                                <div>
+                                    <i class="bi bi-shield-check"></i>
                                     <span>Compra 100% segura</span>
                                 </div>
-                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
-                                    <i class="bi bi-headset" style="color:#c0392b; font-size:14px;"></i>
+                                <div>
+                                    <i class="bi bi-headset"></i>
                                     <span>Soporte personalizado</span>
                                 </div>
                             </div>
+
                         </div>
+
                     @else
                         <button class="btn-agregar" disabled>
                             <i class="bi bi-x-circle-fill"></i>
