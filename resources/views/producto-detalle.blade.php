@@ -475,6 +475,58 @@
                                 </button>
                             </div>
                         </form>
+                        {{-- Medios de pago --}}
+                        <div style="background:#111; border:1px solid #1e1e1e; border-radius:12px; padding:20px 24px; width:100%;">
+
+                            <p style="font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#3a3a3a; margin:0 0 16px; text-align:center;">Medios de pago</p>
+
+                            {{-- Crédito --}}
+                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Tarjetas de crédito</p>
+                            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center;">
+                                <img src="https://i.ibb.co/4ZS8JLCn/image.png" height="28" alt="Visa">
+                                <img src="https://i.ibb.co/7NVN4kCX/image.png" height="28" alt="Mastercard">
+                                <img src="https://i.ibb.co/bgg2Scxm/image.png" height="28" alt="Amex">
+                                <img src="https://i.ibb.co/hFGgk1JX/image.png" height="28" alt="Cabal">
+                                <img src="https://i.ibb.co/yxXJk3q/image.png" height="28" alt="Naranja">
+                            </div>
+
+                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:0 0 14px;">
+
+                            {{-- Débito --}}
+                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Tarjetas de débito</p>
+                            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center;">
+                                <img src="https://i.ibb.co/cSSpZfBJ/png-transparent-debit-visa-card-credit-money-pay-payment-pinpoint-payment-icon.png" height="28" alt="Visa Débito">
+                                <img src="https://i.ibb.co/s9F5v8cj/image.png" height="28" alt="Mastercard Débito">
+                                <img src="https://i.ibb.co/pB6b3WC5/image.png" height="28" alt="Cabal Débito">
+                            </div>
+
+                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:0 0 14px;">
+
+                            {{-- Efectivo --}}
+                            <p style="font-size:11px; color:#444; margin:0 0 10px; font-weight:500;">Efectivo</p>
+                            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+                                <img src="https://i.ibb.co/99pLf7wS/image.png" height="28" alt="Pago Fácil">
+                                <img src="https://i.ibb.co/zWKGN2ys/image.png" height="28" alt="Rapipago">
+                            </div>
+
+                            <p style="font-size:10px; color:#2a2a2a; margin:14px 0 0; text-align:center;">Las cuotas pueden variar según la tarjeta y el banco emisor.</p>
+                            <hr style="border:none; border-top:1px solid #1e1e1e; margin:14px 0;">
+
+                            <div style="display:flex; flex-direction:column; gap:6px;">
+                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
+                                    <i class="bi bi-check-circle" style="color:#c0392b; font-size:14px;"></i>
+                                    <span>Envío a todo el país</span>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
+                                    <i class="bi bi-shield-check" style="color:#c0392b; font-size:14px;"></i>
+                                    <span>Compra 100% segura</span>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#555;">
+                                    <i class="bi bi-headset" style="color:#c0392b; font-size:14px;"></i>
+                                    <span>Soporte personalizado</span>
+                                </div>
+                            </div>
+                        </div>
                     @else
                         <button class="btn-agregar" disabled>
                             <i class="bi bi-x-circle-fill"></i>
