@@ -292,7 +292,7 @@ class DatabaseSeeder extends Seeder
                 'porcentaje_descuento' => 10,
                 'stock'                => 5,
                 'stock_bajo'           => 1,
-                'url_imagen'           => 'super_mario_64.jpg',
+                'url_imagen'           => 'https://i.ibb.co/gLF1LCnq/7626b423-054f-4261-9fba-16067cf1e9a3.jpg',
                 'marca'                => 'Nintendo',
                 'consola'              => 'Nintendo 64',
                 'condicion'            => 'nuevo',
