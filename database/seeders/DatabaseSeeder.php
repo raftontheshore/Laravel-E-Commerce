@@ -421,7 +421,7 @@ class DatabaseSeeder extends Seeder
                 'porcentaje_descuento' => 20,
                 'stock'                => 10,
                 'stock_bajo'           => 3,
-                'url_imagen'           => 'https://i.ibb.co/gLF1LCnq/7626b423-054f-4261-9fba-16067cf1e9a3.jpg',
+                'url_imagen'           => 'https://i.ibb.co/PsWZCq5x/s-l1200.webp',
                 'marca'                => 'Nintendo',
                 'consola'              => 'SNES',
                 'condicion'            => 'usado',
