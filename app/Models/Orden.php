@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Orden extends Model
 {
@@ -24,5 +25,10 @@ class Orden extends Model
     public function usuario(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_usuario');
+    }
+    
+    public function items(): HasMany
+    {
+        return $this->hasMany(ItemOrden::class, 'id_orden');
     }
 }
