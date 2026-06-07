@@ -22,6 +22,10 @@
 
 <div class="clearfix"></div>
 {{-- si quiero que el carrusel ocupe todo el ancho entonces container-fluid p-0 --}}
+@php
+        $castlevania = \App\Models\Producto::where('nombre', 'like', '%Castlevania%')->first();
+        $mgs = \App\Models\Producto::where('nombre', 'like', '%Metal Gear%')->first();
+    @endphp
 <div class="container mt-5">
     <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
 
@@ -186,7 +190,7 @@
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
                     ">Metal Gear Solid para la PlayStation 1 ya se encuentra disponible en formato físico.</p>
-                    <a href="/construccion" class="btn mt-3 fw-bold text-white" style="
+                    <a href="{{ route('producto.detalle', $mgs->id) }}" class="btn mt-3 fw-bold text-white" style="
                         background-color: #c60000;
                         border: none;
                         padding: 0.6rem 1.8rem;

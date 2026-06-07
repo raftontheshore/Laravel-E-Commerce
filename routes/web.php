@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\PedidoController;
 use App\Models\Producto;
 
 Route::get('/contacto',  [ContactoController::class, 'index']);
@@ -24,8 +25,9 @@ Route::get('/', function () {
                                     ->get();
 
     $consolas = Producto::where('activo', 1)
-                        ->whereHas('categoria', fn($q) => $q->where('nombre', 'like', '%consola%'))
-                        ->get();
+                    ->where('tipo_producto', 'consola')
+                    ->take(7)
+                    ->get();
 
     return view('welcome', compact('productos_destacados', 'consolas'));
 });
@@ -96,6 +98,10 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/dashboard/mensajes/contacto/{id}', [MensajeController::class, 'destroyContacto'])
         ->name('dashboard.mensajes.contacto.destroy');
+
+        Route::get('/admin/pedidos', [PedidoController::class, 'index'])->name('admin.pedidos.index');
+        Route::get('/admin/pedidos/{orden}', [PedidoController::class, 'show'])->name('admin.pedidos.show');
+        Route::patch('/admin/pedidos/{orden}/estado', [PedidoController::class, 'updateEstado'])->name('admin.pedidos.estado');
 
 });
 

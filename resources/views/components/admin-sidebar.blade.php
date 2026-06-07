@@ -178,7 +178,7 @@
     </li>
     
     {{-- Pedidos --}}
-    <li class="nav-item has-submenu {{ request()->routeIs('admin.pedidos*', 'admin.ordenes*') ? 'open active' : '' }}">
+    <li class="nav-item has-submenu {{ request()->routeIs('admin.pedidos*') ? 'open active' : '' }}">
         <a class="nav-link" href="#" onclick="toggleSubmenu(this); return false;">
             <span>
                 <i class="fas fa-fw fa-shopping-cart"></i>
@@ -188,12 +188,14 @@
         </a>
         <ul class="submenu">
             <li>
-                <a href="#" class="">
+                <!-- Ver todos: se activa si estamos en index y NO hay un filtro de estado -->
+                <a href="{{ route('admin.pedidos.index') }}" class="{{ request()->routeIs('admin.pedidos.index') && !request()->has('estado') ? 'active' : '' }}">
                     <i class="fas fa-list"></i> Ver todos
                 </a>
             </li>
             <li>
-                <a href="#" class="">
+                <!-- Pendientes: envía una variable por la URL (?estado=pendiente) y se activa si existe esa variable -->
+                <a href="{{ route('admin.pedidos.index', ['estado' => 'pendiente']) }}" class="{{ request()->input('estado') == 'pendiente' ? 'active' : '' }}">
                     <i class="fas fa-clock"></i> Pendientes
                 </a>
             </li>

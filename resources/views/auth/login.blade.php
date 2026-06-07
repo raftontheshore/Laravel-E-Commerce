@@ -295,18 +295,28 @@
     </div>
 
     <div class="login-field">
-        <label for="password">Contraseña</label>
+    <label for="password">Contraseña</label>
         <div class="input-wrap">
             <i class="bi bi-lock"></i>
-            <input type="password" id="password" name="password" 
-                   placeholder="••••••••"
-                   autocomplete="current-password" required>
+            <input type="password" id="password" name="password"
+                placeholder="••••••••"
+                autocomplete="current-password" required>
+            <i class="bi bi-eye" id="togglePassword"
+            style="cursor:pointer; color:#444; transition:color .15s;"
+            onmouseover="this.style.color='#aaa'"
+            onmouseout="this.style.color='#444'"
+            onclick="
+                const input = document.getElementById('password');
+                const esPassword = input.type === 'password';
+                input.type = esPassword ? 'text' : 'password';
+                this.className = esPassword ? 'bi bi-eye-slash' : 'bi bi-eye';
+            ">
+            </i>
         </div>
         @error('password')
             <div style="font-size:12px; color:#e74c3c; margin-top:5px;">{{ $message }}</div>
         @enderror
     </div>
-
     <div class="login-forgot">
         <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
     </div>
