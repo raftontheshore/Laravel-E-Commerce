@@ -24,8 +24,9 @@ Route::get('/', function () {
                                     ->get();
 
     $consolas = Producto::where('activo', 1)
-                        ->whereHas('categoria', fn($q) => $q->where('nombre', 'like', '%consola%'))
-                        ->get();
+                    ->where('tipo_producto', 'consola')
+                    ->take(7)
+                    ->get();
 
     return view('welcome', compact('productos_destacados', 'consolas'));
 });
