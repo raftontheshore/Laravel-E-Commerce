@@ -36,7 +36,6 @@
 </head>
 
 <body class="text-white fondo-catacumbas">
-
     <x-navbar />
     <x-marquee />
     <x-carrusel/>
