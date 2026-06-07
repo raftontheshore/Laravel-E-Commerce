@@ -104,6 +104,19 @@
     <x-marquee />
 
     <div class="container py-5">
+        @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
 
         <h2 class="titulo-seccion mb-4">
             <i class="bi bi-cart3 me-2"></i> Mi Carrito
@@ -131,8 +144,8 @@
 
                                 {{-- Imagen del producto --}}
                                 <div class="col-3 col-md-2 text-center">
-                                    @if(isset($item->producto->imagen_url))
-                                        <img src="{{ $item->producto->imagen_url }}"
+                                    @if($item->producto->url_imagen)
+                                        <img src="{{ $item->producto->url_imagen }}"
                                              alt="{{ $item->producto->nombre }}"
                                              class="img-fluid rounded"
                                              style="max-height: 80px; object-fit: contain;">

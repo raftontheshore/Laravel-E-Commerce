@@ -13,6 +13,49 @@
         *, *::before, *::after { box-sizing: border-box; }
         body { background: #0d0d0d; }
 
+        /* ── TOAST ── */
+        #toast-alert {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            min-width: 280px;
+            max-width: 380px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.83rem;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,.5);
+            animation: toastIn .25s ease, toastOut .4s ease 4s forwards;
+        }
+        #toast-alert.toast-success {
+            background: #0f2a1a;
+            border: 1px solid rgba(9,199,98,.35);
+            color: #09c762;
+        }
+        #toast-alert.toast-error {
+            background: #2a0f0f;
+            border: 1px solid rgba(192,57,43,.4);
+            color: #e74c3c;
+        }
+        #toast-alert i {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; transform: translateX(0); }
+            to   { opacity: 0; transform: translateX(30px); pointer-events: none; }
+        }
+
         .breadcrumb-area {
             font-size: 0.75rem;
             color: #444;
@@ -29,74 +72,77 @@
         .detalle-wrapper {
             background: #141414;
             border: 1px solid #1f1f1f;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 24px 80px rgba(0,0,0,.6);
+            box-shadow: 0 16px 60px rgba(0,0,0,.5);
         }
 
+        /* ── IMAGEN ── */
         .prod-img-col {
             position: relative;
             background: #111;
             border-right: 1px solid #1c1c1c;
-            min-height: 480px;
+            min-height: 360px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 24px;
         }
         .prod-img-col::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(192,57,43,.08) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(192,57,43,.07) 0%, transparent 70%);
             pointer-events: none;
         }
         .prod-img-col img {
             position: relative;
             width: 100%;
-            max-width: 340px;
-            max-height: 400px;
+            max-width: 220px;
+            max-height: 260px;
             object-fit: contain;
-            border-radius: 10px;
-            filter: drop-shadow(0 8px 32px rgba(0,0,0,.7));
+            border-radius: 8px;
+            filter: drop-shadow(0 6px 24px rgba(0,0,0,.7));
             transition: transform .3s ease, filter .3s ease;
         }
         .prod-img-col img:hover {
             transform: scale(1.03);
-            filter: drop-shadow(0 12px 40px rgba(192,57,43,.25));
+            filter: drop-shadow(0 10px 32px rgba(192,57,43,.22));
         }
         .prod-img-placeholder {
-            font-size: 96px;
+            font-size: 72px;
             color: #222;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* ── INFO ── */
         .prod-info-col {
-            padding: 40px 36px;
+            padding: 22px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 22px;
+            gap: 14px;
             font-family: 'Inter', sans-serif;
         }
 
+        /* Badges */
         .badges-row {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
         }
         .badge-pill {
             font-family: 'Inter', sans-serif;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: .1em;
             text-transform: uppercase;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 100px;
         }
         .bp-consola  { background: #c0392b; color: #fff; }
@@ -105,17 +151,18 @@
         .bp-usado    { background: rgba(230,126,34,.12); color: #e67e22; border: 1px solid rgba(230,126,34,.3); }
         .bp-reacondicionado { background: rgba(52,152,219,.12); color: #3498db; border: 1px solid rgba(52,152,219,.3); }
 
+        /* Título */
         .prod-titulo {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
             line-height: 1.1;
-            margin: 0 0 4px;
+            margin: 0 0 3px;
             letter-spacing: .01em;
         }
         .prod-marca {
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             color: #444;
             letter-spacing: .08em;
             text-transform: uppercase;
@@ -136,8 +183,9 @@
             width: 100%;
         }
 
+        /* Precio */
         .precio-original {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             color: #3a3a3a;
             text-decoration: line-through;
             margin-bottom: 2px;
@@ -146,12 +194,12 @@
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .precio-final {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.6rem;
+            font-size: 1.9rem;
             font-weight: 700;
             color: #fff;
             line-height: 1;
@@ -161,28 +209,29 @@
             background: rgba(9,199,98,.12);
             color: #09c762;
             border: 1px solid rgba(9,199,98,.25);
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 6px;
+            padding: 2px 8px;
+            border-radius: 5px;
         }
         .precio-cuotas {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             color: #3a3a3a;
-            margin-top: 6px;
+            margin-top: 4px;
         }
         .precio-cuotas strong { color: #555; }
 
+        /* Info grid */
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
             border: 1px solid #1e1e1e;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
         }
         .info-cell {
-            padding: 14px 18px;
+            padding: 10px 14px;
             border-bottom: 1px solid #1a1a1a;
             border-right: 1px solid #1a1a1a;
         }
@@ -190,15 +239,15 @@
         .info-cell:nth-last-child(-n+2) { border-bottom: none; }
         .info-cell label {
             display: block;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
             letter-spacing: .12em;
             text-transform: uppercase;
             color: #3a3a3a;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
         .info-cell span {
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             color: #bbb;
             font-weight: 500;
         }
@@ -206,18 +255,20 @@
         .stock-bajo { color: #e67e22 !important; }
         .stock-cero { color: #e74c3c !important; }
 
+        /* Descripción */
         .prod-desc {
-            font-size: 0.84rem;
+            font-size: 0.78rem;
             color: #555;
-            line-height: 1.75;
+            line-height: 1.7;
             white-space: pre-line;
         }
 
+        /* Qty + botón */
         .qty-wrap {
             display: flex;
             align-items: center;
             border: 1px solid #252525;
-            border-radius: 9px;
+            border-radius: 7px;
             overflow: hidden;
             width: fit-content;
             background: #111;
@@ -226,9 +277,9 @@
             background: transparent;
             border: none;
             color: #666;
-            width: 38px;
-            height: 44px;
-            font-size: 18px;
+            width: 30px;
+            height: 36px;
+            font-size: 15px;
             cursor: pointer;
             transition: color .15s, background .15s;
             display: flex;
@@ -242,10 +293,10 @@
             border-left: 1px solid #1e1e1e;
             border-right: 1px solid #1e1e1e;
             color: #fff;
-            width: 52px;
-            height: 44px;
+            width: 40px;
+            height: 36px;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
         }
@@ -258,23 +309,23 @@
             border: none;
             color: #fff;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 700;
             letter-spacing: .04em;
-            padding: 0 28px;
-            height: 44px;
-            border-radius: 9px;
+            padding: 0 20px;
+            height: 36px;
+            border-radius: 7px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: background .15s, transform .1s, box-shadow .15s;
-            box-shadow: 0 4px 20px rgba(192,57,43,.3);
+            box-shadow: 0 3px 14px rgba(192,57,43,.28);
         }
         .btn-agregar:hover {
             background: #e74c3c;
             transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(231,76,60,.4);
+            box-shadow: 0 5px 18px rgba(231,76,60,.38);
         }
         .btn-agregar:active { transform: translateY(0); }
         .btn-agregar:disabled {
@@ -288,15 +339,15 @@
         .btn-volver {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             background: transparent;
             border: 1px solid #252525;
             color: #444;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            padding: 7px 16px;
-            border-radius: 7px;
+            padding: 5px 12px;
+            border-radius: 6px;
             text-decoration: none;
             transition: border-color .15s, color .15s;
         }
@@ -306,78 +357,93 @@
         .pagos-box {
             background: #111;
             border: 1px solid #1e1e1e;
-            border-radius: 12px;
-            padding: 20px 24px;
+            border-radius: 8px;
+            padding: 8px 12px;
             width: 100%;
+            max-width: 500px;
             text-align: center;
+            margin: 0 auto;
         }
         .pagos-titulo {
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 700;
             letter-spacing: .12em;
             text-transform: uppercase;
             color: #bbb;
-            margin: 0 0 16px;
+            margin: 0 0 6px;
         }
         .pagos-subtitulo {
-            font-size: 11px;
+            font-size: 9px;
             color: #444;
-            margin: 0 0 10px;
+            margin: 0 0 4px;
             font-weight: 500;
         }
         .pagos-logos {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 4px;
+            margin-bottom: 6px;
             align-items: center;
             justify-content: center;
         }
         .pagos-logos img {
-            height: 28px;
+            height: 16px;
             object-fit: contain;
         }
         .pagos-hr {
             border: none;
             border-top: 1px solid #1e1e1e;
-            margin: 0 0 14px;
+            margin: 0 0 6px;
         }
         .pagos-nota {
-            font-size: 10px;
-            color: #bbb;
-            margin: 14px 0 0;
+            font-size: 8px;
+            color: #555;
+            margin: 6px 0 0;
         }
         .pagos-garantias {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: flex-start;
-            text-align: left;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
         }
         .pagos-garantias div {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: #bbb;
+            gap: 4px;
+            font-size: 9px;
+            color: #666;
         }
         .pagos-garantias i {
             color: #c0392b;
-            font-size: 14px;
+            font-size: 10px;
             flex-shrink: 0;
         }
 
+        /* ── RESPONSIVE ── */
         @media (max-width: 767px) {
             .prod-img-col {
                 border-right: none;
                 border-bottom: 1px solid #1c1c1c;
-                min-height: 280px;
-                padding: 28px;
+                min-height: 240px;
+                padding: 20px;
             }
-            .prod-info-col { padding: 24px 20px; gap: 18px; }
-            .prod-titulo { font-size: 1.7rem; }
-            .precio-final { font-size: 2rem; }
+            .prod-img-col img {
+                max-width: 180px;
+                max-height: 200px;
+            }
+            .prod-info-col { padding: 18px 16px; gap: 12px; }
+            .prod-titulo { font-size: 1.25rem; }
+            .precio-final { font-size: 1.6rem; }
             .info-grid { grid-template-columns: 1fr 1fr; }
+            .pagos-garantias { gap: 8px; }
+            #toast-alert {
+                top: auto;
+                bottom: 20px;
+                right: 12px;
+                left: 12px;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -386,10 +452,23 @@
 
     <x-navbar />
 
-    <div class="container mt-4 mb-5" style="max-width: 1100px;">
+    {{-- ── TOAST ── --}}
+    @if(session('success'))
+        <div id="toast-alert" class="toast-success">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>{{ session('success') }}</span>
+        </div>
+    @elseif(session('error'))
+        <div id="toast-alert" class="toast-error">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <span>{{ session('error') }}</span>
+        </div>
+    @endif
+
+    <div class="container mt-3 mb-5" style="max-width: 1100px;">
 
         {{-- Breadcrumb --}}
-        <div class="breadcrumb-area mb-4">
+        <div class="breadcrumb-area mb-3">
             <a href="/">Principal</a>
             <span class="sep">/</span>
             <a href="/tienda">Catálogo</a>
@@ -402,7 +481,7 @@
             <div class="row g-0 align-items-stretch">
 
                 {{-- ── IMAGEN ── --}}
-                <div class="col-md-5 prod-img-col">
+                <div class="col-md-4 prod-img-col">
                     @if($producto->url_imagen)
                         <img src="{{ $producto->url_imagen }}"
                              alt="{{ $producto->nombre }}"
@@ -418,7 +497,7 @@
                 </div>
 
                 {{-- ── INFO ── --}}
-                <div class="col-md-7 prod-info-col">
+                <div class="col-md-8 prod-info-col">
 
                     {{-- Badges --}}
                     <div class="badges-row">
@@ -557,7 +636,7 @@
 
                             <p class="pagos-nota">Las cuotas pueden variar según la tarjeta y el banco emisor.</p>
 
-                            <hr class="pagos-hr" style="margin-top:14px;">
+                            <hr class="pagos-hr" style="margin-top:10px;">
 
                             {{-- Garantías --}}
                             <div class="pagos-garantias">
@@ -610,6 +689,12 @@
             if (val < 1)   val = 1;
             if (val > max) val = max;
             input.value = val;
+        }
+
+        // Auto-eliminar toast del DOM al terminar la animación
+        const toast = document.getElementById('toast-alert');
+        if (toast) {
+            setTimeout(() => toast.remove(), 4400);
         }
     </script>
 
