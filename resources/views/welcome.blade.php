@@ -40,7 +40,9 @@
     <x-navbar />
     <x-marquee />
     <x-carrusel/>
-
+    @php
+    $castlevania = \App\Models\Producto::where('nombre', 'like', '%Castlevania%')->first();
+    @endphp
     {{-- ── BANNER CASTLEVANIA ── --}}
     <div class="container mt-4 p-5 rounded-4 position-relative overflow-hidden"
          style="background: radial-gradient(circle, #2a2a2a, #1a1a1a); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
@@ -71,9 +73,10 @@
                     Adéntrate en el castillo de Drácula. Reviví los clásicos de acción y RPG que definieron el género Metroidvania con un 30% de descuento.
                 </p>
 
-                <a href="/construccion" class="btn btn-lg fw-bold px-5 py-3 text-dark shadow-lg"
-                   style="background-color: #ffb300; border: none; border-radius: 8px; transition: transform 0.2s;">
-                    Ver Oferta
+                <a href="{{ route('producto.detalle', $castlevania->id) }}"
+                    class="btn btn-lg fw-bold px-5 py-3 text-dark shadow-lg"
+                    style="background-color: #ffb300; border: none; border-radius: 8px; transition: transform 0.2s;">
+                        Ver Oferta
                 </a>
             </div>
 
