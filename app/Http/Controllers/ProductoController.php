@@ -33,11 +33,11 @@ class ProductoController extends Controller
         }
 
         switch ($request->get('orden', 'reciente')) {
-            case 'nombre':     $query->orderBy('nombre', 'asc'); break;
-            case 'precio_asc': $query->orderBy('precio', 'asc'); break;
-            case 'precio_desc':$query->orderBy('precio', 'desc'); break;
-            case 'stock':      $query->orderBy('stock', 'asc'); break;
-            default:           $query->latest(); break;
+            case 'nombre':      $query->orderBy('nombre', 'asc'); break;
+            case 'precio_asc':  $query->orderBy('precio', 'asc'); break;
+            case 'precio_desc': $query->orderBy('precio', 'desc'); break;
+            case 'stock':       $query->orderBy('stock', 'asc'); break;
+            default:            $query->latest(); break;
         }
 
         $productos = $query->paginate(15)->withQueryString();
@@ -67,7 +67,7 @@ class ProductoController extends Controller
             'marca'                => 'required|string|max:255',
             'consola'              => 'required|string|max:255',
             'id_categoria'         => 'required|exists:categorias,id',
-            'tipo_producto'        => 'required|in:videojuego,consola,periferico', // ← agregado
+            'tipo_producto'        => 'required|in:videojuego,consola,periferico',
             'condicion'            => 'required|in:nuevo,usado,reacondicionado',
             'precio_original'      => 'required|numeric|min:0',
             'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
@@ -79,13 +79,12 @@ class ProductoController extends Controller
             'activo'               => 'nullable|boolean',
         ]);
 
-        // ← Imagen subida: guardamos y generamos URL pública correcta
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('productos', 'public');
             $validated['url_imagen'] = asset('storage/' . $path);
         }
 
-        $validated['activo'] = $request->has('activo') ? 1 : 0;
+        $validated['activo']               = $request->has('activo') ? 1 : 0;
         $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
 
         Producto::create($validated);
@@ -109,7 +108,7 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         $categorias = \App\Models\Categoria::orderBy('nombre')->get();
-        return view('admin.productos.edit', compact('producto', 'categorias'));
+        return view('dashboard-producto-editar', compact('producto', 'categorias'));
     }
 
     public function update(Request $request, Producto $producto)
@@ -120,7 +119,7 @@ class ProductoController extends Controller
             'marca'                => 'required|string|max:255',
             'consola'              => 'required|string|max:255',
             'id_categoria'         => 'required|exists:categorias,id',
-            'tipo_producto'        => 'required|in:videojuego,consola,periferico', // ← agregado
+            'tipo_producto'        => 'required|in:videojuego,consola,periferico',
             'condicion'            => 'required|in:nuevo,usado,reacondicionado',
             'precio_original'      => 'required|numeric|min:0',
             'porcentaje_descuento' => 'nullable|numeric|min:0|max:100',
@@ -132,18 +131,17 @@ class ProductoController extends Controller
             'activo'               => 'nullable|boolean',
         ]);
 
-        // ← Igual que en store
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('productos', 'public');
             $validated['url_imagen'] = asset('storage/' . $path);
         }
 
-        $validated['activo'] = $request->has('activo') ? 1 : 0;
+        $validated['activo']               = $request->boolean('activo');
         $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
 
         $producto->update($validated);
 
-        return redirect()->route('admin.productos.index')
+        return redirect()->route('admin.productos.show', $producto->id)
                          ->with('success', 'Producto actualizado correctamente.');
     }
 

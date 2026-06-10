@@ -239,14 +239,21 @@
                                         <th style="width:130px;">Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                               <tbody>
                                     @forelse($categorias as $categoria)
                                         <tr>
+                                            {{-- 1. ID --}}
                                             <td>{{ $categoria->id }}</td>
+                                            
+                                            {{-- 2. Nombre --}}
                                             <td class="font-weight-bold">{{ $categoria->nombre }}</td>
+                                            
+                                            {{-- 3. Descripción --}}
                                             <td style="color:#aaa;">
                                                 {{ $categoria->descripcion ?? '—' }}
                                             </td>
+                                            
+                                            {{-- 4. Estado --}}
                                             <td>
                                                 @if($categoria->activo)
                                                     <span class="badge-activo">Activa</span>
@@ -254,28 +261,35 @@
                                                     <span class="badge-inactivo">Inactiva</span>
                                                 @endif
                                             </td>
+                                            
+                                            {{-- 5. Acciones (Los botones con el nuevo diseño) --}}
                                             <td>
-                                                {{-- Editar --}}
-                                                <button class="btn btn-sm btn-outline-light btn-editar"
-                                                    data-id="{{ $categoria->id }}"
-                                                    data-nombre="{{ $categoria->nombre }}"
-                                                    data-descripcion="{{ $categoria->descripcion }}"
-                                                    data-activo="{{ $categoria->activo }}"
-                                                    data-toggle="modal" data-target="#modalEditar"
-                                                    title="Editar">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                {{-- Eliminar --}}
-                                                <form method="POST"
-                                                    action="{{ route('admin.categorias.destroy', $categoria) }}"
-                                                    style="display:inline;"
-                                                    onsubmit="return confirm('¿Eliminar la categoría \'{{ $categoria->nombre }}\'?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger ml-1" title="Eliminar">
-                                                        <i class="fas fa-trash"></i>
+                                                <div class="d-flex align-items-center">
+                                                    {{-- Editar --}}
+                                                    <button class="btn btn-sm btn-editar mr-1 shadow-sm"
+                                                        data-id="{{ $categoria->id }}"
+                                                        data-nombre="{{ $categoria->nombre }}"
+                                                        data-descripcion="{{ $categoria->descripcion }}"
+                                                        data-activo="{{ $categoria->activo }}"
+                                                        data-toggle="modal" data-target="#modalEditar"
+                                                        title="Editar"
+                                                        style="background-color: #3b4252; border-color: #3b4252; color: #ffffff;">
+                                                        <i class="fas fa-edit"></i>
                                                     </button>
-                                                </form>
+                                                    
+                                                    {{-- Eliminar --}}
+                                                    <form method="POST"
+                                                        action="{{ route('admin.categorias.destroy', $categoria) }}"
+                                                        style="display:inline; margin: 0;"
+                                                        onsubmit="return confirm('¿Eliminar la categoría \'{{ $categoria->nombre }}\'?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger shadow-sm" title="Eliminar" 
+                                                            style="background-color: #c0392b; border-color: #c0392b;">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty
