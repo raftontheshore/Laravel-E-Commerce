@@ -232,8 +232,10 @@
                             </div>
 
                             <div class="d-none d-sm-block text-end">
-                                <a href="/producto/{{ $detalle->producto_id }}" class="btn btn-volver-comprar btn-accion">
-                                    Volver a comprar
+                                <a href="/producto/{{ $detalle->producto_id }}" 
+                                class="text-decoration-none" 
+                                style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #888;">
+                                Volver a comprar
                                 </a>
                             </div>
                         </div>
@@ -248,8 +250,10 @@
                     </div>
                     <div>
                         {{-- Enlace a la vista que ya creaste de Compra Confirmada / Recibo --}}
-                        <a href="{{ route('checkout.confirmacion', $compra->id) }}" class="btn btn-ver-detalle btn-accion">
-                            Ver detalle de compra
+                       <a href="{{ route('checkout.confirmacion', $compra->id) }}" 
+                        class="text-decoration-none" 
+                        style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #888;">
+                        Ver detalle de compra
                         </a>
                     </div>
                 </div>
