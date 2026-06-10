@@ -207,10 +207,7 @@
                         }
                     @endphp
 
-                    <div class="badge-estado {{ $claseEstado }}">
-                        <i class="bi {{ $iconoEstado }}"></i>
-                        {{ ucfirst($compra->estado) }}
-                    </div>
+    
                 </div>
 
                 {{-- BODY: Lista de Productos --}}
