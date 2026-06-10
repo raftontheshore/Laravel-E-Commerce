@@ -101,8 +101,6 @@
 <body class="text-white fondo-catacumbas">
 
     <x-navbar />
-    <x-marquee />
-
     <div class="container py-5">
         @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">

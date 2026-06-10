@@ -270,37 +270,87 @@
                 <div class="d-flex gap-2 justify-content-center">
 
                         @auth
-                            @if(Auth::user()->rol && str_contains(strtolower(Auth::user()->rol), 'cliente'))
-                                @php
-                                    $cantidadCarrito = \App\Models\Carrito::where('id_usuario', Auth::id())
-                                                        ->sum('cantidad');
-                                @endphp
+                            @php
+                                // 1. Buscamos si el usuario logueado tiene una venta abierta en estado 'carrito'
+                                $ventaActiva = \Illuminate\Support\Facades\DB::table('ventas_cabecera')
+                                    ->where('user_id', Auth::id())
+                                    ->where('estado', 'carrito')
+                                    ->first();
 
-                                <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
-                                    <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
-                                    @if($cantidadCarrito > 0)
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
-                                            style="background:#c02a2a; font-size: 0.65rem;">
-                                            {{ $cantidadCarrito }}
-                                        </span>
-                                    @endif
+                                $cantidadCarrito = 0;
+
+                                // 2. Si tiene una venta activa, sumamos la cantidad de los productos en sus detalles
+                                if ($ventaActiva) {
+                                    $cantidadCarrito = \Illuminate\Support\Facades\DB::table('ventas_detalle')
+                                        ->where('venta_id', $ventaActiva->id)
+                                        ->sum('cantidad');
+                                }
+                            @endphp
+
+                            <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
+                                <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
+                                
+                                {{-- El globito rojo mágico --}}
+                                <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill {{ $cantidadCarrito > 0 ? '' : 'd-none' }}"
+                                    style="background:#c02a2a; font-size: 0.65rem;">
+                                    {{ $cantidadCarrito }}
+                                </span>
+                            </a>
+
+                            {{-- Menú Desplegable de Usuario (Avatar) --}}
+                            <div class="dropdown ms-2 position-relative">
+                                
+                                {{-- El botón visible en la navbar (Le sacamos la clase nav-link para evitar la línea roja) --}}
+                                <a class="d-flex align-items-center text-decoration-none border-0 bg-transparent p-0" href="#" id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div style="width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 2px solid #2a2a2a; transition: border-color 0.2s;">
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nombre ?? Auth::user()->name) }}&background=1c1c1c&color=c0392b&bold=true" 
+                                            alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
                                 </a>
-                            @endif
 
-                            <span class="btn-username">
-                                <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->nombre }}
-                            </span>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="btn-logout">
-                                    Cerrar Sesión
-                                </button>
-                            </form>
+                                {{-- El menú que se despliega (Forzamos la posición a la derecha con right: 0 y left: auto) --}}
+                                <ul class="dropdown-menu shadow-lg" aria-labelledby="perfilDropdown" style="width: 250px; background-color: #141414; border: 1px solid #2a2a2a; margin-top: 12px; right: 0 !important; left: auto !important; position: absolute;">
+                                    
+                                    {{-- Cabecera del menú: Foto + Nombre + Correo --}}
+                                    <li class="px-3 py-3 border-bottom border-dark mb-2 d-flex align-items-center gap-3">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid #333;">
+                                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nombre ?? Auth::user()->name) }}&background=1c1c1c&color=c0392b&bold=true" 
+                                                alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div style="min-width: 0;"> 
+                                            <div class="fw-bold text-white text-truncate" style="font-size: 0.95rem;">
+                                                {{ Auth::user()->nombre ?? Auth::user()->name }}
+                                            </div>
+                                            <div class="text-secondary text-truncate" style="font-size: 0.8rem;">
+                                                {{ Auth::user()->email }}
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    {{-- Opciones del menú --}}
+                        {{-- oipcion de mis comprar osea el historial pero si da tiempo --}}
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ route('compras.index') }}">
+                                            <i class="bi bi-bag-check text-secondary"></i> Mis Compras
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider border-dark my-2"></li>
+
+                                    {{-- Botón de Cerrar Sesión --}}
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}" class="m-0 p-0">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item d-flex align-items-center gap-2 py-2" style="color: #c0392b; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left;">
+                                                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
                         @else
-                            <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
+                                                    <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
                             <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
                         @endauth
-
                 </div>
 
             </div>

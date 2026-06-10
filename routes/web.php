@@ -11,6 +11,7 @@ use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CheckoutController;
 use App\Models\Producto;
+use App\Http\Controllers\CompraController;
 
 Route::get('/contacto',  [ContactoController::class, 'index']);
 Route::post('/contacto', [ContactoController::class, 'store']);
@@ -178,3 +179,7 @@ Route::get('/tienda/{categoria?}', function ($categoria = 'todos') {
     $productos = $query->paginate(15)->withQueryString();
     return view('tienda', compact('productos', 'categoria'));
 });
+
+Route::get('/mis-compras', [CompraController::class, 'index'])
+    ->name('compras.index')
+    ->middleware('auth');
