@@ -221,7 +221,7 @@ class DatabaseSeeder extends Seeder
                 'url_imagen'           => 'https://i.ibb.co/21SZ3b9Y/c7df3e76-b752-4d02-a358-841da5cb244d.jpg',
                 'marca'                => 'Sony',
                 'consola'              => 'PS2',
-                'condicion'            => 'usado',
+                'condicion'            => 'reacondicionado',
             ],
             [
                 'id_categoria'         => 1,

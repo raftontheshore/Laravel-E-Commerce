@@ -601,42 +601,58 @@
                         </form>
 
                         {{-- Medios de pago --}}
+                      
                         <div class="pagos-box">
-
                             <p class="pagos-titulo">Medios de pago</p>
 
-                            {{-- Crédito --}}
-                            <p class="pagos-subtitulo">Tarjetas de crédito</p>
-                            <div class="pagos-logos">
-                                <img src="https://i.ibb.co/4ZS8JLCn/image.png" alt="Visa">
-                                <img src="https://i.ibb.co/7NVN4kCX/image.png" alt="Mastercard">
-                                <img src="https://i.ibb.co/bgg2Scxm/image.png" alt="American Express">
-                                <img src="https://i.ibb.co/hFGgk1JX/image.png" alt="Cabal">
-                                <img src="https://i.ibb.co/yxXJk3q/image.png" alt="Naranja X">
-                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid #1e1e1e; border-radius: 6px; overflow: hidden; margin-bottom: 10px;">
 
-                            <hr class="pagos-hr">
+                                {{-- Crédito --}}
+                                <div style="padding: 8px 10px; border-right: 1px solid #1e1e1e; text-align: center;">
+                                    <p class="pagos-subtitulo">Crédito</p>
+                                    <div class="pagos-logos" style="flex-direction: column; gap: 3px;">
+                                        <div style="display:flex; gap:3px; justify-content:center;">
+                                            <img src="https://i.ibb.co/4ZS8JLCn/image.png" alt="Visa">
+                                            <img src="https://i.ibb.co/7NVN4kCX/image.png" alt="Mastercard">
+                                            <img src="https://i.ibb.co/bgg2Scxm/image.png" alt="Amex">
+                                        </div>
+                                        <div style="display:flex; gap:3px; justify-content:center;">
+                                            <img src="https://i.ibb.co/hFGgk1JX/image.png" alt="Cabal">
+                                            <img src="https://i.ibb.co/yxXJk3q/image.png" alt="Naranja X">
+                                        </div>
+                                    </div>
+                                </div>
 
-                            {{-- Débito --}}
-                            <p class="pagos-subtitulo">Tarjetas de débito</p>
-                            <div class="pagos-logos">
-                                <img src="https://i.ibb.co/cSSpZfBJ/png-transparent-debit-visa-card-credit-money-pay-payment-pinpoint-payment-icon.png" alt="Visa Débito">
-                                <img src="https://i.ibb.co/s9F5v8cj/image.png" alt="Mastercard Débito">
-                                <img src="https://i.ibb.co/pB6b3WC5/image.png" alt="Cabal Débito">
-                            </div>
+                                {{-- Débito --}}
+                                <div style="padding: 8px 10px; border-right: 1px solid #1e1e1e; text-align: center;">
+                                    <p class="pagos-subtitulo">Débito</p>
+                                    <div class="pagos-logos" style="flex-direction: column; gap: 3px; justify-content: center;">
+                                        <div style="display:flex; gap:3px; justify-content:center;">
+                                            <img src="https://i.ibb.co/cSSpZfBJ/png-transparent-debit-visa-card-credit-money-pay-payment-pinpoint-payment-icon.png" alt="Visa Débito">
+                                            <img src="https://i.ibb.co/s9F5v8cj/image.png" alt="Mastercard Débito">
+                                        </div>
+                                        <div style="display:flex; gap:3px; justify-content:center;">
+                                            <img src="https://i.ibb.co/pB6b3WC5/image.png" alt="Cabal Débito">
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <hr class="pagos-hr">
+                                {{-- Efectivo --}}
+                                <div style="padding: 8px 10px; text-align: center;">
+                                    <p class="pagos-subtitulo">Efectivo</p>
+                                    <div class="pagos-logos" style="flex-direction: column; gap: 3px;">
+                                        <div style="display:flex; gap:3px; justify-content:center;">
+                                            <img src="https://i.ibb.co/99pLf7wS/image.png" alt="Pago Fácil">
+                                            <img src="https://i.ibb.co/zWKGN2ys/image.png" alt="Rapipago">
+                                        </div>
+                                    </div>
+                                </div>
 
-                            {{-- Efectivo --}}
-                            <p class="pagos-subtitulo">Efectivo</p>
-                            <div class="pagos-logos">
-                                <img src="https://i.ibb.co/99pLf7wS/image.png" alt="Pago Fácil">
-                                <img src="https://i.ibb.co/zWKGN2ys/image.png" alt="Rapipago">
                             </div>
 
                             <p class="pagos-nota">Las cuotas pueden variar según la tarjeta y el banco emisor.</p>
 
-                            <hr class="pagos-hr" style="margin-top:10px;">
+                            <hr class="pagos-hr">
 
                             {{-- Garantías --}}
                             <div class="pagos-garantias">
@@ -655,7 +671,6 @@
                             </div>
 
                         </div>
-
                     @else
                         <button class="btn-agregar" disabled>
                             <i class="bi bi-x-circle-fill"></i>
