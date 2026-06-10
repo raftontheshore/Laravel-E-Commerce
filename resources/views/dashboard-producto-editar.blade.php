@@ -485,63 +485,422 @@
 <x-volverArriba />
 
 <script>
-    // ── GESTIÓN DE VISTA PREVIA E INPUTS ───────────────────────
-    const urlInput = document.getElementById('url_imagen');
+   /* ══════════════════════════════════════════
+   VALIDACIÓN FRONTEND — Admin Editar Producto
+══════════════════════════════════════════ */
+
+const RULES = {
+    nombre: {
+        required: true, minLen: 2, maxLen: 200,
+        pattern: /^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ0-9\s.,'\-:!&()+\/]+$/,
+        messages: {
+            required: 'El nombre es obligatorio.',
+            minLen:   'El nombre debe tener al menos 2 caracteres.',
+            maxLen:   'El nombre no puede superar los 200 caracteres.',
+            pattern:  'El nombre contiene caracteres no permitidos.',
+        }
+    },
+    marca: {
+        required: true, minLen: 2, maxLen: 100,
+        pattern: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.\-&']+$/,
+        messages: {
+            required: 'La marca es obligatoria.',
+            minLen:   'La marca debe tener al menos 2 caracteres.',
+            pattern:  'La marca contiene caracteres no permitidos.',
+        }
+    },
+    consola: {
+        required: true, minLen: 2, maxLen: 50,
+        pattern: /^[a-zA-Z0-9\s\-\/\.]+$/,
+        messages: {
+            required: 'La consola es obligatoria.',
+            minLen:   'Ingresá al menos 2 caracteres.',
+            pattern:  'Solo se permiten letras, números, guiones y slash.',
+        }
+    },
+    precio_original: {
+        required: true, isNumber: true, min: 0,
+        messages: {
+            required: 'El precio original es obligatorio.',
+            isNumber: 'Ingresá un número válido.',
+            min:      'El precio no puede ser negativo.',
+        }
+    },
+    porcentaje_descuento: {
+        required: false, isNumber: true, min: 0, max: 100,
+        messages: {
+            isNumber: 'Ingresá un número entre 0 y 100.',
+            min:      'El descuento no puede ser negativo.',
+            max:      'El descuento no puede superar el 100%.',
+        }
+    },
+    precio: {
+        required: true, isNumber: true, min: 0,
+        messages: {
+            required: 'El precio final es obligatorio.',
+            isNumber: 'Ingresá un número válido.',
+            min:      'El precio no puede ser negativo.',
+        }
+    },
+    stock: {
+        required: true, isInteger: true, min: 0,
+        messages: {
+            required:  'El stock es obligatorio.',
+            isInteger: 'El stock debe ser un número entero.',
+            min:       'El stock no puede ser negativo.',
+        }
+    },
+    stock_bajo: {
+        required: true, isInteger: true, min: 0,
+        messages: {
+            required:  'El stock mínimo es obligatorio.',
+            isInteger: 'Debe ser un número entero.',
+            min:       'No puede ser negativo.',
+        }
+    },
+    url_imagen: {
+        required: false,
+        isUrl: true,
+        messages: {
+            isUrl: 'Ingresá una URL válida (debe empezar con http:// o https://).',
+        }
+    },
+    descripcion: {
+        required: false, maxLen: 2000,
+        noHtml: true,
+        messages: {
+            maxLen: 'La descripción no puede superar los 2000 caracteres.',
+            noHtml: 'No se permiten etiquetas HTML.',
+        }
+    },
+};
+
+/* ── Estado visual ───────────────────────── */
+function setFieldState(fieldId, isValid, message = '') {
+    const input   = document.getElementById(fieldId);
+    const wrapper = document.getElementById('wrapper-' + fieldId);
+    const msgEl   = document.getElementById('msg-' + fieldId);
+    if (!input) return;
+    input.classList.remove('field-valid', 'field-invalid');
+    if (wrapper) wrapper.classList.remove('valid', 'invalid');
+    if (isValid) {
+        input.classList.add('field-valid');
+        if (wrapper) wrapper.classList.add('valid');
+        if (msgEl) msgEl.classList.remove('show');
+    } else {
+        input.classList.add('field-invalid');
+        if (wrapper) wrapper.classList.add('invalid');
+        if (msgEl) {
+            msgEl.querySelector('span').textContent = message;
+            msgEl.classList.add('show');
+        }
+    }
+}
+
+function clearFieldState(fieldId) {
+    const input   = document.getElementById(fieldId);
+    const wrapper = document.getElementById('wrapper-' + fieldId);
+    const msgEl   = document.getElementById('msg-' + fieldId);
+    if (input)   input.classList.remove('field-valid', 'field-invalid');
+    if (wrapper) wrapper.classList.remove('valid', 'invalid');
+    if (msgEl)   msgEl.classList.remove('show');
+}
+
+/* ── Selects: feedback visual ────────────── */
+function setSelectState(selectId, isValid, message = '') {
+    const sel   = document.getElementById(selectId);
+    const msgEl = document.getElementById('msg-' + selectId);
+    if (!sel) return;
+    sel.classList.remove('field-valid', 'field-invalid');
+    if (isValid) {
+        sel.classList.add('field-valid');
+        if (msgEl) msgEl.classList.remove('show');
+    } else {
+        sel.classList.add('field-invalid');
+        if (msgEl) {
+            msgEl.querySelector('span').textContent = message;
+            msgEl.classList.add('show');
+        }
+    }
+}
+
+function validateSelect(selectId, label) {
+    const sel = document.getElementById(selectId);
+    if (!sel) return true;
+    if (!sel.value) {
+        setSelectState(selectId, false, `Seleccioná ${label}.`);
+        return false;
+    }
+    setSelectState(selectId, true);
+    return true;
+}
+
+/* ── Validar campo individual ────────────── */
+function validateField(fieldId) {
+    const input = document.getElementById(fieldId);
+    if (!input) return true;
+    const rule  = RULES[fieldId];
+    if (!rule) return true;
+    const value = input.value.trim();
+
+    if (!value && !rule.required) { clearFieldState(fieldId); return true; }
+    if (rule.required && !value) { setFieldState(fieldId, false, rule.messages.required); return false; }
+    if (rule.minLen && value.length < rule.minLen) { setFieldState(fieldId, false, rule.messages.minLen); return false; }
+    if (rule.maxLen && value.length > rule.maxLen) { setFieldState(fieldId, false, rule.messages.maxLen); return false; }
+    if (rule.pattern && !rule.pattern.test(value)) { setFieldState(fieldId, false, rule.messages.pattern); return false; }
+    if (rule.isNumber && isNaN(parseFloat(value))) { setFieldState(fieldId, false, rule.messages.isNumber); return false; }
+    if (rule.isInteger && (!Number.isInteger(Number(value)) || isNaN(Number(value)))) { setFieldState(fieldId, false, rule.messages.isInteger); return false; }
+    if (rule.min !== undefined && parseFloat(value) < rule.min) { setFieldState(fieldId, false, rule.messages.min); return false; }
+    if (rule.max !== undefined && parseFloat(value) > rule.max) { setFieldState(fieldId, false, rule.messages.max); return false; }
+    if (rule.isUrl && value) {
+        try {
+            const url = new URL(value);
+            if (!['http:', 'https:'].includes(url.protocol)) throw new Error();
+        } catch { setFieldState(fieldId, false, rule.messages.isUrl); return false; }
+    }
+    if (rule.noHtml && /<[a-z][\s\S]*>/i.test(value)) { setFieldState(fieldId, false, rule.messages.noHtml); return false; }
+
+    setFieldState(fieldId, true);
+    return true;
+}
+
+/* ── Validaciones cruzadas ───────────────── */
+function validatePrecioFinal() {
+    const original = parseFloat(document.getElementById('precio_original').value) || 0;
+    const final    = parseFloat(document.getElementById('precio').value) || 0;
+    if (original > 0 && final > original) {
+        setFieldState('precio', false, 'El precio final no puede ser mayor al precio original.');
+        return false;
+    }
+    return validateField('precio');
+}
+
+function validateStockBajo() {
+    const stock     = parseInt(document.getElementById('stock').value) || 0;
+    const stockBajo = parseInt(document.getElementById('stock_bajo').value);
+    if (!isNaN(stockBajo) && stockBajo > stock) {
+        setFieldState('stock_bajo', false, 'El stock mínimo no puede superar el stock actual (' + stock + ').');
+        return false;
+    }
+    return validateField('stock_bajo');
+}
+
+/* ── Validar imagen ──────────────────────── */
+function validateImagen() {
     const fileInput = document.getElementById('imagen');
-    const previewImg = document.getElementById('img-preview');
-    const placeholder = document.getElementById('img-placeholder');
+    const urlInput  = document.getElementById('url_imagen');
+    const previewSrc = document.getElementById('img-preview')?.src || '';
     const originalUrl = "{{ $producto->url_imagen }}";
 
-    // Si escribe una URL, limpia el archivo y muestra el preview
-    urlInput.addEventListener('input', function() {
-        if (this.value.trim() !== '') {
-            fileInput.value = ''; // Vaciar archivo
-            previewImg.src = this.value;
-            previewImg.style.display = 'block';
-            if (placeholder) placeholder.style.display = 'none';
-        } else if (!fileInput.value && originalUrl) {
-            previewImg.src = originalUrl; // Restaurar original si borra
+    const tieneArchivo = fileInput && fileInput.files && fileInput.files.length > 0;
+    const tieneUrl     = urlInput && urlInput.value.trim() !== '';
+    // Si hay imagen original cargada en el preview y no fue borrada
+    const tieneOriginal = originalUrl && originalUrl !== '' &&
+                          previewSrc !== '' && !previewSrc.startsWith('data:') &&
+                          previewSrc !== window.location.href;
+
+    if (!tieneArchivo && !tieneUrl && !tieneOriginal) {
+        // Mostrar error cerca del área de imagen
+        let msgEl = document.getElementById('msg-imagen-global');
+        if (!msgEl) {
+            msgEl = document.createElement('div');
+            msgEl.id = 'msg-imagen-global';
+            msgEl.style.cssText = 'color:#e74c3c;font-size:0.8rem;font-weight:600;margin-top:8px;display:flex;align-items:center;gap:6px;';
+            msgEl.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i><span>El producto debe tener una imagen. Subí un archivo o ingresá una URL.</span>';
+            document.getElementById('upload-zone').insertAdjacentElement('afterend', msgEl);
+        }
+        // Resaltar zona de upload
+        document.getElementById('upload-zone').style.borderColor = '#e74c3c';
+        return false;
+    }
+
+    // Limpiar error si existe
+    const msgEl = document.getElementById('msg-imagen-global');
+    if (msgEl) msgEl.remove();
+    document.getElementById('upload-zone').style.borderColor = '#c0392b';
+    return true;
+}
+
+/* ── DOMContentLoaded ────────────────────── */
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Bind blur/input en campos de texto
+    Object.keys(RULES).forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (!input) return;
+        input.addEventListener('blur', () => {
+            if (fieldId === 'precio')     validatePrecioFinal();
+            else if (fieldId === 'stock_bajo') validateStockBajo();
+            else validateField(fieldId);
+        });
+        input.addEventListener('input', () => {
+            if (input.classList.contains('field-invalid') || input.classList.contains('field-valid')) {
+                if (fieldId === 'precio')          validatePrecioFinal();
+                else if (fieldId === 'stock_bajo') validateStockBajo();
+                else validateField(fieldId);
+            }
+        });
+    });
+
+    // Bind blur en selects
+    ['id_categoria', 'condicion'].forEach(id => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        sel.addEventListener('blur',   () => validateSelect(id, id === 'id_categoria' ? 'una categoría' : 'una condición'));
+        sel.addEventListener('change', () => validateSelect(id, id === 'id_categoria' ? 'una categoría' : 'una condición'));
+    });
+
+    // Bloquear negativos
+    ['precio_original', 'precio', 'stock', 'stock_bajo', 'porcentaje_descuento'].forEach(id => {
+        document.getElementById(id)?.addEventListener('keypress', e => {
+            if (e.key === '-' || e.key === 'e') e.preventDefault();
+        });
+    });
+
+    // Revalidar stock_bajo cuando cambia stock
+    document.getElementById('stock')?.addEventListener('input', () => {
+        const sbEl = document.getElementById('stock_bajo');
+        if (sbEl && (sbEl.classList.contains('field-invalid') || sbEl.classList.contains('field-valid'))) {
+            validateStockBajo();
         }
     });
 
-    // Si elige un archivo, limpia la URL y muestra el preview
-    fileInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            urlInput.value = ''; // Vaciar URL
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImg.src = e.target.result;
-                previewImg.style.display = 'block';
-                if (placeholder) placeholder.style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        } else if (!urlInput.value && originalUrl) {
-            previewImg.src = originalUrl; // Restaurar original si cancela
-        }
-    });
+    // Contador descripción
+    const descEl      = document.getElementById('descripcion');
+    const descCounter = document.getElementById('counter-descripcion');
+    if (descEl && descCounter) {
+        const update = () => {
+            const len = descEl.value.length;
+            descCounter.textContent = len + ' / 2000';
+            descCounter.className = 'char-counter';
+            if (len > 1800) descCounter.classList.add('warn');
+            if (len >= 2000) descCounter.classList.add('over');
+        };
+        descEl.addEventListener('input', update);
+        update();
+    }
 
-    // Si la URL que puso está rota, oculta la imagen y muestra el icono de placeholder
-    previewImg.addEventListener('error', function() {
-        this.style.display = 'none';
-        if (placeholder) placeholder.style.display = 'flex';
-    });
-
-    // ── CÁLCULO PRECIO FINAL ───────────────────────────────────
+    // Cálculo precio final automático
     const precioOriginalInput = document.getElementById('precio_original');
     const porcentajeInput     = document.getElementById('porcentaje_descuento');
     const precioFinalInput    = document.getElementById('precio');
 
     function calcularPrecioFinal() {
         const original  = parseFloat(precioOriginalInput.value) || 0;
-        const descuento = parseFloat(porcentajeInput.value) || 0;
+        const descuento = parseFloat(porcentajeInput.value)     || 0;
         if (original > 0) {
             precioFinalInput.value = Math.round(original - (original * descuento / 100));
+            if (precioFinalInput.classList.contains('field-invalid') ||
+                precioFinalInput.classList.contains('field-valid')) {
+                validatePrecioFinal();
+            }
         }
     }
-    
-    precioOriginalInput.addEventListener('input', calcularPrecioFinal);
-    porcentajeInput.addEventListener('input', calcularPrecioFinal);
+    precioOriginalInput?.addEventListener('input', calcularPrecioFinal);
+    porcentajeInput?.addEventListener('input', calcularPrecioFinal);
+
+    // Validación completa al enviar
+    document.getElementById('form-editar')?.addEventListener('submit', function(e) {
+        const textFields = ['nombre', 'marca', 'consola', 'precio_original',
+                            'porcentaje_descuento', 'stock', 'url_imagen', 'descripcion'];
+
+        const results = [
+            ...textFields.map(validateField),
+            validatePrecioFinal(),
+            validateStockBajo(),
+            validateSelect('id_categoria', 'una categoría'),
+            validateSelect('condicion',    'una condición'),
+            validateImagen(),
+        ];
+
+        const allValid = results.every(Boolean);
+
+        if (!allValid) {
+            e.preventDefault();
+            const firstError = document.querySelector('.field-invalid');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+            } else {
+                // Puede ser el error de imagen
+                document.getElementById('msg-imagen-global')
+                    ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+
+    // Marcar campos con errores de Laravel
+    @if($errors->any())
+        @foreach(['nombre','marca','consola','precio_original','porcentaje_descuento','precio','stock','stock_bajo','url_imagen','descripcion'] as $campo)
+            @error($campo)
+                (function() {
+                    const el = document.getElementById('{{ $campo }}');
+                    if (el) el.classList.add('field-invalid');
+                })();
+            @enderror
+        @endforeach
+    @endif
+});
+
+/* ── Gestión imagen ──────────────────────── */
+const urlInput    = document.getElementById('url_imagen');
+const fileInput   = document.getElementById('imagen');
+const previewImg  = document.getElementById('img-preview');
+const placeholder = document.getElementById('img-placeholder');
+const originalUrl = "{{ $producto->url_imagen }}";
+
+urlInput?.addEventListener('input', function() {
+    const uploadZone = document.getElementById('upload-zone');
+    if (this.value.trim()) {
+        fileInput.value = '';
+        previewImg.src = this.value;
+        previewImg.style.display = 'block';
+        if (placeholder) placeholder.style.display = 'none';
+        // Limpiar error imagen
+        document.getElementById('msg-imagen-global')?.remove();
+        if (uploadZone) uploadZone.style.borderColor = '#c0392b';
+    } else if (!fileInput.value && originalUrl) {
+        previewImg.src = originalUrl;
+    }
+});
+
+fileInput?.addEventListener('change', function() {
+    const uploadZone = document.getElementById('upload-zone');
+    const file = this.files[0];
+    if (file) {
+        // Validar tipo
+        if (!file.type.startsWith('image/')) {
+            alert('Solo se permiten archivos de imagen (JPG, PNG, GIF, WebP, etc.).');
+            this.value = '';
+            return;
+        }
+        // Validar tamaño (máx 5 MB)
+        if (file.size > 5 * 1024 * 1024) {
+            alert('La imagen no puede superar los 5 MB.');
+            this.value = '';
+            return;
+        }
+        urlInput.value = '';
+        clearFieldState('url_imagen');
+        const reader = new FileReader();
+        reader.onload = e2 => {
+            previewImg.src = e2.target.result;
+            previewImg.style.display = 'block';
+            if (placeholder) placeholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+        // Limpiar error imagen
+        document.getElementById('msg-imagen-global')?.remove();
+        if (uploadZone) uploadZone.style.borderColor = '#c0392b';
+    } else if (!urlInput.value && originalUrl) {
+        previewImg.src = originalUrl;
+    }
+});
+
+previewImg?.addEventListener('error', function() {
+    this.style.display = 'none';
+    if (placeholder) placeholder.style.display = 'flex';
+});
 </script>
 
 </body>
