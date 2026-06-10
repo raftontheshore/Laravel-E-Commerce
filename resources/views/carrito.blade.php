@@ -234,12 +234,9 @@
                             </span>
                         </div>
 
-                        <form method="POST" action="{{ route('carrito.confirmar') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-confirmar text-white w-100 py-3">
-                                Confirmar compra ({{ $items->count() }})
-                            </button>
-                        </form>
+                       <a href="{{ route('checkout.index') }}" class="btn btn-confirmar text-white w-100 py-3 text-decoration-none">
+                        Confirmar compra ({{ $items->count() }})
+                        </a>
 
                         <a href="/tienda" class="btn btn-outline-secondary w-100 mt-2" style="border-radius: 8px;">
                             <i class="bi bi-arrow-left me-1"></i> Seguir comprando

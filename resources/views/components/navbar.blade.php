@@ -276,7 +276,7 @@
                                                         ->sum('cantidad');
                                 @endphp
 
-                                <a href="{{ route('cliente.carrito') }}" class="btn-login position-relative">
+                                <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
                                     <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
                                     @if($cantidadCarrito > 0)
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
