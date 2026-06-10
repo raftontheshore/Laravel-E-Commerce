@@ -1,21 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VentaCabecera;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Muestra el formulario de datos de entrega.
-     * Busca la venta pendiente activa del usuario (el carrito).
-     */
     public function index()
     {
         $usuario = Auth::user();
-
         $venta = VentaCabecera::with('detalles.producto')
             ->where('user_id', $usuario->id)
             ->where('estado', 'carrito')
@@ -30,23 +23,35 @@ class CheckoutController extends Controller
         return view('carrito-checkout', compact('venta'));
     }
 
-    /**
-     * Guarda los datos de entrega en la venta y cambia el estado a confirmado.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'direccion'     => 'required|string|max:255',
-            'telefono'      => 'required|string|max:20',
-            'codigo_postal' => 'nullable|string|max:10',
-            'notas'         => 'nullable|string|max:500',
+            'direccion' => [
+                'required', 'string', 'min:10', 'max:150',
+                'regex:/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ0-9\s.,#°\-\/()\[\]]+$/',
+                'not_regex:/^\d+$/',
+            ],
+            'telefono' => [
+                'required', 'string', 'max:20',
+                'regex:/^\+?[\d\s\-()]{7,20}$/',
+            ],
+            'codigo_postal' => [
+                'nullable', 'string', 'max:8',
+                'regex:/^([A-Z]?\d{4}[A-Z]{0,3})?$/',
+            ],
+            'notas' => ['nullable', 'string', 'max:500'],
         ], [
-            'direccion.required' => 'La dirección de envío es obligatoria.',
-            'telefono.required'  => 'El teléfono de contacto es obligatorio.',
+            'direccion.required'  => 'La dirección de envío es obligatoria.',
+            'direccion.min'       => 'La dirección debe tener al menos 10 caracteres.',
+            'direccion.regex'     => 'La dirección contiene caracteres no permitidos.',
+            'direccion.not_regex' => 'La dirección debe incluir el nombre de la calle, no solo números.',
+            'telefono.required'   => 'El teléfono de contacto es obligatorio.',
+            'telefono.regex'      => 'El teléfono debe contener solo números, espacios o guiones.',
+            'codigo_postal.regex' => 'Código postal inválido. Usá formato 3400 o CPA como A4400XXX.',
+            'notas.max'           => 'Las notas no pueden superar los 500 caracteres.',
         ]);
 
         $usuario = Auth::user();
-
         $venta = VentaCabecera::with('detalles.producto')
             ->where('user_id', $usuario->id)
             ->where('estado', 'carrito')
@@ -59,10 +64,10 @@ class CheckoutController extends Controller
         }
 
         $venta->update([
-            'direccion'     => $request->direccion,
-            'telefono'      => $request->telefono,
-            'codigo_postal' => $request->codigo_postal,
-            'notas'         => $request->notas,
+            'direccion'     => trim($request->direccion),
+            'telefono'      => trim($request->telefono),
+            'codigo_postal' => $request->filled('codigo_postal') ? strtoupper(trim($request->codigo_postal)) : null,
+            'notas'         => $request->filled('notas') ? strip_tags($request->notas) : null,
             'estado'        => 'pendiente',
         ]);
 
@@ -70,9 +75,6 @@ class CheckoutController extends Controller
             ->with('success', '¡Compra confirmada!');
     }
 
-    /**
-     * Página de confirmación final (la haremos en la próxima etapa).
-     */
     public function confirmacion($id)
     {
         $venta = VentaCabecera::with('detalles.producto')
