@@ -251,7 +251,7 @@
                     </div>
                     <div>
                         {{-- Enlace a la vista que ya creaste de Compra Confirmada / Recibo --}}
-                        <a href="{{ route('checkout.show', $compra->id) }}" class="btn btn-ver-detalle btn-accion">
+                        <a href="{{ route('checkout.confirmacion', $compra->id) }}" class="btn btn-ver-detalle btn-accion">
                             Ver detalle de compra
                         </a>
                     </div>
