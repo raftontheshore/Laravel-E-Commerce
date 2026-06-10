@@ -63,7 +63,7 @@ class CheckoutController extends Controller
             'telefono'      => $request->telefono,
             'codigo_postal' => $request->codigo_postal,
             'notas'         => $request->notas,
-            'estado'        => 'confirmado', // cambiá al estado que uses para "pagado/en proceso"
+            'estado'        => 'pendiente',
         ]);
 
         return redirect()->route('checkout.confirmacion', $venta->id)

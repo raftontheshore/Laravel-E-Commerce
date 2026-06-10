@@ -23,10 +23,8 @@
             font-display: swap;
         }
 
-        /* ── FONDO GENERAL ── */
         body, #content-wrapper, #content { background-color: #1a1a1a !important; }
 
-        /* ── SIDEBAR & TOPBAR ── */
         .sidebar-dark.bg-gradient-primary, .bg-gradient-primary {
             background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%) !important;
             border-right: 1px solid #c0392b !important;
@@ -37,7 +35,6 @@
         }
         .topbar .text-gray-600, .navbar-nav .nav-link { color: #cccccc !important; }
 
-        /* ── CARDS ── */
         .card {
             background-color: #222222 !important;
             border: 1px solid #333333 !important;
@@ -48,53 +45,25 @@
             border-bottom: 1px solid #c0392b !important;
         }
         .card .text-gray-800, .card .h5 { color: #ffffff !important; }
+        .card .text-gray-500, .card .text-xs { color: #aaaaaa !important; }
 
-        /* ── TABLAS ── */
-        .table { color: #cccccc !important; vertical-align: middle; }
+        .table { color: #cccccc !important; }
         .table thead th {
             border-bottom: 2px solid #c0392b !important;
             color: #aaaaaa !important;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
+            letter-spacing: .05em;
+            font-weight: 700;
         }
-        .table td, .table th { 
-            border-top: 1px solid #333333 !important; 
-            vertical-align: middle !important;
-        }
+        .table td, .table th { border-top: 1px solid #2a2a2a !important; vertical-align: middle !important; }
+        .table-hover tbody tr:hover { background-color: #2a2a2a !important; }
         .table-bordered { border: 1px solid #333333 !important; }
 
-        /* ── FORMULARIOS OSCUROS ── */
-        .form-control-dark {
-            background-color: #111111 !important;
-            border: 1px solid #333333 !important;
-            color: #cccccc !important;
-        }
-        .form-control-dark:focus {
-            background-color: #1a1a1a !important;
-            border-color: #c0392b !important;
-            box-shadow: 0 0 0 0.2rem rgba(192, 57, 43, 0.25) !important;
-            color: #ffffff !important;
-        }
-
-        /* ── BOTONES ── */
-        .btn-primary {
-            background-color: #c0392b !important;
-            border-color: #c0392b !important;
-        }
-        .btn-primary:hover {
-            background-color: #e74c3c !important;
-            border-color: #e74c3c !important;
-        }
-        .btn-outline-light {
-            color: #cccccc;
-            border-color: #555555;
-        }
-        .btn-outline-light:hover {
-            background-color: #333333;
-            color: #ffffff;
-            border-color: #aaaaaa;
-        }
+        .btn-primary { background-color: #c0392b !important; border-color: #c0392b !important; }
+        .btn-primary:hover { background-color: #e74c3c !important; border-color: #e74c3c !important; }
+        .btn-outline-light { color: #cccccc; border-color: #555555; }
+        .btn-outline-light:hover { background-color: #333333; color: #ffffff; border-color: #aaaaaa; }
 
         .text-primary { color: #c0392b !important; }
         .sticky-footer {
@@ -102,6 +71,77 @@
             border-top: 1px solid #c0392b !important;
             color: #aaaaaa !important;
         }
+
+        /* ── BADGES DE ESTADO ── */
+.badge-pendiente  { background-color: #7a4a10; color: #fff; }
+.badge-confirmado { background-color: #5a4a00; color: #fff; }
+.badge-pagado     { background-color: #0a5c30; color: #fff; }
+.badge-enviado    { background-color: #0a3a6a; color: #fff; }
+.badge-entregado  { background-color: #4a1a6a; color: #fff; }
+.badge-cancelado  { background-color: #6a1010; color: #fff; }
+
+        /* ── FILTROS PILL ── */
+        .filtro-pill {
+            border-radius: 20px !important;
+            font-size: 0.78rem !important;
+            padding: 4px 14px !important;
+            font-weight: 600;
+            transition: all 0.15s;
+            text-decoration: none !important;
+        }
+        .filtro-pill:hover { opacity: 0.85; }
+
+        /* ── SELECT DE ESTADO ── */
+        .estado-select {
+            background-color: #1a1a1a;
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            outline: none;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        .estado-select option { background-color: #1a1a1a; }
+
+        /* ── PAGINACIÓN ── */
+        .pagination .page-link {
+            background-color: #222 !important;
+            border-color: #333 !important;
+            color: #ccc !important;
+        }
+        .pagination .page-link:hover {
+            background-color: #c0392b !important;
+            border-color: #c0392b !important;
+            color: #fff !important;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #c0392b !important;
+            border-color: #c0392b !important;
+        }
+        .pagination .page-item.disabled .page-link { color: #555 !important; }
+
+        /* ── INPUT DARK ── */
+        .input-dark {
+            background-color: #1a1a1a !important;
+            border: 1px solid #444444 !important;
+            color: #ffffff !important;
+        }
+        .input-dark:focus {
+            background-color: #1a1a1a !important;
+            border-color: #c0392b !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 0.15rem rgba(192,57,43,0.25) !important;
+        }
+        .input-dark option { background-color: #222222; color: #ffffff; }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: #555;
+        }
+        .empty-state i { font-size: 48px; margin-bottom: 16px; display: block; color: #333; }
     </style>
 </head>
 
@@ -114,7 +154,6 @@
             <div id="content">
 
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <!-- Buscador topbar -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group" style="background-color: #222; border: 1px solid #333; border-radius: 7px; overflow: hidden;">
                             <div class="input-group-prepend">
@@ -125,7 +164,6 @@
                             <input type="text" class="form-control border-0" placeholder="Buscar..." style="background-color: transparent; color: #ddd; box-shadow: none; outline: none;">
                         </div>
                     </form>
-
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
@@ -137,27 +175,81 @@
                 </nav>
 
                 <div class="container-fluid">
+
+                    {{-- ENCABEZADO --}}
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <div>
-                            <h1 class="h3 mb-1 text-gray-800">Pedidos</h1>
-                            <p class="mb-0 text-gray-500 small">Gestión y seguimiento de órdenes de la tienda.</p>
+                            <h1 class="h3 mb-0 text-gray-800">
+                                <i class="fas fa-shopping-bag mr-2" style="color:#c0392b;"></i>Pedidos
+                            </h1>
+                            <small style="color:#666;">Gestión y seguimiento de órdenes de la tienda.</small>
                         </div>
                     </div>
 
                     @if(session('success'))
-                        <div class="alert alert-success" style="background-color: rgba(9, 199, 98, 0.1); border-color: #09c762; color: #09c762;">
+                        <div class="alert" style="background-color: rgba(9,199,98,0.1); border-color: #09c762; color: #09c762;">
                             {{ session('success') }}
                         </div>
                     @endif
 
+                    {{-- FILTROS PILL --}}
+                    @php
+                      $estadosInfo = [
+    'pendiente'  => ['badge' => 'badge-pendiente',  'bg' => '#7a4a10', 'label' => 'Pendiente'],
+    'confirmado' => ['badge' => 'badge-confirmado', 'bg' => '#5a4a00', 'label' => 'Confirmado'],
+    'pagado'     => ['badge' => 'badge-pagado',     'bg' => '#0a5c30', 'label' => 'Pagado'],
+    'enviado'    => ['badge' => 'badge-enviado',    'bg' => '#0a3a6a', 'label' => 'Enviado'],
+    'entregado'  => ['badge' => 'badge-entregado',  'bg' => '#4a1a6a', 'label' => 'Entregado'],
+    'cancelado'  => ['badge' => 'badge-cancelado',  'bg' => '#6a1010', 'label' => 'Cancelado'],
+];
+                    @endphp
+
+                 <div class="mb-3 d-flex flex-wrap" style="gap: 8px;">
+    <a href="{{ route('admin.pedidos.index') }}"
+       class="filtro-pill btn btn-sm"
+       style="
+           border: 1px solid {{ !request('estado') ? '#c0392b' : '#444' }};
+           color: {{ !request('estado') ? '#fff' : '#888' }};
+           background-color: {{ !request('estado') ? '#c0392b' : 'transparent' }};
+       ">
+        Todos
+    </a>
+    @foreach($estadosInfo as $slug => $info)
+    <a href="{{ route('admin.pedidos.index', ['estado' => $slug]) }}"
+       class="filtro-pill btn btn-sm"
+       style="
+           background-color: {{ request('estado') === $slug ? '#c0392b' : 'transparent' }};
+           border: 1px solid {{ request('estado') === $slug ? '#c0392b' : '#444' }};
+           color: {{ request('estado') === $slug ? '#fff' : '#888' }};
+       ">
+        {{ $info['label'] }}
+    </a>
+    @endforeach
+</div>
+
+                    {{-- TABLA --}}
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Listado general</h6>
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                <i class="fas fa-list mr-2"></i>Listado general
+                                @if(request('estado'))
+                                    <span class="ml-2" style="font-size:0.8rem;color:#888;font-weight:400;">
+                                        — {{ $estadosInfo[request('estado')]['label'] ?? '' }}
+                                    </span>
+                                @endif
+                            </h6>
+                            <span style="color:#666;font-size:0.8rem;">{{ $ordenes->total() }} pedido(s)</span>
                         </div>
-                        <div class="card-body">
-                            
+
+                        <div class="card-body p-0">
+                            @if($ordenes->isEmpty())
+                                <div class="empty-state">
+                                    <i class="fas fa-box-open"></i>
+                                    <p class="mb-1" style="color:#666;font-size:1rem;">No hay pedidos registrados.</p>
+                                </div>
+                            @else
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
                                             <th>N° Pedido</th>
@@ -169,65 +261,62 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($ordenes as $orden)
+                                        @foreach($ordenes as $orden)
                                         <tr>
-                                            <td class="font-weight-bold">#{{ $orden->id }}</td>
-                                            <td>{{ $orden->usuario->nombre ?? 'N/A' }}</td>
-                                            <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
-                                            
+                                            <td class="font-weight-bold" style="color:#fff;">#{{ $orden->id }}</td>
+                                            <td style="color:#ccc;">{{ $orden->usuario->nombre ?? 'N/A' }}</td>
+                                            <td style="color:#09c762;font-weight:700;">${{ number_format($orden->total, 0, ',', '.') }}</td>
+
                                             <td class="text-center">
-                                                @php
-                                                    $colores = [
-                                                        'pendiente' => ['bg' => 'rgba(230,126,34,.15)', 'color' => '#e67e22'],
-                                                        'pagado'    => ['bg' => 'rgba(9,199,98,.15)', 'color' => '#09c762'],
-                                                        'enviado'   => ['bg' => 'rgba(52,152,219,.15)', 'color' => '#3498db'],
-                                                        'entregado' => ['bg' => 'rgba(155,89,182,.15)', 'color' => '#9b59b6'],
-                                                        'cancelado' => ['bg' => 'rgba(231,76,60,.15)', 'color' => '#e74c3c'],
-                                                    ];
-                                                    $c = $colores[$orden->estado] ?? $colores['pendiente'];
-                                                @endphp
-                                                <span class="badge px-2 py-1" style="background-color: {{ $c['bg'] }}; color: {{ $c['color'] }}; border: 1px solid {{ $c['color'] }};">
-                                                    {{ ucfirst($orden->estado) }}
-                                                </span>
+                                                @php $info = $estadosInfo[$orden->estado] ?? null; @endphp
+                                                @if($info)
+                                                    <span class="badge {{ $info['badge'] }}">{{ $info['label'] }}</span>
+                                                @else
+                                                    <span class="badge" style="background:#555;color:#fff;">{{ ucfirst($orden->estado) }}</span>
+                                                @endif
                                             </td>
 
                                             <td>
                                                 <form method="POST" action="{{ route('admin.pedidos.estado', $orden->id) }}">
-                                                    @csrf 
+                                                    @csrf
                                                     @method('PATCH')
-                                                    <select name="estado" class="form-control form-control-sm form-control-dark" onchange="this.form.submit()">
-                                                        @foreach(['pendiente', 'pagado', 'enviado', 'entregado', 'cancelado'] as $e)
-                                                            <option value="{{ $e }}" {{ $orden->estado == $e ? 'selected' : '' }}>
-                                                                {{ ucfirst($e) }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    @php $colorActual = $estadosInfo[$orden->estado]['bg'] ?? '#aaa'; @endphp
+                                                    <select name="estado" onchange="this.form.submit()"
+    class="estado-select input-dark"
+    style="border: 1px solid #444; color: #ccc;">
+    @foreach($estadosInfo as $slug => $info)
+        <option value="{{ $slug }}"
+            {{ $orden->estado === $slug ? 'selected' : '' }}>
+            {{ $info['label'] }}
+        </option>
+    @endforeach
+</select>
                                                 </form>
                                             </td>
 
                                             <td class="text-center">
                                                 <a href="{{ route('admin.pedidos.show', $orden->id) }}" class="btn btn-sm btn-outline-light">
-                                                    Ver Detalle
+                                                    <i class="fas fa-eye mr-1"></i> Ver Detalle
                                                 </a>
                                             </td>
                                         </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="6" class="text-center text-gray-500 py-4">
-                                                <i class="fas fa-box-open fa-2x mb-2 d-block"></i>
-                                                No hay pedidos registrados.
-                                            </td>
-                                        </tr>
-                                        @endforelse
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
-                            <div class="mt-4">
-                                {{ $ordenes->links() }}
-                            </div>
-
+                            @endif
                         </div>
+
+                        @if($ordenes->hasPages())
+                        <div class="card-footer" style="background:#1e1e1e;border-top:1px solid #2a2a2a;">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small style="color:#555;">
+                                    Página {{ $ordenes->currentPage() }} de {{ $ordenes->lastPage() }}
+                                </small>
+                                {{ $ordenes->appends(request()->query())->links() }}
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
                 </div>

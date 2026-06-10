@@ -160,7 +160,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($orden->items as $item)
+                                                @foreach($orden->detalles as $item)
                                                 <tr>
                                                     <td class="font-weight-bold text-gray-200">{{ $item->producto->nombre ?? 'Producto Eliminado' }}</td>
                                                     <td class="text-center">{{ $item->cantidad }}</td>

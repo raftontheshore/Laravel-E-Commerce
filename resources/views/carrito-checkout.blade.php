@@ -277,25 +277,24 @@
         .pagos-garantias i { color: #c0392b; font-size: 16px; flex-shrink: 0; }
 
         /* ── COLUMNAS ── */
-        /* Eliminamos el min-height fijo y dejamos que el contenido dicte la altura */
-        .col-form {
-            padding: 40px !important; 
-        }
-        .col-resumen {
-           padding: 40px !important; 
-            background: #0f0f0f; /* Un sutil contraste para la columna derecha */
-            border-left: 1px solid #1e1e1e;
-        }
+.col-form {
+    padding: 40px 24px !important; 
+}
+.col-resumen {
+    padding: 40px 24px !important; 
+    background: #0f0f0f; 
+    border-left: 1px solid #1e1e1e;
+}
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 991px) {
-            /* Colapsar bordes y reducir padding en tablets y móviles */
-            .col-form, .col-resumen { padding: 24px; border-left: none; }
-            .col-resumen { border-top: 1px solid #1e1e1e; }
-            
-            .page-title  { font-size: 1.8rem; }
-            .step-connector { width: 40px; margin: 0 10px; }
-        }
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+    /* Colapsar bordes y reducir padding en tablets y móviles */
+    .col-form, .col-resumen { padding: 24px 16px !important; border-left: none; }
+    .col-resumen { border-top: 1px solid #1e1e1e; }
+    
+    .page-title  { font-size: 1.8rem; }
+    .step-connector { width: 40px; margin: 0 10px; }
+}
 
         @media (max-width: 767px) {
             #toast-alert { top: auto; bottom: 20px; right: 12px; left: 12px; max-width: auto; width: calc(100% - 24px); }
@@ -323,7 +322,7 @@
         </div>
     @endif
 
-    <div class="container mt-4 mb-5" style="max-width: 1500px;">
+    <div class="container mt-4 mb-5" style="max-width: 1200px;">
 
         {{-- ── STEPPER ── --}}
         <div class="stepper-wrapper">
@@ -577,7 +576,7 @@
 
     <script>
         const toast = document.getElementById('toast-alert');
-        if (toast) setTimeout(() => toast.remove(), 4400);
+        if (toast) setTimeout(() => toast.remove(), 1500);
     </script>
 
 </body>

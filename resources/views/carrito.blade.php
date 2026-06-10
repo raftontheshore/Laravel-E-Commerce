@@ -98,25 +98,12 @@
     </style>
 </head>
 
+
+
 <body class="text-white fondo-catacumbas">
 
     <x-navbar />
     <x-marquee />
-
-    <div class="container py-5">
-        @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-@endif
-@if(session('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('error') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-@endif
-
 
         <h2 class="titulo-seccion mb-4">
             <i class="bi bi-cart3 me-2"></i> Mi Carrito
@@ -254,5 +241,31 @@
     <x-footer />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+{{-- TOAST GLOBAL para mensajes de sesión --}}
+@if(session('success') || session('error'))
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+    <div id="toastMensaje" 
+         class="toast align-items-center border-0 {{ session('success') ? 'text-bg-success' : 'text-bg-danger' }}"
+         role="alert" 
+         data-bs-delay="100" 
+         data-bs-autohide="true">
+        <div class="d-flex">
+            <div class="toast-body fw-semibold">
+                {{ session('success') ?? session('error') }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const el = document.getElementById('toastMensaje');
+        if (el) bootstrap.Toast.getOrCreateInstance(el).show();
+    });
+</script>
+@endif
+
+<script src="...bootstrap..."></script>
 </body>
 </html>

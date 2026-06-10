@@ -108,9 +108,9 @@
             background: #1e1e1e;
         }
 
-        /* ── COLUMNAS ── */
-        .col-detalle  { padding: 28px 24px; border-right: 1px solid #1c1c1c; }
-        .col-resumen  { padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+  /* ── COLUMNAS ── */
+.col-detalle  { padding: 40px 24px !important; border-right: 1px solid #1c1c1c; }
+.col-resumen  { padding: 40px 24px !important; display: flex; flex-direction: column; gap: 16px; }
 
         /* ── DATOS DE ENTREGA ── */
         .dato-row {

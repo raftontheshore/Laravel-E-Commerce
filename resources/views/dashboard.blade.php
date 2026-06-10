@@ -136,14 +136,12 @@
        SIDEBAR SUBMENÚS — estilos propios
     ══════════════════════════════════════ */
 
-    /* Ítem padre con submenú */
     .nav-item.has-submenu > .nav-link {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
     }
 
-    /* Flecha indicadora */
     .nav-item.has-submenu > .nav-link .submenu-arrow {
         font-size: 11px;
         transition: transform 0.25s ease;
@@ -151,13 +149,11 @@
         flex-shrink: 0;
     }
 
-    /* Rotar flecha cuando está abierto */
     .nav-item.has-submenu.open > .nav-link .submenu-arrow {
         transform: rotate(90deg);
         color: #c0392b;
     }
 
-    /* Contenedor del submenú */
     .submenu {
         display: none;
         list-style: none;
@@ -173,7 +169,6 @@
         display: block;
     }
 
-    /* Ítems del submenú */
     .submenu li a {
         display: flex;
         align-items: center;
@@ -203,13 +198,11 @@
         flex-shrink: 0;
     }
 
-    /* Estado activo del ítem padre */
     .nav-item.has-submenu.open > .nav-link,
     .nav-item.has-submenu.active > .nav-link {
         color: #ffffff !important;
     }
 
-    /* Ítem normal activo (sin submenú) */
     .nav-item.active-page > .nav-link {
         color: #ffffff !important;
         font-weight: 700;
@@ -312,7 +305,7 @@
                                                 Pedidos Pendientes
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ \App\Models\Orden::where('estado', 'pendiente')->count() }}
+                                                {{ \App\Models\VentaCabecera::where('estado', 'pendiente')->count() }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -332,7 +325,7 @@
                                                 Dinero Recaudado
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                ${{ number_format(\App\Models\Orden::where('estado', 'pagado')->sum('total'), 0, ',', '.') }}
+                                               ${{ number_format(\App\Models\VentaCabecera::whereIn('estado', ['entregado', 'pagado'])->sum('total'), 0, ',', '.') }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -372,7 +365,7 @@
                                                 Pedidos Entregados
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ \App\Models\Orden::where('estado', 'entregado')->count() }}
+                                                {{ \App\Models\VentaCabecera::where('estado', 'entregado')->count() }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -406,13 +399,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach(\App\Models\Orden::with('user')->latest()->take(5)->get() as $orden)
+                                                @forelse(\App\Models\VentaCabecera::with('usuario')->latest()->take(5)->get() as $venta)
                                                 <tr>
-                                                    <td>#{{ $orden->id }}</td>
-                                                    <td>{{ $orden->user->nombre ?? 'N/A' }}</td>
-                                                    <td>${{ number_format($orden->total, 0, ',', '.') }}</td>
+                                                    <td>#{{ $venta->id }}</td>
+                                                    <td>{{ $venta->usuario->nombre ?? 'N/A' }}</td>
+                                                    <td>${{ number_format($venta->total, 0, ',', '.') }}</td>
                                                     <td>
-                                                        @switch($orden->estado)
+                                                        @switch($venta->estado)
                                                             @case('pendiente')
                                                                 <span class="badge badge-warning">Pendiente</span>
                                                                 @break
@@ -429,11 +422,15 @@
                                                                 <span class="badge badge-danger">Cancelado</span>
                                                                 @break
                                                             @default
-                                                                <span class="badge badge-secondary">{{ $orden->estado }}</span>
+                                                                <span class="badge badge-secondary">{{ $venta->estado }}</span>
                                                         @endswitch
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                @empty
+                                                <tr>
+                                                    <td colspan="4" class="text-center text-gray-500">No hay pedidos registrados aún.</td>
+                                                </tr>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
@@ -448,8 +445,8 @@
                                 </div>
                                 <div class="card-body">
                                     @php
-                                        $topProductos = \App\Models\ItemOrden::select('id_producto', \Illuminate\Support\Facades\DB::raw('SUM(cantidad) as total_vendido'))
-                                            ->groupBy('id_producto')
+                                        $topProductos = \App\Models\VentaDetalle::select('producto_id', \Illuminate\Support\Facades\DB::raw('SUM(cantidad) as total_vendido'))
+                                            ->groupBy('producto_id')
                                             ->orderByDesc('total_vendido')
                                             ->take(5)
                                             ->with('producto')
@@ -471,7 +468,7 @@
                                                 {{ $item->total_vendido }} uds.
                                             </div>
                                         </div>
-                                        @if(!$loop->last)<hr style="border-color: #2a3a5c;">@endif
+                                        @if(!$loop->last)<hr style="border-color: #333;">@endif
                                     @empty
                                         <p class="text-center text-gray-500 mb-0">No hay ventas registradas aún.</p>
                                     @endforelse
@@ -582,7 +579,6 @@
             var parentLi = link.closest('.has-submenu');
             var isOpen   = parentLi.classList.contains('open');
 
-            // Cerrar todos los abiertos excepto el actual
             document.querySelectorAll('.has-submenu.open').forEach(function(el) {
                 if (el !== parentLi) el.classList.remove('open');
             });
