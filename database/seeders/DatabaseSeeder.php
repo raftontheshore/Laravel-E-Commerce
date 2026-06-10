@@ -29,6 +29,16 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        User::firstOrCreate(
+            ['email' => 'usuario@gmail.com'],
+            [
+                'nombre'   => 'Usuario X',
+                'password' => bcrypt('usuario123'),
+                'rol'      => 'CLIENTE',
+                'activo'   => true,
+            ]
+        );
+
         // ─────────────────────────────────────────────
         //  CATEGORÍAS
         // ─────────────────────────────────────────────
