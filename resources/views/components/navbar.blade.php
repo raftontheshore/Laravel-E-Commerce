@@ -106,7 +106,6 @@
         }
         .catacumbas-nav .dropdown-divider { border-top-color: #2a2a2a; margin: 4px 0; }
 
-        
         .user-offcanvas {
             background: #1c1c1e !important;
             border-radius: 20px 20px 0 0 !important;
@@ -203,18 +202,20 @@
                             $nombreCompleto = Auth::user()->nombre ?? Auth::user()->name ?? '';
                             $partes = explode(' ', trim($nombreCompleto));
                             $iniciales = strtoupper(substr($partes[0], 0, 1) . (isset($partes[1]) ? substr($partes[1], 0, 1) : ''));
+                            $esAdmin = strtolower(Auth::user()->rol) === 'admin';
                         @endphp
 
-                        {{-- Carrito --}}
-                        <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
-                            <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
-                            <span id="contador-carrito"
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill {{ $cantidadCarrito > 0 ? '' : 'd-none' }}"
-                                style="background:#c02a2a; font-size: 0.65rem;">
-                                {{ $cantidadCarrito }}
-                            </span>
-                        </a>
-
+                        {{-- Carrito (solo clientes) --}}
+                        @if(!$esAdmin)
+                            <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
+                                <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
+                                <span id="contador-carrito"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill {{ $cantidadCarrito > 0 ? '' : 'd-none' }}"
+                                    style="background:#c02a2a; font-size: 0.65rem;">
+                                    {{ $cantidadCarrito }}
+                                </span>
+                            </a>
+                        @endif
                         {{-- DESKTOP: dropdown --}}
                         <div class="dropdown ms-2 position-relative d-none d-lg-block">
                             <a href="#" id="perfilDropdown" role="button"
@@ -245,12 +246,23 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                                        href="{{ route('compras.index') }}">
-                                        <i class="bi bi-bag-check text-secondary"></i> Mis Compras
-                                    </a>
-                                </li>
+
+                                @if($esAdmin)
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2"
+                                            href="{{ route('admin.dashboard') }}">
+                                            <i class="bi bi-gear text-secondary"></i> Panel de Control
+                                        </a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2"
+                                            href="{{ route('compras.index') }}">
+                                            <i class="bi bi-bag-check text-secondary"></i> Mis Compras
+                                        </a>
+                                    </li>
+                                @endif
+
                                 <li><hr class="dropdown-divider border-dark my-2"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}" class="m-0 p-0">
@@ -310,10 +322,19 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('compras.index') }}" class="offcanvas-menu-item">
-            <i class="bi bi-bag-check" style="font-size:18px; color:#888;"></i>
-            Mis compras
-        </a>
+
+        @if($esAdmin)
+            <a href="{{ route('admin.dashboard') }}" class="offcanvas-menu-item">
+                <i class="bi bi-gear" style="font-size:18px; color:#888;"></i>
+                Panel de Control
+            </a>
+        @else
+            <a href="{{ route('compras.index') }}" class="offcanvas-menu-item">
+                <i class="bi bi-bag-check" style="font-size:18px; color:#888;"></i>
+                Mis compras
+            </a>
+        @endif
+
         <form method="POST" action="{{ route('logout') }}" class="m-0">
             @csrf
             <button type="submit" class="offcanvas-menu-item danger">
