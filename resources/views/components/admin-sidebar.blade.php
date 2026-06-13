@@ -33,17 +33,20 @@
     }
 
     .nav-item.has-submenu > .nav-link {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-    }
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px;
+}
 
     .nav-item.has-submenu > .nav-link .submenu-arrow {
+        margin-left: auto; /* flecha sigue al extremo derecho */
         font-size: 11px;
         transition: transform 0.25s ease;
         color: #888;
         flex-shrink: 0;
     }
+
 
     .nav-item.has-submenu.open > .nav-link .submenu-arrow {
         transform: rotate(90deg);
