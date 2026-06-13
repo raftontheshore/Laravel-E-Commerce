@@ -186,23 +186,19 @@
                 </div>
 
                 {{-- Alertas --}}
-                @if(session('success'))
-                    <div class="alert alert-success-custom alert-dismissible fade show mb-4">
-                        {{ session('success') }}
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span style="color:#a9f5c8;">&times;</span>
-                        </button>
-                    </div>
-                @endif
-                @if ($errors->any())
-                    <div class="alert alert-error-custom mb-4">
-                        <ul class="mb-0 pl-3">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+               @if(session('success'))
+    <div class="alert alert-error-custom alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle mr-2"></i>{{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-error-custom alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle mr-2"></i>{{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+@endif
 
                 {{-- Buscador --}}
                 <div class="mb-4" style="max-width:360px;">
