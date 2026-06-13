@@ -623,8 +623,10 @@
                             <span>
                                 @if($producto->stock == 0)
                                     <span class="stock-cero">Sin stock</span>
+                                @elseif($producto->stock == 1)
+                                    <span class="stock-bajo">⚠ ¡Última unidad!</span>
                                 @elseif($producto->stock <= $producto->stock_bajo)
-                                    <span class="stock-bajo">⚠ {{ $producto->stock }} unid. (bajo)</span>
+                                    <span class="stock-bajo">⚠ {{ $producto->stock }} unid. (pocas)</span>
                                 @else
                                     <span class="stock-ok">✓ {{ $producto->stock }} unidades</span>
                                 @endif
