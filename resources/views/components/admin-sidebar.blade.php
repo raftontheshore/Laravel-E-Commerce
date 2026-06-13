@@ -83,6 +83,27 @@
     .nav-item.has-submenu.active > .nav-link { color: #ffffff !important; }
     .nav-item.active-page > .nav-link { color: #ffffff !important; font-weight: 700; }
 
+    /* Forzar logo y texto visibles siempre */
+    .sidebar-brand-text {
+        display: block !important;
+        opacity: 1 !important;
+    }
+
+    /* Evitar colapso de sb-admin-2 */
+    #wrapper.toggled #accordionSidebar {
+        width: 14rem !important;
+    }
+    #wrapper.toggled .sidebar-brand-text {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    #wrapper.toggled .nav-item .nav-link span {
+        display: inline !important;
+    }
+    #wrapper.toggled #accordionSidebar .nav-item .nav-link {
+        text-align: left !important;
+    }
+
     @media (max-width: 768px) {
         #accordionSidebar { display: none !important; }
     }
@@ -178,7 +199,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center h-auto py-4" href="{{ url('/dashboard') }}">
-        <div class="sidebar-brand-text mx-3 catacumbas-logo-text">
+        <div class="sidebar-brand-text mx-3 catacumbas-logo-text" style="display:block !important; opacity:1 !important;">
             CATACUMBAS
             <div class="catacumbas-logo-sub">PANEL DE CONTROL</div>
         </div>
@@ -336,6 +357,12 @@
 
     // ── Offcanvas móvil ──
     document.addEventListener('DOMContentLoaded', function () {
+
+        // Forzar sidebar expandido — limpiar estado guardado por sb-admin-2
+        var wrapper = document.getElementById('wrapper');
+        if (wrapper) wrapper.classList.remove('toggled');
+        localStorage.removeItem('sb|sidebar-toggle');
+
         var offcanvas = document.getElementById('adminOffcanvas');
         var overlay   = document.getElementById('offcanvas-overlay');
         var toggleBtn = document.getElementById('sidebarToggleTop');
@@ -360,7 +387,6 @@
         if (closeBtn)  closeBtn.addEventListener('click', closeOffcanvas);
         if (overlay)   overlay.addEventListener('click', closeOffcanvas);
 
-        // Cerrar al navegar
         offcanvas.querySelectorAll('a').forEach(function (a) {
             a.addEventListener('click', closeOffcanvas);
         });
