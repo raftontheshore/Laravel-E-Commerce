@@ -126,18 +126,37 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Información del Cliente</h6>
                                 </div>
                                 <div class="card-body info-box m-3">
-                                    <div class="mb-3">
-                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Nombre Completo</div>
-                                        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->nombre ?? 'Usuario eliminado' }}</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Correo Electrónico</div>
-                                        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->email ?? 'N/A' }}</div>
-                                    </div>
-                                    <div class="mb-0">
-                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Estado de la Orden</div>
-                                        <div class="h6 mb-0 text-gray-200">{{ ucfirst($orden->estado) }}</div>
-                                    </div>
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Nombre Completo</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->nombre ?? 'Usuario eliminado' }}</div>
+    </div>
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Correo Electrónico</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->email ?? 'N/A' }}</div>
+    </div>
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Dirección de Envío</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->direccion ?? '—' }}</div>
+    </div>
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Teléfono</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->telefono ?? '—' }}</div>
+    </div>
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Código Postal</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->codigo_postal ?? '—' }}</div>
+    </div>
+    @if($orden->notas)
+    <div class="mb-3">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Notas</div>
+        <div class="h6 mb-0 text-gray-200">{{ $orden->notas }}</div>
+    </div>
+    @endif
+    <div class="mb-0">
+        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Estado de la Orden</div>
+        <div class="h6 mb-0 text-gray-200">{{ ucfirst($orden->estado) }}</div>
+    </div>
+</div>
                                 </div>
                             </div>
                         </div>
