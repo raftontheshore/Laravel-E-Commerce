@@ -13,48 +13,32 @@
         *, *::before, *::after { box-sizing: border-box; }
         body { background: #0d0d0d; }
 
-        /* ── TOAST ── */
-        #toast-alert {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 9999;
-            min-width: 280px;
-            max-width: 380px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.83rem;
-            font-weight: 600;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            box-shadow: 0 8px 32px rgba(0,0,0,.5);
-            animation: toastIn .25s ease, toastOut .4s ease 4s forwards;
-        }
-        #toast-alert.toast-success {
-            background: #0f2a1a;
-            border: 1px solid rgba(9,199,98,.35);
-            color: #09c762;
-        }
-        #toast-alert.toast-error {
-            background: #2a0f0f;
-            border: 1px solid rgba(192,57,43,.4);
-            color: #e74c3c;
-        }
-        #toast-alert i {
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        @keyframes toastIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes toastOut {
-            from { opacity: 1; transform: translateX(0); }
-            to   { opacity: 0; transform: translateX(30px); pointer-events: none; }
-        }
+        /* ── CALLOUT CARRITO ── */
+.callout-success {
+    background-color: rgba(9, 199, 98, 0.1);
+    border-left: 4px solid #09c762;
+    color: #a9f5c8;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.callout-success .callout-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #a9f5c8;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.7;
+}
+.callout-success .callout-close:hover { opacity: 1; }
 
         .breadcrumb-area {
             font-size: 0.75rem;
@@ -452,18 +436,17 @@
 
     <x-navbar />
 
-    {{-- ── TOAST ── --}}
-    @if(session('success'))
-        <div id="toast-alert" class="toast-success">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>{{ session('success') }}</span>
-        </div>
-    @elseif(session('error'))
-        <div id="toast-alert" class="toast-error">
-            <i class="bi bi-exclamation-triangle-fill"></i>
-            <span>{{ session('error') }}</span>
-        </div>
-    @endif
+   @if(session('success'))
+<div class="container" style="max-width: 900px; padding-top: 20px;">
+    <div class="callout-success" id="callout-carrito">
+        <i class="bi bi-check-circle-fill" style="font-size:1.1rem; color:#09c762; flex-shrink:0;"></i>
+        <span>{{ session('success') }}</span>
+        <button class="callout-close" onclick="document.getElementById('callout-carrito').remove()">
+            &times;
+        </button>
+    </div>
+</div>
+@endif
 
     <div class="container mt-3 mb-5" style="max-width: 1100px;">
 

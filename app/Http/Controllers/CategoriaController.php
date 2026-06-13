@@ -48,9 +48,15 @@ class CategoriaController extends Controller
     }
 
     public function destroy(Categoria $categoria)
-    {
-        $categoria->delete();
-        return redirect()->route('admin.categorias.index')
-                         ->with('success', 'Categoría eliminada.');
+{
+    $count = \App\Models\Producto::where('id_categoria', $categoria->id)->count();
+
+    if ($count > 0) {
+        return back()->with('error', "No se puede eliminar \"{$categoria->nombre}\" porque tiene {$count} producto(s) asignado(s). Reasignalos primero.");
     }
+
+    $categoria->delete();
+    return redirect()->route('admin.categorias.index')
+                     ->with('success', 'Categoría eliminada.');
+}
 }
