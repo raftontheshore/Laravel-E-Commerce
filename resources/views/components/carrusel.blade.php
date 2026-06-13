@@ -138,8 +138,8 @@
                     <p class="fs-6 text-hero" style="
                         color: #fefefe;
                         text-shadow: 0 1px 6px rgba(0,0,0,0.8);
-                    ">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $15.</p>
-                    <a href="/construccion" class="btn mt-3 fw-bold" style="
+                    ">La trilogía que lo empezó todo. Llévate las ediciones Rojo, Azul y Amarillo en un bundle legendario por solo $50.000 cada una.</p>
+                    <a href="{{ url('/tienda/todos') }}?q=Pokémon" class="btn mt-3 fw-bold" style="
                         background-color: #ffd70f;
                         color: #1a1a1a;
                         border: none;
