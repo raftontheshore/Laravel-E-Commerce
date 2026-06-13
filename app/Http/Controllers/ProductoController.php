@@ -84,6 +84,13 @@ class ProductoController extends Controller
             $validated['url_imagen'] = asset('storage/' . $path);
         }
 
+        // Validar que tenga al menos una imagen
+        if (empty($validated['url_imagen'])) {
+            return back()
+                ->withErrors(['imagen' => 'El producto debe tener una imagen. Subí un archivo o ingresá una URL.'])
+                ->withInput();
+        }
+
         $validated['activo']               = $request->has('activo') ? 1 : 0;
         $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
 
@@ -131,11 +138,23 @@ class ProductoController extends Controller
             'activo'               => 'nullable|boolean',
         ]);
 
+        // Si sube archivo, procesarlo primero
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('productos', 'public');
             $validated['url_imagen'] = asset('storage/' . $path);
         }
 
+        // Determinar la imagen final: nueva subida, nueva URL, o la que ya tenía
+        $imagenFinal = $validated['url_imagen'] ?? $producto->url_imagen;
+
+        // Validar que quede al menos una imagen
+        if (empty($imagenFinal)) {
+            return back()
+                ->withErrors(['imagen' => 'El producto debe tener una imagen. Subí un archivo o ingresá una URL.'])
+                ->withInput();
+        }
+
+        $validated['url_imagen']           = $imagenFinal;
         $validated['activo']               = $request->boolean('activo');
         $validated['porcentaje_descuento'] = $validated['porcentaje_descuento'] ?? 0;
 

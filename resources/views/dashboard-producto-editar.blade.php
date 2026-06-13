@@ -150,7 +150,7 @@
                 <form method="POST" action="{{ route('admin.productos.update', $producto->id) }}"
                       id="form-editar" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
 
                     <div class="row">
 
@@ -310,7 +310,7 @@
                                         <i class="fas fa-dollar-sign mr-1"></i>Precio
                                     </div>
 
-                                    <div class="row align-items-end">
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="campo-grupo">
                                                 <label class="campo-label" for="precio_original">Precio Original *</label>
@@ -321,7 +321,7 @@
                                                     <input type="number" name="precio_original" id="precio_original"
                                                            class="form-control input-dark @error('precio_original') is-invalid @enderror"
                                                            value="{{ old('precio_original', $producto->precio_original) }}"
-                                                           min="0" step="1" required>
+                                                           min="0" step="0.01" required>
                                                 </div>
                                                 @error('precio_original')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                             </div>
@@ -351,7 +351,7 @@
                                                     <input type="number" name="precio" id="precio"
                                                            class="form-control input-dark @error('precio') is-invalid @enderror"
                                                            value="{{ old('precio', $producto->precio) }}"
-                                                           min="0" step="1" required>
+                                                           min="0" step="0.01" required>
                                                 </div>
                                                 @error('precio')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                                 <small style="color:#555;font-size:0.7rem;margin-top:3px;display:block;">
@@ -437,6 +437,8 @@
                                             <i class="fas fa-times mr-1"></i> Cancelar
                                         </a>
                                         <button type="submit" class="btn btn-primary btn-sm px-4">
+                                            {{-- Campo oculto para saber si ya tiene imagen --}}
+                                            <input type="hidden" id="tiene_imagen_actual" value="{{ $producto->url_imagen ? '1' : '0' }}">  
                                             <i class="fas fa-save mr-1"></i> Guardar Cambios
                                         </button>
                                     </div>
@@ -687,38 +689,32 @@ function validateStockBajo() {
 
 /* ── Validar imagen ──────────────────────── */
 function validateImagen() {
-    const fileInput = document.getElementById('imagen');
-    const urlInput  = document.getElementById('url_imagen');
-    const previewSrc = document.getElementById('img-preview')?.src || '';
-    const originalUrl = "{{ $producto->url_imagen }}";
+    const fileInput       = document.getElementById('imagen');
+    const urlInput        = document.getElementById('url_imagen');
+    const tieneActual     = document.getElementById('tiene_imagen_actual')?.value === '1';
 
     const tieneArchivo = fileInput && fileInput.files && fileInput.files.length > 0;
     const tieneUrl     = urlInput && urlInput.value.trim() !== '';
-    // Si hay imagen original cargada en el preview y no fue borrada
-    const tieneOriginal = originalUrl && originalUrl !== '' &&
-                          previewSrc !== '' && !previewSrc.startsWith('data:') &&
-                          previewSrc !== window.location.href;
 
-    if (!tieneArchivo && !tieneUrl && !tieneOriginal) {
-        // Mostrar error cerca del área de imagen
-        let msgEl = document.getElementById('msg-imagen-global');
-        if (!msgEl) {
-            msgEl = document.createElement('div');
-            msgEl.id = 'msg-imagen-global';
-            msgEl.style.cssText = 'color:#e74c3c;font-size:0.8rem;font-weight:600;margin-top:8px;display:flex;align-items:center;gap:6px;';
-            msgEl.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i><span>El producto debe tener una imagen. Subí un archivo o ingresá una URL.</span>';
-            document.getElementById('upload-zone').insertAdjacentElement('afterend', msgEl);
-        }
-        // Resaltar zona de upload
-        document.getElementById('upload-zone').style.borderColor = '#e74c3c';
-        return false;
+    // Si tiene imagen actual, archivo nuevo o URL nueva → todo bien
+    if (tieneActual || tieneArchivo || tieneUrl) {
+        const msgEl = document.getElementById('msg-imagen-global');
+        if (msgEl) msgEl.remove();
+        document.getElementById('upload-zone').style.borderColor = '#c0392b';
+        return true;
     }
 
-    // Limpiar error si existe
-    const msgEl = document.getElementById('msg-imagen-global');
-    if (msgEl) msgEl.remove();
-    document.getElementById('upload-zone').style.borderColor = '#c0392b';
-    return true;
+    // No tiene ninguna imagen → mostrar error y bloquear
+    let msgEl = document.getElementById('msg-imagen-global');
+    if (!msgEl) {
+        msgEl = document.createElement('div');
+        msgEl.id = 'msg-imagen-global';
+        msgEl.style.cssText = 'color:#e74c3c;font-size:0.8rem;font-weight:600;margin-top:8px;display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(192,57,43,0.15);border:1px solid #c0392b;border-radius:6px;';
+        msgEl.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>El producto debe tener una imagen. Subí un archivo o ingresá una URL.</span>';
+        document.getElementById('upload-zone').insertAdjacentElement('afterend', msgEl);
+    }
+    document.getElementById('upload-zone').style.borderColor = '#e74c3c';
+    return false;
 }
 
 /* ── DOMContentLoaded ────────────────────── */
@@ -789,7 +785,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const original  = parseFloat(precioOriginalInput.value) || 0;
         const descuento = parseFloat(porcentajeInput.value)     || 0;
         if (original > 0) {
-            precioFinalInput.value = Math.round(original - (original * descuento / 100));
+            const calculo = original - (original * descuento / 100);
+            precioFinalInput.value = calculo.toFixed(2);
+            
             if (precioFinalInput.classList.contains('field-invalid') ||
                 precioFinalInput.classList.contains('field-valid')) {
                 validatePrecioFinal();
@@ -799,11 +797,37 @@ document.addEventListener('DOMContentLoaded', function () {
     precioOriginalInput?.addEventListener('input', calcularPrecioFinal);
     porcentajeInput?.addEventListener('input', calcularPrecioFinal);
 
-    // Validación completa al enviar
-    document.getElementById('form-editar')?.addEventListener('submit', function(e) {
-        const textFields = ['nombre', 'marca', 'consola', 'precio_original',
-                            'porcentaje_descuento', 'stock', 'url_imagen', 'descripcion'];
+    // Marcar campos con errores de Laravel (al cargar la página)
+    @if($errors->any())
+        @foreach(['nombre','marca','consola','precio_original','porcentaje_descuento','precio','stock','stock_bajo','url_imagen','descripcion'] as $campo)
+            @error($campo)
+                (function() {
+                    const el = document.getElementById('{{ $campo }}');
+                    if (el) el.classList.add('field-invalid');
+                })();
+            @enderror
+        @endforeach
+    @endif
 
+    // Validación completa al enviar
+    const formEditar = document.getElementById('form-editar');
+    const btnGuardar = formEditar?.querySelector('button[type="submit"]');
+
+    // 1. Interceptamos el clic del botón para limpiar el bloqueo nativo del navegador
+    btnGuardar?.addEventListener('click', function() {
+        if (formEditar.dataset.avisoMostrado === 'true') {
+            document.getElementById('imagen').setCustomValidity('');
+        }
+    });
+
+    // 2. Evento principal de envío
+    formEditar?.addEventListener('submit', function(e) {
+        const fileInput   = document.getElementById('imagen');
+        const urlInput    = document.getElementById('url_imagen');
+        const tieneActual = document.getElementById('tiene_imagen_actual')?.value === '1';
+
+        // Validar todos los campos normales y selects primero
+        const textFields = ['nombre', 'marca', 'consola', 'precio_original', 'porcentaje_descuento', 'stock', 'url_imagen', 'descripcion'];
         const results = [
             ...textFields.map(validateField),
             validatePrecioFinal(),
@@ -816,30 +840,48 @@ document.addEventListener('DOMContentLoaded', function () {
         const allValid = results.every(Boolean);
 
         if (!allValid) {
-            e.preventDefault();
+            e.preventDefault(); // Detener envío si hay errores
             const firstError = document.querySelector('.field-invalid');
             if (firstError) {
                 firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 firstError.focus();
             } else {
-                // Puede ser el error de imagen
-                document.getElementById('msg-imagen-global')
-                    ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById('msg-imagen-global')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            return; // Salimos de la función si hay errores
+        }
+
+        // Lógica del aviso nativo para la imagen
+        const noHayArchivo = !fileInput.files || fileInput.files.length === 0;
+        const noHayUrl     = urlInput.value.trim() === '';
+
+        if (tieneActual && noHayArchivo && noHayUrl) {
+            if (!this.dataset.avisoMostrado) {
+                e.preventDefault(); // Detenemos el guardado SOLO esta primera vez
+                
+                fileInput.setCustomValidity('No seleccionaste una nueva imagen. Se mantendrá la actual. Haz clic en "Guardar Cambios" de nuevo para confirmar.');
+                fileInput.reportValidity(); 
+                
+                this.dataset.avisoMostrado = 'true';
+            } else {
+                // Si es la segunda vez que hace clic, limpiamos la bandera y dejamos pasar
+                this.dataset.avisoMostrado = '';
+            }
+        } else {
+            this.dataset.avisoMostrado = '';
         }
     });
 
-    // Marcar campos con errores de Laravel
-    @if($errors->any())
-        @foreach(['nombre','marca','consola','precio_original','porcentaje_descuento','precio','stock','stock_bajo','url_imagen','descripcion'] as $campo)
-            @error($campo)
-                (function() {
-                    const el = document.getElementById('{{ $campo }}');
-                    if (el) el.classList.add('field-invalid');
-                })();
-            @enderror
-        @endforeach
-    @endif
+    // Eventos para limpiar la alerta inmediatamente si el usuario decide interactuar con la imagen tras ver el aviso
+    document.getElementById('imagen')?.addEventListener('change', () => {
+        document.getElementById('imagen').setCustomValidity('');
+        if(formEditar) formEditar.dataset.avisoMostrado = '';
+    });
+    document.getElementById('url_imagen')?.addEventListener('input', () => {
+        document.getElementById('imagen').setCustomValidity('');
+        if(formEditar) formEditar.dataset.avisoMostrado = '';
+    });
+
 });
 
 /* ── Gestión imagen ──────────────────────── */
