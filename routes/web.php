@@ -151,3 +151,7 @@ Route::get('/tienda/{categoria?}', [TiendaController::class, 'index']);
 Route::get('/mis-compras', [CompraController::class, 'index'])
     ->name('compras.index')
     ->middleware('auth');
+
+Route::get('/admin/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('admin.dashboard');
