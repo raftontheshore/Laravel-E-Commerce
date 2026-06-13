@@ -148,7 +148,7 @@
 
                 {{-- FORMULARIO --}}
                 <form method="POST" action="{{ route('admin.productos.update', $producto->id) }}"
-                     id="form-editar" enctype="multipart/form-data" novalidate>
+                      id="form-editar" enctype="multipart/form-data" novalidate>
                     @csrf
                     @method('PATCH')
 
@@ -609,12 +609,10 @@ function setFieldState(fieldId, isValid, message = '') {
     if (isValid) {
         input.classList.add('field-valid');
         msgEl.style.display = 'none';
-        input.setCustomValidity(''); // Limpia cualquier alerta nativa
     } else {
-        input.classList.add('field-invalid', 'is-invalid'); // is-invalid activa el borde rojo nativo de bootstrap
+        input.classList.add('field-invalid', 'is-invalid'); // is-invalid activa el borde rojo
         msgEl.textContent = message;
         msgEl.style.display = 'block';
-        input.setCustomValidity(message); // Activa el pop-up nativo con el mismo mensaje
     }
 }
 
@@ -623,7 +621,6 @@ function clearFieldState(fieldId) {
     const msgEl = document.getElementById('msg-' + fieldId);
     if (input) {
         input.classList.remove('field-valid', 'field-invalid', 'is-invalid');
-        input.setCustomValidity('');
     }
     if (msgEl) msgEl.style.display = 'none';
 }
@@ -825,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 1. Interceptamos el clic del botón para limpiar el bloqueo nativo del navegador
     btnGuardar?.addEventListener('click', function() {
         if (formEditar.dataset.avisoMostrado === 'true') {
-            document.getElementById('imagen').setCustomValidity('');
+            clearFieldState('imagen');
         }
     });
 
@@ -854,14 +851,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (firstError) {
                 firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 firstError.focus();
-                firstError.reportValidity(); // <-- Esto dispara el cartelito nativo que me pediste
+                // Eliminamos el reportValidity() que estaba acá para que no salga el cartel blanco
             } else {
                 document.getElementById('msg-imagen-global')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             return; // Salimos de la función si hay errores
         }
 
-        // Lógica del aviso nativo para la imagen
+        // Lógica del aviso para la imagen con el nuevo estilo unificado
         const noHayArchivo = !fileInput.files || fileInput.files.length === 0;
         const noHayUrl     = urlInput.value.trim() === '';
 
@@ -869,12 +866,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!this.dataset.avisoMostrado) {
                 e.preventDefault(); // Detenemos el guardado SOLO esta primera vez
                 
-                fileInput.setCustomValidity('No seleccionaste una nueva imagen. Se mantendrá la actual. Haz clic en "Guardar Cambios" de nuevo para confirmar.');
-                fileInput.reportValidity(); 
+                // Usamos la misma función que los demás errores para que salga rojo y abajo
+                setFieldState('imagen', false, 'No seleccionaste una nueva imagen. Se mantendrá la actual. Haz clic en "Guardar Cambios" de nuevo para confirmar.');
                 
                 this.dataset.avisoMostrado = 'true';
             } else {
                 // Si es la segunda vez que hace clic, limpiamos la bandera y dejamos pasar
+                clearFieldState('imagen');
                 this.dataset.avisoMostrado = '';
             }
         } else {
@@ -884,11 +882,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Eventos para limpiar la alerta inmediatamente si el usuario decide interactuar con la imagen tras ver el aviso
     document.getElementById('imagen')?.addEventListener('change', () => {
-        document.getElementById('imagen').setCustomValidity('');
+        clearFieldState('imagen');
         if(formEditar) formEditar.dataset.avisoMostrado = '';
     });
     document.getElementById('url_imagen')?.addEventListener('input', () => {
-        document.getElementById('imagen').setCustomValidity('');
+        clearFieldState('imagen');
         if(formEditar) formEditar.dataset.avisoMostrado = '';
     });
 

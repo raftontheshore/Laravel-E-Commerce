@@ -253,7 +253,6 @@
     <x-volverArriba />
     <x-footer />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
 {{-- TOAST GLOBAL para mensajes de sesión --}}
 @if(session('success') || session('error'))
