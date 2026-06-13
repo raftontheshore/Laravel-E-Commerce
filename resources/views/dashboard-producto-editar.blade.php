@@ -584,6 +584,7 @@ const RULES = {
 };
 
 /* ── Estado visual ───────────────────────── */
+/* ── Estado visual ───────────────────────── */
 function setFieldState(fieldId, isValid, message = '') {
     const input   = document.getElementById(fieldId);
     if (!input) return;
@@ -609,13 +610,20 @@ function setFieldState(fieldId, isValid, message = '') {
     if (isValid) {
         input.classList.add('field-valid');
         msgEl.style.display = 'none';
-        input.setCustomValidity(''); // Limpia cualquier alerta nativa
     } else {
-        input.classList.add('field-invalid', 'is-invalid'); // is-invalid activa el borde rojo nativo de bootstrap
+        input.classList.add('field-invalid', 'is-invalid'); // is-invalid activa el borde rojo
         msgEl.textContent = message;
         msgEl.style.display = 'block';
-        input.setCustomValidity(message); // Activa el pop-up nativo con el mismo mensaje
     }
+}
+
+function clearFieldState(fieldId) {
+    const input = document.getElementById(fieldId);
+    const msgEl = document.getElementById('msg-' + fieldId);
+    if (input) {
+        input.classList.remove('field-valid', 'field-invalid', 'is-invalid');
+    }
+    if (msgEl) msgEl.style.display = 'none';
 }
 
 function clearFieldState(fieldId) {
@@ -854,7 +862,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (firstError) {
                 firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 firstError.focus();
-                firstError.reportValidity(); // <-- Esto dispara el cartelito nativo que me pediste
+                // Eliminamos el reportValidity() que estaba acá para que no salga el cartel blanco
             } else {
                 document.getElementById('msg-imagen-global')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
