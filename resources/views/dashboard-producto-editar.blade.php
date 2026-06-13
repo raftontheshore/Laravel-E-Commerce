@@ -78,6 +78,24 @@
         /* ── VALIDACIÓN ── */
         .is-invalid { border-color: #c0392b !important; }
         .invalid-feedback { color: #e74c3c; font-size: 0.78rem; }
+
+        /* ── BOTÓN MENÚ MÓVIL (HAMBURGUESA) ── */
+        #sidebarToggleTop.btn-link {
+            color: #aaaaaa !important; /* Gris claro para el ícono */
+            background-color: transparent !important;
+        }
+
+        #sidebarToggleTop.btn-link:hover {
+            color: #ffffff !important; /* Blanco al pasar el mouse */
+            background-color: #222222 !important; /* Fondo sutil al hacer hover */
+        }
+
+        /* Quita la línea de puntos o el aro azul al hacer clic */
+        #sidebarToggleTop.btn-link:focus,
+        #sidebarToggleTop.btn-link:active {
+            outline: none !important;
+            box-shadow: none !important;
+        }
     </style>
 </head>
 
