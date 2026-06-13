@@ -38,19 +38,16 @@
         margin-top: 2px !important;
     }
 
-    /* ── FONDO GENERAL ── */
     body, #content-wrapper, #content {
         background-color: #1a1a1a !important;
     }
 
-    /* ── SIDEBAR ── */
     .sidebar-dark.bg-gradient-primary,
     .bg-gradient-primary {
         background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%) !important;
         border-right: 1px solid #c0392b !important;
     }
 
-    /* ── TOPBAR ── */
     .topbar.navbar-light.bg-white,
     nav.navbar {
         background-color: #111111 !important;
@@ -61,7 +58,6 @@
         color: #cccccc !important;
     }
 
-    /* ── CARDS ── */
     .card {
         background-color: #222222 !important;
         border: 1px solid #333333 !important;
@@ -72,21 +68,15 @@
         border-bottom: 1px solid #c0392b !important;
     }
     .card .text-gray-800,
-    .card .h5 {
-        color: #ffffff !important;
-    }
+    .card .h5 { color: #ffffff !important; }
     .card .text-gray-500,
-    .card .text-xs {
-        color: #aaaaaa !important;
-    }
+    .card .text-xs { color: #aaaaaa !important; }
 
-    /* ── BORDES IZQUIERDOS DE CARDS ── */
     .border-left-primary { border-left: 4px solid #c0392b !important; }
     .border-left-success { border-left: 4px solid #09c762 !important; }
     .border-left-info    { border-left: 4px solid #c0392b !important; }
     .border-left-warning { border-left: 4px solid #e67e22 !important; }
 
-    /* ── TABLAS ── */
     .table { color: #cccccc !important; }
     .table thead th {
         border-bottom: 2px solid #c0392b !important;
@@ -95,20 +85,16 @@
     .table td, .table th { border-top: 1px solid #333333 !important; }
     .table-bordered { border: 1px solid #333333 !important; }
 
-    /* ── PROGRESS BARS ── */
     .progress { background-color: #333333 !important; }
 
-    /* ── FOOTER ── */
     .sticky-footer {
         background-color: #111111 !important;
         border-top: 1px solid #c0392b !important;
         color: #aaaaaa !important;
     }
 
-    /* ── TEXTOS ── */
     .text-gray-800 { color: #ffffff !important; }
 
-    /* ── DROPDOWN MENÚ ── */
     .dropdown-menu {
         background-color: #222222 !important;
         border: 1px solid #333333 !important;
@@ -119,7 +105,6 @@
         color: #ffffff !important;
     }
 
-    /* ── BOTONES ── */
     .btn-primary {
         background-color: #c0392b !important;
         border-color: #c0392b !important;
@@ -129,31 +114,23 @@
         border-color: #e74c3c !important;
     }
 
-    /* ── TEXTO PRIMARIO ── */
     .text-primary { color: #c0392b !important; }
-
-    /* ══════════════════════════════════════
-       SIDEBAR SUBMENÚS — estilos propios
-    ══════════════════════════════════════ */
 
     .nav-item.has-submenu > .nav-link {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
     }
-
     .nav-item.has-submenu > .nav-link .submenu-arrow {
         font-size: 11px;
         transition: transform 0.25s ease;
         color: #888;
         flex-shrink: 0;
     }
-
     .nav-item.has-submenu.open > .nav-link .submenu-arrow {
         transform: rotate(90deg);
         color: #c0392b;
     }
-
     .submenu {
         display: none;
         list-style: none;
@@ -164,11 +141,7 @@
         margin-left: 1rem;
         border-radius: 0 4px 4px 0;
     }
-
-    .nav-item.has-submenu.open > .submenu {
-        display: block;
-    }
-
+    .nav-item.has-submenu.open > .submenu { display: block; }
     .submenu li a {
         display: flex;
         align-items: center;
@@ -180,67 +153,61 @@
         transition: color 0.2s, background-color 0.2s;
         border-radius: 0 4px 4px 0;
     }
-
-    .submenu li a:hover {
-        color: #ffffff !important;
-        background-color: rgba(192, 57, 43, 0.18);
-    }
-
-    .submenu li a.active {
-        color: #e74c3c !important;
-        font-weight: 600;
-    }
-
-    .submenu li a i {
-        font-size: 12px;
-        width: 14px;
-        text-align: center;
-        flex-shrink: 0;
-    }
-
+    .submenu li a:hover { color: #ffffff !important; background-color: rgba(192,57,43,.18); }
+    .submenu li a.active { color: #e74c3c !important; font-weight: 600; }
+    .submenu li a i { font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
     .nav-item.has-submenu.open > .nav-link,
-    .nav-item.has-submenu.active > .nav-link {
-        color: #ffffff !important;
-    }
+    .nav-item.has-submenu.active > .nav-link { color: #ffffff !important; }
+    .nav-item.active-page > .nav-link { color: #ffffff !important; font-weight: 700; }
 
-    .nav-item.active-page > .nav-link {
-        color: #ffffff !important;
-        font-weight: 700;
-    }
-
-    /* ── BOTÓN MENÚ MÓVIL (HAMBURGUESA) ── */
     #sidebarToggleTop.btn-link {
-        color: #aaaaaa !important; /* Gris claro para el ícono */
+        color: #aaaaaa !important;
         background-color: transparent !important;
     }
-
     #sidebarToggleTop.btn-link:hover {
-        color: #ffffff !important; /* Blanco al pasar el mouse */
-        background-color: #222222 !important; /* Fondo sutil al hacer hover */
+        color: #ffffff !important;
+        background-color: #222222 !important;
     }
-
-    /* Quita la línea de puntos o el aro azul al hacer clic */
     #sidebarToggleTop.btn-link:focus,
     #sidebarToggleTop.btn-link:active {
         outline: none !important;
         box-shadow: none !important;
     }
+
+    /* ── OFFCANVAS MÓVIL ── */
+    #adminOffcanvas {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 260px;
+        height: 100vh;
+        z-index: 9999;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+    #adminOffcanvas.show { left: 0; }
+
+    #offcanvas-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 9998;
+    }
+    #offcanvas-overlay.show { display: block; }
     </style>
 </head>
 
 <body id="page-top">
 
+
     <div id="wrapper">
 
-        {{-- ════════════════════════════════════
-             SIDEBAR
-        ════════════════════════════════════ --}}
         <x-admin-sidebar />
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 
-                {{-- ════════ TOPBAR ════════ --}}
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -308,27 +275,20 @@
                     </ul>
                 </nav>
 
-                {{-- ════════ CONTENIDO ════════ --}}
                 <div class="container-fluid">
 
-                    {{-- Fila de cards de métricas --}}
                     <div class="row">
-
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pedidos Pendientes
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pedidos Pendientes</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 {{ \App\Models\VentaCabecera::where('estado', 'pendiente')->count() }}
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
-                                        </div>
+                                        <div class="col-auto"><i class="fas fa-clock fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -339,16 +299,12 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Dinero Recaudado
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Dinero Recaudado</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                               ${{ number_format(\App\Models\VentaCabecera::whereIn('estado', ['entregado', 'pagado'])->sum('total'), 0, ',', '.') }}
+                                                ${{ number_format(\App\Models\VentaCabecera::whereIn('estado', ['entregado', 'pagado'])->sum('total'), 0, ',', '.') }}
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
+                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -359,16 +315,12 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Usuarios Registrados
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Usuarios Registrados</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 {{ \App\Models\User::count() }}
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                                        </div>
+                                        <div class="col-auto"><i class="fas fa-users fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -379,26 +331,19 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pedidos Entregados
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pedidos Entregados</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 {{ \App\Models\VentaCabecera::where('estado', 'entregado')->count() }}
                                             </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-truck fa-2x text-gray-300"></i>
-                                        </div>
+                                        <div class="col-auto"><i class="fas fa-truck fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    {{-- Fila principal: últimos pedidos + top productos --}}
                     <div class="row">
-
                         <div class="col-lg-7 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -424,23 +369,12 @@
                                                     <td>${{ number_format($venta->total, 0, ',', '.') }}</td>
                                                     <td>
                                                         @switch($venta->estado)
-                                                            @case('pendiente')
-                                                                <span class="badge badge-warning">Pendiente</span>
-                                                                @break
-                                                            @case('pagado')
-                                                                <span class="badge badge-success">Pagado</span>
-                                                                @break
-                                                            @case('enviado')
-                                                                <span class="badge badge-info">Enviado</span>
-                                                                @break
-                                                            @case('entregado')
-                                                                <span class="badge badge-primary">Entregado</span>
-                                                                @break
-                                                            @case('cancelado')
-                                                                <span class="badge badge-danger">Cancelado</span>
-                                                                @break
-                                                            @default
-                                                                <span class="badge badge-secondary">{{ $venta->estado }}</span>
+                                                            @case('pendiente')<span class="badge badge-warning">Pendiente</span>@break
+                                                            @case('pagado')<span class="badge badge-success">Pagado</span>@break
+                                                            @case('enviado')<span class="badge badge-info">Enviado</span>@break
+                                                            @case('entregado')<span class="badge badge-primary">Entregado</span>@break
+                                                            @case('cancelado')<span class="badge badge-danger">Cancelado</span>@break
+                                                            @default<span class="badge badge-secondary">{{ $venta->estado }}</span>
                                                         @endswitch
                                                     </td>
                                                 </tr>
@@ -470,21 +404,14 @@
                                             ->with('producto')
                                             ->get();
                                     @endphp
-
                                     @forelse($topProductos as $index => $item)
                                         <div class="d-flex align-items-center mb-3">
-                                            <div class="mr-3">
-                                                <span class="badge badge-primary">{{ $index + 1 }}</span>
-                                            </div>
+                                            <div class="mr-3"><span class="badge badge-primary">{{ $index + 1 }}</span></div>
                                             <div class="flex-grow-1">
-                                                <div class="small font-weight-bold text-gray-800">
-                                                    {{ $item->producto->nombre ?? 'Producto eliminado' }}
-                                                </div>
+                                                <div class="small font-weight-bold text-gray-800">{{ $item->producto->nombre ?? 'Producto eliminado' }}</div>
                                                 <div class="text-xs text-gray-500">Ranking #{{ $index + 1 }}</div>
                                             </div>
-                                            <div class="ml-auto font-weight-bold text-gray-800">
-                                                {{ $item->total_vendido }} uds.
-                                            </div>
+                                            <div class="ml-auto font-weight-bold text-gray-800">{{ $item->total_vendido }} uds.</div>
                                         </div>
                                         @if(!$loop->last)<hr style="border-color: #333;">@endif
                                     @empty
@@ -493,10 +420,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    {{-- Últimas Consultas --}}
                     <div class="row">
                         <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
@@ -509,38 +434,22 @@
                                         <div class="d-flex align-items-start px-4 py-3" style="border-bottom: 1px solid #2a3a5c;">
                                             <div class="flex-grow-1">
                                                 <div class="d-flex justify-content-between">
-                                                    <span class="font-weight-bold small text-gray-800">
-                                                        {{ $consulta->usuario->nombre ?? 'Usuario eliminado' }}
-                                                    </span>
-                                                    <span class="text-xs text-gray-500">
-                                                        {{ $consulta->created_at->diffForHumans() }}
-                                                    </span>
+                                                    <span class="font-weight-bold small text-gray-800">{{ $consulta->usuario->nombre ?? 'Usuario eliminado' }}</span>
+                                                    <span class="text-xs text-gray-500">{{ $consulta->created_at->diffForHumans() }}</span>
                                                 </div>
-                                                <div class="small font-weight-bold text-primary mt-1">
-                                                    {{ $consulta->asunto }}
-                                                </div>
-                                                <div class="text-xs text-gray-500 mt-1">
-                                                    {{ \Illuminate\Support\Str::limit($consulta->mensaje, 60) }}
-                                                </div>
+                                                <div class="small font-weight-bold text-primary mt-1">{{ $consulta->asunto }}</div>
+                                                <div class="text-xs text-gray-500 mt-1">{{ \Illuminate\Support\Str::limit($consulta->mensaje, 60) }}</div>
                                                 <div class="mt-1">
                                                     @switch($consulta->estado)
-                                                        @case('abierta')
-                                                            <span class="badge badge-success">Abierta</span>
-                                                            @break
-                                                        @case('en_proceso')
-                                                            <span class="badge badge-warning">En proceso</span>
-                                                            @break
-                                                        @case('cerrada')
-                                                            <span class="badge badge-secondary">Cerrada</span>
-                                                            @break
+                                                        @case('abierta')<span class="badge badge-success">Abierta</span>@break
+                                                        @case('en_proceso')<span class="badge badge-warning">En proceso</span>@break
+                                                        @case('cerrada')<span class="badge badge-secondary">Cerrada</span>@break
                                                     @endswitch
                                                 </div>
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="px-4 py-3 text-center text-gray-500">
-                                            No hay consultas registradas aún.
-                                        </div>
+                                        <div class="px-4 py-3 text-center text-gray-500">No hay consultas registradas aún.</div>
                                     @endforelse
                                 </div>
                             </div>
@@ -548,7 +457,6 @@
                     </div>
 
                 </div>
-                {{-- FIN container-fluid --}}
 
             </div>
 
@@ -563,11 +471,11 @@
     </div>
 
     {{-- Modal Logout --}}
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                    <h5 class="modal-title">¿Listo para salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -592,18 +500,6 @@
     <script src="{{ asset('adminDashBoard/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('adminDashBoard/js/demo/chart-pie-demo.js') }}"></script>
 
-    <script>
-        function toggleSubmenu(link) {
-            var parentLi = link.closest('.has-submenu');
-            var isOpen   = parentLi.classList.contains('open');
-
-            document.querySelectorAll('.has-submenu.open').forEach(function(el) {
-                if (el !== parentLi) el.classList.remove('open');
-            });
-
-            parentLi.classList.toggle('open', !isOpen);
-        }
-    </script>
 
     <x-volverArriba />
 </body>
