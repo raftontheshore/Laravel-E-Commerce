@@ -1,15 +1,3 @@
-{{--
-    ============================================================
-    COMPONENTE: Barra de Navegación principal (catacumbas-nav)
-    ------------------------------------------------------------
-    Navbar principal del sitio. Incluye:
-      - Logo + nombre de marca
-      - Links de navegación con indicador de página activa
-      - Bloque de autenticación (Ingresar / Registrarse)
-    En móvil colapsa en un menú hamburguesa (Bootstrap).
-    ============================================================
---}}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,11 +39,6 @@
             margin-top: 4px;
             text-align: center;
         }
-        .catacumbas-nav .navbar-brand:hover .brand-name {
-            max-height: 20px;
-            opacity: 1;
-            margin-top: 4px;
-        }
 
         .catacumbas-nav .nav-link {
             position: relative;
@@ -76,51 +59,6 @@
         .catacumbas-nav .nav-link.active { color: #ffffff !important; }
         .catacumbas-nav .nav-link:hover::after,
         .catacumbas-nav .nav-link.active::after { transform: scaleX(1); }
-
-        .catacumbas-nav .nav-link.dropdown-toggle::after {
-            display: none !important;
-        }
-        .catacumbas-nav .nav-link.dropdown-toggle {
-            position: relative;
-        }
-        .catacumbas-nav .nav-link.dropdown-toggle::before {
-            content: '';
-            position: absolute;
-            left: 0; right: 0; bottom: -2px;
-            height: 2px;
-            background: #c0392b;
-            border-radius: 1px;
-            transform: scaleX(0);
-            transition: transform 0.2s ease;
-        }
-        .catacumbas-nav .nav-link.dropdown-toggle:hover::before,
-        .catacumbas-nav .nav-link.dropdown-toggle.active::before,
-        .catacumbas-nav .dropdown:hover .nav-link.dropdown-toggle::before {
-            transform: scaleX(1);
-        }
-
-        .catacumbas-nav .search-wrapper {
-            display: flex;
-            align-items: center;
-            background: #1c1c1c;
-            border: 1px solid #2e2e2e;
-            border-radius: 6px;
-            padding: 0 10px;
-            gap: 8px;
-            transition: border-color 0.15s;
-        }
-        .catacumbas-nav .search-wrapper:focus-within { border-color: #555; }
-        .catacumbas-nav .search-wrapper i { color: #555; font-size: 13px; }
-        .catacumbas-nav .search-wrapper input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #ccc;
-            font-size: 13px;
-            padding: 6px 0;
-            width: 180px;
-        }
-        .catacumbas-nav .search-wrapper input::placeholder { color: #555; }
 
         .catacumbas-nav .btn-login {
             color: #aaa;
@@ -146,85 +84,64 @@
         }
         .catacumbas-nav .btn-signup:hover { background-color: #e74c3c; color: #fff; }
 
-        /* ── Nombre de usuario logueado ── */
-        .catacumbas-nav .btn-username {
-            color: #aaa;
-            font-size: 13px;
-            padding: 6px 14px;
-            border: 1px solid #333;
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        /* ── Botón cerrar sesión ── */
-        .catacumbas-nav .btn-logout {
-            color: #aaa;
-            font-size: 13px;
-            text-decoration: none;
-            padding: 6px 14px;
-            border: 1px solid #333;
-            border-radius: 20px;
-            transition: color 0.15s, border-color 0.15s;
-            white-space: nowrap;
-            background: none;
-            cursor: pointer;
-        }
-        .catacumbas-nav .btn-logout:hover { color: #fff; border-color: #555; }
-
         .catacumbas-nav .dropdown-menu {
-            background-color: #1a1c20;
+            background-color: #141414;
             border: 1px solid #2a2a2a;
             border-radius: 4px;
-            margin-top: 16px;
+            margin-top: 12px;
             padding: 8px 0;
             min-width: 200px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
         .catacumbas-nav .dropdown-item {
             color: #b0b0b0;
             font-size: 13px;
             padding: 8px 20px;
-            transition: background-color 0.15s ease, color 0.15s ease;
+            transition: background-color 0.15s, color 0.15s;
         }
         .catacumbas-nav .dropdown-item:hover,
         .catacumbas-nav .dropdown-item:focus {
             background-color: #2a2d33;
-            color: #ffffff;
+            color: #fff;
         }
-        .catacumbas-nav .dropdown-divider {
-            border-top-color: #2a2a2a;
-            margin: 4px 0;
-        }
+        .catacumbas-nav .dropdown-divider { border-top-color: #2a2a2a; margin: 4px 0; }
 
-        @media (min-width: 992px) {
-            .catacumbas-nav .dropdown:hover > .dropdown-menu {
-                display: block;
-                margin-top: 16px !important;
-            }
-            .catacumbas-nav .dropdown-menu::before {
-                content: '';
-                position: absolute;
-                top: -15px;
-                left: 0;
-                width: 100%;
-                height: 15px;
-            }
+        
+        .user-offcanvas {
+            background: #1c1c1e !important;
+            border-radius: 20px 20px 0 0 !important;
+            height: auto !important;
         }
+        .user-offcanvas .offcanvas-body { padding: 0 !important; }
 
-        .catacumbas-nav .dropdown:hover .nav-link {
-            color: #ffffff !important;
+        .offcanvas-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-bottom: 1px solid #1e1e1e;
+            color: #ddd;
+            text-decoration: none;
+            width: 100%;
+            background: transparent;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            cursor: pointer;
+            font-size: 15px;
         }
+        .offcanvas-menu-item:hover { background: #262626; color: #fff; }
+        .offcanvas-menu-item.danger { color: #c0392b; border-bottom: none; }
+        .offcanvas-menu-item.danger:hover { background: #1a0a0a; }
 
         @media (max-width: 991px) {
-            .catacumbas-nav .search-wrapper { width: 100%; }
-            .catacumbas-nav .search-wrapper input { width: 100%; }
             .catacumbas-nav .btn-login  { flex: 1; text-align: center; }
             .catacumbas-nav .btn-signup { flex: 1; text-align: center; }
-            .catacumbas-nav .btn-logout { flex: 1; text-align: center; }
         }
     </style>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark py-2 catacumbas-nav">
     <div class="container-fluid px-4">
 
@@ -243,7 +160,7 @@
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3" style="gap: 4px;">
                 <li class="nav-item">
-                    <a class="nav-link fs-6 {{ request()->is('/*') ? 'active' : '' }}" href="/">Principal</a>
+                    <a class="nav-link fs-6 {{ request()->is('/') ? 'active' : '' }}" href="/">Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fs-6 {{ request()->is('tienda*') ? 'active' : '' }}" href="/tienda">Catálogo</a>
@@ -266,97 +183,148 @@
             </ul>
 
             <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center ms-auto gap-2 mt-3 mt-lg-0">
+                <div class="d-flex gap-2 justify-content-center align-items-center">
 
-                <div class="d-flex gap-2 justify-content-center">
+                    @auth
+                        @php
+                            $ventaActiva = \Illuminate\Support\Facades\DB::table('ventas_cabecera')
+                                ->where('user_id', Auth::id())
+                                ->where('estado', 'carrito')
+                                ->first();
 
-                        @auth
-                            @php
-                                // 1. Buscamos si el usuario logueado tiene una venta abierta en estado 'carrito'
-                                $ventaActiva = \Illuminate\Support\Facades\DB::table('ventas_cabecera')
-                                    ->where('user_id', Auth::id())
-                                    ->where('estado', 'carrito')
-                                    ->first();
+                            $cantidadCarrito = 0;
 
-                                $cantidadCarrito = 0;
+                            if ($ventaActiva) {
+                                $cantidadCarrito = \Illuminate\Support\Facades\DB::table('ventas_detalle')
+                                    ->where('venta_id', $ventaActiva->id)
+                                    ->sum('cantidad');
+                            }
 
-                                // 2. Si tiene una venta activa, sumamos la cantidad de los productos en sus detalles
-                                if ($ventaActiva) {
-                                    $cantidadCarrito = \Illuminate\Support\Facades\DB::table('ventas_detalle')
-                                        ->where('venta_id', $ventaActiva->id)
-                                        ->sum('cantidad');
-                                }
-                            @endphp
+                            $nombreCompleto = Auth::user()->nombre ?? Auth::user()->name ?? '';
+                            $partes = explode(' ', trim($nombreCompleto));
+                            $iniciales = strtoupper(substr($partes[0], 0, 1) . (isset($partes[1]) ? substr($partes[1], 0, 1) : ''));
+                        @endphp
 
-                            <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
-                                <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
-                                
-                                {{-- El globito rojo mágico --}}
-                                <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill {{ $cantidadCarrito > 0 ? '' : 'd-none' }}"
-                                    style="background:#c02a2a; font-size: 0.65rem;">
-                                    {{ $cantidadCarrito }}
-                                </span>
+                        {{-- Carrito --}}
+                        <a href="{{ route('carrito.index') }}" class="btn-login position-relative">
+                            <i class="bi bi-cart3" style="font-size: 1.1rem;"></i>
+                            <span id="contador-carrito"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill {{ $cantidadCarrito > 0 ? '' : 'd-none' }}"
+                                style="background:#c02a2a; font-size: 0.65rem;">
+                                {{ $cantidadCarrito }}
+                            </span>
+                        </a>
+
+                        {{-- DESKTOP: dropdown --}}
+                        <div class="dropdown ms-2 position-relative d-none d-lg-block">
+                            <a href="#" id="perfilDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"
+                                class="d-flex align-items-center text-decoration-none">
+                                <div style="width:36px; height:36px; border-radius:50%; background:#c0392b;
+                                            border:2px solid #3a0a0a; display:flex; align-items:center;
+                                            justify-content:center; font-size:13px; font-weight:700;
+                                            color:#fff; cursor:pointer; letter-spacing:0.5px;">
+                                    {{ $iniciales }}
+                                </div>
                             </a>
-
-                            {{-- Menú Desplegable de Usuario (Avatar) --}}
-                            <div class="dropdown ms-2 position-relative">
-                                
-                                {{-- El botón visible en la navbar (Le sacamos la clase nav-link para evitar la línea roja) --}}
-                                <a class="d-flex align-items-center text-decoration-none border-0 bg-transparent p-0" href="#" id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div style="width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 2px solid #2a2a2a; transition: border-color 0.2s;">
-                                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nombre ?? Auth::user()->name) }}&background=1c1c1c&color=c0392b&bold=true" 
-                                            alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                            <ul class="dropdown-menu shadow-lg" aria-labelledby="perfilDropdown"
+                                style="width:250px; right:0 !important; left:auto !important; position:absolute;">
+                                <li class="px-3 py-3 border-bottom border-dark mb-2 d-flex align-items-center gap-3">
+                                    <div style="width:46px; height:46px; border-radius:50%; background:#c0392b;
+                                                border:1px solid #3a0a0a; display:flex; align-items:center;
+                                                justify-content:center; font-size:15px; font-weight:700;
+                                                color:#fff; flex-shrink:0;">
+                                        {{ $iniciales }}
                                     </div>
-                                </a>
-
-                                {{-- El menú que se despliega (Forzamos la posición a la derecha con right: 0 y left: auto) --}}
-                                <ul class="dropdown-menu shadow-lg" aria-labelledby="perfilDropdown" style="width: 250px; background-color: #141414; border: 1px solid #2a2a2a; margin-top: 12px; right: 0 !important; left: auto !important; position: absolute;">
-                                    
-                                    {{-- Cabecera del menú: Foto + Nombre + Correo --}}
-                                    <li class="px-3 py-3 border-bottom border-dark mb-2 d-flex align-items-center gap-3">
-                                        <div style="width: 46px; height: 46px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid #333;">
-                                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nombre ?? Auth::user()->name) }}&background=1c1c1c&color=c0392b&bold=true" 
-                                                alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div style="min-width:0;">
+                                        <div class="fw-bold text-white text-truncate" style="font-size:0.95rem;">
+                                            {{ Auth::user()->nombre ?? Auth::user()->name }}
                                         </div>
-                                        <div style="min-width: 0;"> 
-                                            <div class="fw-bold text-white text-truncate" style="font-size: 0.95rem;">
-                                                {{ Auth::user()->nombre ?? Auth::user()->name }}
-                                            </div>
-                                            <div class="text-secondary text-truncate" style="font-size: 0.8rem;">
-                                                {{ Auth::user()->email }}
-                                            </div>
+                                        <div class="text-secondary text-truncate" style="font-size:0.8rem;">
+                                            {{ Auth::user()->email }}
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2 py-2"
+                                        href="{{ route('compras.index') }}">
+                                        <i class="bi bi-bag-check text-secondary"></i> Mis Compras
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider border-dark my-2"></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}" class="m-0 p-0">
+                                        @csrf
+                                        <button type="submit"
+                                            class="dropdown-item d-flex align-items-center gap-2 py-2"
+                                            style="color:#c0392b; cursor:pointer; background:transparent;
+                                                   border:none; width:100%; text-align:left;">
+                                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
 
-                                    {{-- Opciones del menú --}}
-                        {{-- oipcion de mis comprar osea el historial pero si da tiempo --}}
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="{{ route('compras.index') }}">
-                                            <i class="bi bi-bag-check text-secondary"></i> Mis Compras
-                                        </a>
-                                    </li>
-                                    <li><hr class="dropdown-divider border-dark my-2"></li>
+                        {{-- MÓVIL: botón offcanvas --}}
+                        <button type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#userOffcanvas"
+                            aria-controls="userOffcanvas"
+                            class="d-lg-none"
+                            style="width:36px; height:36px; border-radius:50%; background:#c0392b;
+                                   border:2px solid #3a0a0a; color:#fff; font-size:13px; font-weight:700;
+                                   cursor:pointer; letter-spacing:0.5px; flex-shrink:0;">
+                            {{ $iniciales }}
+                        </button>
 
-                                    {{-- Botón de Cerrar Sesión --}}
-                                    <li>
-                                        <form method="POST" action="{{ route('logout') }}" class="m-0 p-0">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item d-flex align-items-center gap-2 py-2" style="color: #c0392b; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left;">
-                                                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        @else
-                                                    <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
-                            <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
-                        @endauth
+                    @else
+                        <a href="{{ route('login') }}" class="btn-login">Ingresar</a>
+                        <a href="{{ route('register') }}" class="btn btn-signup">Registrarse</a>
+                    @endauth
+
                 </div>
-
             </div>
         </div>
     </div>
 </nav>
+
+{{-- Offcanvas solo móvil (fuera del nav) --}}
+@auth
+<div class="offcanvas offcanvas-bottom user-offcanvas" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
+    <div style="width:36px; height:4px; background:#444; border-radius:2px; margin:10px auto 0;"></div>
+    <div class="offcanvas-body">
+        <div style="display:flex; align-items:center; gap:12px; padding:16px; border-bottom:1px solid #2a2a2a;">
+            <div style="width:48px; height:48px; border-radius:50%; background:#c0392b;
+                        border:2px solid #3a0a0a; display:flex; align-items:center;
+                        justify-content:center; font-size:16px; font-weight:700;
+                        color:#fff; flex-shrink:0;">
+                {{ $iniciales }}
+            </div>
+            <div>
+                <div style="color:#f0f0f0; font-size:15px; font-weight:600;">
+                    {{ Auth::user()->nombre ?? Auth::user()->name }}
+                </div>
+                <div style="color:#777; font-size:12px; margin-top:2px;">
+                    {{ Auth::user()->email }}
+                </div>
+            </div>
+        </div>
+        <a href="{{ route('compras.index') }}" class="offcanvas-menu-item">
+            <i class="bi bi-bag-check" style="font-size:18px; color:#888;"></i>
+            Mis compras
+        </a>
+        <form method="POST" action="{{ route('logout') }}" class="m-0">
+            @csrf
+            <button type="submit" class="offcanvas-menu-item danger">
+                <i class="bi bi-box-arrow-right" style="font-size:18px;"></i>
+                Cerrar sesión
+            </button>
+        </form>
+        <div style="height:20px;"></div>
+    </div>
+</div>
+@endauth
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
