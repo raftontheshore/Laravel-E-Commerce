@@ -429,8 +429,92 @@
                 max-width: 100%;
             }
         }
+
+    /* ── MODAL LOGIN ── */
+.modal-login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+}
+.modal-login-box {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-top: 3px solid #c0392b;
+    border-radius: 12px;
+    padding: 32px 28px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+.modal-login-box i {
+    font-size: 2.5rem;
+    color: #c0392b;
+    margin-bottom: 12px;
+}
+.modal-login-box h5 {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.modal-login-box p {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+}
+.modal-login-btn-primary {
+    display: flex !important; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100% !important;
+    padding: 10px !important;
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: background .15s;
+}
+.modal-login-btn-primary:hover { background: #e74c3c; color: #fff; }
+.modal-login-btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #666;
+    border: 1px solid #2a2a2a;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+}
+.modal-login-btn-secondary:hover { color: #aaa; border-color: #444; }
     </style>
 </head>
+
+{{-- MODAL: requiere login --}}
+<div class="modal-login-overlay" id="modal-login" style="display:none;">
+    <div class="modal-login-box">
+        <i class="bi bi-lock-fill"></i>
+        <h5>Necesitás iniciar sesión</h5>
+        <p>Para agregar productos al carrito necesitás tener una cuenta en Catacumbas.</p>
+        <a href="{{ route('login') }}" class="modal-login-btn-primary">
+    Iniciar sesión
+</a>
+        <button class="modal-login-btn-secondary" onclick="document.getElementById('modal-login').style.display='none'">
+            Seguir navegando
+        </button>
+    </div>
+</div>
 
 <body class="text-white fondo-catacumbas">
 
@@ -678,22 +762,29 @@
 
     <x-volverArriba />
 
-    <script>
-        function cambiarCantidad(delta) {
-            const input = document.getElementById('cantidad');
-            const max   = parseInt(input.max);
-            let val     = parseInt(input.value) + delta;
-            if (val < 1)   val = 1;
-            if (val > max) val = max;
-            input.value = val;
-        }
+  <script>
+    const estaLogueado = @json(auth()->check());
 
-        // Auto-eliminar toast del DOM al terminar la animación
-        const toast = document.getElementById('toast-alert');
-        if (toast) {
-            setTimeout(() => toast.remove(), 4400);
-        }
-    </script>
+    document.querySelector('form[action="{{ route('carrito.agregar') }}"]')
+        ?.addEventListener('submit', function(e) {
+            if (!estaLogueado) {
+                e.preventDefault();
+                document.getElementById('modal-login').style.display = 'flex';
+            }
+        });
 
+    function cambiarCantidad(delta) {
+        const input = document.getElementById('cantidad');
+        const max   = parseInt(input.max);
+        let val     = parseInt(input.value) + delta;
+        if (val < 1)   val = 1;
+        if (val > max) val = max;
+        input.value = val;
+    }
+
+    document.getElementById('modal-login').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+    });
+</script>
 </body>
 </html>
