@@ -63,6 +63,12 @@ class CheckoutController extends Controller
                 ->with('error', 'No se encontró un carrito activo.');
         }
 
+        foreach ($venta->detalles as $detalle) {
+            if ($detalle->producto) {
+                $detalle->producto->decrement('stock', $detalle->cantidad);
+            }
+        }
+        
         $venta->update([
             'direccion'     => trim($request->direccion),
             'telefono'      => trim($request->telefono),

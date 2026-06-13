@@ -289,7 +289,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="stat-label">Stock Bajo</div>
+                                        <div class="stat-label">Stocks Bajos</div>
                                         <div class="stat-value" style="color:#e67e22;">{{ $stockBajo }}</div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-exclamation-triangle fa-2x" style="color:#333;"></i></div>
@@ -302,7 +302,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="stat-label">Sin Stock</div>
+                                        <div class="stat-label">Sin Stocks</div>
                                         <div class="stat-value" style="color:#e74c3c;">{{ $sinStock }}</div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-times-circle fa-2x" style="color:#333;"></i></div>
