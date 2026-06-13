@@ -380,7 +380,7 @@
                                     id="direccion"
                                     name="direccion"
                                     placeholder="Ej: Av. Corrientes 1234, Piso 2"
-                                    value="{{ old('direccion') }}"
+                                    value="{{ old('direccion', $usuario->direccion) }}"
                                     required
                                 >
                                 @error('direccion')
@@ -397,7 +397,7 @@
                                         id="telefono"
                                         name="telefono"
                                         placeholder="Ej: 3794 123456"
-                                        value="{{ old('telefono') }}"
+                                        value="{{ old('telefono', $usuario->telefono) }}"
                                         required
                                     >
                                     @error('telefono')
@@ -412,7 +412,7 @@
                                         id="codigo_postal"
                                         name="codigo_postal"
                                         placeholder="Ej: 3400"
-                                        value="{{ old('codigo_postal') }}"
+                                        value="{{ old('codigo_postal', $usuario->codigo_postal) }}"
                                     >
                                     @error('codigo_postal')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -434,6 +434,34 @@
                             </div>
                         </div>
 
+                        {{-- Guardar datos --}}
+                            <div class="mt-3">
+                                <div class="form-check" style="display:flex; align-items:center; gap:10px;">
+                                    <input
+                                        type="checkbox"
+                                        name="guardar_datos"
+                                        id="guardar_datos"
+                                        value="1"
+                                        style="
+                                            width: 16px; height: 16px;
+                                            accent-color: #c0392b;
+                                            cursor: pointer;
+                                            flex-shrink: 0;
+                                        "
+                                    >
+                                    <label for="guardar_datos" style="
+                                        font-size: 0.78rem;
+                                        color: #666;
+                                        cursor: pointer;
+                                        margin: 0;
+                                        font-weight: 500;
+                                        text-transform: none;
+                                        letter-spacing: 0;
+                                    ">
+                                        Guardar mis datos para futuras compras
+                                    </label>
+                                </div>
+                            </div>
                         <hr class="prod-hr">
 
                         {{-- Medios de pago --}}

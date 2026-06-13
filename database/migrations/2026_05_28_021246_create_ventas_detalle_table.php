@@ -1,33 +1,23 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('ventas_detalle', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venta_id')->constrained('ventas_cabecera')->onDelete('cascade');
-            // onDelete('cascade') borra los detalles si se borra la cabecera
-            $table->foreignId('producto_id')->constrained('productos');
-            $table->integer('cantidad');
-            $table->decimal('precio_unitario', 10, 2);
-            $table->decimal('subtotal', 10, 2);
-            $table->timestamps();
-            });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('direccion', 150)->nullable()->after('activo');
+            $table->string('telefono', 20)->nullable()->after('direccion');
+            $table->string('codigo_postal', 8)->nullable()->after('telefono');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('ventas_detalle');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['direccion', 'telefono', 'codigo_postal']);
+        });
     }
 };

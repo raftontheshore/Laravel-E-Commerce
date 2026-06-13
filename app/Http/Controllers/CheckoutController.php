@@ -20,7 +20,7 @@ class CheckoutController extends Controller
                 ->with('error', 'Tu carrito está vacío.');
         }
 
-        return view('carrito-checkout', compact('venta'));
+        return view('carrito-checkout', compact('venta', 'usuario'));
     }
 
     public function store(Request $request)
@@ -70,6 +70,17 @@ class CheckoutController extends Controller
             'notas'         => $request->filled('notas') ? strip_tags($request->notas) : null,
             'estado'        => 'pendiente',
         ]);
+
+
+        if ($request->boolean('guardar_datos')) {
+    $usuario->update([
+        'direccion'     => trim($request->direccion),
+        'telefono'      => trim($request->telefono),
+        'codigo_postal' => $request->filled('codigo_postal') 
+                            ? strtoupper(trim($request->codigo_postal)) 
+                            : null,
+    ]);
+}
 
         return redirect()->route('checkout.confirmacion', $venta->id)
             ->with('success', '¡Compra confirmada!');

@@ -15,12 +15,15 @@ class User extends Authenticatable
     use SoftDeletes;/* para la baja logica */
     // Breeze necesita $fillable como propiedad, no como atributo
     protected $fillable = [
-        'nombre',
-        'email',
-        'password',
-        'rol',
-        'activo',
-    ];
+    'nombre',
+    'email',
+    'password',
+    'rol',
+    'activo',
+    'direccion',
+    'telefono',
+    'codigo_postal',
+];
 
     // Igual, $hidden como propiedad tradicional
     protected $hidden = [
