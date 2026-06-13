@@ -7,17 +7,19 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('direccion', 150)->nullable()->after('activo');
-            $table->string('telefono', 20)->nullable()->after('direccion');
-            $table->string('codigo_postal', 8)->nullable()->after('telefono');
+        Schema::create('ventas_detalle', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('venta_id')->constrained('ventas_cabecera')->onDelete('cascade');
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->integer('cantidad');
+            $table->decimal('precio_unitario', 10, 2);
+            $table->decimal('subtotal', 10, 2);
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['direccion', 'telefono', 'codigo_postal']);
-        });
+        Schema::dropIfExists('ventas_detalle');
     }
 };
