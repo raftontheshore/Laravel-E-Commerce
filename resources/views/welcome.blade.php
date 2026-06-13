@@ -95,7 +95,7 @@
     {{-- ── CARRUSEL DESTACADOS ── --}}
     <div class="container mt-5">
         <h3 class="text-white fw-bold mb-4" style="font-family: 'Oswald', sans-serif;">Destacados</h3>
-        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro" style="scrollbar-width: thin;">
+        <div class="row flex-nowrap overflow-x-auto py-2 carrusel-tema-oscuro" style="scrollbar-width: thin;">
             @foreach($productos_destacados as $producto)
                 <div class="col-10 col-md-3 col-lg-3 mb-3 pe-2">
                     <x-carta-producto :producto="$producto" />
@@ -116,7 +116,7 @@
                 Ver más <i class="bi bi-arrow-right ms-2"></i>
             </a>
         </div>
-        <div class="row flex-nowrap overflow-x-auto pb-3 carrusel-tema-oscuro">
+        <div class="row flex-nowrap overflow-x-auto py-2 carrusel-tema-oscuro">
             @foreach($consolas as $consola)
                 <div class="col-10 col-md-3 col-lg-3 mb-3 pe-2">
                     <x-carta-producto :producto="$consola" />
