@@ -222,21 +222,23 @@
                                 </div>
                             @endif
 
-                            <div class="item-info">
-                                <div class="item-titulo">{{ $detalle->producto->nombre ?? 'Producto no disponible' }}</div>
-                                <div class="item-meta">
-                                    <span class="text-white">{{ $detalle->cantidad }} u.</span> 
-                                    <span class="mx-1">|</span>
-                                    ${{ number_format($detalle->precio_unitario, 0, ',', '.') }} c/u
+                            <div class="item-info d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+                                <div style="min-width: 0;">
+                                    <div class="item-titulo">{{ $detalle->producto->nombre ?? 'Producto no disponible' }}</div>
+                                    <div class="item-meta">
+                                        <span class="text-white">{{ $detalle->cantidad }} u.</span> 
+                                        <span class="mx-1">|</span>
+                                        ${{ number_format($detalle->precio_unitario, 0, ',', '.') }} c/u
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="d-none d-sm-block text-end">
-                                <a href="/producto/{{ $detalle->producto_id }}" 
-                                class="text-decoration-none" 
-                                style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #888;">
-                                Volver a comprar
-                                </a>
+                                <div class="text-start text-sm-end mt-1 mt-sm-0 flex-shrink-0">
+                                    <a href="/producto/{{ $detalle->producto_id }}" 
+                                    class="text-decoration-none" 
+                                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #888;">
+                                    Volver a comprar
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     @endforeach
