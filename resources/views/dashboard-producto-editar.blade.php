@@ -419,10 +419,10 @@
                                     </div>
 
                                     <div class="campo-grupo">
-                                        <label class="campo-label" for="descripcion">Descripción</label>
+                                        <label class="campo-label" for="descripcion">Descripción *</label>
                                         <textarea name="descripcion" id="descripcion" rows="4"
-                                                  class="form-control input-dark @error('descripcion') is-invalid @enderror"
-                                                  placeholder="Descripción del producto...">{{ old('descripcion', $producto->descripcion) }}</textarea>
+                                                class="form-control input-dark @error('descripcion') is-invalid @enderror"
+                                                placeholder="Descripción del producto..." required>{{ old('descripcion', $producto->descripcion) }}</textarea>
                                         @error('descripcion')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
 
@@ -568,9 +568,13 @@ const RULES = {
         }
     },
     descripcion: {
-        required: false, maxLen: 2000,
+        required: true,     
+        minLen: 20,          // Mínimo de 20 caracteres
+        maxLen: 2000,
         noHtml: true,
         messages: {
+            required: 'La descripción es obligatoria.',
+            minLen: 'La descripción debe tener al menos 20 caracteres.',
             maxLen: 'La descripción no puede superar los 2000 caracteres.',
             noHtml: 'No se permiten etiquetas HTML.',
         }

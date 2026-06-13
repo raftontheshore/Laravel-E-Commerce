@@ -171,4 +171,4 @@ class ProductoController extends Controller
         return redirect()->route('admin.productos.index')
                          ->with('success', 'Producto eliminado correctamente.');
     }
-}
+}       
