@@ -563,8 +563,10 @@ const RULES = {
     url_imagen: {
         required: false,
         isUrl: true,
+        pattern: /\.(jpeg|jpg|gif|png|webp|svg|bmp)(\?.*)?$/i, // <-- Expresión regular mágica
         messages: {
             isUrl: 'Ingresá una URL válida (debe empezar con http:// o https://).',
+            pattern: 'La URL debe ser un enlace directo a una imagen (.jpg, .png, .webp, etc.). No se permiten links de videos o páginas web.',
         }
     },
     descripcion: {
