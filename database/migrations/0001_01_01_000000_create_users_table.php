@@ -11,18 +11,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-
-            $table->enum('rol', ['ADMIN', 'CLIENTE'])->default('CLIENTE');
-            $table->boolean('activo')->default(true);
-
-            $table->rememberToken();
-            $table->timestamps();
-            $table->softDeletes();
+           $table->id();
+        $table->string('nombre');
+$table->string('email')->unique();
+$table->timestamp('email_verified_at')->nullable();
+$table->string('password');
+$table->enum('rol', ['ADMIN', 'CLIENTE'])->default('CLIENTE');
+$table->boolean('activo')->default(true);
+$table->string('direccion', 150)->nullable();
+$table->string('telefono', 20)->nullable();
+$table->string('codigo_postal', 8)->nullable();
+$table->rememberToken();
+$table->timestamps();
+$table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

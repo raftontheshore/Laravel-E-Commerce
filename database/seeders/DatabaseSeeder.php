@@ -22,25 +22,31 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'admin@gmail.com'],
             [
-                'nombre'   => 'Juan Pérez',
-                'password' => bcrypt('admin123'),
-                'rol'      => 'ADMIN',
-                'activo'   => true,
+                'nombre'        => 'Juan Pérez',
+                'password'      => bcrypt('admin123'),
+                'rol'           => 'ADMIN',
+                'activo'        => true,
+                'direccion'     => 'Calle Principal 123, Corrientes',
+                'telefono'      => '3794123456',
+                'codigo_postal' => '3400',
             ]
         );
 
         User::firstOrCreate(
             ['email' => 'usuario@gmail.com'],
             [
-                'nombre'   => 'Usuario X',
-                'password' => bcrypt('usuario123'),
-                'rol'      => 'CLIENTE',
-                'activo'   => true,
+                'nombre'        => 'Usuario X',
+                'password'      => bcrypt('usuario123'),
+                'rol'           => 'CLIENTE',
+                'activo'        => true,
+                'direccion'     => 'Av. Libertad 456, Corrientes',
+                'telefono'      => '3794654321',
+                'codigo_postal' => '3400',
             ]
         );
 
         // ─────────────────────────────────────────────
-        //  CATEGORÍAS
+        //  CATEGORÍAS (Se eliminó Consolas y Periféricos)
         // ─────────────────────────────────────────────
         $categorias = [
             ['id' => 1,  'nombre' => 'RPG',             'descripcion' => 'Juegos de rol'],
@@ -52,7 +58,6 @@ class DatabaseSeeder extends Seeder
             ['id' => 7,  'nombre' => 'Lucha',           'descripcion' => 'Juegos de lucha'],
             ['id' => 8,  'nombre' => 'Aventura',        'descripcion' => 'Juegos de aventura'],
             ['id' => 9,  'nombre' => 'Puzzle',          'descripcion' => 'Juegos de puzzle'],
-            ['id' => 10, 'nombre' => 'Periféricos',     'descripcion' => 'Accesorios y periféricos para consolas'],
         ];
 
         foreach ($categorias as $cat) {
@@ -80,7 +85,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/dJW5Fp4z/REDC-USA.webp',
                 'marca'                => 'Capcom',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -94,7 +99,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/27GwrW2K/ps1-metalgearsolid-front-eu-thumb.jpg',
                 'marca'                => 'Konami',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'nuevo',
             ],
             [
@@ -108,7 +113,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/DH2kcCqH/cover-lsd.png',
                 'marca'                => 'Asmik Ace',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -122,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/cKkMthnn/c4007fff-9166-4389-83b6-e338c2278a29.jpg',
                 'marca'                => 'Konami',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'nuevo',
             ],
             [
@@ -136,7 +141,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/tTW6mCxn/88dd3c72-663f-4262-a85d-0ba96f2a99ab.jpg',
                 'marca'                => 'Atlus',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'nuevo',
             ],
             [
@@ -150,7 +155,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/3mfHFSWX/r2-bcde5969-75c3-41d5-9c23-0de7f3c50235.png',
                 'marca'                => 'Konami',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -164,7 +169,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/WpDVmnCM/7b8101cd-ea45-4189-b9e6-45e170aa42dc.png',
                 'marca'                => 'Nintendo',
-                'consola'              => 'GameBoy',
+                'consola'              => 'Game Boy',
                 'condicion'            => 'usado',
             ],
             [
@@ -178,7 +183,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/rgXtdKt/2b06034c-9d15-4bdd-8e20-b564027cd957.jpg',
                 'marca'                => 'Sony',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'usado',
             ],
             [
@@ -192,7 +197,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/ycnz5J5X/a4fecfd9-a573-4045-9d0f-af59709f72ce.jpg',
                 'marca'                => 'Capcom',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'nuevo',
             ],
             [
@@ -220,7 +225,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/21SZ3b9Y/c7df3e76-b752-4d02-a358-841da5cb244d.jpg',
                 'marca'                => 'Sony',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'reacondicionado',
             ],
             [
@@ -234,7 +239,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/Q7s9vgRf/a7491b58-b669-4635-aa4b-520193580f70.jpg',
                 'marca'                => 'FromSoftware',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'usado',
             ],
             [
@@ -262,7 +267,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/vCd79H4p/420ea16a-f054-4952-bfbc-0c4da8655b75.jpg',
                 'marca'                => 'Square',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -276,7 +281,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/FLk8s46K/ee260313-fb62-4596-8af4-cf139c6681d8.png',
                 'marca'                => 'Capcom',
-                'consola'              => 'Gameboy Advance',
+                'consola'              => 'Game Boy Advance',
                 'condicion'            => 'usado',
             ],
             [
@@ -318,7 +323,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/m3k34CZ/a1829960-26a1-433c-adae-856290481792.png',
                 'marca'                => 'Konami',
-                'consola'              => 'PS2',
+                'consola'              => 'PlayStation 2',
                 'condicion'            => 'nuevo',
             ],
             [
@@ -346,7 +351,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/qF5NjgYq/r2-809dbd84-313e-4408-94f3-726899fe26c4.jpg',
                 'marca'                => 'Square',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -374,7 +379,7 @@ class DatabaseSeeder extends Seeder
                 'stock_bajo'           => 1,
                 'url_imagen'           => 'https://i.ibb.co/fG99b4rp/251b3973-c46c-4c4c-b46a-b34bcd23c860.jpg',
                 'marca'                => 'Naughty Dog',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
@@ -405,15 +410,15 @@ class DatabaseSeeder extends Seeder
         }
 
         // ─────────────────────────────────────────────
-        //  PRODUCTOS — CONSOLAS
+        //  PRODUCTOS — CONSOLAS (Precios normalizados a ARS)
         // ─────────────────────────────────────────────
         $consolas = [
             [
                 'id_categoria'         => 8,
                 'nombre'               => 'Nintendo Entertainment System',
                 'descripcion'          => 'Consola clásica de 8 bits.',
-                'precio_original'      => 100.00,
-                'precio'               => 80.00,
+                'precio_original'      => 100000.00,
+                'precio'               => 80000.00,
                 'porcentaje_descuento' => 20,
                 'stock'                => 15,
                 'stock_bajo'           => 5,
@@ -426,8 +431,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'Super Nintendo',
                 'descripcion'          => 'Consola de 16 bits de Nintendo.',
-                'precio_original'      => 150.00,
-                'precio'               => 120.00,
+                'precio_original'      => 150000.00,
+                'precio'               => 120000.00,
                 'porcentaje_descuento' => 20,
                 'stock'                => 10,
                 'stock_bajo'           => 3,
@@ -440,8 +445,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'Sega Genesis',
                 'descripcion'          => 'Consola de 16 bits de Sega.',
-                'precio_original'      => 120.00,
-                'precio'               => 90.00,
+                'precio_original'      => 120000.00,
+                'precio'               => 90000.00,
                 'porcentaje_descuento' => 25,
                 'stock'                => 20,
                 'stock_bajo'           => 5,
@@ -454,36 +459,36 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'PlayStation 1',
                 'descripcion'          => 'Primera consola de Sony.',
-                'precio_original'      => 80.00,
-                'precio'               => 60.00,
+                'precio_original'      => 80000.00,
+                'precio'               => 60000.00,
                 'porcentaje_descuento' => 25,
                 'stock'                => 30,
                 'stock_bajo'           => 10,
                 'url_imagen'           => 'https://i.ibb.co/fzWm6WwG/image.png',
                 'marca'                => 'Sony',
-                'consola'              => 'PS1',
+                'consola'              => 'PlayStation 1',
                 'condicion'            => 'usado',
             ],
             [
                 'id_categoria'         => 8,
                 'nombre'               => 'Nintendo 64',
                 'descripcion'          => 'Consola de 64 bits de Nintendo.',
-                'precio_original'      => 180.00,
-                'precio'               => 150.00,
+                'precio_original'      => 180000.00,
+                'precio'               => 150000.00,
                 'porcentaje_descuento' => 16,
                 'stock'                => 8,
                 'stock_bajo'           => 2,
                 'url_imagen'           => 'https://i.ibb.co/8gcHMnqr/image.png',
                 'marca'                => 'Nintendo',
-                'consola'              => 'N64',
+                'consola'              => 'Nintendo 64',
                 'condicion'            => 'usado',
             ],
             [
                 'id_categoria'         => 8,
                 'nombre'               => 'Sega Dreamcast',
                 'descripcion'          => 'Última consola de Sega.',
-                'precio_original'      => 200.00,
-                'precio'               => 160.00,
+                'precio_original'      => 200000.00,
+                'precio'               => 160000.00,
                 'porcentaje_descuento' => 20,
                 'stock'                => 5,
                 'stock_bajo'           => 2,
@@ -496,8 +501,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'Game Boy',
                 'descripcion'          => 'Consola portátil de Nintendo.',
-                'precio_original'      => 90.00,
-                'precio'               => 70.00,
+                'precio_original'      => 90000.00,
+                'precio'               => 70000.00,
                 'porcentaje_descuento' => 22,
                 'stock'                => 25,
                 'stock_bajo'           => 8,
@@ -510,8 +515,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'Atari 2600',
                 'descripcion'          => 'Pionera en consolas de videojuegos.',
-                'precio_original'      => 110.00,
-                'precio'               => 85.00,
+                'precio_original'      => 110000.00,
+                'precio'               => 85000.00,
                 'porcentaje_descuento' => 22,
                 'stock'                => 12,
                 'stock_bajo'           => 4,
@@ -524,8 +529,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'Sega Master System',
                 'descripcion'          => 'Consola de 8 bits de Sega.',
-                'precio_original'      => 130.00,
-                'precio'               => 100.00,
+                'precio_original'      => 130000.00,
+                'precio'               => 100000.00,
                 'porcentaje_descuento' => 23,
                 'stock'                => 7,
                 'stock_bajo'           => 3,
@@ -538,8 +543,8 @@ class DatabaseSeeder extends Seeder
                 'id_categoria'         => 8,
                 'nombre'               => 'GameCube',
                 'descripcion'          => 'Consola con forma de cubo de Nintendo.',
-                'precio_original'      => 160.00,
-                'precio'               => 130.00,
+                'precio_original'      => 160000.00,
+                'precio'               => 130000.00,
                 'porcentaje_descuento' => 18,
                 'stock'                => 14,
                 'stock_bajo'           => 5,
@@ -562,15 +567,15 @@ class DatabaseSeeder extends Seeder
         }
 
         // ─────────────────────────────────────────────
-        //  PRODUCTOS — ACCESORIOS  (id_categoria = 10 → Periféricos)
+        //  PRODUCTOS — ACCESORIOS (Normalizados a ARS y reasignados de categoría)
         // ─────────────────────────────────────────────
         $accesorios = [
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Mando Original N64',
                 'descripcion'          => 'Mando original para Nintendo 64 en color gris.',
-                'precio_original'      => 40.00,
-                'precio'               => 35.00,
+                'precio_original'      => 40000.00,
+                'precio'               => 35000.00,
                 'porcentaje_descuento' => 13,
                 'stock'                => 15,
                 'stock_bajo'           => 5,
@@ -580,11 +585,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Memory Card 8MB PS2',
                 'descripcion'          => 'Tarjeta de memoria original de 8MB para PlayStation 2.',
-                'precio_original'      => 15.00,
-                'precio'               => 15.00,
+                'precio_original'      => 15000.00,
+                'precio'               => 15000.00,
                 'porcentaje_descuento' => 0,
                 'stock'                => 30,
                 'stock_bajo'           => 10,
@@ -594,11 +599,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'nuevo',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Guitarra Guitar Hero',
                 'descripcion'          => 'Controlador de guitarra para Guitar Hero en PS2.',
-                'precio_original'      => 60.00,
-                'precio'               => 50.00,
+                'precio_original'      => 60000.00,
+                'precio'               => 50000.00,
                 'porcentaje_descuento' => 17,
                 'stock'                => 5,
                 'stock_bajo'           => 2,
@@ -608,11 +613,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Volante y Control de Movimiento para Nintendo Wii',
                 'descripcion'          => 'Accesorio de volante para Wii Remote.',
-                'precio_original'      => 20.00,
-                'precio'               => 18.00,
+                'precio_original'      => 20000.00,
+                'precio'               => 18000.00,
                 'porcentaje_descuento' => 10,
                 'stock'                => 20,
                 'stock_bajo'           => 5,
@@ -622,11 +627,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Multitap PS1',
                 'descripcion'          => 'Adaptador para conectar hasta 4 mandos en PlayStation 1.',
-                'precio_original'      => 25.00,
-                'precio'               => 20.00,
+                'precio_original'      => 25000.00,
+                'precio'               => 20000.00,
                 'porcentaje_descuento' => 20,
                 'stock'                => 8,
                 'stock_bajo'           => 3,
@@ -636,11 +641,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Rumble Pak N64',
                 'descripcion'          => 'Accesorio de vibración para el mando de Nintendo 64.',
-                'precio_original'      => 30.00,
-                'precio'               => 25.00,
+                'precio_original'      => 30000.00,
+                'precio'               => 25000.00,
                 'porcentaje_descuento' => 17,
                 'stock'                => 12,
                 'stock_bajo'           => 4,
@@ -650,11 +655,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Cable Link GBA',
                 'descripcion'          => 'Cable para conectar dos consolas Game Boy Advance.',
-                'precio_original'      => 15.00,
-                'precio'               => 12.00,
+                'precio_original'      => 15000.00,
+                'precio'               => 12000.00,
                 'porcentaje_descuento' => 20,
                 'stock'                => 25,
                 'stock_bajo'           => 10,
@@ -664,11 +669,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'nuevo',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Zapper NES',
                 'descripcion'          => 'Pistola de luz original para Nintendo Entertainment System.',
-                'precio_original'      => 45.00,
-                'precio'               => 40.00,
+                'precio_original'      => 45000.00,
+                'precio'               => 40000.00,
                 'porcentaje_descuento' => 11,
                 'stock'                => 4,
                 'stock_bajo'           => 1,
@@ -678,11 +683,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Mando Arcade Genesis',
                 'descripcion'          => 'Mando tipo arcade de 6 botones para Sega Genesis.',
-                'precio_original'      => 35.00,
-                'precio'               => 30.00,
+                'precio_original'      => 35000.00,
+                'precio'               => 30000.00,
                 'porcentaje_descuento' => 14,
                 'stock'                => 10,
                 'stock_bajo'           => 3,
@@ -692,11 +697,11 @@ class DatabaseSeeder extends Seeder
                 'condicion'            => 'usado',
             ],
             [
-                'id_categoria'         => 10,
+                'id_categoria'         => 8,
                 'nombre'               => 'Memory Card 1MB PS1',
                 'descripcion'          => 'Tarjeta de memoria original de 1MB para PlayStation 1.',
-                'precio_original'      => 12.00,
-                'precio'               => 10.00,
+                'precio_original'      => 12000.00,
+                'precio'               => 10000.00,
                 'porcentaje_descuento' => 17,
                 'stock'                => 40,
                 'stock_bajo'           => 15,

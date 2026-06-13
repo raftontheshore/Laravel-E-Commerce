@@ -73,14 +73,55 @@
     .cat-price { font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
     .cat-discount { font-size: 11px; font-weight: 700; color: #09c762; }
     .cat-installments { font-size: 11px; color: #444; }
+
+    .cat-sin-stock-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    .cat-sin-stock-overlay span {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: #e74c3c;
+        background: rgba(0,0,0,.7);
+        border: 1px solid rgba(231,76,60,.4);
+        padding: 5px 12px;
+        border-radius: 6px;
+    }
+    .cat-sin-stock .cat-price,
+    .cat-sin-stock .cat-price-original,
+    .cat-sin-stock .cat-discount,
+    .cat-sin-stock .cat-installments { opacity: 0.4; }
+    .cat-sin-stock-badge {
+        font-size: 11px;
+        font-weight: 700;
+        color: #e74c3c;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 </style>
 
 <a href="{{ route('producto.detalle', $producto->id) }}"
    class="text-decoration-none d-block h-100">
-    <div class="cat-product-card">
+    <div class="cat-product-card {{ $producto->stock == 0 ? 'cat-sin-stock' : '' }}">
 
         {{-- ✅ Imagen dentro de su contenedor --}}
-        <div class="cat-card-img">
+        <div class="cat-card-img" style="position: relative;">
+            @if($producto->stock == 0)
+                <div class="cat-sin-stock-overlay">
+                    <span><i class="bi bi-x-circle-fill me-1"></i>Sin stock</span>
+                </div>
+            @endif
             @if($producto->url_imagen)
                 <img src="{{ $producto->url_imagen }}"
                      alt="{{ $producto->nombre }}"
@@ -125,6 +166,12 @@
             <div class="cat-installments mt-auto pt-2">
                 6 cuotas de ${{ number_format($producto->precio / 6, 0, ',', '.') }}
             </div>
+
+            @if($producto->stock == 0)
+                <div class="cat-sin-stock-badge">
+                    <i class="bi bi-x-circle-fill" style="font-size:10px;"></i> Sin stock
+                </div>
+            @endif
 
         </div>
     </div>
