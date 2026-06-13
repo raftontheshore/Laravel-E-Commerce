@@ -14,6 +14,12 @@ Este proyecto es una aplicación web que permite gestionar las operaciones de un
     * Visualización detallada de consolas, accesorios y videojuegos retro disponibles.
     * Organización de la tienda mediante categorías relacionadas (RPG, Plataformas, Survival Horror, etc.).
 
+* Panel de Administración (Dashboard):
+    * Interfaz exclusiva para usuarios con rol de Administrador.
+    * Gestión integral (CRUD) del inventario de Productos, Usuarios, Categorías, Consultas y Pedidos.
+    * Tarjetas de métricas en tiempo real para control de inventario (productos totales, activos, stock bajo y sin stock).
+    * Sistema de búsqueda y filtros avanzados (por categoría, condición, estado y ordenamiento) para la administración eficiente del catálogo.
+
 * Gestión de Usuarios y Autenticación:
     * Sistema de registro y login.
     * Implementación de roles de usuario (Administrador y Cliente).
@@ -36,7 +42,7 @@ Este proyecto es una aplicación web que permite gestionar las operaciones de un
 * Base de Datos: MariaDB
 * ORM: Eloquent
 * Motor de Plantillas: Blade
-* Frontend: CSS y JavaScript
+* Frontend: CSS y JavaScript (Diseño Dark Mode)
 
 ---
 
