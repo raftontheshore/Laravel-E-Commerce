@@ -417,7 +417,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse(\App\Models\VentaCabecera::with('usuario')->latest()->take(5)->get() as $venta)
+                                                @forelse(\App\Models\VentaCabecera::with('usuario')->where('estado', '!=', 'carrito')->latest()->take(5)->get() as $venta)
                                                 <tr>
                                                     <td>#{{ $venta->id }}</td>
                                                     <td>{{ $venta->usuario->nombre ?? 'N/A' }}</td>
