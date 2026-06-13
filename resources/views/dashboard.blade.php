@@ -8,7 +8,7 @@
     <meta name="description" content="Dashboard Catacumbas">
     <meta name="author" content="Enzo">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Catacumbas - Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="{{ asset('adminDashBoard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -206,6 +206,24 @@
     .nav-item.active-page > .nav-link {
         color: #ffffff !important;
         font-weight: 700;
+    }
+
+    /* ── BOTÓN MENÚ MÓVIL (HAMBURGUESA) ── */
+    #sidebarToggleTop.btn-link {
+        color: #aaaaaa !important; /* Gris claro para el ícono */
+        background-color: transparent !important;
+    }
+
+    #sidebarToggleTop.btn-link:hover {
+        color: #ffffff !important; /* Blanco al pasar el mouse */
+        background-color: #222222 !important; /* Fondo sutil al hacer hover */
+    }
+
+    /* Quita la línea de puntos o el aro azul al hacer clic */
+    #sidebarToggleTop.btn-link:focus,
+    #sidebarToggleTop.btn-link:active {
+        outline: none !important;
+        box-shadow: none !important;
     }
     </style>
 </head>
