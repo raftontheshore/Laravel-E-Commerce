@@ -25,8 +25,6 @@ Este proyecto es una aplicación web que permite gestionar las operaciones de un
 
 * Arquitectura Backend y Datos:
     * Persistencia de datos utilizando MariaDB.
-    * Estructura de base de datos automatizada mediante Migraciones de Laravel.
-    * Población inicial de datos (usuarios de prueba, categorías y catálogo de productos con precios localizados) a través de Seeders.
     * Uso del ORM Eloquent para el manejo eficiente de relaciones y consultas.
 
 ---
