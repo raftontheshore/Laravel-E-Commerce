@@ -421,8 +421,8 @@
                                     <div class="campo-grupo">
                                         <label class="campo-label" for="descripcion">Descripción *</label>
                                         <textarea name="descripcion" id="descripcion" rows="4"
-                                                class="form-control input-dark @error('descripcion') is-invalid @enderror"
-                                                placeholder="Descripción del producto..." required>{{ old('descripcion', $producto->descripcion) }}</textarea>
+                                                  class="form-control input-dark @error('descripcion') is-invalid @enderror"
+                                                  placeholder="Descripción del producto..." required>{{ old('descripcion', $producto->descripcion) }}</textarea>
                                         @error('descripcion')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
 
@@ -584,50 +584,52 @@ const RULES = {
 /* ── Estado visual ───────────────────────── */
 function setFieldState(fieldId, isValid, message = '') {
     const input   = document.getElementById(fieldId);
-    const wrapper = document.getElementById('wrapper-' + fieldId);
-    const msgEl   = document.getElementById('msg-' + fieldId);
     if (!input) return;
-    input.classList.remove('field-valid', 'field-invalid');
-    if (wrapper) wrapper.classList.remove('valid', 'invalid');
+
+    // Buscar o crear dinámicamente el contenedor del mensaje de error rojo debajo
+    let msgEl = document.getElementById('msg-' + fieldId);
+    if (!msgEl) {
+        msgEl = document.createElement('div');
+        msgEl.id = 'msg-' + fieldId;
+        // Estilos idénticos a los del checkout (texto rojo pequeño abajo)
+        msgEl.style.cssText = 'color: #e74c3c; font-size: 0.78rem; margin-top: 4px; display: none;';
+        
+        if (input.parentNode.classList.contains('input-group')) {
+            input.parentNode.insertAdjacentElement('afterend', msgEl);
+        } else {
+            input.insertAdjacentElement('afterend', msgEl);
+        }
+    }
+
+    // Limpiamos los estados previos
+    input.classList.remove('field-valid', 'field-invalid', 'is-invalid');
+    
     if (isValid) {
         input.classList.add('field-valid');
-        if (wrapper) wrapper.classList.add('valid');
-        if (msgEl) msgEl.classList.remove('show');
+        msgEl.style.display = 'none';
+        input.setCustomValidity(''); // Limpia cualquier alerta nativa
     } else {
-        input.classList.add('field-invalid');
-        if (wrapper) wrapper.classList.add('invalid');
-        if (msgEl) {
-            msgEl.querySelector('span').textContent = message;
-            msgEl.classList.add('show');
-        }
+        input.classList.add('field-invalid', 'is-invalid'); // is-invalid activa el borde rojo nativo de bootstrap
+        msgEl.textContent = message;
+        msgEl.style.display = 'block';
+        input.setCustomValidity(message); // Activa el pop-up nativo con el mismo mensaje
     }
 }
 
 function clearFieldState(fieldId) {
-    const input   = document.getElementById(fieldId);
-    const wrapper = document.getElementById('wrapper-' + fieldId);
-    const msgEl   = document.getElementById('msg-' + fieldId);
-    if (input)   input.classList.remove('field-valid', 'field-invalid');
-    if (wrapper) wrapper.classList.remove('valid', 'invalid');
-    if (msgEl)   msgEl.classList.remove('show');
+    const input = document.getElementById(fieldId);
+    const msgEl = document.getElementById('msg-' + fieldId);
+    if (input) {
+        input.classList.remove('field-valid', 'field-invalid', 'is-invalid');
+        input.setCustomValidity('');
+    }
+    if (msgEl) msgEl.style.display = 'none';
 }
 
 /* ── Selects: feedback visual ────────────── */
 function setSelectState(selectId, isValid, message = '') {
-    const sel   = document.getElementById(selectId);
-    const msgEl = document.getElementById('msg-' + selectId);
-    if (!sel) return;
-    sel.classList.remove('field-valid', 'field-invalid');
-    if (isValid) {
-        sel.classList.add('field-valid');
-        if (msgEl) msgEl.classList.remove('show');
-    } else {
-        sel.classList.add('field-invalid');
-        if (msgEl) {
-            msgEl.querySelector('span').textContent = message;
-            msgEl.classList.add('show');
-        }
-    }
+    // Reutilizamos la misma lógica central para los selects
+    setFieldState(selectId, isValid, message);
 }
 
 function validateSelect(selectId, label) {
@@ -807,7 +809,8 @@ document.addEventListener('DOMContentLoaded', function () {
             @error($campo)
                 (function() {
                     const el = document.getElementById('{{ $campo }}');
-                    if (el) el.classList.add('field-invalid');
+                    // Usamos setFieldState para inyectar automáticamente tu error
+                    if (el) setFieldState('{{ $campo }}', false, '{{ $message }}');
                 })();
             @enderror
         @endforeach
@@ -849,6 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (firstError) {
                 firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 firstError.focus();
+                firstError.reportValidity(); // <-- Esto dispara el cartelito nativo que me pediste
             } else {
                 document.getElementById('msg-imagen-global')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
