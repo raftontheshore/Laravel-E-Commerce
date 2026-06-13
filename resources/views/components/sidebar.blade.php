@@ -3,10 +3,23 @@
     COMPONENTE: Sidebar de Filtros (cat-sidebar)
     ------------------------------------------------------------
     Panel lateral del catálogo de productos. Permite filtrar
-    por categoría, marca, condición, orden y rango de precio.
+    por categoría, condición, consola (dinámica), orden y precio.
     Recibe: $categoria (string con la categoría activa actual)
     ============================================================
 --}}
+
+@php
+    $consolasDisponibles = \App\Models\Producto::where('activo', 1)
+        ->whereNotNull('consola')
+        ->where('consola', '!=', '')
+        ->distinct()
+        ->orderBy('consola')
+        ->pluck('consola');
+
+    $generosDisponibles = \App\Models\Categoria::where('activo', 1)
+        ->orderBy('nombre')
+        ->get();
+@endphp
 
 <style>
     .cat-sidebar {
@@ -48,7 +61,6 @@
         border: 1px solid #333;
         border-radius: 7px;
         padding: 0 12px;
-        margin-bottom: 24px;
         transition: border-color 0.15s;
     }
     .cat-sidebar .sidebar-search:focus-within { border-color: #666; }
@@ -136,24 +148,74 @@
         font-size: 13px;
         flex-shrink: 0;
     }
+
+    .cat-sidebar details summary {
+        list-style: none;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        user-select: none;
+    }
+    .cat-sidebar details summary::-webkit-details-marker { display: none; }
+    .cat-sidebar details summary::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #2a2a2a;
+    }
+    .cat-sidebar details summary .details-arrow {
+        color: #555;
+        font-size: 10px;
+        transition: transform 0.2s;
+        margin-left: 4px;
+        flex-shrink: 0;
+    }
+    .cat-sidebar details[open] summary .details-arrow {
+        transform: rotate(180deg);
+    }
+    .cat-sidebar details summary:hover { color: #bbb; }
 </style>
 
 <aside class="cat-sidebar">
 
-    {{-- CATEGORÍA --}}
+    {{-- BÚSQUEDA --}}
     <div class="filter-section">
-        <div class="filter-label">Categoría</div>
-        <div class="d-flex flex-wrap gap-2">
-            <a href="{{ url('/tienda/todos') }}"
-               class="filter-pill {{ $categoria == 'todos' ? 'active' : '' }}">Todos</a>
-            <a href="{{ url('/tienda/consola') }}"
-               class="filter-pill {{ $categoria == 'consola' ? 'active' : '' }}">Consolas</a>
-            <a href="{{ url('/tienda/videojuego') }}"
-               class="filter-pill {{ $categoria == 'videojuego' ? 'active' : '' }}">Juegos</a>
-            <a href="{{ url('/tienda/periferico') }}"
-               class="filter-pill {{ $categoria == 'periferico' ? 'active' : '' }}">Periféricos</a>
-        </div>
+        <div class="filter-label">Buscar</div>
+        <form method="GET" action="{{ url('/tienda/' . $categoria) }}" id="form-busqueda">
+            @foreach(request()->except('q') as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}">
+            @endforeach
+            <div class="sidebar-search">
+                <i class="fas fa-search"></i>
+                <input type="text" name="q"
+                       placeholder="Buscar producto..."
+                       value="{{ request('q') }}"
+                       oninput="debounceSearch()">
+            </div>
+        </form>
     </div>
+
+   {{-- CATEGORÍA --}}
+<div class="filter-section">
+    <div class="filter-label">Categoría</div>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="{{ url('/tienda/todos') }}"
+           class="filter-pill {{ $categoria == 'todos' ? 'active' : '' }}">Todos</a>
+        <a href="{{ url('/tienda/consola') }}"
+           class="filter-pill {{ $categoria == 'consola' ? 'active' : '' }}">Consolas</a>
+        <a href="{{ url('/tienda/videojuego') }}"
+           class="filter-pill {{ $categoria == 'videojuego' ? 'active' : '' }}">Juegos</a>
+        <a href="{{ url('/tienda/periferico') }}"
+           class="filter-pill {{ $categoria == 'periferico' ? 'active' : '' }}">Periféricos</a>
+    </div>
+</div>
 
     {{-- CONDICIÓN --}}
     <div class="filter-section">
@@ -173,11 +235,36 @@
         </div>
     </div>
 
-    {{-- CONSOLA/MARCA --}}
+    {{-- GÉNERO (solo visible para juegos) --}}
+@if(in_array($categoria, ['todos', 'videojuego']) && $generosDisponibles->isNotEmpty())
+<div class="filter-section">
+    <details {{ request('genero') ? 'open' : '' }}>
+            <summary>
+                Género
+                <i class="fas fa-chevron-down details-arrow"></i>
+            </summary>
+            <div class="d-flex flex-wrap gap-2 mt-1">
+                @foreach($generosDisponibles as $genero)
+                    @php
+    $url = request('genero') == $genero->id
+        ? request()->fullUrlWithQuery(['genero' => null])
+        : url('/tienda/videojuego') . '?' . http_build_query(array_merge(request()->except('genero'), ['genero' => $genero->id]));
+@endphp
+                    <a href="{{ $url }}"
+                       class="filter-pill {{ request('genero') == $genero->id ? 'active' : '' }}">
+                        {{ $genero->nombre }}
+                    </a>
+                @endforeach
+            </div>
+        </details>
+</div>
+@endif
+
+    {{-- CONSOLA (dinámica desde BD) --}}
     <div class="filter-section">
         <div class="filter-label">Consola</div>
         <div class="d-flex flex-wrap gap-2">
-            @foreach(['PS1', 'PS2', 'Nintendo 64', 'Sega Genesis', 'Xbox'] as $consola)
+            @forelse($consolasDisponibles as $consola)
                 @php
                     $url = request('consola') == $consola
                         ? request()->fullUrlWithQuery(['consola' => null])
@@ -187,7 +274,9 @@
                    class="filter-pill {{ request('consola') == $consola ? 'active' : '' }}">
                     {{ $consola }}
                 </a>
-            @endforeach
+            @empty
+                <span style="color:#555; font-size:12px;">Sin consolas registradas</span>
+            @endforelse
         </div>
     </div>
 
@@ -230,7 +319,7 @@
     </div>
 
     {{-- LIMPIAR FILTROS --}}
-    @if(request()->hasAny(['condicion', 'consola', 'orden', 'precio_min', 'precio_max']))
+    @if(request()->hasAny(['q', 'condicion', 'consola', 'genero', 'orden', 'precio_min', 'precio_max']))
     <div class="mt-3">
         <a href="{{ url('/tienda/' . $categoria) }}"
            class="filter-pill w-100 text-center d-block"
@@ -241,3 +330,13 @@
     @endif
 
 </aside>
+
+<script>
+let searchTimer;
+function debounceSearch() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+        document.getElementById('form-busqueda').submit();
+    }, 400);
+}
+</script>

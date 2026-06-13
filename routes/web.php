@@ -12,6 +12,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CheckoutController;
 use App\Models\Producto;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\TiendaController;
 
 Route::get('/contacto',  [ContactoController::class, 'index']);
 Route::post('/contacto', [ContactoController::class, 'store']);
@@ -144,41 +145,8 @@ Route::get('/explorar', function () {
 // ============================================================
 // RUTA: Tienda con filtro por categoría (/tienda/{categoria?})
 // ============================================================
-Route::get('/tienda', function () {
-    return redirect('/tienda/todos');
-});
-
-Route::get('/tienda/{categoria?}', function ($categoria = 'todos') {
-    $query = Producto::where('activo', 1)->with('categoria');
-
-    if ($categoria && $categoria !== 'todos') {
-        $query->where('tipo_producto', $categoria);
-    }
-
-    if (request('condicion')) {
-        $query->where('condicion', request('condicion'));
-    }
-
-    if (request('consola')) {
-        $query->where('consola', request('consola'));
-    }
-
-    if (request('precio_min')) {
-        $query->where('precio', '>=', request('precio_min'));
-    }
-    if (request('precio_max')) {
-        $query->where('precio', '<=', request('precio_max'));
-    }
-
-    switch (request('orden')) {
-        case 'precio_asc':  $query->orderBy('precio', 'asc'); break;
-        case 'precio_desc': $query->orderBy('precio', 'desc'); break;
-        default:            $query->latest(); break;
-    }
-
-    $productos = $query->paginate(15)->withQueryString();
-    return view('tienda', compact('productos', 'categoria'));
-});
+Route::get('/tienda', fn() => redirect('/tienda/todos'));
+Route::get('/tienda/{categoria?}', [TiendaController::class, 'index']);
 
 Route::get('/mis-compras', [CompraController::class, 'index'])
     ->name('compras.index')
