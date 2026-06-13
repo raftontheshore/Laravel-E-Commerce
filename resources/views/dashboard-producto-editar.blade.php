@@ -148,7 +148,7 @@
 
                 {{-- FORMULARIO --}}
                 <form method="POST" action="{{ route('admin.productos.update', $producto->id) }}"
-                      id="form-editar" enctype="multipart/form-data">
+                     id="form-editar" enctype="multipart/form-data" novalidate>
                     @csrf
                     @method('PATCH')
 
