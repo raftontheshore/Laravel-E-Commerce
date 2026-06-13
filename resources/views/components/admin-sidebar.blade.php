@@ -105,6 +105,43 @@
         color: #ffffff !important;
         font-weight: 700;
     }
+
+    /* ── RESPONSIVE MÓVIL ── */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 6.5rem !important;
+        }
+
+        .sidebar .nav-item .nav-link span,
+        .sidebar .nav-item .submenu-arrow,
+        .catacumbas-logo-sub,
+        .submenu {
+            display: none !important;
+        }
+
+        .catacumbas-logo-text {
+            font-size: 10px !important;
+            letter-spacing: 1px !important;
+        }
+
+        .sidebar .nav-item .nav-link {
+            justify-content: center !important;
+            padding: 0.75rem 1rem;
+        }
+
+        .sidebar .nav-item .nav-link i {
+            margin: 0 !important;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-brand-text {
+            text-align: center !important;
+        }
+
+        #content-wrapper {
+            margin-left: 0 !important;
+        }
+    }
 </style>
 
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
