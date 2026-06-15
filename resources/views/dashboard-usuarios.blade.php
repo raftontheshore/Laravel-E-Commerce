@@ -221,6 +221,14 @@
                     </div>
                 @endif
 
+                {{-- AGREGÁ ESTO --}}
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" style="background:#4d1e1e;color:#fff;border:1px solid #c0392b;">
+                        {{ session('error') }}
+                        <button type="button" class="close text-white" data-dismiss="alert">&times;</button>
+                    </div>
+                @endif
+
                 {{-- BUSCADOR --}}
                 {{-- BUSCADOR --}}
                 <form method="GET" action="{{ route('admin.usuarios') }}" class="mb-4">

@@ -34,6 +34,14 @@ class UsuarioController extends Controller
 
     public function toggleRol(User $user)
     {
+        // Si es el único admin, no puede degradarse a cliente
+        if ($user->rol === 'ADMIN') {
+            $cantAdmins = User::where('rol', 'ADMIN')->count();
+            if ($cantAdmins <= 1) {
+                return back()->with('error', 'No se puede cambiar el rol del único administrador del sistema.');
+            }
+        }
+
         $user->rol = $user->rol === 'ADMIN' ? 'CLIENTE' : 'ADMIN';
         $user->save();
         return back()->with('success', 'Rol actualizado correctamente.');
@@ -41,7 +49,20 @@ class UsuarioController extends Controller
 
     public function destroy(User $user)
     {
+        // No puede eliminarse a sí mismo
+        if ($user->id === auth()->id()) {
+            return back()->with('error', 'No podés eliminarte a vos mismo.');
+        }
+
+        // No puede eliminarse el único admin
+        if ($user->rol === 'ADMIN') {
+            $cantAdmins = User::where('rol', 'ADMIN')->count();
+            if ($cantAdmins <= 1) {
+                return back()->with('error', 'No se puede eliminar el único administrador del sistema.');
+            }
+        }
+
         $user->delete();
-        return back()->with('success', 'Usuario desactivado correctamente.');
+        return back()->with('success', 'Usuario eliminado correctamente.');
     }
 }
