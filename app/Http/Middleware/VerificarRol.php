@@ -10,7 +10,7 @@ class VerificarRol
 {
     public function handle(Request $request, Closure $next, string $rol): mixed
     {
-        //elstrtolower lo que hace es para q no le importe si rol esta escrito en MAYUSCULAS o minuculas 
+        // Si no hay usuario logueado o el rol no coincide, devuelve 403
         if (!$request->user() || strtolower($request->user()->rol) !== strtolower($rol)) {
             abort(403);
         }
