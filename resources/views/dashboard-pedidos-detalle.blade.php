@@ -83,22 +83,29 @@
             border-top: 1px solid #c0392b !important;
             color: #aaaaaa !important;
         }
-        /* ── BOTÓN MENÚ MÓVIL (HAMBURGUESA) ── */
+
         #sidebarToggleTop.btn-link {
-            color: #aaaaaa !important; /* Gris claro para el ícono */
+            color: #aaaaaa !important;
             background-color: transparent !important;
         }
-
         #sidebarToggleTop.btn-link:hover {
-            color: #ffffff !important; /* Blanco al pasar el mouse */
-            background-color: #222222 !important; /* Fondo sutil al hacer hover */
+            color: #ffffff !important;
+            background-color: #222222 !important;
         }
-
-        /* Quita la línea de puntos o el aro azul al hacer clic */
         #sidebarToggleTop.btn-link:focus,
         #sidebarToggleTop.btn-link:active {
             outline: none !important;
             box-shadow: none !important;
+        }
+
+        .dropdown-menu {
+            background-color: #222222 !important;
+            border: 1px solid #333333 !important;
+        }
+        .dropdown-item { color: #cccccc !important; }
+        .dropdown-item:hover {
+            background-color: #c0392b !important;
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -111,21 +118,50 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 
+                {{-- TOPBAR --}}
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-                    <!-- Igual que en el index -->
+                        <i class="fa fa-bars"></i>
+                    </button>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nombre ?? 'Admin' }}</span>
-                                <img class="img-profile rounded-circle" src="{{ asset('adminDashBoard/img/undraw_profile.svg') }}">
+
+                            @php
+                                $nombreCompleto = auth()->user()->nombre ?? '';
+                                $partes = explode(' ', trim($nombreCompleto));
+                                $iniciales = strtoupper(
+                                    substr($partes[0], 0, 1) . (isset($partes[1]) ? substr($partes[1], 0, 1) : '')
+                                );
+                            @endphp
+
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                               id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{ auth()->user()->nombre ?? 'Admin' }}
+                                </span>
+                                <div style="width:36px; height:36px; border-radius:50%; background:#c0392b;
+                                            border:2px solid #3a0a0a; display:flex; align-items:center;
+                                            justify-content:center; font-size:13px; font-weight:700;
+                                            color:#fff; letter-spacing:0.5px; flex-shrink:0;">
+                                    {{ $iniciales }}
+                                </div>
                             </a>
+
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#"
+                                   data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                            </div>
+
                         </li>
                     </ul>
                 </nav>
 
+                {{-- CONTENIDO --}}
                 <div class="container-fluid">
                     
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -139,49 +175,49 @@
                     </div>
 
                     <div class="row">
-                        <!-- Información del Cliente -->
+
+                        {{-- Información del Cliente --}}
                         <div class="col-lg-4 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Información del Cliente</h6>
                                 </div>
                                 <div class="card-body info-box m-3">
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Nombre Completo</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->nombre ?? 'Usuario eliminado' }}</div>
-    </div>
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Correo Electrónico</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->usuario->email ?? 'N/A' }}</div>
-    </div>
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Dirección de Envío</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->direccion ?? '—' }}</div>
-    </div>
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Teléfono</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->telefono ?? '—' }}</div>
-    </div>
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Código Postal</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->codigo_postal ?? '—' }}</div>
-    </div>
-    @if($orden->notas)
-    <div class="mb-3">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Notas</div>
-        <div class="h6 mb-0 text-gray-200">{{ $orden->notas }}</div>
-    </div>
-    @endif
-    <div class="mb-0">
-        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Estado de la Orden</div>
-        <div class="h6 mb-0 text-gray-200">{{ ucfirst($orden->estado) }}</div>
-    </div>
-</div>
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Nombre Completo</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->usuario->nombre ?? 'Usuario eliminado' }}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Correo Electrónico</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->usuario->email ?? 'N/A' }}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Dirección de Envío</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->direccion ?? '—' }}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Teléfono</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->telefono ?? '—' }}</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Código Postal</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->codigo_postal ?? '—' }}</div>
+                                    </div>
+                                    @if($orden->notas)
+                                    <div class="mb-3">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Notas</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ $orden->notas }}</div>
+                                    </div>
+                                    @endif
+                                    <div class="mb-0">
+                                        <div class="text-xs font-weight-bold text-gray-500 text-uppercase mb-1">Estado de la Orden</div>
+                                        <div class="h6 mb-0" style="color:#ddd;">{{ ucfirst($orden->estado) }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Detalle de Productos -->
+                        {{-- Detalle de Productos --}}
                         <div class="col-lg-8 mb-4">
                             <div class="card shadow h-100">
                                 <div class="card-header py-3">
@@ -201,7 +237,7 @@
                                             <tbody>
                                                 @foreach($orden->detalles as $item)
                                                 <tr>
-                                                    <td class="font-weight-bold text-gray-200">{{ $item->producto->nombre ?? 'Producto Eliminado' }}</td>
+                                                    <td class="font-weight-bold" style="color:#ddd;">{{ $item->producto->nombre ?? 'Producto Eliminado' }}</td>
                                                     <td class="text-center">{{ $item->cantidad }}</td>
                                                     <td>${{ number_format($item->precio_unitario, 0, ',', '.') }}</td>
                                                     <td class="text-primary font-weight-bold">${{ number_format($item->subtotal, 0, ',', '.') }}</td>
@@ -210,8 +246,8 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr style="background-color: #111111;">
-                                                    <td colspan="3" class="text-right font-weight-bold text-gray-400 text-uppercase">Total General:</td>
-                                                    <td class="font-weight-bold text-white h5 mb-0">${{ number_format($orden->total, 0, ',', '.') }}</td>
+                                                    <td colspan="3" class="text-right font-weight-bold text-uppercase" style="color:#aaa;">Total General:</td>
+                                                    <td class="font-weight-bold h5 mb-0" style="color:#fff;">${{ number_format($orden->total, 0, ',', '.') }}</td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -223,15 +259,42 @@
                     </div>
 
                 </div>
-            </div>
+                {{-- /container-fluid --}}
 
-            <footer class="sticky-footer bg-white">
+            </div>
+            {{-- /content --}}
+
+            <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Catacumbas 2026</span>
                     </div>
                 </div>
             </footer>
+
+        </div>
+        {{-- /content-wrapper --}}
+
+    </div>
+    {{-- /wrapper --}}
+
+    {{-- MODAL LOGOUT --}}
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background:#222;color:#fff;">
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Listo para salir?</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">Seleccioná "Cerrar sesión" para terminar tu sesión.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Cerrar Sesión</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -239,5 +302,6 @@
     <script src="{{ asset('adminDashBoard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('adminDashBoard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('adminDashBoard/js/sb-admin-2.min.js') }}"></script>
+    <x-volverArriba />
 </body>
 </html>

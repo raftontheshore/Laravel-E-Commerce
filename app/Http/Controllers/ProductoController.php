@@ -74,7 +74,10 @@ class ProductoController extends Controller
             'precio'               => 'required|numeric|min:0',
             'stock'                => 'required|integer|min:0',
             'stock_bajo'           => 'required|integer|min:0',
-            'url_imagen'           => 'nullable|url|max:255',
+            'url_imagen' => ['nullable','url',
+                    'max:255',
+                    'regex:/\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i'
+                ],
             'imagen'               => 'nullable|image|max:2048',
             'activo'               => 'nullable|boolean',
         ]);

@@ -186,10 +186,34 @@
                     </form>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nombre ?? 'Admin' }}</span>
-                                <img class="img-profile rounded-circle" src="{{ asset('adminDashBoard/img/undraw_profile.svg') }}">
+
+                                    @php
+                                        $nombreCompleto = auth()->user()->nombre ?? '';
+                                        $partes = explode(' ', trim($nombreCompleto));
+                                        $iniciales = strtoupper(
+                                            substr($partes[0], 0, 1) . (isset($partes[1]) ? substr($partes[1], 0, 1) : '')
+                                        );
+                                    @endphp
+
+                                    <div style="width:36px; height:36px; border-radius:50%; background:#c0392b;
+                                                border:2px solid #3a0a0a; display:flex; align-items:center;
+                                                justify-content:center; font-size:13px; font-weight:700;
+                                                color:#fff; cursor:pointer; letter-spacing:0.5px; flex-shrink:0;">
+                                        {{ $iniciales }}
+                                    </div>
                             </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown"
+                                style="background-color:#222;border:1px solid #333;">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
+                                style="color:#ccc;">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
@@ -349,6 +373,25 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>
+    {{-- MODAL LOGOUT --}}
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background:#222;color:#fff;">
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Listo para salir?</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">Seleccioná "Cerrar sesión" para terminar tu sesión.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Cerrar Sesión</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

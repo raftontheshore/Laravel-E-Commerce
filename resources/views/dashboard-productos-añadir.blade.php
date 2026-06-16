@@ -187,8 +187,22 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nombre }}</span>
-                            <img class="img-profile rounded-circle" src="{{ asset('adminDashBoard/img/undraw_profile.svg') }}">
+                           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nombre ?? 'Admin' }}</span>
+
+                            @php
+                                $nombreCompleto = auth()->user()->nombre ?? '';
+                                $partes = explode(' ', trim($nombreCompleto));
+                                $iniciales = strtoupper(
+                                    substr($partes[0], 0, 1) . (isset($partes[1]) ? substr($partes[1], 0, 1) : '')
+                                );
+                            @endphp
+
+                            <div style="width:36px; height:36px; border-radius:50%; background:#c0392b;
+                                        border:2px solid #3a0a0a; display:flex; align-items:center;
+                                        justify-content:center; font-size:13px; font-weight:700;
+                                        color:#fff; cursor:pointer; letter-spacing:0.5px; flex-shrink:0;">
+                                {{ $iniciales }}
+                            </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow">
                             <div class="dropdown-divider"></div>
@@ -455,7 +469,9 @@
                                         <input type="url" name="url_imagen" id="url_imagen"
                                             value="{{ old('url_imagen') }}"
                                             class="form-control input-dark @error('url_imagen') is-invalid @enderror"
-                                            placeholder="https://...">
+                                            placeholder="https://ejemplo.com/imagen.jpg"
+                                            pattern="https?://.+\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$"
+                                            title="La URL debe terminar en .jpg, .jpeg, .png, .gif, .webp o .svg">
                                         @error('url_imagen')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
 
@@ -570,14 +586,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /* Preview imagen — URL */
-    document.getElementById('url_imagen').addEventListener('input', function () {
-        const url = this.value.trim();
-        if (url) {
-            document.getElementById('imagen-preview').src = url;
-            document.getElementById('imagen-preview').style.display = 'block';
-            document.getElementById('imagen-placeholder').style.display = 'none';
-        }
-    });
+        document.getElementById('url_imagen').addEventListener('input', function () {
+            const url = this.value.trim();
+            const esImagen = /\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i.test(url);
+
+            if (url && esImagen) {
+                const img = document.getElementById('imagen-preview');
+                img.src = url;
+                img.style.display = 'block';
+                document.getElementById('imagen-placeholder').style.display = 'none';
+            } else {
+                document.getElementById('imagen-preview').style.display = 'none';
+                document.getElementById('imagen-placeholder').style.display = 'block';
+            }
+        });
 });
 </script>
 
